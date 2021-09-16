@@ -20,7 +20,7 @@
 
 You have to turn on the compatibility mode in the exporter. You can do this by adding the following section in your CR yaml.
 
-```
+```bash
   monitor:
     prometheus:
       exporter:
