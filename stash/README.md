@@ -45,11 +45,11 @@ Now, install Stash Enterprise edition with monitoring enabled. You can follow th
 ```bash
 $ helm install stash appscode/stash -n kube-system \
 --version v2021.08.02 \
---set features.community=true               \
---set stash-community.monitoring.agent=prometheus.io/operator \
---set stash-community.monitoring.backup=true \
---set stash-community.monitoring.operator=true \
---set stash-community.monitoring.serviceMonitor.labels.release=prometheus-stack \
+--set features.enterprise=true               \
+--set stash-enterprise.monitoring.agent=prometheus.io/operator \
+--set stash-enterprise.monitoring.backup=true \
+--set stash-enterprise.monitoring.operator=true \
+--set stash-enterprise.monitoring.serviceMonitor.labels.release=prometheus-stack \
 --set-file global.license=/path/to/license-file.txt
 ```
 
@@ -58,10 +58,10 @@ $ helm install stash appscode/stash -n kube-system \
 ```bash
 $ helm upgrade stash appscode/stash -n kube-system \
 --reuse-values \
---set stash-community.monitoring.agent=prometheus.io/operator \
---set stash-community.monitoring.backup=true \
---set stash-community.monitoring.operator=true \
---set stash-community.monitoring.serviceMonitor.labels.release=prometheus-stack
+--set stash-enterprise.monitoring.agent=prometheus.io/operator \
+--set stash-enterprise.monitoring.backup=true \
+--set stash-enterprise.monitoring.operator=true \
+--set stash-enterprise.monitoring.serviceMonitor.labels.release=prometheus-stack
 ```
 
 ### Using Dashboard
