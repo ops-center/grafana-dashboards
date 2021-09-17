@@ -1,1 +1,1 @@
-# kubedb-grafana-dashboards
+# Grafana Dashboards
