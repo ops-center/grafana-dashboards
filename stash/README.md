@@ -32,7 +32,7 @@ $ helm install panopticon appscode/panopticon -n kubeops \
     --create-namespace \
     --set monitoring.enabled=true \
     --set monitoring.agent=prometheus.io/operator \
-    --set monitoring.serviceMonitor.labels.release=prometheus-stack \ # Use the selector that is used by your Prometheus server to select ServiceMonitor.
+    --set monitoring.serviceMonitor.labels.release=prometheus-stack \
     --set-file license=/path/to/license-file.txt
 ```
 
@@ -49,7 +49,7 @@ $ helm install stash appscode/stash -n kube-system \
 --set stash-community.monitoring.agent=prometheus.io/operator \
 --set stash-community.monitoring.backup=true \
 --set stash-community.monitoring.operator=true \
---set stash-community.monitoring.serviceMonitor.labels.release=prometheus-stack \  # Use the selector that is used by your Prometheus server to select ServiceMonitor.
+--set stash-community.monitoring.serviceMonitor.labels.release=prometheus-stack \
 --set-file global.license=/path/to/license-file.txt
 ```
 
@@ -61,6 +61,28 @@ $ helm upgrade stash appscode/stash -n kube-system \
 --set stash-community.monitoring.agent=prometheus.io/operator \
 --set stash-community.monitoring.backup=true \
 --set stash-community.monitoring.operator=true \
---set stash-community.monitoring.serviceMonitor.labels.release=prometheus-stack  # Use the selector that is used by your Prometheus server to select ServiceMonitor.
+--set stash-community.monitoring.serviceMonitor.labels.release=prometheus-stack
 ```
 
+### Using Dashboard
+
+#### Create Stash Metric Configurations
+
+At first, you have to create few `MetricsConfiguration` objects for Stash. These, `MetricsConfiguration` objects are used by Panopticon to generate metrics for Stash.
+
+Clone this repository and run the following command on repository root directory:
+
+```bash
+$ kubectl apply -f stash/metric-configurations/
+```
+
+#### Import Stash Grafana Dashboard
+
+Now, on your Grafana UI import the `stash_dashboard.json` file located in `stash` folder of this repository.
+
+![Import New Dashboard](/stash/images/import_dashboard_1.png)
+![Upload Dashboard JSON](/stash/images/import_dashboard_2.png)
+
+If you followed the instruction properly, you should see the Stash Grafana dashboard in your Grafana UI.
+
+![Stash Grafana](/stash/images/stash_grafana_dashboard.png)
