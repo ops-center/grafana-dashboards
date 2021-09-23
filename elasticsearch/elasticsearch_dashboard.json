@@ -22,7 +22,7 @@
   "gnetId": null,
   "graphTooltip": 1,
   "id": 26,
-  "iteration": 1632326530363,
+  "iteration": 1632371205560,
   "links": [],
   "panels": [
     {
@@ -74,6 +74,28 @@
                 }
               },
               "type": "special"
+            },
+            {
+              "options": {
+                "from": 2.01,
+                "result": {
+                  "index": 4,
+                  "text": "N/A"
+                },
+                "to": 2.99
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 1.01,
+                "result": {
+                  "index": 5,
+                  "text": "N/A"
+                },
+                "to": 1.99
+              },
+              "type": "range"
             }
           ],
           "thresholds": {
@@ -204,7 +226,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(elasticsearch_cluster_health_number_of_nodes{cluster=~\"$cluster\"})/count(elasticsearch_cluster_health_number_of_nodes{cluster=~\"$cluster\"})",
+          "expr": "sum(max by (cluster) (elasticsearch_cluster_health_number_of_nodes{cluster=~\"$cluster\"}))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -285,7 +307,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "max(elasticsearch_cluster_health_number_of_data_nodes{cluster=~\"$cluster\"})",
+          "expr": "sum(max by (cluster) (elasticsearch_cluster_health_number_of_data_nodes{cluster=~\"$cluster\"}))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -365,7 +387,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "max(elasticsearch_cluster_health_number_of_pending_tasks{cluster=~\"$cluster\"})",
+          "expr": "sum(max by (cluster) (elasticsearch_cluster_health_number_of_pending_tasks{cluster=~\"$cluster\"}))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -1583,7 +1605,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Avg. CPU Usage",
+      "title": "Avg. CPU Usage Rate",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1953,12 +1975,12 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
-            "sample-es"
+            "All"
           ],
           "value": [
-            "sample-es"
+            "$__all"
           ]
         },
         "datasource": "$server",
@@ -1987,7 +2009,7 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -2018,5 +2040,5 @@
   "timezone": "utc",
   "title": "ElasticSearch",
   "uid": "XkKR7DHnk",
-  "version": 8
+  "version": 9
 }
