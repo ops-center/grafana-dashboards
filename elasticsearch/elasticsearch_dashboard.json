@@ -22,7 +22,7 @@
   "gnetId": null,
   "graphTooltip": 1,
   "id": 26,
-  "iteration": 1632371205560,
+  "iteration": 1632401878488,
   "links": [],
   "panels": [
     {
@@ -1287,7 +1287,7 @@
       },
       "id": 68,
       "panels": [],
-      "title": "System",
+      "title": "System ( Ingest Nodes )",
       "type": "row"
     },
     {
@@ -1375,7 +1375,7 @@
         "defaults": {
           "color": {
             "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
+            "mode": "thresholds"
           },
           "mappings": [
             {
@@ -1389,14 +1389,14 @@
             }
           ],
           "thresholds": {
-            "mode": "absolute",
+            "mode": "percentage",
             "steps": [
               {
                 "color": "green",
                 "value": null
               },
               {
-                "color": "red",
+                "color": "light-red",
                 "value": 80
               }
             ]
@@ -1452,7 +1452,7 @@
         "defaults": {
           "color": {
             "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
+            "mode": "thresholds"
           },
           "mappings": [
             {
@@ -1469,20 +1469,20 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "dark-red",
+                "color": "light-red",
                 "value": null
               },
               {
                 "color": "orange",
-                "value": 20
+                "value": 10
               },
               {
                 "color": "yellow",
-                "value": 50
+                "value": 20
               },
               {
                 "color": "green",
-                "value": 60
+                "value": 30
               }
             ]
           },
@@ -2009,7 +2009,7 @@
     ]
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {
@@ -2040,5 +2040,5 @@
   "timezone": "utc",
   "title": "ElasticSearch",
   "uid": "XkKR7DHnk",
-  "version": 9
+  "version": 12
 }
