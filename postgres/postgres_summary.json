@@ -59,7 +59,7 @@
     "gnetId": 9628,
     "graphTooltip": 0,
     "id": 35,
-    "iteration": 1632475102523,
+    "iteration": 1632476839672,
     "links": [],
     "panels": [
       {
@@ -273,14 +273,44 @@
         "fieldConfig": {
           "defaults": {
             "color": {
-              "mode": "thresholds"
+              "mode": "palette-classic"
             },
-            "mappings": [],
+            "mappings": [
+              {
+                "options": {
+                  "Critical": {
+                    "color": "dark-yellow",
+                    "index": 1
+                  },
+                  "DataRestoring": {
+                    "color": "dark-red",
+                    "index": 4
+                  },
+                  "Halted": {
+                    "color": "dark-red",
+                    "index": 5
+                  },
+                  "NotReady": {
+                    "color": "dark-red",
+                    "index": 2
+                  },
+                  "Provisioning": {
+                    "color": "text",
+                    "index": 3
+                  },
+                  "Ready": {
+                    "color": "semi-dark-green",
+                    "index": 0
+                  }
+                },
+                "type": "value"
+              }
+            ],
             "thresholds": {
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
+                  "color": "text",
                   "value": null
                 }
               ]
@@ -304,17 +334,18 @@
             "calcs": [
               "lastNotNull"
             ],
-            "fields": "",
+            "fields": "/^phase$/",
             "values": false
           },
           "text": {},
-          "textMode": "name"
+          "textMode": "auto"
         },
         "pluginVersion": "8.1.2",
         "targets": [
           {
             "exemplar": true,
             "expr": "kubedb_postgres_status_phase{namespace=\"$namespace\", postgres=\"$postgres\"} == 1\n",
+            "format": "table",
             "instant": true,
             "interval": "",
             "legendFormat": "{{phase}}",
@@ -331,17 +362,23 @@
             "color": {
               "mode": "palette-classic"
             },
-            "mappings": [],
+            "mappings": [
+              {
+                "options": {
+                  "disable": {
+                    "color": "dark-red",
+                    "index": 0
+                  }
+                },
+                "type": "value"
+              }
+            ],
             "thresholds": {
               "mode": "absolute",
               "steps": [
                 {
                   "color": "green",
                   "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
                 }
               ]
             }
@@ -356,7 +393,7 @@
         },
         "id": 82,
         "options": {
-          "colorMode": "none",
+          "colorMode": "value",
           "graphMode": "area",
           "justifyMode": "auto",
           "orientation": "auto",
@@ -364,17 +401,18 @@
             "calcs": [
               "lastNotNull"
             ],
-            "fields": "",
+            "fields": "/^sslMode$/",
             "values": false
           },
           "text": {},
-          "textMode": "name"
+          "textMode": "value"
         },
         "pluginVersion": "8.1.2",
         "targets": [
           {
             "exemplar": true,
             "expr": "kubedb_postgres_info{namespace=\"$namespace\", postgres=\"$postgres\"}",
+            "format": "table",
             "instant": true,
             "interval": "",
             "legendFormat": "{{sslMode}}",
@@ -389,19 +427,37 @@
         "fieldConfig": {
           "defaults": {
             "color": {
-              "mode": "thresholds"
+              "mode": "palette-classic"
             },
-            "mappings": [],
+            "mappings": [
+              {
+                "options": {
+                  "Delete": {
+                    "color": "yellow",
+                    "index": 1
+                  },
+                  "DoNotTerminate": {
+                    "color": "green",
+                    "index": 2
+                  },
+                  "Halt": {
+                    "color": "blue",
+                    "index": 3
+                  },
+                  "WipeOut": {
+                    "color": "dark-red",
+                    "index": 0
+                  }
+                },
+                "type": "value"
+              }
+            ],
             "thresholds": {
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
+                  "color": "text",
                   "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
                 }
               ]
             }
@@ -416,7 +472,7 @@
         },
         "id": 84,
         "options": {
-          "colorMode": "none",
+          "colorMode": "value",
           "graphMode": "area",
           "justifyMode": "auto",
           "orientation": "auto",
@@ -424,17 +480,18 @@
             "calcs": [
               "lastNotNull"
             ],
-            "fields": "",
+            "fields": "/^terminationPolicy$/",
             "values": false
           },
           "text": {},
-          "textMode": "name"
+          "textMode": "value"
         },
         "pluginVersion": "8.1.2",
         "targets": [
           {
             "exemplar": true,
             "expr": "kubedb_postgres_info{namespace=\"$namespace\", postgres=\"$postgres\"}",
+            "format": "table",
             "instant": true,
             "interval": "",
             "legendFormat": "{{terminationPolicy}}",
@@ -1114,7 +1171,7 @@
         "type": "timeseries"
       }
     ],
-    "refresh": "",
+    "refresh": "10s",
     "schemaVersion": 30,
     "style": "dark",
     "tags": [
@@ -1157,9 +1214,9 @@
         {
           "allValue": null,
           "current": {
-            "selected": false,
-            "text": "ps-demo",
-            "value": "ps-demo"
+            "selected": true,
+            "text": "pg-demo",
+            "value": "pg-demo"
           },
           "datasource": "Prometheus",
           "definition": "query_result(kubedb_postgres_created{namespace=\"$namespace\"})",
@@ -1218,5 +1275,5 @@
     "timezone": "",
     "title": "KubeDB / Postgres / Summary",
     "uid": "VnOgk2Hnk",
-    "version": 20
+    "version": 24
   }
