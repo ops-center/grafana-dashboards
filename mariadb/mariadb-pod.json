@@ -23,7 +23,7 @@
   "gnetId": 13106,
   "graphTooltip": 0,
   "id": 26,
-  "iteration": 1632818683639,
+  "iteration": 1633341994996,
   "links": [],
   "panels": [
     {
@@ -1309,11 +1309,10 @@
       }
     }
   ],
-  "refresh": "1m",
+  "refresh": false,
   "schemaVersion": 30,
   "style": "dark",
   "tags": [
-    "mysql",
     "galera",
     "mariadb"
   ],
@@ -1400,7 +1399,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Galera/MariaDB - Overview",
+  "title": "KubeDB/MariaDB/Pod",
   "uid": "YieiOFH7z",
-  "version": 6
+  "version": 9
 }

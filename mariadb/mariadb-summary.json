@@ -18,12 +18,12 @@
       }
     ]
   },
-  "description": "The dashboard is designed for KubeDB managed Elasticsearch",
+  "description": "The dashboard is designed for KubeDB managed MariaDB",
   "editable": true,
   "gnetId": 9628,
   "graphTooltip": 0,
-  "id": 29,
-  "iteration": 1632985010914,
+  "id": 31,
+  "iteration": 1633083884523,
   "links": [],
   "panels": [
     {
@@ -131,12 +131,12 @@
     {
       "cacheTimeout": null,
       "datasource": "Prometheus",
-      "description": "ElasticsearchVersion CR Name",
+      "description": "MariaDB CR Name",
       "fieldConfig": {
         "defaults": {
           "color": {
             "fixedColor": "text",
-            "mode": "fixed"
+            "mode": "palette-classic"
           },
           "mappings": [
             {
@@ -190,7 +190,9 @@
           "fields": "",
           "values": false
         },
-        "text": {},
+        "text": {
+          "valueSize": 50
+        },
         "textMode": "name"
       },
       "pluginVersion": "8.1.5",
@@ -211,7 +213,7 @@
     },
     {
       "datasource": null,
-      "description": "KubeDB Elasticsearch HTTP layer status",
+      "description": "When this option is enabled, connections attempted using insecure transport will be rejected.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -272,15 +274,15 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_elasticsearch_security_http_ssl_enabled{namespace=\"$namespace\", elasticsearch=\"$elasticsearch\"}",
+          "expr": "kubedb_mariadb_info{namespace=\"$namespace\", mariadb=\"$mariadb\"}",
           "format": "time_series",
           "instant": true,
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{requireSSL}}",
           "refId": "A"
         }
       ],
-      "title": "HTTP Layer",
+      "title": "Require Secure Transport",
       "type": "stat"
     },
     {
@@ -352,7 +354,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_elasticsearch_info{namespace=\"$namespace\", elasticsearch=\"$elasticsearch\"}",
+          "expr": "kubedb_mariadb_info{namespace=\"$namespace\", mariadb=\"$mariadb\"}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -365,7 +367,7 @@
     },
     {
       "datasource": null,
-      "description": "Total node count of Elasticsearch cluster",
+      "description": "Total node count of MariaDB cluster",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -415,7 +417,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_elasticsearch_replicas{namespace=\"$namespace\",elasticsearch=\"$elasticsearch\"}",
+          "expr": "kubedb_mariadb_replicas{namespace=\"$namespace\",mariadb=\"$mariadb\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -427,7 +429,7 @@
     },
     {
       "datasource": null,
-      "description": "Initial Requested CPU amount by Postgres Instance",
+      "description": "Initial Requested CPU amount by MariaDB Instance",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -474,7 +476,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_elasticsearch_resource_request_cpu{namespace=\"$namespace\", elasticsearch=\"$elasticsearch\"}",
+          "expr": "kubedb_mariadb_resource_request_cpu{namespace=\"$namespace\", mariadb=\"$mariadb\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -486,7 +488,7 @@
     },
     {
       "datasource": null,
-      "description": "CPU Limit in core by Elasticsearch instance",
+      "description": "CPU Limit in core by MariaDB instance",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -532,7 +534,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_elasticsearch_resource_limit_cpu{namespace=\"$namespace\", elasticsearch=\"$elasticsearch\"}",
+          "expr": "kubedb_mariadb_resource_limit_cpu{namespace=\"$namespace\", mariadb=\"$mariadb\"}",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -543,7 +545,7 @@
     },
     {
       "datasource": null,
-      "description": "Initial Requested Memory amount by Elasticsearch Instance",
+      "description": "Initial Requested Memory amount by MariaDB Instance",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -591,7 +593,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_elasticsearch_resource_request_memory{namespace=\"$namespace\", elasticsearch=\"$elasticsearch\"}",
+          "expr": "kubedb_mariadb_resource_request_memory{namespace=\"$namespace\", mariadb=\"$mariadb\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -603,7 +605,7 @@
     },
     {
       "datasource": null,
-      "description": "KubeDB Elasticsearch Total Memory Limit",
+      "description": "KubeDB mariadb Total Memory Limit",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -650,7 +652,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_elasticsearch_resource_limit_memory{namespace=\"$namespace\", elasticsearch=\"$elasticsearch\"}",
+          "expr": "kubedb_mariadb_resource_limit_memory{namespace=\"$namespace\", mariadb=\"$mariadb\"}",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -661,7 +663,7 @@
     },
     {
       "datasource": null,
-      "description": "Total storage request by Elasticsearch nodes",
+      "description": "Total storage request by mariadb nodes",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -709,7 +711,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_elasticsearch_resource_request_storage{namespace=\"$namespace\", elasticsearch=\"$elasticsearch\"}",
+          "expr": "kubedb_mariadb_resource_request_storage{namespace=\"$namespace\", mariadb=\"$mariadb\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -735,7 +737,7 @@
     },
     {
       "datasource": null,
-      "description": "CPU Usage by Elasticsearch pods",
+      "description": "CPU Usage by MariaDB pods",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -806,7 +808,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$elasticsearch-.*\"}) by (pod)",
+          "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$mariadb-.*\"}) by (pod)",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -1038,7 +1040,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$elasticsearch.*\"}) by (pod)",
+          "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$mariadb.*\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1049,7 +1051,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{namespace=\"$namespace\", pod=~\"$elasticsearch.*\"}) by (pod)",
+          "expr": "sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{namespace=\"$namespace\", pod=~\"$mariadb.*\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1060,7 +1062,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$elasticsearch.*\"}) by (pod) / sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{namespace=\"$namespace\", pod=~\"$elasticsearch.*\"}) by (pod)",
+          "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$mariadb.*\"}) by (pod) / sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{namespace=\"$namespace\", pod=~\"$mariadb.*\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1071,7 +1073,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$elasticsearch.*\"}) by (pod)",
+          "expr": "sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$mariadb.*\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1082,7 +1084,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$elasticsearch.*\"}) by (pod) / sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$elasticsearch.*\"}) by (pod)",
+          "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$mariadb.*\"}) by (pod) / sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$mariadb.*\"}) by (pod)",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -1122,7 +1124,7 @@
     },
     {
       "datasource": null,
-      "description": "Memory Usage by Elasticsearch pods",
+      "description": "Memory Usage by MariaDB pods",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1194,7 +1196,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(node_namespace_pod_container:container_memory_working_set_bytes{namespace=\"$namespace\", pod=~\"$elasticsearch-.*\",container!=\"\"}) by (pod)",
+          "expr": "sum(node_namespace_pod_container:container_memory_working_set_bytes{namespace=\"$namespace\", pod=~\"$mariadb-.*\",container!=\"\"}) by (pod)",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -1498,7 +1500,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$elasticsearch.*\",container!=\"\", image!=\"\"}) by (pod)",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$mariadb.*\",container!=\"\", image!=\"\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1509,7 +1511,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_requests{namespace=\"$namespace\",pod=~\"$elasticsearch.*\"}) by (pod)",
+          "expr": "sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_requests{namespace=\"$namespace\",pod=~\"$mariadb.*\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1520,7 +1522,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$elasticsearch.*\",container!=\"\", image!=\"\"}) by (pod) / sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_requests{namespace=\"$namespace\",pod=~\"$elasticsearch.*\"}) by (pod)",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$mariadb.*\",container!=\"\", image!=\"\"}) by (pod) / sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_requests{namespace=\"$namespace\",pod=~\"$mariadb.*\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1531,7 +1533,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_limits{namespace=\"$namespace\",pod=~\"$elasticsearch.*\"}) by (pod)",
+          "expr": "sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_limits{namespace=\"$namespace\",pod=~\"$mariadb.*\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1542,7 +1544,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$elasticsearch.*\",container!=\"\", image!=\"\"}) by (pod) / sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$elasticsearch.*\"}) by (pod)",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$mariadb.*\",container!=\"\", image!=\"\"}) by (pod) / sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$mariadb.*\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1553,7 +1555,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(container_memory_rss{namespace=\"$namespace\",pod=~\"$elasticsearch.*\",container!=\"\"}) by (pod)",
+          "expr": "sum(container_memory_rss{namespace=\"$namespace\",pod=~\"$mariadb.*\",container!=\"\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1564,7 +1566,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(container_memory_cache{namespace=\"$namespace\",pod=~\"$elasticsearch.*\",container!=\"\"}) by (pod)",
+          "expr": "sum(container_memory_cache{namespace=\"$namespace\",pod=~\"$mariadb.*\",container!=\"\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1575,7 +1577,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(container_memory_swap{namespace=\"$namespace\",pod=~\"$elasticsearch.*\",container!=\"\"}) by (pod)",
+          "expr": "sum(container_memory_swap{namespace=\"$namespace\",pod=~\"$mariadb.*\",container!=\"\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1614,7 +1616,7 @@
     },
     {
       "datasource": null,
-      "description": "Disk usage by Elasticsearch pods",
+      "description": "Disk usage by MariaDB pods",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1686,7 +1688,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg(container_blkio_device_usage_total{namespace=\"$namespace\", pod=~\"$elasticsearch-.*\"}) by (pod)",
+          "expr": "avg(container_blkio_device_usage_total{namespace=\"$namespace\", pod=~\"$mariadb-.*\"}) by (pod)",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -1813,7 +1815,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(container_fs_writes_total{namespace=\"$namespace\", pod=~\"$elasticsearch-.*\"}[5m]))by(pod)",
+          "expr": "sum(rate(container_fs_writes_total{namespace=\"$namespace\", pod=~\"$mariadb-.*\"}[5m]))by(pod)",
           "instant": false,
           "interval": "",
           "intervalFactor": 1,
@@ -1822,7 +1824,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(container_fs_reads_total{namespace=\"$namespace\", pod=~\"$elasticsearch-.*\"}[5m]))by(pod)",
+          "expr": "sum(rate(container_fs_reads_total{namespace=\"$namespace\", pod=~\"$mariadb-.*\"}[5m]))by(pod)",
           "hide": false,
           "instant": false,
           "interval": "",
@@ -1909,7 +1911,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "ceil(sum by(pod) (rate(container_fs_reads_total{container!=\"\", namespace=~\"$namespace\", pod=~\"$elasticsearch.*\"}[5m]) + rate(container_fs_writes_total{container!=\"\" ,namespace=~\"$namespace\", pod=~\"$elasticsearch.*\"}[5m])))",
+          "expr": "ceil(sum by(pod) (rate(container_fs_reads_total{container!=\"\", namespace=~\"$namespace\", pod=~\"$mariadb.*\"}[5m]) + rate(container_fs_writes_total{container!=\"\" ,namespace=~\"$namespace\", pod=~\"$mariadb.*\"}[5m])))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2000,7 +2002,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", namespace=~\"$namespace\", pod=~\"$elasticsearch.*\"}[5m]) + rate(container_fs_writes_bytes_total{container!=\"\" ,namespace=~\"$namespace\", pod=~\"$elasticsearch.*\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", namespace=~\"$namespace\", pod=~\"$mariadb.*\"}[5m]) + rate(container_fs_writes_bytes_total{container!=\"\" ,namespace=~\"$namespace\", pod=~\"$mariadb.*\"}[5m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2256,7 +2258,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_reads_total{container!=\"\", pod=~\"$elasticsearch.*\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_reads_total{container!=\"\", pod=~\"$mariadb.*\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2267,7 +2269,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_writes_total{container!=\"\", pod=~\"$elasticsearch.*\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_writes_total{container!=\"\", pod=~\"$mariadb.*\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2278,7 +2280,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_reads_total{container!=\"\", pod=~\"$elasticsearch.*\",namespace=~\"$namespace\"}[5m]) + rate(container_fs_writes_total{container!=\"\",pod=~\"$elasticsearch.*\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_reads_total{container!=\"\", pod=~\"$mariadb.*\",namespace=~\"$namespace\"}[5m]) + rate(container_fs_writes_total{container!=\"\",pod=~\"$mariadb.*\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2289,7 +2291,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", pod=~\"$elasticsearch.*\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", pod=~\"$mariadb.*\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2300,7 +2302,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_writes_bytes_total{container!=\"\", pod=~\"$elasticsearch.*\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_writes_bytes_total{container!=\"\", pod=~\"$mariadb.*\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2311,7 +2313,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", pod=~\"$elasticsearch.*\",namespace=~\"$namespace\"}[5m]) + rate(container_fs_writes_bytes_total{container!=\"\",pod=~\"$elasticsearch.*\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", pod=~\"$mariadb.*\",namespace=~\"$namespace\"}[5m]) + rate(container_fs_writes_bytes_total{container!=\"\",pod=~\"$mariadb.*\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2424,7 +2426,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(irate(container_network_receive_bytes_total{namespace=~\"$namespace\", pod=~\"$elasticsearch.*\"}[$__rate_interval])) by (pod)",
+          "expr": "sum(irate(container_network_receive_bytes_total{namespace=~\"$namespace\", pod=~\"$mariadb.*\"}[$__rate_interval])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2515,7 +2517,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(irate(container_network_transmit_bytes_total{namespace=~\"$namespace\", pod=~\"$elasticsearch.*\"}[$__rate_interval])) by (pod)",
+          "expr": "sum(irate(container_network_transmit_bytes_total{namespace=~\"$namespace\", pod=~\"$mariadb.*\"}[$__rate_interval])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2537,8 +2539,8 @@
   "tags": [
     "db",
     "stats",
-    "elasticsearch",
-    "kubedb"
+    "kubedb",
+    "mariadb"
   ],
   "templating": {
     "list": [
@@ -2566,7 +2568,7 @@
       {
         "allValue": "\".+\"",
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "demo",
           "value": "demo"
         },
@@ -2655,7 +2657,7 @@
     ]
   },
   "timezone": "",
-  "title": "KubeDB / MariaDB / Summary",
+  "title": "KubeDB/MariaDB/Summary",
   "uid": "VnOgk2Hnk",
-  "version": 4
+  "version": 2
 }
