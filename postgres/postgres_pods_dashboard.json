@@ -1,40 +1,40 @@
 {
   "__inputs": [
-        {
-          "name": "DS_PROMETHEUS",
-          "label": "DS_PROMETHEUS",
-          "description": "",
-          "type": "datasource",
-          "pluginId": "prometheus",
-          "pluginName": "Prometheus"
-        }
-      ],
-      "__requires": [
-        {
-          "type": "grafana",
-          "id": "grafana",
-          "name": "Grafana",
-          "version": "7.0.0"
-        },
-        {
-          "type": "panel",
-          "id": "graph",
-          "name": "Graph",
-          "version": ""
-        },
-        {
-          "type": "datasource",
-          "id": "prometheus",
-          "name": "Prometheus",
-          "version": "1.0.0"
-        },
-        {
-          "type": "panel",
-          "id": "singlestat",
-          "name": "Singlestat",
-          "version": ""
-        }
-   ],
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "DS_PROMETHEUS",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "7.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "singlestat",
+      "name": "Singlestat",
+      "version": ""
+    }
+],
   "annotations": {
     "list": [
       {
@@ -58,8 +58,8 @@
   "editable": true,
   "gnetId": 9628,
   "graphTooltip": 0,
-  "id": 11,
-  "iteration": 1633002201019,
+  "id": 20,
+  "iteration": 1633324643830,
   "links": [],
   "panels": [
     {
@@ -109,7 +109,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "rgb(255, 255, 255)",
+                "color": "#ffffff",
                 "value": null
               }
             ]
@@ -146,7 +146,7 @@
       "pluginVersion": "7.4.5",
       "targets": [
         {
-          "examplar": false,
+          "exemplar": false,
           "expr": "pg_up{namespace=\"$namespace\", pod=\"$pod\"}",
           "format": "time_series",
           "instant": true,
@@ -173,23 +173,31 @@
               "from": "1",
               "id": 1,
               "text": "Primary",
-              "to": "10000000000",
+              "to": "100000000000",
               "type": 2
             },
             {
-              "from": "0",
+              "from": "",
               "id": 2,
               "text": "Secondary",
-              "to": "0",
+              "to": "",
               "type": 1,
               "value": "Null"
+            },
+            {
+              "from": "",
+              "id": 3,
+              "text": "Secondary",
+              "to": "",
+              "type": 1,
+              "value": "null"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "rgb(255, 255, 255)",
+                "color": "#ffffff",
                 "value": null
               }
             ]
@@ -218,12 +226,12 @@
           "values": false
         },
         "text": {},
-        "textMode": "auto"
+        "textMode": "value"
       },
       "pluginVersion": "7.4.5",
       "targets": [
         {
-          "examplar": false,
+          "exemplar": false,
           "expr": "count(pg_stat_replication_reply_time{namespace = \"$namespace\", pod=\"$pod\"})",
           "instant": true,
           "interval": "",
@@ -248,7 +256,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "rgb(255, 255, 255)",
+                "color": "#ffffff",
                 "value": null
               }
             ]
@@ -281,7 +289,7 @@
       "pluginVersion": "7.4.5",
       "targets": [
         {
-          "examplar": false,
+          "exemplar": false,
           "expr": "go_goroutines{namespace=\"$namespace\", pod=\"$pod\"}",
           "instant": true,
           "interval": "",
@@ -316,12 +324,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "#ffffff",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           },
@@ -357,10 +361,10 @@
       "pluginVersion": "7.4.5",
       "targets": [
         {
-          "examplar": false,
+          "exemplar": false,
           "expr": "SUM(pg_stat_database_tup_fetched{pod=\"$pod\", namespace=\"$namespace\"})",
           "format": "time_series",
-          "instant": false,
+          "instant": true,
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -396,12 +400,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "#ffffff",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           },
@@ -437,7 +437,7 @@
       "pluginVersion": "7.4.5",
       "targets": [
         {
-          "examplar": false,
+          "exemplar": false,
           "expr": "SUM(pg_stat_database_tup_inserted{pod=\"$pod\", namespace=\"$namespace\"})",
           "format": "time_series",
           "instant": true,
@@ -475,12 +475,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "#ffffff",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           },
@@ -516,10 +512,10 @@
       "pluginVersion": "7.4.5",
       "targets": [
         {
-          "examplar": false,
+          "exemplar": false,
           "expr": "SUM(pg_stat_database_tup_updated{pod=\"$pod\", namespace=\"$namespace\"})",
           "format": "time_series",
-          "instant": false,
+          "instant": true,
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -554,12 +550,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "#ffffff",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           },
@@ -595,7 +587,7 @@
       "pluginVersion": "7.4.5",
       "targets": [
         {
-          "examplar": false,
+          "exemplar": false,
           "expr": "pg_settings_max_connections{pod=\"$pod\", namespace=\"$namespace\"}",
           "format": "time_series",
           "instant": true,
@@ -660,7 +652,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "examplar": false,
+          "exemplar": false,
           "expr": "avg(rate(process_cpu_seconds_total{pod=\"$pod\", namespace=\"$namespace\"}[5m]) * 1000)",
           "format": "time_series",
           "interval": "",
@@ -669,7 +661,7 @@
           "refId": "A"
         },
         {
-          "examplar": false,
+          "exemplar": false,
           "expr": "",
           "hide": false,
           "interval": "",
@@ -697,7 +689,6 @@
           "options": {}
         }
       ],
-      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -783,7 +774,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "examplar": false,
+          "exemplar": false,
           "expr": "avg(rate(process_resident_memory_bytes{pod=\"$pod\", namespace=\"$namespace\"}[5m]))",
           "format": "time_series",
           "interval": "",
@@ -792,7 +783,7 @@
           "refId": "A"
         },
         {
-          "examplar": false,
+          "exemplar": false,
           "expr": "avg(rate(process_virtual_memory_bytes{pod=\"$pod\", namespace=\"$namespace\"}[5m]))",
           "format": "time_series",
           "interval": "",
@@ -811,7 +802,6 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -898,7 +888,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "examplar": false,
+          "exemplar": false,
           "expr": "SUM(process_open_fds{pod=\"$pod\", namespace=\"$namespace\"}) by (pod)",
           "format": "time_series",
           "instant": false,
@@ -918,7 +908,6 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -1032,7 +1021,7 @@
       "pluginVersion": "7.4.5",
       "targets": [
         {
-          "examplar": false,
+          "exemplar": false,
           "expr": "pg_settings_shared_buffers_bytes{pod=\"$pod\", namespace=\"$namespace\"}",
           "format": "time_series",
           "instant": true,
@@ -1110,7 +1099,7 @@
       "pluginVersion": "7.4.5",
       "targets": [
         {
-          "examplar": false,
+          "exemplar": false,
           "expr": "pg_settings_effective_cache_size_bytes{pod=\"$pod\", namespace=\"$namespace\"}",
           "format": "time_series",
           "instant": true,
@@ -1188,7 +1177,7 @@
       "pluginVersion": "7.4.5",
       "targets": [
         {
-          "examplar": false,
+          "exemplar": false,
           "expr": "pg_settings_maintenance_work_mem_bytes{pod=\"$pod\", namespace=\"$namespace\"}",
           "format": "time_series",
           "instant": true,
@@ -1266,7 +1255,7 @@
       "pluginVersion": "7.4.5",
       "targets": [
         {
-          "examplar": false,
+          "exemplar": false,
           "expr": "pg_settings_work_mem_bytes{pod=\"$pod\", namespace=\"$namespace\"}",
           "format": "time_series",
           "instant": true,
@@ -1345,7 +1334,7 @@
       "pluginVersion": "7.4.5",
       "targets": [
         {
-          "examplar": false,
+          "exemplar": false,
           "expr": "pg_settings_max_wal_size_bytes{pod=\"$pod\", namespace=\"$namespace\"}",
           "format": "time_series",
           "instant": true,
@@ -1423,7 +1412,7 @@
       "pluginVersion": "7.4.5",
       "targets": [
         {
-          "examplar": false,
+          "exemplar": false,
           "expr": "pg_settings_random_page_cost{pod=\"$pod\", namespace=\"$namespace\"}",
           "format": "time_series",
           "instant": true,
@@ -1501,7 +1490,7 @@
       "pluginVersion": "7.4.5",
       "targets": [
         {
-          "examplar": false,
+          "exemplar": false,
           "expr": "pg_settings_max_worker_processes{pod=\"$pod\", namespace=\"$namespace\"}",
           "format": "time_series",
           "instant": true,
@@ -1579,7 +1568,7 @@
       "pluginVersion": "7.4.5",
       "targets": [
         {
-          "examplar": false,
+          "exemplar": false,
           "expr": "pg_settings_max_parallel_workers{pod=\"$pod\", namespace=\"$namespace\"}",
           "format": "time_series",
           "instant": true,
@@ -1638,8 +1627,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "pg-demo",
-          "value": "pg-demo"
+          "text": "ps-demo",
+          "value": "ps-demo"
         },
         "datasource": "Prometheus",
         "definition": "query_result(kubedb_postgres_created{namespace=\"$namespace\"})",
@@ -1668,9 +1657,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "text": "pg-demo-0",
-          "value": "pg-demo-0"
+          "selected": false,
+          "text": "ps-demo-2",
+          "value": "ps-demo-2"
         },
         "datasource": null,
         "definition": "label_values(pg_up{namespace=~\"$namespace\",pod=~\"${postgres}-.*\"},pod)",
@@ -1729,6 +1718,6 @@
   },
   "timezone": "",
   "title": "KubeDB / Postgres / Pods",
-  "uid": "IgXOThN7z",
-  "version": 1
+  "uid": "IgXOThN7ztest",
+  "version": 2
 }

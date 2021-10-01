@@ -58,8 +58,8 @@
   "editable": true,
   "gnetId": 9628,
   "graphTooltip": 0,
-  "id": 37,
-  "iteration": 1632482026731,
+  "id": 7,
+  "iteration": 1633319925526,
   "links": [],
   "panels": [
     {
@@ -85,6 +85,7 @@
             "fixedColor": "dark-blue",
             "mode": "fixed"
           },
+          "custom": {},
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -124,7 +125,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "7.4.5",
       "targets": [
         {
           "exemplar": false,
@@ -145,6 +146,7 @@
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
+          "custom": {},
           "links": []
         },
         "overrides": []
@@ -178,7 +180,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "7.4.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -255,6 +257,7 @@
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
+          "custom": {},
           "links": []
         },
         "overrides": []
@@ -291,7 +294,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "7.4.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -360,6 +363,7 @@
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
+          "custom": {},
           "links": []
         },
         "overrides": []
@@ -395,7 +399,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "7.4.5",
       "pointradius": 3,
       "points": true,
       "renderer": "flot",
@@ -467,6 +471,7 @@
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
+          "custom": {},
           "links": []
         },
         "overrides": []
@@ -502,7 +507,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "7.4.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -572,6 +577,7 @@
       "decimals": 0,
       "fieldConfig": {
         "defaults": {
+          "custom": {},
           "links": []
         },
         "overrides": []
@@ -608,7 +614,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "7.4.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -678,6 +684,7 @@
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
+          "custom": {},
           "links": []
         },
         "overrides": []
@@ -713,7 +720,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "7.4.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -782,6 +789,7 @@
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
+          "custom": {},
           "links": []
         },
         "overrides": []
@@ -817,7 +825,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "7.4.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -886,6 +894,7 @@
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
+          "custom": {},
           "links": []
         },
         "overrides": []
@@ -921,7 +930,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "7.4.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -990,6 +999,7 @@
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
+          "custom": {},
           "links": []
         },
         "overrides": []
@@ -1025,7 +1035,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "7.4.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1092,6 +1102,12 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1121,7 +1137,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "7.4.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1224,6 +1240,12 @@
       "dashes": false,
       "datasource": "Prometheus",
       "decimals": 0,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1253,7 +1275,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "7.4.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1329,6 +1351,12 @@
       "dashes": false,
       "datasource": "Prometheus",
       "decimals": 2,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1358,7 +1386,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "7.4.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1426,6 +1454,12 @@
       "dashes": false,
       "datasource": "Prometheus",
       "description": "Total amount of data written to temporary files by queries in this database. All temporary files are counted, regardless of why the temporary file was created, and regardless of the log_temp_files setting.",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1455,7 +1489,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "7.4.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1521,6 +1555,12 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1549,7 +1589,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "7.4.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1633,6 +1673,7 @@
             "fillOpacity": 10,
             "gradientMode": "none",
             "hideFrom": {
+              "graph": false,
               "legend": false,
               "tooltip": false,
               "viz": false
@@ -1648,13 +1689,8 @@
             },
             "showPoints": "never",
             "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
+            "stacking": {},
+            "thresholdsStyle": {}
           },
           "mappings": [],
           "thresholds": {
@@ -1692,6 +1728,9 @@
           "placement": "right"
         },
         "tooltip": {
+          "mode": "single"
+        },
+        "tooltipOptions": {
           "mode": "single"
         }
       },
@@ -1749,7 +1788,7 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 30,
+  "schemaVersion": 27,
   "style": "dark",
   "tags": [
     "postgres",
@@ -1784,6 +1823,7 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
+        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -1791,9 +1831,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "pg-demo",
-          "value": "pg-demo"
+          "selected": true,
+          "text": "ps-demo",
+          "value": "ps-demo"
         },
         "datasource": "Prometheus",
         "definition": "query_result(kubedb_postgres_created{namespace=\"$namespace\"})",
@@ -1814,6 +1854,7 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
+        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -1822,8 +1863,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "pg-demo-0",
-          "value": "pg-demo-0"
+          "text": "ps-demo-0",
+          "value": "ps-demo-0"
         },
         "datasource": null,
         "definition": "label_values(pg_up{namespace=~\"$namespace\",pod=~\"${postgres}-.*\"},pod)",
@@ -1843,12 +1884,16 @@
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
-        "type": "query"
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       },
       {
         "allValue": null,
         "current": {
-          "selected": false,
+          "selected": true,
           "text": [
             "postgres"
           ],
@@ -1875,6 +1920,7 @@
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
+        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -1913,5 +1959,5 @@
   "timezone": "",
   "title": "KubeDB / Postgres / Databases",
   "uid": "6v_W_NNn_kl",
-  "version": 4
+  "version": 2
 }
