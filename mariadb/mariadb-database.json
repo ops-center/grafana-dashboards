@@ -22,8 +22,8 @@
   "editable": true,
   "gnetId": 13106,
   "graphTooltip": 0,
-  "id": 32,
-  "iteration": 1633084186237,
+  "id": 29,
+  "iteration": 1633432910556,
   "links": [],
   "panels": [
     {
@@ -108,7 +108,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -213,7 +213,7 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -293,7 +293,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -334,7 +334,16 @@
                   "text": "PRIMARY"
                 }
               },
-              "type": "value"
+              "text": "Primary",
+              "type": 1,
+              "value": "1"
+            },
+            {
+              "from": "",
+              "id": null,
+              "text": "",
+              "to": "",
+              "type": 1
             }
           ],
           "thresholds": {
@@ -378,12 +387,12 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
           "expr": "mysql_global_status_wsrep_cluster_status",
-          "instant": false,
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -409,6 +418,10 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -437,7 +450,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -501,6 +514,10 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -531,7 +548,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "7.5.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -606,6 +623,10 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -635,7 +656,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "7.5.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -715,6 +736,10 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -744,7 +769,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "7.5.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -824,6 +849,10 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -854,7 +883,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -922,6 +951,10 @@
       "dashes": false,
       "datasource": "Prometheus",
       "decimals": 2,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -949,7 +982,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1014,6 +1047,10 @@
       "dashes": false,
       "datasource": "Prometheus",
       "decimals": 2,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1041,7 +1078,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1120,6 +1157,10 @@
       "dashes": false,
       "datasource": "Prometheus",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1148,7 +1189,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1214,6 +1255,10 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -1241,7 +1286,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1310,7 +1355,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 30,
+  "schemaVersion": 27,
   "style": "dark",
   "tags": [
     "galera",
@@ -1358,7 +1403,11 @@
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
-        "type": "query"
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       },
       {
         "allValue": null,
@@ -1389,7 +1438,11 @@
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
-        "type": "query"
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       }
     ]
   },
@@ -1401,5 +1454,5 @@
   "timezone": "",
   "title": "KubeDB/MariaDB/Database",
   "uid": "ohrahgv7z",
-  "version": 1
+  "version": 4
 }
