@@ -23,7 +23,7 @@
   "gnetId": 9628,
   "graphTooltip": 0,
   "id": 26,
-  "iteration": 1633350135476,
+  "iteration": 1633351204206,
   "links": [],
   "panels": [
     {
@@ -99,7 +99,7 @@
       },
       "id": 78,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -179,7 +179,7 @@
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
@@ -210,39 +210,42 @@
       "type": "stat"
     },
     {
-      "datasource": null,
-      "description": "KubeDB Redis HTTP layer status",
+      "cacheTimeout": null,
+      "datasource": "Prometheus",
+      "description": "RedisMode CR Name",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "fixedColor": "text",
+            "mode": "fixed"
           },
           "mappings": [
             {
               "options": {
-                "0": {
-                  "color": "dark-red",
+                "match": "null",
+                "result": {
                   "index": 0,
-                  "text": "Insecure"
-                },
-                "1": {
-                  "color": "light-green",
-                  "index": 1,
-                  "text": "Secure"
+                  "text": "N/A"
                 }
               },
-              "type": "value"
+              "type": "special"
             }
           ],
+          "noValue": "N/A",
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
-          }
+          },
+          "unit": "none"
         },
         "overrides": []
       },
@@ -252,35 +255,39 @@
         "x": 16,
         "y": 1
       },
-      "id": 82,
+      "id": 145,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "area",
         "justifyMode": "auto",
-        "orientation": "auto",
+        "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
-            "lastNotNull"
+            "mean"
           ],
           "fields": "",
           "values": false
         },
         "text": {},
-        "textMode": "value"
+        "textMode": "name"
       },
       "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_redis_security_http_ssl_enabled{namespace=\"$namespace\", redis=\"$redis\"}",
+          "expr": "kubedb_redis_info{namespace=\"$namespace\", redis=\"$redis\"}",
           "format": "time_series",
           "instant": true,
           "interval": "",
-          "legendFormat": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{mode}}",
           "refId": "A"
         }
       ],
-      "title": "HTTP Layer",
+      "title": "RedisMode",
       "type": "stat"
     },
     {
@@ -334,7 +341,7 @@
       },
       "id": 84,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -397,7 +404,7 @@
       },
       "id": 76,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
@@ -456,7 +463,7 @@
       },
       "id": 92,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -514,7 +521,7 @@
       },
       "id": 114,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -573,7 +580,7 @@
       },
       "id": 94,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -632,7 +639,7 @@
       },
       "id": 116,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -691,7 +698,7 @@
       },
       "id": 96,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -2638,5 +2645,5 @@
   "timezone": "",
   "title": "KubeDB / Redis / Summary",
   "uid": "wzK8X8Nrd",
-  "version": 1
+  "version": 5
 }
