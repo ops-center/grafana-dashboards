@@ -55,7 +55,7 @@
     ]
   },
   "description": "This dashboard works with postgres_exporter for prometheus",
-  "editable": true,
+  "editable": false,
   "gnetId": 9628,
   "graphTooltip": 0,
   "id": 7,

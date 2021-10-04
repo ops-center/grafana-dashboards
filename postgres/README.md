@@ -6,11 +6,14 @@ There are three dashboards to monitor a Postgres Database managed by KubeDB.
 - KubeDB / Postgres / Pods: Shows individual database pod-level information.
 - KubeDB / Postgres / Databases: shows Postgres internal databases metrics.
 
+Note: These dashboards are developed in **Grafana version 7.4.5**
+
 ### Dependencies
 
 Postgres Dashboards are heavily dependent on:
 
 - [Prometheus Node Exporter](https://github.com/prometheus/node_exporter)
+- [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)
 - [Panopticon by Appscode](https://blog.byte.builders/post/introducing-panopticon/)
 
 
@@ -70,7 +73,7 @@ At first, you have to create a `MetricsConfiguration` object for Postgres. This 
 Run the below command to create the `MetricsConfiguration` object:
 
 ```bash
-$ kubectl apply -f https://github.com/kubedb/installer/raw/master/charts/kubedb-metrics/templates/metricsconfig-kubedb-com-postgres.yaml
+kubectl apply -f https://github.com/kubedb/installer/raw/master/charts/kubedb-metrics/templates/metricsconfig-kubedb-com-postgres.yaml
 ```
 
 #### Import Grafana Dashboard

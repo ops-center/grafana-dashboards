@@ -55,11 +55,11 @@
     ]
   },
   "description": "This dashboard works with postgres_exporter for prometheus",
-  "editable": true,
+  "editable": false,
   "gnetId": 9628,
   "graphTooltip": 0,
   "id": 15,
-  "iteration": 1633319562894,
+  "iteration": 1633352477520,
   "links": [],
   "panels": [
     {
@@ -124,7 +124,7 @@
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
@@ -186,8 +186,8 @@
       },
       "id": 90,
       "options": {
-        "colorMode": "value",
-        "graphMode": "none",
+        "colorMode": "none",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
@@ -205,6 +205,7 @@
         {
           "exemplar": false,
           "expr": "time() - kubedb_postgres_created{namespace=\"$namespace\", postgres=\"$postgres\"}",
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -248,7 +249,7 @@
       },
       "id": 76,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
@@ -336,8 +337,8 @@
       },
       "id": 78,
       "options": {
-        "colorMode": "value",
-        "graphMode": "none",
+        "colorMode": "none",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
@@ -405,7 +406,7 @@
       },
       "id": 82,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -486,7 +487,7 @@
       },
       "id": 84,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -547,7 +548,7 @@
       },
       "id": 92,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -606,7 +607,7 @@
       },
       "id": 114,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -667,7 +668,7 @@
       },
       "id": 94,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -727,7 +728,7 @@
       },
       "id": 116,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -788,7 +789,7 @@
       },
       "id": 96,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -847,7 +848,7 @@
       },
       "id": 118,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -2880,7 +2881,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "ps-demo",
           "value": "ps-demo"
         },
@@ -2942,5 +2943,5 @@
   "timezone": "",
   "title": "KubeDB / Postgres / Summary",
   "uid": "VnOgk2Hnk",
-  "version": 3
+  "version": 7
 }
