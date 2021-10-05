@@ -23,7 +23,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 26,
-  "iteration": 1631883840861,
+  "iteration": 1633440757291,
   "links": [],
   "panels": [
     {
@@ -90,10 +90,10 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "count(stash_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"})",
           "format": "time_series",
           "instant": true,
@@ -139,7 +139,7 @@
       },
       "id": 10,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -155,10 +155,10 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "count(stash_backupsession_info{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\", phase=\"Succeeded\"})",
           "format": "table",
           "hide": false,
@@ -205,7 +205,7 @@
       },
       "id": 14,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -221,10 +221,10 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "count(stash_backupsession_info{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\",phase=\"Running\"})",
           "instant": true,
           "interval": "",
@@ -269,7 +269,7 @@
       },
       "id": 13,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -285,10 +285,10 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "count(stash_backupsession_info{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\", phase=\"Skipped\"})",
           "instant": true,
           "interval": "",
@@ -333,7 +333,7 @@
       },
       "id": 12,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -349,10 +349,10 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "count(stash_backupsession_info{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\", phase=\"Failed\"})",
           "instant": true,
           "interval": "",
@@ -410,10 +410,10 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "sum(stash_repository_size_bytes{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\",})",
           "format": "time_series",
           "instant": false,
@@ -611,10 +611,10 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "stash_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"}",
           "format": "table",
           "hide": false,
@@ -624,7 +624,7 @@
           "refId": "A"
         },
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "stash_backupconfiguration_conditions{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\", condition=\"CronJobCreated\", status=\"True\"}",
           "format": "table",
           "hide": false,
@@ -634,7 +634,7 @@
           "refId": "B"
         },
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "stash_backup_last_success_time_seconds{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"} * 1000",
           "format": "table",
           "hide": false,
@@ -897,7 +897,7 @@
       "pluginVersion": "8.1.2",
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=~\"${namespace}\", container!=\"\", pod=~\"stash-backup-.*\",image!=\"\"}[$__rate_interval])) by(pod)",
           "format": "time_series",
           "hide": false,
@@ -908,7 +908,7 @@
           "refId": "A"
         },
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "rate(container_cpu_usage_seconds_total{namespace=~\"${namespace}\", container=\"stash\",image!=\"\"}[$__rate_interval])",
           "hide": false,
           "interval": "",
@@ -986,9 +986,12 @@
       "id": 33,
       "options": {
         "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right"
         },
         "tooltip": {
           "mode": "single"
@@ -996,7 +999,7 @@
       },
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "sum(container_memory_usage_bytes{namespace!=\"\", container!=\"\",pod=~\"stash-backup-.*\",image!=\"\"})by(pod) > 0",
           "hide": false,
           "instant": false,
@@ -1006,7 +1009,7 @@
           "refId": "A"
         },
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "sum(container_memory_usage_bytes{namespace!=\"\", container=\"stash\",image!=\"\"})by(pod) > 0",
           "hide": false,
           "interval": "",
@@ -1153,10 +1156,10 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "stash_backupsession_info{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
           "format": "table",
           "instant": true,
@@ -1165,7 +1168,7 @@
           "refId": "A"
         },
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "stash_backup_session_duration_seconds{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
           "format": "table",
           "hide": false,
@@ -1175,7 +1178,7 @@
           "refId": "B"
         },
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "stash_backupsession_created{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"} * 1000",
           "format": "table",
           "hide": false,
@@ -1459,10 +1462,10 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "stash_repository_integrity{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
           "format": "table",
           "hide": false,
@@ -1472,7 +1475,7 @@
           "refId": "A"
         },
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "stash_repository_snapshot_count{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
           "format": "table",
           "hide": false,
@@ -1482,7 +1485,7 @@
           "refId": "B"
         },
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "stash_repository_size_bytes{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
           "format": "table",
           "hide": false,
@@ -1492,7 +1495,7 @@
           "refId": "C"
         },
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "stash_backup_last_success_time_seconds{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"} * 1000",
           "format": "table",
           "instant": true,
@@ -1604,7 +1607,6 @@
             "mode": "palette-classic"
           },
           "custom": {
-            "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
@@ -1654,9 +1656,11 @@
       "id": 43,
       "options": {
         "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right"
         },
         "tooltip": {
           "mode": "single"
@@ -1665,7 +1669,7 @@
       "pluginVersion": "8.1.2",
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "stash_repository_size_bytes{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
           "format": "time_series",
           "instant": false,
@@ -1727,7 +1731,7 @@
       },
       "id": 44,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -1743,10 +1747,10 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "count(stash_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\"})",
           "instant": true,
           "interval": "",
@@ -1791,7 +1795,7 @@
       },
       "id": 15,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -1807,10 +1811,10 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "count(stash_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\", phase=\"Succeeded\"})",
           "instant": true,
           "interval": "",
@@ -1855,7 +1859,7 @@
       },
       "id": 17,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -1871,10 +1875,10 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "count(stash_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\", phase=\"Running\"})",
           "instant": true,
           "interval": "",
@@ -1919,7 +1923,7 @@
       },
       "id": 18,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -1935,10 +1939,10 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "count(stash_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\"}) - count(stash_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\", phase=~\"Succeeded|Failed|Running\"})",
           "instant": true,
           "interval": "",
@@ -1983,7 +1987,7 @@
       },
       "id": 16,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -1999,10 +2003,10 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "count(stash_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\", phase=\"Failed\"})",
           "instant": true,
           "interval": "",
@@ -2151,10 +2155,10 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.1.5",
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "stash_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\"}",
           "format": "table",
           "hide": false,
@@ -2165,7 +2169,7 @@
           "refId": "A"
         },
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "stash_restore_session_duration_seconds{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\"}",
           "format": "table",
           "hide": false,
@@ -2176,7 +2180,7 @@
           "refId": "B"
         },
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "stash_restoresession_created{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\"} * 1000",
           "format": "table",
           "hide": false,
@@ -2369,7 +2373,7 @@
       },
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=~\"${namespace}\", container!=\"\", pod=~\"stash-restore-.*\",image!=\"\"}[$__rate_interval])) by(pod)",
           "hide": false,
           "instant": false,
@@ -2379,7 +2383,7 @@
           "refId": "A"
         },
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "rate(container_cpu_usage_seconds_total{namespace=~\"${namespace}\",container=\"stash-init\"}[$__rate_interval])",
           "format": "time_series",
           "hide": false,
@@ -2448,32 +2452,7 @@
           },
           "unit": "decbytes"
         },
-        "overrides": [
-          {
-            "__systemRef": "hideSeriesFrom",
-            "matcher": {
-              "id": "byNames",
-              "options": {
-                "mode": "exclude",
-                "names": [
-                  "stash-restore-sample-mariadb-restore-0-dxndz"
-                ],
-                "prefix": "All except:",
-                "readOnly": true
-              }
-            },
-            "properties": [
-              {
-                "id": "custom.hideFrom",
-                "value": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": true
-                }
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
         "h": 10,
@@ -2484,9 +2463,12 @@
       "id": 46,
       "options": {
         "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right"
         },
         "tooltip": {
           "mode": "single"
@@ -2494,7 +2476,7 @@
       },
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "sum(container_memory_usage_bytes{namespace=~\"${namespace}\", container!=\"\",pod=~\"stash-restore-.*\",image!=\"\"})by(pod) > 0",
           "hide": false,
           "instant": false,
@@ -2504,7 +2486,7 @@
           "refId": "A"
         },
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "sum(container_memory_usage_bytes{namespace=~\"${namespace}\", container=\"stash-init\",image!=\"\"})by(pod) > 0",
           "hide": false,
           "interval": "",
@@ -2602,7 +2584,7 @@
       },
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "sum(irate(container_cpu_usage_seconds_total{container=~\"operator|pushgateway\", pod=~\".*stash-enterprise.*\"}[$__rate_interval])) by(container)",
           "instant": false,
           "interval": "",
@@ -2680,8 +2662,11 @@
       "id": 4,
       "options": {
         "legend": {
-          "calcs": [],
-          "displayMode": "list",
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ],
+          "displayMode": "table",
           "placement": "bottom"
         },
         "tooltip": {
@@ -2690,7 +2675,7 @@
       },
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "sum(container_memory_usage_bytes{container=~\"operator|pushgateway\", pod=~\".*stash-enterprise.*\"})by(container)",
           "interval": "",
           "intervalFactor": 2,
@@ -2907,5 +2892,5 @@
   "timezone": "",
   "title": "Stash Enterprise Dashboard",
   "uid": "NHbytwI7z",
-  "version": 23
+  "version": 3
 }
