@@ -1,4 +1,4 @@
-# Postgres Grafana Dashboards
+# Elasticsearch Grafana Dashboards
 
 There are three dashboards to monitor Elasticsearch Databases managed by KubeDB.
 
@@ -10,7 +10,7 @@ Note: These dashboards are developed in **Grafana version 7.5.5**
 
 ### Dependencies
 
-Postgres Dashboards are heavily dependent on:
+Elasticsearch Dashboards are heavily dependent on:
 
 - [Prometheus Node Exporter](https://github.com/prometheus/node_exporter)
 - [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)
@@ -21,7 +21,7 @@ Postgres Dashboards are heavily dependent on:
 
 #### 1. Install Prometheus Stack
 
-Install Prometheus stack if you haven't done it already. You can use [kube-prometheus-stack](https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack) which installs the necessary components required for the Postgres Grafana dashboards.
+Install Prometheus stack if you haven't done it already. You can use [kube-prometheus-stack](https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack) which installs the necessary components required for the Elasticsearch Grafana dashboards.
 
 #### 2. Install Panopticon
 
