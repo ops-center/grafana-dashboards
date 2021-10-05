@@ -6,7 +6,7 @@ There are three dashboards to monitor Elasticsearch Databases managed by KubeDB.
 - KubeDB / Elasticsearch / Pods: Shows individual pod-level information.
 - KubeDB / Elasticsearch / Databases: shows Elasticsearch internal metrics such as index, shards, docs, etc.
 
-Note: These dashboards are developed in **Grafana version 7.4.5**
+Note: These dashboards are developed in **Grafana version 7.5.5**
 
 ### Dependencies
 
@@ -86,9 +86,23 @@ Now, on your Grafana UI, import the json files of dashboards located in the `ela
 
 ![Import New Dashboard](/elasticsearch/images/import_dashboard_1.png)
 
-2. Upload the json file
+2. Upload the json file and hit load button:
 
 ![Upload Dashboard JSON](/elasticsearch/images/import_dashboard_2.png)
 
 
-If you followed the instruction properly, you should see the Postgres Grafana dashboard in your Grafana UI.
+If you followed the instruction properly, you should see the Elasticsearch Grafana dashboard in your Grafana UI.
+
+### Samples
+
+####  KubeDB / Elasticsearch / Summary
+
+![KubeDB / Elasticsearch / Summary](/elasticsearch/images/kubedb-elasticsearch-summary.png)
+
+#### KubeDB / Elasticsearch / Database
+
+![KubeDB / Elasticsearch / Database](/elasticsearch/images/kubedb-elasticsearch-database.png)
+
+#### KubeDB / Elasticsearch / Pod
+
+![KubeDB / Elasticsearch / Pod](/elasticsearch/images/kubedb-elasticsearch-pod.png)
