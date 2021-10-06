@@ -23,7 +23,7 @@
   "gnetId": 13106,
   "graphTooltip": 0,
   "id": 29,
-  "iteration": 1633432910556,
+  "iteration": 1633587546457,
   "links": [],
   "panels": [
     {
@@ -92,6 +92,27 @@
               {
                 "id": "custom.width",
                 "value": 200
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "from": "",
+                    "id": 1,
+                    "text": "UP",
+                    "to": "",
+                    "type": 1,
+                    "value": "1"
+                  },
+                  {
+                    "from": "",
+                    "id": 2,
+                    "text": "DOWN",
+                    "to": "",
+                    "type": 1,
+                    "value": "0"
+                  }
+                ]
               }
             ]
           }
@@ -112,7 +133,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mysql_up{job=~\"$job\", pod=~\"$pod\"}",
+          "expr": "mysql_up{namespace=~\"$namespace\",service=~\"$mariadb\"}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -217,7 +238,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mysql_global_status_uptime{job=~\"$job\", pod=~\"$pod\"}",
+          "expr": "mysql_global_status_uptime{namespace=~\"$namespace\",service=~\"$mariadb\"}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -252,8 +273,6 @@
             "mode": "thresholds"
           },
           "mappings": [],
-          "max": 3,
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -263,11 +282,11 @@
               },
               {
                 "color": "yellow",
-                "value": 1.0001
+                "value": 2
               },
               {
                 "color": "green",
-                "value": 2.0001
+                "value": 3
               }
             ]
           }
@@ -282,6 +301,10 @@
       },
       "id": 6,
       "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -289,15 +312,14 @@
           "fields": "",
           "values": false
         },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "text": {}
+        "text": {},
+        "textMode": "auto"
       },
       "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "mysql_global_status_wsrep_cluster_size",
+          "expr": "mysql_global_status_wsrep_cluster_size{namespace=~\"$namespace\",service=~\"$mariadb\"}",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -316,42 +338,43 @@
           }
         }
       ],
-      "type": "gauge"
+      "type": "stat"
     },
     {
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
           "mappings": [
             {
-              "options": {
-                "0": {
-                  "index": 1,
-                  "text": "NON_PRIMARY"
-                },
-                "1": {
-                  "index": 0,
-                  "text": "PRIMARY"
-                }
-              },
+              "from": "",
+              "id": 1,
               "text": "Primary",
+              "to": "",
               "type": 1,
               "value": "1"
             },
             {
               "from": "",
-              "id": null,
-              "text": "",
+              "id": 2,
+              "text": "Non-Primary",
               "to": "",
-              "type": 1
+              "type": 1,
+              "value": "0"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "red",
+                "color": "yellow",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 0
               },
               {
                 "color": "green",
@@ -370,28 +393,26 @@
       },
       "id": 8,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
-            "mean"
+            "lastNotNull"
           ],
           "fields": "",
           "values": false
         },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
         "text": {
-          "titleSize": 20,
-          "valueSize": 45
-        },
-        "textMode": "auto"
+          "titleSize": 15,
+          "valueSize": 25
+        }
       },
       "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "mysql_global_status_wsrep_cluster_status",
+          "expr": "mysql_global_status_wsrep_cluster_status{namespace=~\"$namespace\",service=~\"$mariadb\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -409,8 +430,7 @@
           }
         }
       ],
-      "transparent": true,
-      "type": "stat"
+      "type": "gauge"
     },
     {
       "aliasColors": {},
@@ -461,7 +481,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rate(mysql_global_status_queries[1m])",
+          "expr": "sum(rate(mysql_global_status_queries{namespace=~\"$namespace\",service=~\"$mariadb\"}[1m]))",
           "interval": "",
           "legendFormat": "{{ pod }}",
           "refId": "A"
@@ -559,7 +579,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mysql_global_status_max_used_connections",
+          "expr": "mysql_global_status_max_used_connections{namespace=~\"$namespace\",service=~\"$mariadb\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -568,7 +588,7 @@
         },
         {
           "exemplar": true,
-          "expr": "mysql_global_variables_max_connections",
+          "expr": "mysql_global_variables_max_connections{namespace=~\"$namespace\",service=~\"$mariadb\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -672,7 +692,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(mysql_global_status_innodb_data_reads[10m])",
+          "expr": "irate(mysql_global_status_innodb_data_reads{namespace=~\"$namespace\",service=~\"$mariadb\"}[10m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -681,7 +701,7 @@
         },
         {
           "exemplar": true,
-          "expr": "irate(mysql_global_status_innodb_data_writes[10m])",
+          "expr": "irate(mysql_global_status_innodb_data_writes{namespace=~\"$namespace\",service=~\"$mariadb\"}[10m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -785,7 +805,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(mysql_global_status_bytes_received[5m])",
+          "expr": "irate(mysql_global_status_bytes_received{namespace=~\"$namespace\",service=~\"$mariadb\"}[5m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -794,7 +814,7 @@
         },
         {
           "exemplar": true,
-          "expr": "irate(mysql_global_status_bytes_sent[5m])",
+          "expr": "irate(mysql_global_status_bytes_sent{namespace=~\"$namespace\",service=~\"$mariadb\"}[5m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -894,7 +914,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "topk(3, rate(mysql_global_status_commands_total[5m]))",
+          "expr": "topk(3, rate(mysql_global_status_commands_total{namespace=~\"$namespace\",service=~\"$mariadb\"}[5m]))",
           "instant": false,
           "interval": "",
           "legendFormat": "{{ pod }} = '{{ command }}'",
@@ -993,7 +1013,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rate(mysql_global_status_opened_files[1m])",
+          "expr": "rate(mysql_global_status_opened_files{namespace=~\"$namespace\",service=~\"$mariadb\"}[1m])",
           "interval": "",
           "legendFormat": "{{ pod }}",
           "refId": "A"
@@ -1089,21 +1109,21 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mysql_global_status_open_files",
+          "expr": "mysql_global_status_open_files{namespace=~\"$namespace\",service=~\"$mariadb\"}",
           "interval": "",
           "legendFormat": "Open Files - {{ pod }}",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "mysql_global_variables_open_files_limit",
+          "expr": "mysql_global_variables_open_files_limit{namespace=~\"$namespace\",service=~\"$mariadb\"}",
           "interval": "",
           "legendFormat": "Open Files Limit - {{ pod }}",
           "refId": "B"
         },
         {
           "exemplar": true,
-          "expr": "mysql_global_status_innodb_num_open_files",
+          "expr": "mysql_global_status_innodb_num_open_files{namespace=~\"$namespace\",service=~\"$mariadb\"}",
           "interval": "",
           "legendFormat": "InnoDB Open Files - {{ pod }}",
           "refId": "C"
@@ -1200,7 +1220,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(mysql_global_status_slow_queries[1m])",
+          "expr": "irate(mysql_global_status_slow_queries{namespace=~\"$namespace\",service=~\"$mariadb\"}[1m])",
           "interval": "",
           "legendFormat": "Slow Queries on {{ pod }}",
           "refId": "A"
@@ -1297,14 +1317,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "irate(mysql_global_status_aborted_connects[1m])",
+          "expr": "irate(mysql_global_status_aborted_connects{namespace=~\"$namespace\",service=~\"$mariadb\"}[1m])",
           "interval": "",
           "legendFormat": "Aborted Connects (attempts) on - {{ pod }}",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "irate(mysql_global_status_aborted_clients[1m])",
+          "expr": "irate(mysql_global_status_aborted_clients{namespace=~\"$namespace\",service=~\"$mariadb\"}[1m])",
           "interval": "",
           "legendFormat": "Aborted Clients (timeout) on - {{ pod }}",
           "refId": "B"
@@ -1354,7 +1374,7 @@
       }
     }
   ],
-  "refresh": false,
+  "refresh": "5s",
   "schemaVersion": 27,
   "style": "dark",
   "tags": [
@@ -1364,42 +1384,78 @@
   "templating": {
     "list": [
       {
-        "datasource": "prometheus",
-        "description": null,
-        "error": null,
-        "filters": [],
-        "hide": 0,
-        "label": "",
-        "name": "Filters",
-        "skipUrlSync": false,
-        "type": "adhoc"
-      },
-      {
         "allValue": null,
         "current": {
           "selected": true,
-          "text": [
-            "sample-mariadb-stats"
-          ],
-          "value": [
-            "sample-mariadb-stats"
-          ]
+          "text": "demo",
+          "value": "demo"
         },
         "datasource": null,
-        "definition": "label_values(mysql_up, job)",
+        "definition": "label_values(namespace)",
         "description": null,
         "error": null,
         "hide": 0,
-        "includeAll": true,
+        "includeAll": false,
         "label": null,
-        "multi": true,
-        "name": "job",
-        "options": [],
+        "multi": false,
+        "name": "namespace",
+        "options": [
+          {
+            "selected": false,
+            "text": "cert-manager",
+            "value": "cert-manager"
+          },
+          {
+            "selected": false,
+            "text": "default",
+            "value": "default"
+          },
+          {
+            "selected": true,
+            "text": "demo",
+            "value": "demo"
+          },
+          {
+            "selected": false,
+            "text": "kube-node-lease",
+            "value": "kube-node-lease"
+          },
+          {
+            "selected": false,
+            "text": "kube-public",
+            "value": "kube-public"
+          },
+          {
+            "selected": false,
+            "text": "kube-system",
+            "value": "kube-system"
+          },
+          {
+            "selected": false,
+            "text": "kubedb",
+            "value": "kubedb"
+          },
+          {
+            "selected": false,
+            "text": "kubeops",
+            "value": "kubeops"
+          },
+          {
+            "selected": false,
+            "text": "local-path-storage",
+            "value": "local-path-storage"
+          },
+          {
+            "selected": false,
+            "text": "monitoring",
+            "value": "monitoring"
+          }
+        ],
         "query": {
-          "query": "label_values(mysql_up, job)",
+          "query": "label_values(namespace)",
           "refId": "StandardVariableQuery"
         },
-        "refresh": 1,
+        "refresh": 0,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
@@ -1412,26 +1468,22 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
+          "selected": false,
+          "text": "sample-mariadb-stats",
+          "value": "sample-mariadb-stats"
         },
         "datasource": null,
-        "definition": "label_values(mysql_up, pod)",
-        "description": null,
+        "definition": "label_values(mysql_up{namespace=~\"$namespace\"}, service)",
+        "description": "MariaDB stats service name",
         "error": null,
         "hide": 0,
-        "includeAll": true,
-        "label": "",
-        "multi": true,
-        "name": "pod",
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "mariadb",
         "options": [],
         "query": {
-          "query": "label_values(mysql_up, pod)",
+          "query": "label_values(mysql_up{namespace=~\"$namespace\"}, service)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -1452,7 +1504,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "KubeDB/MariaDB/Database",
+  "title": "KubeDB / MariaDB / Database",
   "uid": "ohrahgv7z",
-  "version": 4
+  "version": 9
 }
