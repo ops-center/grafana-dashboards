@@ -23,7 +23,7 @@
   "gnetId": 13106,
   "graphTooltip": 0,
   "id": 32,
-  "iteration": 1633587893818,
+  "iteration": 1633596734927,
   "links": [],
   "panels": [
     {
@@ -261,7 +261,7 @@
             "mode": "thresholds"
           },
           "mappings": [],
-          "max": 2,
+          "max": 0,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
@@ -1489,8 +1489,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "tags": [],
+          "selected": false,
           "text": [
             "sample-mariadb-0"
           ],
@@ -1532,5 +1531,5 @@
   "timezone": "",
   "title": "KubeDB / MariaDB / Pod",
   "uid": "MQWgroiiz",
-  "version": 3
+  "version": 4
 }

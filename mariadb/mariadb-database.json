@@ -23,7 +23,7 @@
   "gnetId": 13106,
   "graphTooltip": 0,
   "id": 29,
-  "iteration": 1633587546457,
+  "iteration": 1633596731525,
   "links": [],
   "panels": [
     {
@@ -273,6 +273,8 @@
             "mode": "thresholds"
           },
           "mappings": [],
+          "max": 0,
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1386,7 +1388,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "demo",
           "value": "demo"
         },
