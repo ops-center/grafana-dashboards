@@ -1,29 +1,108 @@
-# MongoDB Grafana Dashboards
+# Grafana Dashboards
 
-## How to Import
-- First go to this url `<your-grafana-base-url>/dashboard/import`. Then click `Upload JSON file` to upload any of the dashboard json file from here.
-![Upload Json](./images/1.png)
+There are three dashboards to monitor MariaDB Databases managed by KubeDB.
 
-- Then click `Import`
-![Import Dashboard](./images/2.png)
+- KubeDB / MariaDB / Summary: Shows overall summary of a MariaDB instance.
+- KubeDB / MariaDB / Pods: Shows individual pod-level information.
+- KubeDB / MariaDB / Databases: Shows MariaDB internal metrics for an instance.
 
-- Finally, you'll see a dashboard similar to the below one.
-![MongoDB ReplSet Dashboard](./images/3.png)
+Note: These dashboards are developed in **Grafana version 7.5.5**
 
-## Available Charts
-| **Chart Name**  | **Usage**  |
-|---|---|
-| **MongoDB Instance Overview**  | This chart shows some basic graph of individual instance of the database. It is applicable for any type of MongoDB database i.e. Standalone, Replicaset Cluster or Sharded Cluster  |
-| **MongoDB ReplSet**  | This chart is for MongoDB replicaSet cluster. It shows some graph for the replicaSet cluster. Sharded cluster have shard nodes and configServer nodes which are basically replicaSet, so you'll be able to see those individual replicaSet information here too. |
+### Dependencies
 
-## Exporter
+MariaDB Dashboards are heavily dependent on:
 
-You have to turn on the compatibility mode in the exporter. You can do this by adding the following section in your CR yaml.
+- [Prometheus Node Exporter](https://github.com/prometheus/node_exporter)
+- [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)
+- [Panopticon by Appscode](https://blog.byte.builders/post/introducing-panopticon/)
+
+
+### Installation
+
+#### 1. Install Prometheus Stack
+
+Install Prometheus stack if you haven't done it already. You can use [kube-prometheus-stack](https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack) which installs the necessary components required for the MariaDB Grafana dashboards.
+
+#### 2. Install Panopticon
+
+Install Panopticon if you haven't done it already. Like other AppsCode products, [Panopticon](https://blog.byte.builders/post/introducing-panopticon/) also need a license to run. You can grab a 30 days trial license for Panopticon from [here](https://license-issuer.appscode.com/?p=panopticon-enterprise).
+
+**If you already have an enterprise license for KubeDB or Stash, you do not need to issue a new license for Panopticon. Your existing KubeDB or Stash license will work with Panopticon.**
+
+Now, install Panopticon using the following commands:
 
 ```bash
-  monitor:
-    prometheus:
-      exporter:
-        args:
-          - --compatible-mode
+$ helm repo add appscode https://charts.appscode.com/stable/
+$ helm repo update
+
+$ helm install panopticon appscode/panopticon -n kubeops \
+    --create-namespace \
+    --set monitoring.enabled=true \
+    --set monitoring.agent=prometheus.io/operator \
+    --set monitoring.serviceMonitor.labels.release=<helm-release-name-of-kube-prometheus-stack> \
+    --set-file license=/path/to/license-file.txt
 ```
+
+#### 3. Add monitoring configuration in KubeDB managed MariaDB spec
+
+To enable monitoring of a KubeDB MariaDB instance, you have to add monitoring configuration in the MariaDB CR spec like below:
+
+```
+apiVersion: kubedb.com/v1alpha2
+kind: MariaDB
+metadata:
+  name: sample-mariadb
+  namespace: demo
+spec:
+  ...
+  ...
+  monitor:
+    agent: prometheus.io/operator
+    prometheus:
+      serviceMonitor:
+        labels:
+          release: <helm-release-name-of-kube-prometheus-stack>
+        interval: 10s
+```
+
+### Using Dashboards
+
+#### Create MariaDB Metrics Configurations
+
+At first, you have to create a `MetricsConfiguration` object for MariaDB CR. This `MetricsConfiguration` object is used by Panopticon to generate metrics for the MariaDB instances.
+
+Run the below command to create the `MetricsConfiguration` object:
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kubedb/installer/master/charts/kubedb-metrics/templates/metricsconfig-kubedb-com-mariadb.yaml
+```
+
+#### Import Grafana Dashboard
+
+Now, on your Grafana UI, import the json files of dashboards located in the `mariadb` folder of this repository.
+
+
+1. Select `Import` from the `Plus(+)` icon from the left bar of the Grafana UI
+
+![Import New Dashboard](/mariadb/images/import_dashboard_1.png)
+
+2. Upload the json file and hit load button:
+
+![Upload Dashboard JSON](/mariadb/images/import_dashboard_2.png)
+
+
+If you followed the instruction properly, you should see the MariaDB Grafana dashboard in your Grafana UI.
+
+### Samples
+
+####  KubeDB / MariaDB / Summary
+
+![KubeDB / MariaDB / Summary](/mariadb/images/kubedb-mariadb-summary.png)
+
+#### KubeDB / MariaDB / Database
+
+![KubeDB / MariaDB / Database](/mariadb/images/kubedb-mariadb-database.png)
+
+#### KubeDB / MariaDB / Pod
+
+![KubeDB / MariaDB / Pod](/mariadb/images/kubedb-mariadb-pod.png)
