@@ -18,12 +18,12 @@
       }
     ]
   },
-  "description": "The dashboard is designed for KubeDB managed Elasticsearch",
-  "editable": false,
+  "description": "The dashboard is designed for KubeDB managed MariaDB",
+  "editable": true,
   "gnetId": 9628,
   "graphTooltip": 0,
-  "id": 29,
-  "iteration": 1633414284032,
+  "id": 34,
+  "iteration": 1633689646126,
   "links": [],
   "panels": [
     {
@@ -93,7 +93,7 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 8,
+        "w": 6,
         "x": 0,
         "y": 1
       },
@@ -117,7 +117,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_elasticsearch_status_phase{namespace=\"$namespace\", elasticsearch=\"$elasticsearch\"} == 1\n",
+          "expr": "kubedb_mysql_status_phase{namespace=\"$namespace\", mysql=\"$mysql\"} == 1\n",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -131,89 +131,12 @@
     {
       "cacheTimeout": null,
       "datasource": "Prometheus",
-      "description": "ElasticsearchVersion CR Name",
+      "description": "MariaDB CR Name",
       "fieldConfig": {
         "defaults": {
           "color": {
             "fixedColor": "text",
-            "mode": "fixed"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "index": 0,
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "noValue": "N/A",
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "s"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 8,
-        "y": 1
-      },
-      "id": 145,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "none",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "value"
-      },
-      "pluginVersion": "7.5.5",
-      "targets": [
-        {
-          "exemplar": false,
-          "expr": "time() - kubedb_elasticsearch_created{namespace=\"$namespace\", elasticsearch=\"$elasticsearch\"}",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "title": "Database Up-time",
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
-      "description": "ElasticsearchVersion CR Name",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "text",
-            "mode": "fixed"
+            "mode": "palette-classic"
           },
           "mappings": [
             {
@@ -247,8 +170,8 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 4,
-        "x": 12,
+        "w": 5,
+        "x": 6,
         "y": 1
       },
       "id": 36,
@@ -267,19 +190,21 @@
           "fields": "",
           "values": false
         },
-        "text": {},
+        "text": {
+          "valueSize": 50
+        },
         "textMode": "name"
       },
       "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_elasticsearch_info{namespace=\"$namespace\", elasticsearch=\"$elasticsearch\"}",
+          "expr": "kubedb_mysql_info{namespace=\"$namespace\", mysql=\"$mysql\"}",
           "format": "time_series",
           "instant": true,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{version}}",
+          "legendFormat": "{{ version }}",
           "refId": "A"
         }
       ],
@@ -287,18 +212,101 @@
       "type": "stat"
     },
     {
-      "datasource": null,
-      "description": "KubeDB Elasticsearch HTTP layer status",
+      "cacheTimeout": null,
+      "datasource": "Prometheus",
+      "description": "MariaDB CR Name",
       "fieldConfig": {
         "defaults": {
           "color": {
+            "fixedColor": "text",
             "mode": "palette-classic"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "index": 0,
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "noValue": "N/A",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 11,
+        "y": 1
+      },
+      "id": 145,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {
+          "valueSize": 50
+        },
+        "textMode": "name"
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "kubedb_mysql_info{namespace=\"$namespace\", mysql=\"$mysql\"}",
+          "format": "time_series",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{ useAddressType }}",
+          "refId": "A"
+        }
+      ],
+      "title": "User Address Type",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "When this option is enabled, connections attempted using insecure transport will be rejected.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
           },
           "mappings": [
             {
               "from": "",
               "id": 1,
-              "text": "Secure",
+              "text": "True",
               "to": "",
               "type": 1,
               "value": "1"
@@ -306,17 +314,10 @@
             {
               "from": "",
               "id": 2,
-              "text": "Insecure",
+              "text": "False",
               "to": "",
               "type": 1,
               "value": "0"
-            },
-            {
-              "from": "",
-              "id": 3,
-              "text": "",
-              "to": "",
-              "type": 1
             }
           ],
           "thresholds": {
@@ -325,6 +326,10 @@
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           }
@@ -357,15 +362,17 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_elasticsearch_security_http_ssl_enabled{namespace=\"$namespace\", elasticsearch=\"$elasticsearch\"}",
+          "expr": "kubedb_mysql_info{namespace=\"$namespace\", mysql=\"$mysql\"}",
           "format": "time_series",
           "instant": true,
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{requireSSL}}",
           "refId": "A"
         }
       ],
-      "title": "HTTP Layer",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Require Secure Transport",
       "type": "stat"
     },
     {
@@ -437,7 +444,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_elasticsearch_info{namespace=\"$namespace\", elasticsearch=\"$elasticsearch\"}",
+          "expr": "kubedb_mysql_info{namespace=\"$namespace\", mysql=\"$mysql\"}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -450,7 +457,7 @@
     },
     {
       "datasource": null,
-      "description": "Total node count of Elasticsearch cluster",
+      "description": "Total node count of MariaDB cluster",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -500,7 +507,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_elasticsearch_replicas{namespace=\"$namespace\",elasticsearch=\"$elasticsearch\"}",
+          "expr": "kubedb_mysql_replicas{namespace=\"$namespace\",mysql=\"$mysql\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -512,7 +519,7 @@
     },
     {
       "datasource": null,
-      "description": "Initial Requested CPU amount by Postgres Instance",
+      "description": "Initial Requested CPU amount by MariaDB Instance",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -559,7 +566,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_elasticsearch_resource_request_cpu{namespace=\"$namespace\", elasticsearch=\"$elasticsearch\"}",
+          "expr": "kubedb_mysql_resource_request_cpu{namespace=\"$namespace\", mysql=\"$mysql\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -571,12 +578,12 @@
     },
     {
       "datasource": null,
-      "description": "CPU Limit in core by Elasticsearch instance",
+      "description": "CPU Limit in core by MariaDB instance",
       "fieldConfig": {
         "defaults": {
           "color": {
             "fixedColor": "text",
-            "mode": "thresholds"
+            "mode": "fixed"
           },
           "mappings": [],
           "thresholds": {
@@ -617,7 +624,8 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_elasticsearch_resource_limit_cpu{namespace=\"$namespace\", elasticsearch=\"$elasticsearch\"}",
+          "expr": "kubedb_mysql_resource_limit_cpu{namespace=\"$namespace\", mysql=\"$mysql\"}",
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -628,7 +636,7 @@
     },
     {
       "datasource": null,
-      "description": "Initial Requested Memory amount by Elasticsearch Instance",
+      "description": "Initial Requested Memory amount by MariaDB Instance",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -676,7 +684,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_elasticsearch_resource_request_memory{namespace=\"$namespace\", elasticsearch=\"$elasticsearch\"}",
+          "expr": "kubedb_mysql_resource_request_memory{namespace=\"$namespace\", mysql=\"$mysql\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -688,12 +696,12 @@
     },
     {
       "datasource": null,
-      "description": "KubeDB Elasticsearch Total Memory Limit",
+      "description": "KubeDB mariadb Total Memory Limit",
       "fieldConfig": {
         "defaults": {
           "color": {
             "fixedColor": "text",
-            "mode": "thresholds"
+            "mode": "fixed"
           },
           "mappings": [],
           "thresholds": {
@@ -735,7 +743,8 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_elasticsearch_resource_limit_memory{namespace=\"$namespace\", elasticsearch=\"$elasticsearch\"}",
+          "expr": "kubedb_mysql_resource_limit_memory{namespace=\"$namespace\", mysql=\"$mysql\"}",
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -746,7 +755,7 @@
     },
     {
       "datasource": null,
-      "description": "Total storage request by Elasticsearch nodes",
+      "description": "Total storage request by mariadb nodes",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -794,7 +803,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_elasticsearch_resource_request_storage{namespace=\"$namespace\", elasticsearch=\"$elasticsearch\"}",
+          "expr": "kubedb_mysql_resource_request_storage{namespace=\"$namespace\", mysql=\"$mysql\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -824,11 +833,9 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "description": "CPU Usage by Elasticsearch pods",
+      "description": "CPU Usage by MariaDB pods",
       "fieldConfig": {
-        "defaults": {
-          "unit": "short"
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -842,17 +849,13 @@
       "hiddenSeries": false,
       "id": 98,
       "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
         "show": true,
-        "sort": "current",
-        "sortDesc": true,
         "total": false,
-        "values": true
+        "values": false
       },
       "lines": true,
       "linewidth": 1,
@@ -872,7 +875,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$elasticsearch-.*\"}) by (pod)",
+          "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$mysql-.*\"}) by (pod)",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -898,7 +901,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:277",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -907,7 +909,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:278",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1139,18 +1140,13 @@
       "links": [],
       "options": {
         "showHeader": true,
-        "sortBy": [
-          {
-            "desc": true,
-            "displayName": "CPU Requests %"
-          }
-        ]
+        "sortBy": []
       },
       "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$elasticsearch.*\"}) by (pod)",
+          "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$mysql.*\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1161,7 +1157,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{namespace=\"$namespace\", pod=~\"$elasticsearch.*\"}) by (pod)",
+          "expr": "sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{namespace=\"$namespace\", pod=~\"$mysql.*\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1172,7 +1168,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$elasticsearch.*\"}) by (pod) / sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{namespace=\"$namespace\", pod=~\"$elasticsearch.*\"}) by (pod)",
+          "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$mysql.*\"}) by (pod) / sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{namespace=\"$namespace\", pod=~\"$mysql.*\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1183,7 +1179,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$elasticsearch.*\"}) by (pod)",
+          "expr": "sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$mysql.*\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1194,7 +1190,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$elasticsearch.*\"}) by (pod) / sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$elasticsearch.*\"}) by (pod)",
+          "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$mysql.*\"}) by (pod) / sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$mysql.*\"}) by (pod)",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -1238,7 +1234,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "description": "Memory Usage by Elasticsearch pods",
+      "description": "Memory Usage by MariaDB pods",
       "fieldConfig": {
         "defaults": {
           "unit": "bytes"
@@ -1256,17 +1252,13 @@
       "hiddenSeries": false,
       "id": 100,
       "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
         "show": true,
-        "sort": "current",
-        "sortDesc": true,
         "total": false,
-        "values": true
+        "values": false
       },
       "lines": true,
       "linewidth": 1,
@@ -1286,7 +1278,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(node_namespace_pod_container:container_memory_working_set_bytes{namespace=\"$namespace\", pod=~\"$elasticsearch-.*\",container!=\"\"}) by (pod)",
+          "expr": "sum(node_namespace_pod_container:container_memory_working_set_bytes{namespace=\"$namespace\", pod=~\"$mysql-.*\",container!=\"\"}) by (pod)",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -1312,7 +1304,6 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:361",
           "format": "bytes",
           "label": null,
           "logBase": 1,
@@ -1321,7 +1312,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:362",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1631,7 +1621,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$elasticsearch.*\",container!=\"\", image!=\"\"}) by (pod)",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$mysql.*\",container!=\"\", image!=\"\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1642,7 +1632,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_requests{namespace=\"$namespace\",pod=~\"$elasticsearch.*\"}) by (pod)",
+          "expr": "sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_requests{namespace=\"$namespace\",pod=~\"$mysql.*\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1653,7 +1643,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$elasticsearch.*\",container!=\"\", image!=\"\"}) by (pod) / sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_requests{namespace=\"$namespace\",pod=~\"$elasticsearch.*\"}) by (pod)",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$mysql.*\",container!=\"\", image!=\"\"}) by (pod) / sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_requests{namespace=\"$namespace\",pod=~\"$mysql.*\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1664,7 +1654,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_limits{namespace=\"$namespace\",pod=~\"$elasticsearch.*\"}) by (pod)",
+          "expr": "sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_limits{namespace=\"$namespace\",pod=~\"$mysql.*\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1675,7 +1665,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$elasticsearch.*\",container!=\"\", image!=\"\"}) by (pod) / sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$elasticsearch.*\"}) by (pod)",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$mysql.*\",container!=\"\", image!=\"\"}) by (pod) / sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$mysql.*\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1686,7 +1676,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(container_memory_rss{namespace=\"$namespace\",pod=~\"$elasticsearch.*\",container!=\"\"}) by (pod)",
+          "expr": "sum(container_memory_rss{namespace=\"$namespace\",pod=~\"$mysql.*\",container!=\"\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1697,7 +1687,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(container_memory_cache{namespace=\"$namespace\",pod=~\"$elasticsearch.*\",container!=\"\"}) by (pod)",
+          "expr": "sum(container_memory_cache{namespace=\"$namespace\",pod=~\"$mysql.*\",container!=\"\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1708,7 +1698,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(container_memory_swap{namespace=\"$namespace\",pod=~\"$elasticsearch.*\",container!=\"\"}) by (pod)",
+          "expr": "sum(container_memory_swap{namespace=\"$namespace\",pod=~\"$mysql.*\",container!=\"\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1746,201 +1736,153 @@
       "type": "row"
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": null,
-      "description": "Disk usage by Elasticsearch pods",
+      "description": "Disk usage by MariaDB pods",
       "fieldConfig": {
         "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "graph": false,
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
           "unit": "bytes"
         },
         "overrides": []
       },
+      "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 9,
         "w": 12,
         "x": 0,
         "y": 35
       },
+      "hiddenSeries": false,
       "id": 112,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single"
-        },
-        "tooltipOptions": {
-          "mode": "single"
-        }
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
       },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg(container_blkio_device_usage_total{namespace=\"$namespace\", pod=~\"$elasticsearch-.*\"}) by (pod)",
+          "expr": "avg(container_blkio_device_usage_total{namespace=\"$namespace\", pod=~\"$mysql-.*\"}) by (pod)",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
       "title": "Disk Usage",
-      "type": "timeseries"
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": null,
       "description": "System Disk Usage Information",
       "fieldConfig": {
         "defaults": {
-          "color": {
-            "fixedColor": "purple",
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "graph": false,
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
           "unit": "none"
         },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Available"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "green",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Used"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "yellow",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "System Reserved"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "red",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
+      "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 9,
         "w": 12,
         "x": 12,
         "y": 35
       },
+      "hiddenSeries": false,
       "id": 108,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "table",
-          "placement": "right"
-        },
-        "tooltip": {
-          "mode": "single"
-        },
-        "tooltipOptions": {
-          "mode": "single"
-        }
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
       },
-      "pluginVersion": "8.1.2",
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(container_fs_writes_total{namespace=\"$namespace\", pod=~\"$elasticsearch-.*\"}[5m]))by(pod)",
+          "expr": "sum(rate(container_fs_writes_total{namespace=\"$namespace\", pod=~\"$mysql-.*\"}[5m]))by(pod)",
           "instant": false,
           "interval": "",
           "intervalFactor": 1,
@@ -1949,7 +1891,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(container_fs_reads_total{namespace=\"$namespace\", pod=~\"$elasticsearch-.*\"}[5m]))by(pod)",
+          "expr": "sum(rate(container_fs_reads_total{namespace=\"$namespace\", pod=~\"$mysql-.*\"}[5m]))by(pod)",
           "hide": false,
           "instant": false,
           "interval": "",
@@ -1957,83 +1899,98 @@
           "refId": "B"
         }
       ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
       "title": "Disk R/W Info",
-      "type": "timeseries"
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 100,
-            "gradientMode": "none",
-            "hideFrom": {
-              "graph": false,
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 0,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": false
-          },
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
           "unit": "short"
         },
         "overrides": []
       },
+      "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 12,
         "x": 0,
         "y": 44
       },
+      "hiddenSeries": false,
       "id": 126,
-      "links": [],
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single"
-        },
-        "tooltipOptions": {
-          "mode": "single"
-        }
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
       },
-      "pluginVersion": "8.1.2",
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
       "targets": [
         {
           "exemplar": true,
-          "expr": "ceil(sum by(pod) (rate(container_fs_reads_total{container!=\"\", namespace=~\"$namespace\", pod=~\"$elasticsearch.*\"}[5m]) + rate(container_fs_writes_total{container!=\"\" ,namespace=~\"$namespace\", pod=~\"$elasticsearch.*\"}[5m])))",
+          "expr": "ceil(sum by(pod) (rate(container_fs_reads_total{container!=\"\", namespace=~\"$namespace\", pod=~\"$mysql.*\"}[5m]) + rate(container_fs_writes_total{container!=\"\" ,namespace=~\"$namespace\", pod=~\"$mysql.*\"}[5m])))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2043,85 +2000,98 @@
           "step": 10
         }
       ],
+      "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "IOPS (Reads+Writes)",
-      "type": "timeseries"
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 100,
-            "gradientMode": "none",
-            "hideFrom": {
-              "graph": false,
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 0,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": false
-          },
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
           "unit": "Bps"
         },
         "overrides": []
       },
+      "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 12,
         "x": 12,
         "y": 44
       },
+      "hiddenSeries": false,
       "id": 128,
-      "links": [],
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single"
-        },
-        "tooltipOptions": {
-          "mode": "single"
-        }
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
       },
-      "pluginVersion": "8.1.2",
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", namespace=~\"$namespace\", pod=~\"$elasticsearch.*\"}[5m]) + rate(container_fs_writes_bytes_total{container!=\"\" ,namespace=~\"$namespace\", pod=~\"$elasticsearch.*\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", namespace=~\"$namespace\", pod=~\"$mysql.*\"}[5m]) + rate(container_fs_writes_bytes_total{container!=\"\" ,namespace=~\"$namespace\", pod=~\"$mysql.*\"}[5m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2131,10 +2101,46 @@
           "step": 10
         }
       ],
+      "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "ThroughPut (Read+Write)",
-      "type": "timeseries"
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "Bps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "datasource": null,
@@ -2378,7 +2384,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_reads_total{container!=\"\", pod=~\"$elasticsearch.*\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_reads_total{container!=\"\", pod=~\"$mysql.*\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2389,7 +2395,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_writes_total{container!=\"\", pod=~\"$elasticsearch.*\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_writes_total{container!=\"\", pod=~\"$mysql.*\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2400,7 +2406,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_reads_total{container!=\"\", pod=~\"$elasticsearch.*\",namespace=~\"$namespace\"}[5m]) + rate(container_fs_writes_total{container!=\"\",pod=~\"$elasticsearch.*\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_reads_total{container!=\"\", pod=~\"$mysql.*\",namespace=~\"$namespace\"}[5m]) + rate(container_fs_writes_total{container!=\"\",pod=~\"$mysql.*\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2411,7 +2417,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", pod=~\"$elasticsearch.*\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", pod=~\"$mariadb.*\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2422,7 +2428,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_writes_bytes_total{container!=\"\", pod=~\"$elasticsearch.*\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_writes_bytes_total{container!=\"\", pod=~\"$mariadb.*\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2433,7 +2439,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", pod=~\"$elasticsearch.*\",namespace=~\"$namespace\"}[5m]) + rate(container_fs_writes_bytes_total{container!=\"\",pod=~\"$elasticsearch.*\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", pod=~\"$mariadb.*\",namespace=~\"$namespace\"}[5m]) + rate(container_fs_writes_bytes_total{container!=\"\",pod=~\"$mariadb.*\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2471,79 +2477,54 @@
       "type": "row"
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 100,
-            "gradientMode": "none",
-            "hideFrom": {
-              "graph": false,
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 0,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": false
-          },
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "Bps"
-        },
+        "defaults": {},
         "overrides": []
       },
+      "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 12,
         "x": 0,
         "y": 59
       },
+      "hiddenSeries": false,
       "id": 132,
-      "links": [],
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single"
-        },
-        "tooltipOptions": {
-          "mode": "single"
-        }
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
       },
-      "pluginVersion": "8.1.2",
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(irate(container_network_receive_bytes_total{namespace=~\"$namespace\", pod=~\"$elasticsearch.*\"}[$__rate_interval])) by (pod)",
+          "expr": "sum(irate(container_network_receive_bytes_total{namespace=~\"$namespace\", pod=~\"$mysql.*\"}[$__rate_interval])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2553,85 +2534,98 @@
           "step": 10
         }
       ],
+      "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Receive Bandwidth",
-      "type": "timeseries"
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "Bps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 100,
-            "gradientMode": "none",
-            "hideFrom": {
-              "graph": false,
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 0,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": false
-          },
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
           "unit": "Bps"
         },
         "overrides": []
       },
+      "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 12,
         "x": 12,
         "y": 59
       },
+      "hiddenSeries": false,
       "id": 134,
-      "links": [],
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single"
-        },
-        "tooltipOptions": {
-          "mode": "single"
-        }
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
       },
-      "pluginVersion": "8.1.2",
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(irate(container_network_transmit_bytes_total{namespace=~\"$namespace\", pod=~\"$elasticsearch.*\"}[$__rate_interval])) by (pod)",
+          "expr": "sum(irate(container_network_transmit_bytes_total{namespace=~\"$namespace\", pod=~\"$mysql.*\"}[$__rate_interval])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2641,10 +2635,46 @@
           "step": 10
         }
       ],
+      "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "Transmit Bandwidth",
-      "type": "timeseries"
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "Bps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     }
   ],
   "refresh": "10s",
@@ -2653,8 +2683,8 @@
   "tags": [
     "db",
     "stats",
-    "elasticsearch",
-    "kubedb"
+    "kubedb",
+    "mariadb"
   ],
   "templating": {
     "list": [
@@ -2682,9 +2712,9 @@
       {
         "allValue": "\".+\"",
         "current": {
-          "selected": true,
-          "text": "default",
-          "value": "default"
+          "selected": false,
+          "text": "demo",
+          "value": "demo"
         },
         "datasource": "${datasource}",
         "definition": "label_values(namespace)",
@@ -2713,23 +2743,22 @@
       {
         "allValue": null,
         "current": {
-          "isNone": true,
           "selected": false,
-          "text": "None",
-          "value": ""
+          "text": "mysql-sample",
+          "value": "mysql-sample"
         },
         "datasource": "${datasource}",
-        "definition": "label_values(kubedb_elasticsearch_status_phase{namespace=~\"$namespace\"},elasticsearch)",
+        "definition": "label_values(kubedb_mysql_status_phase{namespace=~\"$namespace\"},mysql)",
         "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": "",
+        "label": "mysql",
         "multi": false,
-        "name": "elasticsearch",
+        "name": "mysql",
         "options": [],
         "query": {
-          "query": "label_values(kubedb_elasticsearch_status_phase{namespace=~\"$namespace\"},elasticsearch)",
+          "query": "label_values(kubedb_mysql_status_phase{namespace=~\"$namespace\"},mysql)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -2745,7 +2774,7 @@
     ]
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -2774,7 +2803,7 @@
     ]
   },
   "timezone": "",
-  "title": "KubeDB / Elasticsearch / Summary",
-  "uid": "wzK8X8Nnk",
-  "version": 5
+  "title": "KubeDB / MySQL / Summary",
+  "uid": "VsnOgk2Hnk",
+  "version": 3
 }
