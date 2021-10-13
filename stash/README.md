@@ -44,7 +44,7 @@ Now, install Stash Enterprise edition with monitoring enabled. You can follow th
 
 ```bash
 $ helm install stash appscode/stash -n kube-system \
---version v2021.08.02 \
+--version v2021.10.11 \
 --set features.enterprise=true               \
 --set stash-enterprise.monitoring.agent=prometheus.io/operator \
 --set stash-enterprise.monitoring.backup=true \
@@ -65,18 +65,6 @@ $ helm upgrade stash appscode/stash -n kube-system \
 ```
 
 ### Using Dashboard
-
-#### Create Stash Metric Configurations
-
-At first, you have to create few `MetricsConfiguration` objects for Stash. These, `MetricsConfiguration` objects are used by Panopticon to generate metrics for Stash.
-
-Clone this repository and run the following command on repository root directory:
-
-```bash
-$ kubectl apply -f stash/metric-configurations/
-```
-
-#### Import Stash Grafana Dashboard
 
 Now, on your Grafana UI import the `stash_dashboard.json` file located in `stash` folder of this repository.
 
