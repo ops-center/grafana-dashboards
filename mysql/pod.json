@@ -15,8 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 26,
-  "iteration": 1635150198166,
+  "id": 40,
+  "iteration": 1635240069086,
   "links": [],
   "panels": [
     {
@@ -47,10 +47,6 @@
               {
                 "color": "semi-dark-blue",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           },
@@ -86,7 +82,7 @@
           "exemplar": true,
           "expr": "mysql_up{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "{{pod}}",
+          "legendFormat": "{{pod}} ",
           "refId": "A"
         }
       ],
@@ -242,10 +238,6 @@
               {
                 "color": "light-blue",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           },
@@ -374,6 +366,312 @@
         "x": 0,
         "y": 4
       },
+      "id": 57,
+      "panels": [],
+      "title": "Pod CPU, Memory and File Descriptor Stats",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "fill": 5,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 5
+      },
+      "hiddenSeries": false,
+      "id": 61,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", container!=\"\", image!=\"\"}[5m])) by (pod)",
+          "interval": "",
+          "legendFormat": "{{container}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "CPU Usage",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "fill": 5,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 5
+      },
+      "hiddenSeries": false,
+      "id": 59,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", container!=\"\", image!=\"\"}) by (pod)",
+          "interval": "",
+          "legendFormat": "{{pod}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Memory Usage",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "Number of open file descriptors",
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "fill": 5,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 5
+      },
+      "hiddenSeries": false,
+      "id": 62,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(process_open_fds{pod=\"$pod\", namespace=\"$namespace\"}) by (pod)",
+          "interval": "",
+          "legendFormat": "{{pod}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Open File Descriptors",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 12
+      },
       "id": 10,
       "panels": [],
       "repeat": null,
@@ -396,7 +694,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 5
+        "y": 13
       },
       "hiddenSeries": false,
       "id": 12,
@@ -499,7 +797,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 5
+        "y": 13
       },
       "hiddenSeries": false,
       "id": 16,
@@ -593,7 +891,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 12
+        "y": 20
       },
       "id": 15,
       "panels": [],
@@ -617,7 +915,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 13
+        "y": 21
       },
       "hiddenSeries": false,
       "id": 13,
@@ -721,7 +1019,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 13
+        "y": 21
       },
       "hiddenSeries": false,
       "id": 17,
@@ -824,7 +1122,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 20
+        "y": 28
       },
       "id": 19,
       "panels": [],
@@ -847,7 +1145,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 21
+        "y": 29
       },
       "hiddenSeries": false,
       "id": 20,
@@ -959,7 +1257,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 21
+        "y": 29
       },
       "hiddenSeries": false,
       "id": 25,
@@ -1046,7 +1344,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 28
+        "y": 36
       },
       "id": 23,
       "panels": [],
@@ -1069,7 +1367,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 29
+        "y": 37
       },
       "hiddenSeries": false,
       "id": 24,
@@ -1175,7 +1473,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 29
+        "y": 37
       },
       "hiddenSeries": false,
       "id": 21,
@@ -1286,7 +1584,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 36
+        "y": 44
       },
       "id": 27,
       "panels": [],
@@ -1309,7 +1607,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 37
+        "y": 45
       },
       "hiddenSeries": false,
       "id": 28,
@@ -1412,7 +1710,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 37
+        "y": 45
       },
       "hiddenSeries": false,
       "id": 29,
@@ -1498,7 +1796,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 44
+        "y": 52
       },
       "id": 31,
       "panels": [],
@@ -1528,7 +1826,7 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 53
       },
       "hiddenSeries": false,
       "id": 9,
@@ -1656,7 +1954,7 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 55
+        "y": 63
       },
       "hiddenSeries": false,
       "id": 44,
@@ -1771,7 +2069,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 65
+        "y": 73
       },
       "id": 48,
       "panels": [],
@@ -1797,7 +2095,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 66
+        "y": 74
       },
       "hiddenSeries": false,
       "id": 50,
@@ -1927,7 +2225,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 74
+        "y": 82
       },
       "id": 46,
       "panels": [
@@ -2263,7 +2561,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 75
+        "y": 83
       },
       "id": 53,
       "panels": [],
@@ -2289,7 +2587,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 76
+        "y": 84
       },
       "hiddenSeries": false,
       "id": 54,
@@ -2387,7 +2685,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 76
+        "y": 84
       },
       "hiddenSeries": false,
       "id": 55,
@@ -2505,7 +2803,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 83
+        "y": 91
       },
       "id": 38,
       "panels": [],
@@ -2529,7 +2827,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 84
+        "y": 92
       },
       "hiddenSeries": false,
       "id": 34,
@@ -2625,7 +2923,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 84
+        "y": 92
       },
       "hiddenSeries": false,
       "id": 36,
@@ -2725,7 +3023,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 91
+        "y": 99
       },
       "id": 41,
       "panels": [],
@@ -2749,7 +3047,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 92
+        "y": 100
       },
       "hiddenSeries": false,
       "id": 39,
@@ -2877,7 +3175,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 92
+        "y": 100
       },
       "hiddenSeries": false,
       "id": 42,
@@ -2980,7 +3278,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 99
+        "y": 107
       },
       "hiddenSeries": false,
       "id": 43,
@@ -3083,7 +3381,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "default",
           "value": "default"
         },
@@ -3168,7 +3466,6 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "tags": [],
           "text": [
             "sample-mariadb-0"
           ],
@@ -3210,5 +3507,5 @@
   "timezone": "",
   "title": "KubeDB / MySQL / Pod",
   "uid": "FktZiiOnz",
-  "version": 7
+  "version": 4
 }
