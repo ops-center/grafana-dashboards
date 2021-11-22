@@ -15,8 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 29,
-  "iteration": 1636950761033,
+  "id": 26,
+  "iteration": 1637571075821,
   "links": [],
   "panels": [
     {
@@ -768,7 +768,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg by (pod)(rate(mysql_perf_schema_transactions_checked_total{namespace=~\"$namespace\",service=~\"$mysql\"}[5m])) ",
+          "expr": "avg by (pod)(rate(mysql_perf_schema_transactions_checked_total{namespace=~\"$namespace\",service=~\"$mysql\"}[5m]) or rate(mysql_perf_schema_5_transactions_checked_total{namespace=~\"$namespace\",service=~\"$mysql\"}[5m])) ",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -868,7 +868,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg by (pod)(rate(mysql_perf_schema_transactions_rows_validating_total{namespace=~\"$namespace\",service=~\"$mysql\"}[5m])) ",
+          "expr": "avg by (pod)(rate(mysql_perf_schema_transactions_rows_validating_total{namespace=~\"$namespace\",service=~\"$mysql\"}[5m]) or rate(mysql_perf_schema_5_transactions_rows_validating_total{namespace=~\"$namespace\",service=~\"$mysql\"}[5m])) ",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -1368,7 +1368,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg by (pod)(rate(mysql_perf_schema_transactions_in_queue{namespace=~\"$namespace\",service=~\"$mysql\"}[5m])) ",
+          "expr": "avg by (pod)(rate(mysql_perf_schema_transactions_in_queue{namespace=~\"$namespace\",service=~\"$mysql\"}[5m]) or rate(mysql_perf_schema_5_transactions_in_queue{namespace=~\"$namespace\",service=~\"$mysql\"}[5m])) ",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -1482,7 +1482,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg by (pod)(rate(mysql_perf_schema_conflicts_detected_total{namespace=~\"$namespace\",service=~\"$mysql\"}[5m])) ",
+          "expr": "avg by (pod)(rate(mysql_perf_schema_conflicts_detected_total{namespace=~\"$namespace\",service=~\"$mysql\"}[5m]) or rate(mysql_perf_schema_5_conflicts_detected_total{namespace=~\"$namespace\",service=~\"$mysql\"}[5m])) ",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -1594,8 +1594,8 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": "demo-mysql-stats",
-          "value": "demo-mysql-stats"
+          "text": "old-mysql-stats",
+          "value": "old-mysql-stats"
         },
         "datasource": "${datasource}",
         "definition": "label_values(mysql_up{namespace=~\"$namespace\"}, service)",
@@ -1624,12 +1624,12 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "KubeDB / MySQL / Group-Replication-Summary",
   "uid": "Zmva7c57k",
-  "version": 10
+  "version": 2
 }
