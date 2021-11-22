@@ -20,11 +20,13 @@
   },
   "description": "Grafana dashboard for Stash Enterprise edition",
   "editable": true,
+  "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 26,
-  "iteration": 1633440757291,
+  "id": 27,
+  "iteration": 1637585064532,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "collapsed": false,
@@ -41,7 +43,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of applications that has been configured for backup",
       "fieldConfig": {
         "defaults": {
@@ -90,7 +92,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": false,
@@ -106,7 +108,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Total number of successful backup",
       "fieldConfig": {
         "defaults": {
@@ -155,7 +157,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": false,
@@ -172,7 +174,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of backup sessions that are currently running",
       "fieldConfig": {
         "defaults": {
@@ -221,7 +223,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": false,
@@ -236,7 +238,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of backup sessions that have been skipped",
       "fieldConfig": {
         "defaults": {
@@ -285,7 +287,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": false,
@@ -300,7 +302,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of backups that have failed",
       "fieldConfig": {
         "defaults": {
@@ -349,7 +351,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": false,
@@ -364,7 +366,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Total size of the backed up data",
       "fieldConfig": {
         "defaults": {
@@ -410,7 +412,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": false,
@@ -427,7 +429,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "A list of backup targets",
       "fieldConfig": {
         "defaults": {
@@ -611,7 +613,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": false,
@@ -828,7 +830,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "CPU Usage by the backup pods",
       "fieldConfig": {
         "defaults": {
@@ -924,7 +926,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Memory usage by backup containers",
       "fieldConfig": {
         "defaults": {
@@ -1023,7 +1025,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "List of BackupSessions",
       "fieldConfig": {
         "defaults": {
@@ -1156,7 +1158,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": false,
@@ -1304,7 +1306,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "List of Repositories currently exist in the cluster",
       "fieldConfig": {
         "defaults": {
@@ -1462,7 +1464,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": false,
@@ -1599,7 +1601,7 @@
       "type": "table"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Graph showing how repository size grows over time",
       "fieldConfig": {
         "defaults": {
@@ -1607,6 +1609,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
@@ -1698,7 +1701,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of total restore done within the time-frame",
       "fieldConfig": {
         "defaults": {
@@ -1747,7 +1750,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": false,
@@ -1762,7 +1765,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Total number of successful restores",
       "fieldConfig": {
         "defaults": {
@@ -1811,7 +1814,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": false,
@@ -1826,7 +1829,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of restore sessions that are currently running",
       "fieldConfig": {
         "defaults": {
@@ -1875,7 +1878,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": false,
@@ -1890,7 +1893,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of restore sessions that are currently pending to run",
       "fieldConfig": {
         "defaults": {
@@ -1939,7 +1942,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": false,
@@ -1954,7 +1957,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of restore sessions that have failed",
       "fieldConfig": {
         "defaults": {
@@ -2003,7 +2006,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": false,
@@ -2018,7 +2021,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "List of current RestoreSession in the cluster",
       "fieldConfig": {
         "defaults": {
@@ -2155,7 +2158,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "8.1.5",
+      "pluginVersion": "8.2.3",
       "targets": [
         {
           "exemplar": false,
@@ -2304,7 +2307,7 @@
       "type": "table"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "CPU Usage by the  restore pods",
       "fieldConfig": {
         "defaults": {
@@ -2401,7 +2404,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Memory usage by  restore containers",
       "fieldConfig": {
         "defaults": {
@@ -2514,7 +2517,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2597,7 +2600,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Memory Usage of Stash Operator",
       "fieldConfig": {
         "defaults": {
@@ -2688,11 +2691,32 @@
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 30,
+  "schemaVersion": 31,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Prometheus",
+          "value": "Prometheus"
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Data Source",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
       {
         "allValue": ".+",
         "current": {
@@ -2700,7 +2724,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(stash_backupconfiguration_info,namespace)",
         "description": "List of namespaces where the backups are running",
         "error": null,
@@ -2727,7 +2751,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(stash_backupconfiguration_info{namespace=~\"${namespace}\"},target_kind)",
         "description": "Kind of the targeted application",
         "error": null,
@@ -2754,7 +2778,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(stash_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\"},target_name)",
         "description": "Name of the targeted application",
         "error": null,
@@ -2778,10 +2802,10 @@
         "allValue": "",
         "current": {
           "selected": false,
-          "text": "BackupConfiguration",
-          "value": "BackupConfiguration"
+          "text": "All",
+          "value": "$__all"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(stash_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_kind)",
         "description": "Kind of the backup invoker object",
         "error": null,
@@ -2808,7 +2832,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(stash_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_name)",
         "description": "Name of the respective backup invoker object",
         "error": null,
@@ -2835,7 +2859,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(stash_restoresession_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_kind)",
         "description": "Kind of the restore invoker object",
         "error": null,
@@ -2862,7 +2886,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(stash_restoresession_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"},invoker_name)",
         "description": "Name of the respective restore invoker object",
         "error": null,
@@ -2892,5 +2916,5 @@
   "timezone": "",
   "title": "Stash Enterprise Dashboard",
   "uid": "NHbytwI7z",
-  "version": 3
+  "version": 6
 }
