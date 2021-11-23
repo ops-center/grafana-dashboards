@@ -22,8 +22,8 @@
   "editable": true,
   "gnetId": 13106,
   "graphTooltip": 0,
-  "id": 30,
-  "iteration": 1637585761197,
+  "id": 29,
+  "iteration": 1637653915978,
   "links": [],
   "panels": [
     {
@@ -151,9 +151,9 @@
           "options": {
             "include": {
               "names": [
-                  "instance",
-                  "Value",
-                  "pod"
+                "instance",
+                "Value",
+                "pod"
               ]
             }
           }
@@ -255,8 +255,8 @@
           "options": {
             "include": {
               "names": [
-                  "Value",
-                  "pod"
+                "Value",
+                "pod"
               ]
             }
           }
@@ -314,7 +314,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (service) (rate(mysql_global_status_queries{namespace=~\"$namespace\",service=~\"$mysql\"}[1m]))",
+          "expr": "sum by (service) (rate(mysql_global_status_queries{namespace=~\"$namespace\",service=~\"$mysql\"}[5m]))",
           "interval": "",
           "legendFormat": "{{service}}",
           "refId": "A"
@@ -520,6 +520,7 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
+          "$$hashKey": "object:3529",
           "alias": "write",
           "transform": "negative-Y"
         }
@@ -1124,8 +1125,8 @@
   "schemaVersion": 27,
   "style": "dark",
   "tags": [
-      "mysql",
-      "database"
+    "mysql",
+    "database"
   ],
   "templating": {
     "list": [
@@ -1214,14 +1215,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "tags": [],
-          "text": [
-              "demo-mysql-stats"
-          ],
-          "value": [
-              "demo-mysql-stats"
-          ]
+          "selected": false,
+          "text": "sample-mariadb-stats",
+          "value": "sample-mariadb-stats"
         },
         "datasource": null,
         "definition": "label_values(mysql_up{namespace=~\"$namespace\"}, service)",
@@ -1257,5 +1253,5 @@
   "timezone": "",
   "title": "KubeDB / MySQL / Database",
   "uid": "ohrahgv7z",
-  "version": 5
+  "version": 1
 }

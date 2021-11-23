@@ -15,8 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 40,
-  "iteration": 1635240069086,
+  "id": 28,
+  "iteration": 1637649345901,
   "links": [],
   "panels": [
     {
@@ -106,7 +106,7 @@
               },
               {
                 "color": "green",
-                "value": 80
+                "value": 90
               }
             ]
           },
@@ -728,7 +728,7 @@
           "exemplar": true,
           "expr": "mysql_global_status_max_used_connections{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "Max Used Connects",
+          "legendFormat": "Max Used Connects - {{pod}}",
           "refId": "A"
         },
         {
@@ -736,7 +736,7 @@
           "expr": "mysql_global_variables_max_connections{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "Max Connects",
+          "legendFormat": "Max Connects - {{pod}}",
           "refId": "B"
         }
       ],
@@ -760,6 +760,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:402",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -768,6 +769,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:403",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -829,17 +831,17 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rate(mysql_global_status_aborted_connects{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "expr": "mysql_global_status_aborted_connects{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "Aborted Connects",
+          "legendFormat": "Aborted Connects - {{pod}}",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "rate(mysql_global_status_aborted_clients{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "expr": "mysql_global_status_aborted_clients{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "Aborted Clients",
+          "legendFormat": "Aborted Clients - {{pod}}",
           "refId": "B"
         }
       ],
@@ -863,14 +865,16 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:237",
           "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:238",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -950,7 +954,7 @@
           "exemplar": true,
           "expr": "mysql_global_status_threads_connected{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "Threads Connected",
+          "legendFormat": "Threads Connected - {{pod}}",
           "refId": "A"
         },
         {
@@ -958,7 +962,7 @@
           "expr": "mysql_global_status_threads_running{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "Threads Running",
+          "legendFormat": "Threads Running - {{pod}}",
           "refId": "B"
         }
       ],
@@ -982,6 +986,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:290",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -990,6 +995,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:291",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1054,7 +1060,7 @@
           "exemplar": true,
           "expr": "mysql_global_variables_thread_cache_size{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "Thread Cache Size",
+          "legendFormat": "Thread Cache Size - {{pod}}",
           "refId": "A"
         },
         {
@@ -1062,15 +1068,15 @@
           "expr": "mysql_global_status_threads_cached{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "Threads Cached",
+          "legendFormat": "Threads Cached - {{pod}} ",
           "refId": "B"
         },
         {
           "exemplar": true,
-          "expr": "rate(mysql_global_status_threads_created{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "expr": "mysql_global_status_threads_created{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "Threads Created",
+          "legendFormat": "Threads Created - {{pod}}",
           "refId": "C"
         }
       ],
@@ -1094,6 +1100,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:659",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1102,6 +1109,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:660",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1180,7 +1188,7 @@
           "exemplar": true,
           "expr": "rate(mysql_global_status_created_tmp_tables{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "interval": "",
-          "legendFormat": "Created Tmp Tables",
+          "legendFormat": "Created Tmp Tables - {{pod}}",
           "refId": "A"
         },
         {
@@ -1188,7 +1196,7 @@
           "expr": "rate(mysql_global_status_created_tmp_disk_tables{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "Created Tmp Disk Tables",
+          "legendFormat": "Created Tmp Disk Tables - {{pod}}",
           "refId": "B"
         },
         {
@@ -1196,7 +1204,7 @@
           "expr": "mysql_global_status_created_tmp_files{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "Created Tmp Files",
+          "legendFormat": "Created Tmp Files - {{pod}}",
           "refId": "C"
         }
       ],
@@ -1220,6 +1228,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:763",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1228,6 +1237,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:764",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1290,9 +1300,9 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rate(mysql_global_status_slow_queries{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "expr": "mysql_global_status_slow_queries{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "Slow Queries",
+          "legendFormat": "Slow Queries - {{pod}}",
           "refId": "A"
         }
       ],
@@ -1316,14 +1326,16 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:816",
           "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:817",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1404,7 +1416,7 @@
           "exemplar": true,
           "expr": "rate(mysql_global_status_select_full_join{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "interval": "",
-          "legendFormat": "Select Full Join",
+          "legendFormat": "Select Full Join - {{pod}}",
           "refId": "A"
         },
         {
@@ -1412,7 +1424,7 @@
           "expr": "rate(mysql_global_status_select_scan{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "Select Scan",
+          "legendFormat": "Select Scan - {{pod}}",
           "refId": "E"
         }
       ],
@@ -1436,6 +1448,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:873",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1444,6 +1457,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:874",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1508,7 +1522,7 @@
           "exemplar": true,
           "expr": "rate(mysql_global_status_sort_rows{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "interval": "",
-          "legendFormat": "Sort Rows",
+          "legendFormat": "Sort Rows - {{pod}}",
           "refId": "A"
         },
         {
@@ -1516,7 +1530,7 @@
           "expr": "rate(mysql_global_status_sort_range{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "Sort Range",
+          "legendFormat": "Sort Range - {{pod}}",
           "refId": "B"
         },
         {
@@ -1524,7 +1538,7 @@
           "expr": "rate(mysql_global_status_sort_merge_passes{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "Sort Merge Passes",
+          "legendFormat": "Sort Merge Passes - {{pod}}",
           "refId": "C"
         },
         {
@@ -1532,7 +1546,7 @@
           "expr": "rate(mysql_global_status_sort_scan{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "Sort Scan",
+          "legendFormat": "Sort Scan - {{pod}}",
           "refId": "D"
         }
       ],
@@ -1556,6 +1570,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:1134",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1564,6 +1579,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:1135",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1641,7 +1657,7 @@
           "exemplar": true,
           "expr": "rate(mysql_global_status_table_locks_immediate{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "interval": "",
-          "legendFormat": "Table Locks Immediate",
+          "legendFormat": "Table Locks Immediate - {{pod}}",
           "refId": "A"
         },
         {
@@ -1649,7 +1665,7 @@
           "expr": "rate(mysql_global_status_table_locks_waited{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "Table Locks Waited",
+          "legendFormat": "Table Locks Waited - {{pod}}",
           "refId": "B"
         }
       ],
@@ -1673,14 +1689,16 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:1493",
           "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:1494",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1744,7 +1762,7 @@
           "exemplar": true,
           "expr": "rate(mysql_global_status_questions{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "interval": "",
-          "legendFormat": "Questions",
+          "legendFormat": "Questions - {{pod}}",
           "refId": "A"
         }
       ],
@@ -1768,6 +1786,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:1550",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1776,6 +1795,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:1551",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1870,7 +1890,7 @@
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "Inbound",
+          "legendFormat": "Inbound - {{pod}}",
           "metric": "",
           "refId": "A",
           "step": 20
@@ -1884,7 +1904,7 @@
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "Outbound",
+          "legendFormat": "Outbound - {{pod}}",
           "metric": "",
           "refId": "B",
           "step": 20
@@ -1911,6 +1931,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:1886",
           "decimals": 2,
           "format": "Bps",
           "logBase": 1,
@@ -1919,6 +1940,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:1887",
           "format": "none",
           "logBase": 1,
           "max": null,
@@ -1999,7 +2021,7 @@
           "instant": false,
           "interval": "1h",
           "intervalFactor": 1,
-          "legendFormat": "Received",
+          "legendFormat": "Received - {{pod}}",
           "metric": "",
           "refId": "A",
           "step": 20
@@ -2013,7 +2035,7 @@
           "format": "time_series",
           "interval": "1h",
           "intervalFactor": 1,
-          "legendFormat": "Sent",
+          "legendFormat": "Sent - {{pod}}",
           "metric": "",
           "refId": "B",
           "step": 20
@@ -2131,7 +2153,7 @@
           "expr": "mysql_global_variables_innodb_buffer_pool_size{namespace=\"$namespace\",service=\"$mysql\",pod=\"$pod\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "InnoDB Buffer Pool Size",
+          "legendFormat": "InnoDB Buffer Pool Size - {{pod}}",
           "refId": "A"
         },
         {
@@ -2139,7 +2161,7 @@
           "expr": "mysql_global_variables_innodb_log_buffer_size{namespace=\"$namespace\",service=\"$mysql\",pod=\"$pod\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "InnoDB Log Buffer Size",
+          "legendFormat": "InnoDB Log Buffer Size - {{pod}}",
           "refId": "B"
         },
         {
@@ -2147,7 +2169,7 @@
           "expr": "mysql_global_status_innodb_mem_dictionary{namespace=\"$namespace\",service=\"$mysql\",pod=\"$pod\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "InnoDB Dictionary Size",
+          "legendFormat": "InnoDB Dictionary Size - {{pod}}",
           "refId": "D"
         },
         {
@@ -2155,7 +2177,7 @@
           "expr": "mysql_global_variables_key_buffer_size{namespace=\"$namespace\",service=\"$mysql\",pod=\"$pod\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "Key Buffer Size",
+          "legendFormat": "Key Buffer Size - {{pod}}",
           "refId": "E"
         },
         {
@@ -2163,7 +2185,7 @@
           "expr": "mysql_global_variables_query_cache_size{namespace=\"$namespace\",service=\"$mysql\",pod=\"$pod\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "Query Cache Size",
+          "legendFormat": "Query Cache Size - {{pod}}",
           "refId": "F"
         },
         {
@@ -2171,7 +2193,7 @@
           "expr": "mysql_global_status_innodb_mem_adaptive_hash{namespace=\"$namespace\",service=\"$mysql\",pod=\"$pod\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "Adaptive Hash Index Size",
+          "legendFormat": "Adaptive Hash Index Size - {{pod}}",
           "refId": "G"
         }
       ],
@@ -2219,7 +2241,7 @@
       }
     },
     {
-      "collapsed": true,
+      "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
@@ -2228,331 +2250,330 @@
         "y": 82
       },
       "id": 46,
-      "panels": [
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Prometheus",
-          "fieldConfig": {
-            "defaults": {},
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 24,
-            "x": 0,
-            "y": 75
-          },
-          "hiddenSeries": false,
-          "id": 18,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": false,
-            "hideEmpty": false,
-            "hideZero": false,
-            "max": true,
-            "min": true,
-            "rightSide": true,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 2,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.5.5",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "exemplar": true,
-              "expr": "topk(5, rate(mysql_global_status_commands_total{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m]))",
-              "instant": false,
-              "interval": "",
-              "legendFormat": "Com_{{ command }}",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Top Command Counters",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:283",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:284",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": true,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": null,
-          "decimals": 2,
-          "description": "\n\nHere we can see how much network traffic is generated by MySQL. Outbound is network traffic sent from MySQL and Inbound is network traffic MySQL has received.",
-          "editable": true,
-          "error": false,
-          "fieldConfig": {
-            "defaults": {
-              "links": [],
-              "unit": "none"
-            },
-            "overrides": []
-          },
-          "fill": 6,
-          "fillGradient": 0,
-          "grid": {},
-          "gridPos": {
-            "h": 10,
-            "w": 24,
-            "x": 0,
-            "y": 83
-          },
-          "hiddenSeries": false,
-          "id": 51,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": false,
-            "max": true,
-            "min": true,
-            "rightSide": true,
-            "show": true,
-            "sort": "avg",
-            "sortDesc": true,
-            "total": false,
-            "values": true
-          },
-          "lines": false,
-          "linewidth": 2,
-          "links": [],
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "paceLength": 10,
-          "percentage": false,
-          "pluginVersion": "7.5.5",
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": true,
-          "steppedLine": false,
-          "targets": [
-            {
-              "calculatedInterval": "2m",
-              "datasourceErrors": {},
-              "errors": {},
-              "exemplar": true,
-              "expr": "topk(5, avg by (service_name,command) (increase(mysql_global_status_commands_total{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[1h])>0))",
-              "format": "time_series",
-              "instant": false,
-              "interval": "1h",
-              "intervalFactor": 1,
-              "legendFormat": "Com_{{ command }}",
-              "metric": "",
-              "refId": "A",
-              "step": 20
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": "24h",
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Top Command Counter Hourly",
-          "tooltip": {
-            "msResolution": false,
-            "shared": true,
-            "sort": 5,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:1513",
-              "decimals": 2,
-              "format": "none",
-              "logBase": 1,
-              "max": null,
-              "min": 0,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:1514",
-              "format": "none",
-              "logBase": 1,
-              "max": null,
-              "min": 0,
-              "show": false
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "Prometheus",
-          "description": "",
-          "fieldConfig": {
-            "defaults": {},
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 24,
-            "x": 0,
-            "y": 93
-          },
-          "hiddenSeries": false,
-          "id": 32,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": false,
-            "hideEmpty": false,
-            "hideZero": false,
-            "max": true,
-            "min": true,
-            "rightSide": true,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 2,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.5.5",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "exemplar": true,
-              "expr": "rate(mysql_global_status_handlers_total{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])>0",
-              "instant": false,
-              "interval": "",
-              "legendFormat": "{{ handler }}",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "MySQL Handlers",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "$$hashKey": "object:283",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "$$hashKey": "object:284",
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        }
-      ],
+      "panels": [],
       "title": "Command, Handlers",
       "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 83
+      },
+      "hiddenSeries": false,
+      "id": 18,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "topk(5, rate(mysql_global_status_commands_total{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m]))",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Com_{{ command }} - {{pod}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Top Command Counters",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:283",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:284",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "decimals": 2,
+      "description": "\n\nHere we can see how much network traffic is generated by MySQL. Outbound is network traffic sent from MySQL and Inbound is network traffic MySQL has received.",
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "links": [],
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "fill": 6,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 91
+      },
+      "hiddenSeries": false,
+      "id": 51,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "sort": "avg",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": false,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "paceLength": 10,
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "calculatedInterval": "2m",
+          "datasourceErrors": {},
+          "errors": {},
+          "exemplar": true,
+          "expr": "topk(5, avg by (pod,command) (increase(mysql_global_status_commands_total{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[1h])>0))",
+          "format": "time_series",
+          "instant": false,
+          "interval": "1h",
+          "intervalFactor": 1,
+          "legendFormat": "Com_{{ command }} - {{pod}}",
+          "metric": "",
+          "refId": "A",
+          "step": 20
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": "24h",
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Top Command Counter Hourly",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 5,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1513",
+          "decimals": 2,
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1514",
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 101
+      },
+      "hiddenSeries": false,
+      "id": 32,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_handlers_total{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])>0",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{ handler }} - {{pod}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MySQL Handlers",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:283",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:284",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "collapsed": false,
@@ -2561,7 +2582,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 83
+        "y": 109
       },
       "id": 53,
       "panels": [],
@@ -2587,7 +2608,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 84
+        "y": 110
       },
       "hiddenSeries": false,
       "id": 54,
@@ -2621,7 +2642,7 @@
           "exemplar": true,
           "expr": "rate(mysql_global_status_qcache_free_memory{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "interval": "",
-          "legendFormat": "Query Cache Size",
+          "legendFormat": "Query Cache Size - {{pod}}",
           "refId": "A"
         }
       ],
@@ -2645,14 +2666,16 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:2422",
           "format": "bytes",
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:2423",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2685,7 +2708,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 84
+        "y": 110
       },
       "hiddenSeries": false,
       "id": 55,
@@ -2719,7 +2742,7 @@
           "exemplar": true,
           "expr": "rate(mysql_global_status_qcache_hits{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "interval": "",
-          "legendFormat": "Hits",
+          "legendFormat": "Hits - {{pod}}",
           "refId": "A"
         },
         {
@@ -2727,7 +2750,7 @@
           "expr": "rate(mysql_global_status_qcache_inserts{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "Inserts",
+          "legendFormat": "Inserts - {{pod}}",
           "refId": "B"
         },
         {
@@ -2735,7 +2758,7 @@
           "expr": "rate(mysql_global_status_qcache_not_cached{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "Not Cached",
+          "legendFormat": "Not Cached - {{pod}}",
           "refId": "C"
         },
         {
@@ -2743,7 +2766,7 @@
           "expr": "rate(mysql_global_status_qcache_lowmem_prunes{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "Prunes",
+          "legendFormat": "Prunes - {{pod}}",
           "refId": "D"
         },
         {
@@ -2751,7 +2774,7 @@
           "expr": "rate(mysql_global_status_qcache_queries_in_cache{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "Queries in Cache",
+          "legendFormat": "Queries in Cache - {{pod}}",
           "refId": "E"
         }
       ],
@@ -2775,14 +2798,16 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:2475",
           "format": "none",
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
+          "$$hashKey": "object:2476",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2803,7 +2828,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 91
+        "y": 117
       },
       "id": 38,
       "panels": [],
@@ -2827,7 +2852,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 92
+        "y": 118
       },
       "hiddenSeries": false,
       "id": 34,
@@ -2859,9 +2884,9 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rate(mysql_global_status_opened_files{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "expr": "mysql_global_status_opened_files{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "Openings",
+          "legendFormat": "Openings - {{pod}}",
           "refId": "A"
         }
       ],
@@ -2885,6 +2910,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:2585",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2893,6 +2919,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:2586",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2923,7 +2950,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 92
+        "y": 118
       },
       "hiddenSeries": false,
       "id": 36,
@@ -2957,21 +2984,21 @@
           "exemplar": true,
           "expr": "mysql_global_status_open_files{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "Open Files ",
+          "legendFormat": "Open Files - {{pod}}",
           "refId": "A"
         },
         {
           "exemplar": true,
           "expr": "mysql_global_variables_open_files_limit{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "Open Files Limit",
+          "legendFormat": "Open Files Limit - {{pod}}",
           "refId": "B"
         },
         {
           "exemplar": true,
           "expr": "mysql_global_status_innodb_num_open_files{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "InnoDB Open Files",
+          "legendFormat": "InnoDB Open Files - {{pod}}",
           "refId": "C"
         }
       ],
@@ -2995,6 +3022,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:2640",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3003,6 +3031,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:2641",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3023,7 +3052,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 99
+        "y": 125
       },
       "id": 41,
       "panels": [],
@@ -3047,7 +3076,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 100
+        "y": 126
       },
       "hiddenSeries": false,
       "id": 39,
@@ -3081,7 +3110,7 @@
           "exemplar": true,
           "expr": "rate(mysql_global_status_opened_tables{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "interval": "",
-          "legendFormat": "Openings",
+          "legendFormat": "Openings - {{pod}}",
           "refId": "A"
         },
         {
@@ -3089,7 +3118,7 @@
           "expr": "rate(mysql_global_status_table_open_cache_hits{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "Hits",
+          "legendFormat": "Hits - {{pod}}",
           "refId": "B"
         },
         {
@@ -3097,7 +3126,7 @@
           "expr": "rate(mysql_global_status_table_open_cache_misses{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "Misses",
+          "legendFormat": "Misses - {{pod}}",
           "refId": "C"
         },
         {
@@ -3105,7 +3134,7 @@
           "expr": "rate(mysql_global_status_table_open_cache_overflows{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "Misses due to Overflows",
+          "legendFormat": "Misses due to Overflows - {{pod}}",
           "refId": "D"
         },
         {
@@ -3113,7 +3142,7 @@
           "expr": "rate(mysql_global_status_table_open_cache_hits{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "Table Open Cache Hit Ratio",
+          "legendFormat": "Table Open Cache Hit Ratio - {{pod}}",
           "refId": "E"
         }
       ],
@@ -3137,6 +3166,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:2748",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3145,6 +3175,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:2749",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3175,7 +3206,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 100
+        "y": 126
       },
       "hiddenSeries": false,
       "id": 42,
@@ -3209,14 +3240,14 @@
           "exemplar": true,
           "expr": "mysql_global_status_open_tables{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "Open Tables",
+          "legendFormat": "Open Tables - {{pod}}",
           "refId": "A"
         },
         {
           "exemplar": true,
           "expr": "mysql_global_variables_table_open_cache{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "Table Open Cache",
+          "legendFormat": "Table Open Cache - {{pod}}",
           "refId": "B"
         }
       ],
@@ -3240,6 +3271,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:2909",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3248,6 +3280,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:2910",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3278,7 +3311,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 107
+        "y": 133
       },
       "hiddenSeries": false,
       "id": 43,
@@ -3312,14 +3345,14 @@
           "exemplar": true,
           "expr": "mysql_global_status_open_table_definitions{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "Open Table Definitions",
+          "legendFormat": "Open Table Definitions - {{pod}}",
           "refId": "A"
         },
         {
           "exemplar": true,
           "expr": "mysql_global_variables_table_definition_cache{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "Table Definitions Cache Size",
+          "legendFormat": "Table Definitions Cache Size - {{pod}}",
           "refId": "B"
         },
         {
@@ -3327,7 +3360,7 @@
           "expr": "mysql_global_status_opened_table_definitions{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "Opened Table Definitions",
+          "legendFormat": "Opened Table Definitions - {{pod}}",
           "refId": "C"
         }
       ],
@@ -3351,6 +3384,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:2964",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3359,6 +3393,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:2965",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3500,12 +3535,12 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "KubeDB / MySQL / Pod",
   "uid": "FktZiiOnz",
-  "version": 4
+  "version": 6
 }
