@@ -8,21 +8,15 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
-        "target": {
-          "limit": 100,
-          "matchAny": false,
-          "tags": [],
-          "type": "dashboard"
-        },
         "type": "dashboard"
       }
     ]
   },
-  "editable": false,
+  "editable": true,
   "gnetId": null,
-  "graphTooltip": 1,
-  "id": 33,
-  "iteration": 1633414257560,
+  "graphTooltip": 0,
+  "id": 28,
+  "iteration": 1637649345901,
   "links": [],
   "panels": [
     {
@@ -34,356 +28,383 @@
         "x": 0,
         "y": 0
       },
-      "id": 90,
+      "id": 2,
       "panels": [],
-      "title": "Node",
+      "title": "MySQL Pod Summary",
       "type": "row"
     },
     {
-      "cacheTimeout": null,
       "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
-          "mappings": [
-            {
-              "from": "",
-              "id": 1,
-              "text": "Green",
-              "to": "",
-              "type": 1,
-              "value": "1"
-            },
-            {
-              "from": "",
-              "id": 2,
-              "text": "Yellow",
-              "to": "",
-              "type": 1,
-              "value": "2"
-            },
-            {
-              "from": "",
-              "id": 3,
-              "text": "Red",
-              "to": "",
-              "type": 1,
-              "value": "3"
-            }
-          ],
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "#299c46",
+                "color": "semi-dark-blue",
                 "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 2
-              },
-              {
-                "color": "#d44a3a",
-                "value": 3
               }
             ]
           },
-          "unit": "none"
+          "unit": "short"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 3,
-        "w": 24,
+        "w": 5,
         "x": 0,
         "y": 1
       },
-      "id": 92,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
+      "id": 4,
       "options": {
-        "colorMode": "background",
+        "colorMode": "value",
         "graphMode": "none",
         "justifyMode": "auto",
-        "orientation": "horizontal",
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
           ],
-          "fields": "/^Value$/",
+          "fields": "",
           "values": false
         },
         "text": {},
-        "textMode": "auto"
+        "textMode": "name"
       },
       "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "scalar(avg(elasticsearch_cluster_health_status{color=\"green\",namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"})) + scalar(avg(elasticsearch_cluster_health_status{color=\"yellow\",namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"})) * 2 + scalar(avg(elasticsearch_cluster_health_status{color=\"red\",namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"})) * 3",
-          "format": "time_series",
-          "instant": true,
+          "expr": "mysql_up{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
+          "legendFormat": "{{pod}} ",
           "refId": "A"
         }
       ],
-      "title": "Node Status",
+      "title": "Pod Name",
       "type": "stat"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "cacheTimeout": null,
-      "dashLength": 10,
-      "dashes": false,
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "unit": "none"
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "short"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byType",
+              "options": "number"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "s"
+              }
+            ]
+          }
+        ]
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
-        "h": 6,
-        "w": 12,
-        "x": 0,
-        "y": 4
+        "h": 3,
+        "w": 4,
+        "x": 5,
+        "y": 1
       },
-      "hiddenSeries": false,
-      "id": 98,
-      "interval": null,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "maxDataPoints": 100,
-      "nullPointMode": "null",
+      "id": 5,
       "options": {
-        "alertThreshold": true
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value"
       },
-      "percentage": false,
       "pluginVersion": "7.5.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
       "targets": [
         {
           "exemplar": true,
-          "expr": "elasticsearch_process_open_files_count{namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"}",
+          "expr": "mysql_global_status_uptime{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "format": "time_series",
+          "instant": false,
           "interval": "",
-          "intervalFactor": 1,
           "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Open Files Count",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:568",
-          "format": "none",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:569",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "title": "MySQL Uptime",
+      "type": "stat"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "cacheTimeout": null,
-      "dashLength": 10,
-      "dashes": false,
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "unit": "none"
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-orange",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
         },
         "overrides": []
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
-        "h": 6,
-        "w": 12,
-        "x": 12,
-        "y": 4
+        "h": 3,
+        "w": 6,
+        "x": 9,
+        "y": 1
       },
-      "hiddenSeries": false,
-      "id": 96,
-      "interval": null,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "maxDataPoints": 100,
-      "nullPointMode": "null",
+      "id": 6,
       "options": {
-        "alertThreshold": true
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
       },
-      "percentage": false,
       "pluginVersion": "7.5.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
       "targets": [
         {
           "exemplar": true,
-          "expr": "elasticsearch_cluster_health_number_of_pending_tasks{namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"}",
-          "format": "time_series",
+          "expr": "mysql_version_info{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "interval": "",
-          "intervalFactor": 1,
+          "legendFormat": "{{version}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Version",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 15,
+        "y": 1
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value"
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_queries{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
-      "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
-      "title": "Pending Tasks",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:392",
-          "format": "none",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:393",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "title": "Current QPS",
+      "type": "stat"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "cacheTimeout": null,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${datasource}",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-red",
+                "value": null
+              },
+              {
+                "color": "light-blue",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byType",
+              "options": "number"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "bits"
+              }
+            ]
+          }
+        ]
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
-        "h": 6,
-        "w": 12,
-        "x": 0,
-        "y": 10
+        "h": 3,
+        "w": 4,
+        "x": 20,
+        "y": 1
       },
-      "hiddenSeries": false,
       "id": 8,
-      "interval": null,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value"
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "mysql_global_variables_innodb_buffer_pool_size{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{pod}}",
+          "refId": "A"
+        }
+      ],
+      "title": "InnoDB Buffer Pool Size",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 4
+      },
+      "id": 57,
+      "panels": [],
+      "title": "Pod CPU, Memory and File Descriptor Stats",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "fill": 5,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 5
+      },
+      "hiddenSeries": false,
+      "id": 61,
       "legend": {
         "alignAsTable": true,
-        "avg": false,
-        "current": true,
+        "avg": true,
+        "current": false,
         "max": true,
         "min": true,
-        "rightSide": true,
         "show": true,
         "total": false,
         "values": true
       },
       "lines": true,
       "linewidth": 1,
-      "links": [],
-      "maxDataPoints": 100,
       "nullPointMode": "null",
       "options": {
         "alertThreshold": true
@@ -400,21 +421,17 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "elasticsearch_cluster_health_number_of_nodes{namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"}",
-          "format": "time_series",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", container!=\"\", image!=\"\"}[5m])) by (pod)",
           "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "{{ pod }}",
-          "metric": "elasticsearch_cluster_health_number_of_nodes",
-          "refId": "A",
-          "step": 1800
+          "legendFormat": "{{container}}",
+          "refId": "A"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Connected Nodes",
+      "title": "CPU Usage",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -430,8 +447,7 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:83",
-          "format": "short",
+          "format": "none",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -439,7 +455,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:84",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -456,42 +471,37 @@
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "unit": "none"
+          "unit": "bytes"
         },
         "overrides": []
       },
-      "fill": 1,
+      "fill": 5,
       "fillGradient": 0,
       "gridPos": {
-        "h": 6,
-        "w": 12,
-        "x": 12,
-        "y": 10
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 5
       },
       "hiddenSeries": false,
-      "id": 94,
-      "interval": null,
+      "id": 59,
       "legend": {
         "alignAsTable": true,
-        "avg": false,
-        "current": true,
+        "avg": true,
+        "current": false,
         "max": true,
         "min": true,
-        "rightSide": true,
         "show": true,
         "total": false,
         "values": true
       },
       "lines": true,
       "linewidth": 1,
-      "links": [],
-      "maxDataPoints": 100,
       "nullPointMode": "null",
       "options": {
         "alertThreshold": true
@@ -508,10 +518,8 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "elasticsearch_cluster_health_number_of_data_nodes{namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"}",
-          "format": "time_series",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", container!=\"\", image!=\"\"}) by (pod)",
           "interval": "",
-          "intervalFactor": 1,
           "legendFormat": "{{pod}}",
           "refId": "A"
         }
@@ -520,7 +528,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Connected Active Data Nodes",
+      "title": "Memory Usage",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -536,7 +544,104 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:174",
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "Number of open file descriptors",
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "fill": 5,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 5
+      },
+      "hiddenSeries": false,
+      "id": 62,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(process_open_fds{pod=\"$pod\", namespace=\"$namespace\"}) by (pod)",
+          "interval": "",
+          "legendFormat": "{{pod}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Open File Descriptors",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
           "format": "none",
           "label": null,
           "logBase": 1,
@@ -545,7 +650,6 @@
           "show": true
         },
         {
-          "$$hashKey": "object:175",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -566,486 +670,223 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 16
+        "y": 12
       },
-      "id": 76,
+      "id": 10,
       "panels": [],
-      "title": "Shards",
+      "repeat": null,
+      "title": "Connections",
       "type": "row"
     },
     {
-      "cacheTimeout": null,
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "none"
-        },
+        "defaults": {},
         "overrides": []
       },
+      "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
-        "h": 3,
-        "w": 4,
+        "h": 7,
+        "w": 12,
         "x": 0,
-        "y": 17
+        "y": 13
       },
-      "id": 78,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
+      "hiddenSeries": false,
+      "id": 12,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
       "options": {
-        "colorMode": "none",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
+        "alertThreshold": true
       },
+      "percentage": false,
       "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
       "targets": [
         {
           "exemplar": true,
-          "expr": "max by (cluster) (elasticsearch_cluster_health_active_shards{namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"})",
-          "format": "time_series",
+          "expr": "mysql_global_status_max_used_connections{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
+          "legendFormat": "Max Used Connects - {{pod}}",
           "refId": "A"
-        }
-      ],
-      "title": "Active Shards",
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "none"
         },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 4,
-        "y": 17
-      },
-      "id": 80,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "none",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.5.5",
-      "targets": [
         {
           "exemplar": true,
-          "expr": "max by (cluster) (elasticsearch_cluster_health_active_primary_shards{namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"})",
-          "format": "time_series",
+          "expr": "mysql_global_variables_max_connections{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
+          "hide": false,
           "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
+          "legendFormat": "Max Connects - {{pod}}",
+          "refId": "B"
         }
       ],
-      "title": "Active Primary Shards",
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MySQL Connections",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
       },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 8,
-        "y": 17
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
       },
-      "id": 82,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "none",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.5.5",
-      "targets": [
+      "yaxes": [
         {
-          "exemplar": true,
-          "expr": "max by (cluster) (elasticsearch_cluster_health_initializing_shards{namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
+          "$$hashKey": "object:402",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:403",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
         }
       ],
-      "title": "Initializing Shards",
-      "type": "stat"
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
-      "cacheTimeout": null,
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
+        "defaults": {},
         "overrides": []
       },
+      "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
-        "h": 3,
-        "w": 4,
+        "h": 7,
+        "w": 12,
         "x": 12,
-        "y": 17
+        "y": 13
       },
-      "id": 84,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
+      "hiddenSeries": false,
+      "id": 16,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
       "options": {
-        "colorMode": "none",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
+        "alertThreshold": true
       },
+      "percentage": false,
       "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
       "targets": [
         {
           "exemplar": true,
-          "expr": "max by (cluster) (elasticsearch_cluster_health_relocating_shards{namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"})",
-          "format": "time_series",
+          "expr": "mysql_global_status_aborted_connects{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
+          "legendFormat": "Aborted Connects - {{pod}}",
           "refId": "A"
-        }
-      ],
-      "title": "Relocating Shards",
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
         },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 16,
-        "y": 17
-      },
-      "id": 86,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "none",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.5.5",
-      "targets": [
         {
           "exemplar": true,
-          "expr": "sum(max by (cluster) (elasticsearch_cluster_health_unassigned_shards{namespace=~\"$namespace\",cluster=~\"$elasticsearch\"}))",
-          "format": "time_series",
+          "expr": "mysql_global_status_aborted_clients{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
+          "hide": false,
           "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
+          "legendFormat": "Aborted Clients - {{pod}}",
+          "refId": "B"
         }
       ],
-      "title": "Unassigned Shards",
-      "type": "stat"
-    },
-    {
-      "cacheTimeout": null,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "#299c46",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)",
-                "value": 0.5
-              },
-              {
-                "color": "#d44a3a",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MySQL Aborted Connections",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
       },
-      "gridPos": {
-        "h": 3,
-        "w": 4,
-        "x": 20,
-        "y": 17
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
       },
-      "id": 88,
-      "interval": null,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "none",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "7.5.5",
-      "targets": [
+      "yaxes": [
         {
-          "exemplar": true,
-          "expr": "max by (cluster) (elasticsearch_cluster_health_delayed_unassigned_shards{namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"})",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
+          "$$hashKey": "object:237",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:238",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
         }
       ],
-      "title": "Delayed Unassigned Shards",
-      "type": "stat"
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     },
     {
       "collapsed": false,
@@ -1056,22 +897,20 @@
         "x": 0,
         "y": 20
       },
-      "id": 68,
+      "id": 15,
       "panels": [],
-      "title": "System",
+      "repeat": null,
+      "title": "Client Threads",
       "type": "row"
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${datasource}",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "unit": "bytes"
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -1083,23 +922,20 @@
         "y": 21
       },
       "hiddenSeries": false,
-      "id": 12,
-      "interval": null,
+      "id": 13,
       "legend": {
         "alignAsTable": true,
         "avg": true,
-        "current": true,
+        "current": false,
         "max": true,
         "min": true,
-        "rightSide": true,
+        "rightSide": false,
         "show": true,
         "total": false,
         "values": true
       },
       "lines": true,
       "linewidth": 1,
-      "links": [],
-      "maxDataPoints": 100,
       "nullPointMode": "null",
       "options": {
         "alertThreshold": true
@@ -1116,21 +952,25 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "elasticsearch_os_mem_used_bytes{namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"}",
-          "format": "time_series",
+          "expr": "mysql_global_status_threads_connected{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "{{name}}",
-          "metric": "",
-          "refId": "A",
-          "step": 1800
+          "legendFormat": "Threads Connected - {{pod}}",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "mysql_global_status_threads_running{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Threads Running - {{pod}}",
+          "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Memory Used",
+      "title": "MySQL Client Thread Activity",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1146,8 +986,8 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:1032",
-          "format": "bytes",
+          "$$hashKey": "object:290",
+          "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -1155,7 +995,7 @@
           "show": true
         },
         {
-          "$$hashKey": "object:1033",
+          "$$hashKey": "object:291",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1172,14 +1012,11 @@
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${datasource}",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "unit": "bytes"
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -1191,23 +1028,20 @@
         "y": 21
       },
       "hiddenSeries": false,
-      "id": 97,
-      "interval": null,
+      "id": 17,
       "legend": {
         "alignAsTable": true,
         "avg": true,
-        "current": true,
+        "current": false,
         "max": true,
         "min": true,
-        "rightSide": true,
+        "rightSide": false,
         "show": true,
         "total": false,
         "values": true
       },
       "lines": true,
       "linewidth": 1,
-      "links": [],
-      "maxDataPoints": 100,
       "nullPointMode": "null",
       "options": {
         "alertThreshold": true
@@ -1224,21 +1058,33 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "elasticsearch_os_mem_free_bytes{namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"}",
-          "format": "time_series",
+          "expr": "mysql_global_variables_thread_cache_size{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
           "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "{{name}}",
-          "metric": "",
-          "refId": "A",
-          "step": 1800
+          "legendFormat": "Thread Cache Size - {{pod}}",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "mysql_global_status_threads_cached{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Threads Cached - {{pod}} ",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "mysql_global_status_threads_created{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Threads Created - {{pod}}",
+          "refId": "C"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Memory Free",
+      "title": "MySQL Thread Cache",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1254,8 +1100,8 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:1032",
-          "format": "bytes",
+          "$$hashKey": "object:659",
+          "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -1263,7 +1109,135 @@
           "show": true
         },
         {
-          "$$hashKey": "object:1033",
+          "$$hashKey": "object:660",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
+      "id": 19,
+      "panels": [],
+      "title": "Temporary Objects & Slow Queries",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 29
+      },
+      "hiddenSeries": false,
+      "id": 20,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_created_tmp_tables{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "interval": "",
+          "legendFormat": "Created Tmp Tables - {{pod}}",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_created_tmp_disk_tables{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Created Tmp Disk Tables - {{pod}}",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "mysql_global_status_created_tmp_files{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Created Tmp Files - {{pod}}",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MySQL Temporary Objects",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:763",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:764",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1282,7 +1256,119 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${datasource}",
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 29
+      },
+      "hiddenSeries": false,
+      "id": 25,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "mysql_global_status_slow_queries{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
+          "interval": "",
+          "legendFormat": "Slow Queries - {{pod}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MySQL Slow Queries",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:816",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:817",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 36
+      },
+      "id": 23,
+      "panels": [],
+      "title": "Select Types and Sorts",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
       "fieldConfig": {
         "defaults": {},
         "overrides": []
@@ -1293,28 +1379,498 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 28
+        "y": 37
       },
       "hiddenSeries": false,
-      "id": 57,
+      "id": 24,
       "legend": {
         "alignAsTable": true,
         "avg": true,
-        "current": true,
+        "current": false,
         "max": true,
         "min": true,
-        "rightSide": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "max",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_select_full_join{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "interval": "",
+          "legendFormat": "Select Full Join - {{pod}}",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_select_scan{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Select Scan - {{pod}}",
+          "refId": "E"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MySQL Select Types",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:873",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:874",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 37
+      },
+      "hiddenSeries": false,
+      "id": 21,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
         "show": true,
         "total": false,
         "values": true
       },
       "lines": true,
       "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_sort_rows{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "interval": "",
+          "legendFormat": "Sort Rows - {{pod}}",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_sort_range{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Sort Range - {{pod}}",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_sort_merge_passes{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Sort Merge Passes - {{pod}}",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_sort_scan{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Sort Scan - {{pod}}",
+          "refId": "D"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MySQL Sorts",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1134",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1135",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 44
+      },
+      "id": 27,
+      "panels": [],
+      "title": "Table Locks and Questions",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 45
+      },
+      "hiddenSeries": false,
+      "id": 28,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_table_locks_immediate{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "interval": "",
+          "legendFormat": "Table Locks Immediate - {{pod}}",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_table_locks_waited{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Table Locks Waited - {{pod}}",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MySQL Table Locks",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1493",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1494",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 45
+      },
+      "hiddenSeries": false,
+      "id": 29,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_questions{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "interval": "",
+          "legendFormat": "Questions - {{pod}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MySQL Questions",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1550",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1551",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 52
+      },
+      "id": 31,
+      "panels": [],
+      "title": "Network",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "decimals": 2,
+      "description": "\n\nHere we can see how much network traffic is generated by MySQL. Outbound is network traffic sent from MySQL and Inbound is network traffic MySQL has received.",
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 6,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 53
+      },
+      "hiddenSeries": false,
+      "id": 9,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "avg",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
       "links": [],
       "nullPointMode": "null",
       "options": {
         "alertThreshold": true
       },
+      "paceLength": 10,
       "percentage": false,
       "pluginVersion": "7.5.5",
       "pointradius": 5,
@@ -1322,43 +1878,330 @@
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": false,
+      "stack": true,
       "steppedLine": false,
       "targets": [
         {
-          "bucketAggs": [
-            {
-              "id": "2",
-              "settings": {
-                "interval": "auto"
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "dsType": "elasticsearch",
+          "calculatedInterval": "2m",
+          "datasourceErrors": {},
+          "errors": {},
           "exemplar": true,
-          "expr": "elasticsearch_os_cpu_percent{namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"}",
+          "expr": "rate(mysql_global_status_bytes_received{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "format": "time_series",
           "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "{{ name }}",
-          "metric": "elasticsearch_breakers_tripped",
-          "metrics": [
-            {
-              "id": "1",
-              "type": "count"
-            }
-          ],
+          "intervalFactor": 1,
+          "legendFormat": "Inbound - {{pod}}",
+          "metric": "",
           "refId": "A",
-          "step": 240,
-          "timeField": "failure_tstamp"
+          "step": 20
+        },
+        {
+          "calculatedInterval": "2m",
+          "datasourceErrors": {},
+          "errors": {},
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_bytes_sent{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Outbound - {{pod}}",
+          "metric": "",
+          "refId": "B",
+          "step": 20
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Avg. CPU Usage Rate",
+      "title": "MySQL Network Traffic",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 5,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1886",
+          "decimals": 2,
+          "format": "Bps",
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1887",
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "decimals": 2,
+      "description": "\n\nHere we can see how much network traffic is generated by MySQL. Outbound is network traffic sent from MySQL and Inbound is network traffic MySQL has received.",
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 6,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 63
+      },
+      "hiddenSeries": false,
+      "id": 44,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "avg",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": false,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "paceLength": 10,
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "calculatedInterval": "2m",
+          "datasourceErrors": {},
+          "errors": {},
+          "exemplar": true,
+          "expr": "increase(mysql_global_status_bytes_received{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[1h])",
+          "format": "time_series",
+          "instant": false,
+          "interval": "1h",
+          "intervalFactor": 1,
+          "legendFormat": "Received - {{pod}}",
+          "metric": "",
+          "refId": "A",
+          "step": 20
+        },
+        {
+          "calculatedInterval": "2m",
+          "datasourceErrors": {},
+          "errors": {},
+          "exemplar": true,
+          "expr": "increase(mysql_global_status_bytes_sent{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[1h])",
+          "format": "time_series",
+          "interval": "1h",
+          "intervalFactor": 1,
+          "legendFormat": "Sent - {{pod}}",
+          "metric": "",
+          "refId": "B",
+          "step": 20
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": "24h",
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MySQL Network Usage Hourly",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 5,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1513",
+          "decimals": 2,
+          "format": "bytes",
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1514",
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 73
+      },
+      "id": 48,
+      "panels": [],
+      "title": "Memory",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 74
+      },
+      "hiddenSeries": false,
+      "id": 50,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "mysql_global_variables_innodb_buffer_pool_size{namespace=\"$namespace\",service=\"$mysql\",pod=\"$pod\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "InnoDB Buffer Pool Size - {{pod}}",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "mysql_global_variables_innodb_log_buffer_size{namespace=\"$namespace\",service=\"$mysql\",pod=\"$pod\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "InnoDB Log Buffer Size - {{pod}}",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "mysql_global_status_innodb_mem_dictionary{namespace=\"$namespace\",service=\"$mysql\",pod=\"$pod\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "InnoDB Dictionary Size - {{pod}}",
+          "refId": "D"
+        },
+        {
+          "exemplar": false,
+          "expr": "mysql_global_variables_key_buffer_size{namespace=\"$namespace\",service=\"$mysql\",pod=\"$pod\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Key Buffer Size - {{pod}}",
+          "refId": "E"
+        },
+        {
+          "exemplar": true,
+          "expr": "mysql_global_variables_query_cache_size{namespace=\"$namespace\",service=\"$mysql\",pod=\"$pod\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Query Cache Size - {{pod}}",
+          "refId": "F"
+        },
+        {
+          "exemplar": true,
+          "expr": "mysql_global_status_innodb_mem_adaptive_hash{namespace=\"$namespace\",service=\"$mysql\",pod=\"$pod\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Adaptive Hash Index Size - {{pod}}",
+          "refId": "G"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MySQL Internal Memory Overview",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1374,16 +2217,16 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:1526",
-          "format": "short",
-          "label": "",
+          "$$hashKey": "object:237",
+          "format": "bytes",
+          "label": null,
           "logBase": 1,
           "max": null,
-          "min": "0",
+          "min": null,
           "show": true
         },
         {
-          "$$hashKey": "object:1527",
+          "$$hashKey": "object:238",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1398,32 +2241,45 @@
       }
     },
     {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 82
+      },
+      "id": 46,
+      "panels": [],
+      "title": "Command, Handlers",
+      "type": "row"
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${datasource}",
-      "editable": true,
-      "error": false,
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
       },
       "fill": 1,
       "fillGradient": 0,
-      "grid": {},
       "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 12,
-        "y": 28
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 83
       },
       "hiddenSeries": false,
-      "id": 28,
+      "id": 18,
       "legend": {
         "alignAsTable": true,
         "avg": true,
-        "current": true,
+        "current": false,
+        "hideEmpty": false,
+        "hideZero": false,
         "max": true,
         "min": true,
         "rightSide": true,
@@ -1433,14 +2289,13 @@
       },
       "lines": true,
       "linewidth": 2,
-      "links": [],
-      "nullPointMode": "connected",
+      "nullPointMode": "null",
       "options": {
         "alertThreshold": true
       },
       "percentage": false,
       "pluginVersion": "7.5.5",
-      "pointradius": 5,
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -1450,25 +2305,22 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg_over_time(elasticsearch_jvm_memory_used_bytes{area=\"heap\",namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"}[15m]) / elasticsearch_jvm_memory_max_bytes{area=\"heap\",namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"}",
-          "format": "time_series",
+          "expr": "topk(5, rate(mysql_global_status_commands_total{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m]))",
+          "instant": false,
           "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "{{ name }}",
-          "refId": "A",
-          "step": 240
+          "legendFormat": "Com_{{ command }} - {{pod}}",
+          "refId": "A"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Avg Heap in 15min",
+      "title": "Top Command Counters",
       "tooltip": {
-        "msResolution": true,
         "shared": true,
         "sort": 0,
-        "value_type": "cumulative"
+        "value_type": "individual"
       },
       "type": "graph",
       "xaxis": {
@@ -1480,21 +2332,139 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:1447",
-          "format": "percentunit",
-          "label": "",
-          "logBase": 1,
-          "max": 1,
-          "min": 0,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:1448",
+          "$$hashKey": "object:283",
           "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:284",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "decimals": 2,
+      "description": "\n\nHere we can see how much network traffic is generated by MySQL. Outbound is network traffic sent from MySQL and Inbound is network traffic MySQL has received.",
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "links": [],
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "fill": 6,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 91
+      },
+      "hiddenSeries": false,
+      "id": 51,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "sort": "avg",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": false,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "paceLength": 10,
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "calculatedInterval": "2m",
+          "datasourceErrors": {},
+          "errors": {},
+          "exemplar": true,
+          "expr": "topk(5, avg by (pod,command) (increase(mysql_global_status_commands_total{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[1h])>0))",
+          "format": "time_series",
+          "instant": false,
+          "interval": "1h",
+          "intervalFactor": 1,
+          "legendFormat": "Com_{{ command }} - {{pod}}",
+          "metric": "",
+          "refId": "A",
+          "step": 20
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": "24h",
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Top Command Counter Hourly",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 5,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1513",
+          "decimals": 2,
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": 0,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1514",
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": 0,
           "show": false
         }
       ],
@@ -1508,28 +2478,28 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${datasource}",
-      "editable": true,
-      "error": false,
+      "datasource": "Prometheus",
+      "description": "",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
       },
       "fill": 1,
       "fillGradient": 0,
-      "grid": {},
       "gridPos": {
-        "h": 7,
-        "w": 12,
+        "h": 8,
+        "w": 24,
         "x": 0,
-        "y": 35
+        "y": 101
       },
       "hiddenSeries": false,
-      "id": 5,
+      "id": 32,
       "legend": {
         "alignAsTable": true,
         "avg": true,
-        "current": true,
+        "current": false,
+        "hideEmpty": false,
+        "hideZero": false,
         "max": true,
         "min": true,
         "rightSide": true,
@@ -1539,14 +2509,13 @@
       },
       "lines": true,
       "linewidth": 2,
-      "links": [],
-      "nullPointMode": "connected",
+      "nullPointMode": "null",
       "options": {
         "alertThreshold": true
       },
       "percentage": false,
       "pluginVersion": "7.5.5",
-      "pointradius": 5,
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -1556,35 +2525,22 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rate(elasticsearch_transport_rx_packets_total{namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"}[5m])",
-          "format": "time_series",
+          "expr": "rate(mysql_global_status_handlers_total{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])>0",
+          "instant": false,
           "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "{{name}}-RX",
-          "refId": "A",
-          "step": 240
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(elasticsearch_transport_tx_packets_total{namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"}[5m]) * -1",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "{{name}}-TX",
-          "refId": "B",
-          "step": 240
+          "legendFormat": "{{ handler }} - {{pod}}",
+          "refId": "A"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "RX/TX Rate 5m",
+      "title": "MySQL Handlers",
       "tooltip": {
-        "msResolution": true,
         "shared": true,
         "sort": 0,
-        "value_type": "cumulative"
+        "value_type": "individual"
       },
       "type": "graph",
       "xaxis": {
@@ -1596,119 +2552,18 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:1686",
+          "$$hashKey": "object:283",
           "format": "short",
+          "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
           "show": true
         },
         {
-          "$$hashKey": "object:1687",
+          "$$hashKey": "object:284",
           "format": "short",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${datasource}",
-      "editable": true,
-      "error": false,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "grid": {},
-      "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 12,
-        "y": 35
-      },
-      "hiddenSeries": false,
-      "id": 65,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "links": [],
-      "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "irate(elasticsearch_jvm_gc_collection_seconds_sum{namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"}[1m])",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "{{ name }} {{ gc }}",
-          "refId": "A",
-          "step": 240
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "GC seconds",
-      "tooltip": {
-        "msResolution": true,
-        "shared": true,
-        "sort": 0,
-        "value_type": "cumulative"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:1769",
-          "format": "s",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:1770",
-          "format": "s",
+          "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
@@ -1727,11 +2582,11 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 42
+        "y": 109
       },
-      "id": 70,
+      "id": 53,
       "panels": [],
-      "title": "Documents",
+      "title": "Query Cache",
       "type": "row"
     },
     {
@@ -1739,218 +2594,12 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${datasource}",
-      "decimals": null,
-      "editable": true,
-      "error": false,
+      "datasource": "Prometheus",
+      "decimals": 2,
       "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "grid": {},
-      "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 0,
-        "y": 43
-      },
-      "hiddenSeries": false,
-      "id": 3,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "links": [],
-      "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "elasticsearch_indices_docs{namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"}",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "{{name}}",
-          "refId": "A",
-          "step": 240
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Documents indexed",
-      "tooltip": {
-        "msResolution": true,
-        "shared": true,
-        "sort": 0,
-        "value_type": "cumulative"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:249",
-          "format": "short",
-          "logBase": 1,
-          "max": null,
-          "min": 0,
-          "show": true
+        "defaults": {
+          "unit": "bytes"
         },
-        {
-          "$$hashKey": "object:250",
-          "format": "short",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${datasource}",
-      "editable": true,
-      "error": false,
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "grid": {},
-      "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 12,
-        "y": 43
-      },
-      "hiddenSeries": false,
-      "id": 4,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 2,
-      "links": [],
-      "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "elasticsearch_indices_store_size_bytes{namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"}",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "{{name}}",
-          "refId": "A",
-          "step": 240
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Index Size",
-      "tooltip": {
-        "msResolution": true,
-        "shared": true,
-        "sort": 0,
-        "value_type": "cumulative"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:461",
-          "format": "bytes",
-          "logBase": 1,
-          "max": null,
-          "min": 0,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:462",
-          "format": "short",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -1959,31 +2608,29 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 50
+        "y": 110
       },
       "hiddenSeries": false,
-      "id": 72,
+      "id": 54,
       "legend": {
         "alignAsTable": true,
         "avg": true,
-        "current": true,
+        "current": false,
         "max": true,
         "min": true,
-        "rightSide": true,
         "show": true,
         "total": false,
         "values": true
       },
       "lines": true,
       "linewidth": 1,
-      "links": [],
       "nullPointMode": "null",
       "options": {
         "alertThreshold": true
       },
       "percentage": false,
       "pluginVersion": "7.5.5",
-      "pointradius": 5,
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -1993,11 +2640,9 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rate(elasticsearch_indices_indexing_index_total{namespace=~\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"}[1h])",
-          "format": "time_series",
+          "expr": "rate(mysql_global_status_qcache_free_memory{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "{{name}}",
+          "legendFormat": "Query Cache Size - {{pod}}",
           "refId": "A"
         }
       ],
@@ -2005,7 +2650,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Documents Indexed Rate",
+      "title": "MySQL Query Cache Memory",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -2021,16 +2666,16 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:158",
-          "format": "short",
-          "label": "Documents/s",
+          "$$hashKey": "object:2422",
+          "format": "bytes",
+          "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
-          "$$hashKey": "object:159",
+          "$$hashKey": "object:2423",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2049,9 +2694,12 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "Prometheus",
+      "decimals": 2,
       "fieldConfig": {
-        "defaults": {},
+        "defaults": {
+          "unit": "none"
+        },
         "overrides": []
       },
       "fill": 1,
@@ -2060,31 +2708,29 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 50
+        "y": 110
       },
       "hiddenSeries": false,
-      "id": 74,
+      "id": 55,
       "legend": {
         "alignAsTable": true,
         "avg": true,
-        "current": true,
+        "current": false,
         "max": true,
         "min": true,
-        "rightSide": true,
         "show": true,
         "total": false,
         "values": true
       },
       "lines": true,
       "linewidth": 1,
-      "links": [],
       "nullPointMode": "null",
       "options": {
         "alertThreshold": true
       },
       "percentage": false,
       "pluginVersion": "7.5.5",
-      "pointradius": 5,
+      "pointradius": 2,
       "points": false,
       "renderer": "flot",
       "seriesOverrides": [],
@@ -2094,19 +2740,49 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rate(elasticsearch_indices_search_fetch_total{namespace=\"$namespace\",cluster=~\"$elasticsearch\",pod=~\"$pod\"}[1h])",
-          "format": "time_series",
+          "expr": "rate(mysql_global_status_qcache_hits{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
           "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "{{name}}",
+          "legendFormat": "Hits - {{pod}}",
           "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_qcache_inserts{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Inserts - {{pod}}",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_qcache_not_cached{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Not Cached - {{pod}}",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_qcache_lowmem_prunes{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Prunes - {{pod}}",
+          "refId": "D"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_qcache_queries_in_cache{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Queries in Cache - {{pod}}",
+          "refId": "E"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Query Rate",
+      "title": "MySQL Query Cache Activity",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -2122,16 +2798,602 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:706",
+          "$$hashKey": "object:2475",
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:2476",
           "format": "short",
-          "label": "Queris/s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 117
+      },
+      "id": 38,
+      "panels": [],
+      "title": "Files and Tables",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "decimals": 2,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 118
+      },
+      "hiddenSeries": false,
+      "id": 34,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "mysql_global_status_opened_files{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
+          "interval": "",
+          "legendFormat": "Openings - {{pod}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MySQL File Openings",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:2585",
+          "format": "short",
+          "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
           "show": true
         },
         {
-          "$$hashKey": "object:707",
+          "$$hashKey": "object:2586",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "decimals": 2,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 118
+      },
+      "hiddenSeries": false,
+      "id": 36,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "mysql_global_status_open_files{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
+          "interval": "",
+          "legendFormat": "Open Files - {{pod}}",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "mysql_global_variables_open_files_limit{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
+          "interval": "",
+          "legendFormat": "Open Files Limit - {{pod}}",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "mysql_global_status_innodb_num_open_files{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
+          "interval": "",
+          "legendFormat": "InnoDB Open Files - {{pod}}",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MySQL Open Files",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:2640",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:2641",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 125
+      },
+      "id": 41,
+      "panels": [],
+      "title": "MySQL Table Openings and Definition Cache",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "decimals": 2,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 126
+      },
+      "hiddenSeries": false,
+      "id": 39,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_opened_tables{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "interval": "",
+          "legendFormat": "Openings - {{pod}}",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_table_open_cache_hits{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Hits - {{pod}}",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_table_open_cache_misses{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Misses - {{pod}}",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_table_open_cache_overflows{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Misses due to Overflows - {{pod}}",
+          "refId": "D"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate(mysql_global_status_table_open_cache_hits{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}[5m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Table Open Cache Hit Ratio - {{pod}}",
+          "refId": "E"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MySQL Table Open Cache Status",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:2748",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:2749",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "decimals": 2,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 126
+      },
+      "hiddenSeries": false,
+      "id": 42,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "mysql_global_status_open_tables{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
+          "interval": "",
+          "legendFormat": "Open Tables - {{pod}}",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "mysql_global_variables_table_open_cache{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
+          "interval": "",
+          "legendFormat": "Table Open Cache - {{pod}}",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MySQL Open Tables",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:2909",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:2910",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "decimals": 2,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 133
+      },
+      "hiddenSeries": false,
+      "id": 43,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "mysql_global_status_open_table_definitions{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
+          "interval": "",
+          "legendFormat": "Open Table Definitions - {{pod}}",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "mysql_global_variables_table_definition_cache{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
+          "interval": "",
+          "legendFormat": "Table Definitions Cache Size - {{pod}}",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "mysql_global_status_opened_table_definitions{namespace=~\"$namespace\",service=~\"$mysql\",pod=~\"$pod\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Opened Table Definitions - {{pod}}",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "MySQL Table Definition Cache",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:2964",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:2965",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2146,16 +3408,10 @@
       }
     }
   ],
-  "refresh": "10s",
+  "refresh": false,
   "schemaVersion": 27,
   "style": "dark",
-  "tags": [
-    "infra",
-    "b2c",
-    "elastic",
-    "kubedb",
-    "elasticsearch"
-  ],
+  "tags": [],
   "templating": {
     "list": [
       {
@@ -2168,7 +3424,7 @@
         "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": "",
+        "label": "Datasource",
         "multi": false,
         "name": "datasource",
         "options": [],
@@ -2192,7 +3448,7 @@
         "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": "",
+        "label": "Namespace",
         "multi": false,
         "name": "namespace",
         "options": [],
@@ -2214,21 +3470,21 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "sample-es-cpu",
-          "value": "sample-es-cpu"
+          "text": "sample-mariadb-stats",
+          "value": "sample-mariadb-stats"
         },
         "datasource": "${datasource}",
-        "definition": "label_values(elasticsearch_cluster_health_status{namespace=~\"$namespace\"},cluster)",
-        "description": null,
+        "definition": "label_values(mysql_up{namespace=~\"$namespace\"}, service)",
+        "description": "",
         "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
+        "label": "MySQL",
         "multi": false,
-        "name": "elasticsearch",
+        "name": "mysql",
         "options": [],
         "query": {
-          "query": "label_values(elasticsearch_cluster_health_status{namespace=~\"$namespace\"},cluster)",
+          "query": "label_values(mysql_up{namespace=~\"$namespace\"}, service)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -2246,24 +3502,24 @@
         "current": {
           "selected": true,
           "text": [
-            "sample-es-cpu-0"
+            "sample-mariadb-0"
           ],
           "value": [
-            "sample-es-cpu-0"
+            "sample-mariadb-0"
           ]
         },
-        "datasource": "${datasource}",
-        "definition": "label_values(elasticsearch_cluster_health_status{namespace=~\"$namespace\",cluster=~\"$elasticsearch\"},pod)",
+        "datasource": null,
+        "definition": "label_values(mysql_up{namespace=~\"$namespace\", service=~\"$mysql\"}, pod)",
         "description": null,
         "error": null,
         "hide": 0,
         "includeAll": true,
-        "label": null,
+        "label": "Pod",
         "multi": true,
         "name": "pod",
         "options": [],
         "query": {
-          "query": "label_values(elasticsearch_cluster_health_status{namespace=~\"$namespace\",cluster=~\"$elasticsearch\"},pod)",
+          "query": "label_values(mysql_up{namespace=~\"$namespace\", service=~\"$mysql\"}, pod)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -2282,33 +3538,9 @@
     "from": "now-3h",
     "to": "now"
   },
-  "timepicker": {
-    "refresh_intervals": [
-      "5s",
-      "10s",
-      "30s",
-      "1m",
-      "5m",
-      "15m",
-      "30m",
-      "1h",
-      "2h",
-      "1d"
-    ],
-    "time_options": [
-      "5m",
-      "15m",
-      "1h",
-      "6h",
-      "12h",
-      "24h",
-      "2d",
-      "7d",
-      "30d"
-    ]
-  },
-  "timezone": "utc",
-  "title": "KubeDB / Elasticsearch / Pod",
-  "uid": "sjfsldk",
-  "version": 3
+  "timepicker": {},
+  "timezone": "",
+  "title": "KubeDB / MySQL / Pod",
+  "uid": "FktZiiOnz",
+  "version": 6
 }

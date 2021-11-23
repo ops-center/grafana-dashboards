@@ -1,10 +1,11 @@
 # MySQL Grafana Dashboards
 
-There are three dashboards to monitor MySQL Databases managed by KubeDB.
+There are four dashboards to monitor MySQL Databases managed by KubeDB.
 
 - KubeDB / MySQL / Summary: Shows overall summary of an MySQL instance.
 - KubeDB / MySQL / Pods: Shows individual pod-level information.
 - KubeDB / MySQL / Databases: shows MySQL internal metrics for an instance.
+- KubeDB / MySQL / Group Replication: shows MySQL group replication metrics.
 
 Note: These dashboards are developed in **Grafana version 7.5.5**
 
@@ -106,3 +107,7 @@ If you followed the instruction properly, you should see the MySQL Grafana dashb
 #### KubeDB / MySQL / Pod
 
 ![KubeDB / MySQL / Pod](/mysql/images/kubedb-mysql-pod.png)
+
+#### KubeDB / MySQL / Group-Replication
+
+![KubeDB / MySQL / Pod](/mysql/images/kubedb-mysql-group.png)
