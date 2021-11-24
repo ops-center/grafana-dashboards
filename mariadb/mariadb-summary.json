@@ -22,8 +22,8 @@
   "editable": true,
   "gnetId": 9628,
   "graphTooltip": 0,
-  "id": 28,
-  "iteration": 1633522438717,
+  "id": 31,
+  "iteration": 1637737685440,
   "links": [],
   "panels": [
     {
@@ -2615,7 +2615,7 @@
         "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
+        "label": "Datasource",
         "multi": false,
         "name": "datasource",
         "options": [],
@@ -2670,7 +2670,7 @@
         "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": "mariadb",
+        "label": "Mariadb",
         "multi": false,
         "name": "mariadb",
         "options": [],
@@ -2722,5 +2722,5 @@
   "timezone": "",
   "title": "KubeDB / MariaDB / Summary",
   "uid": "VnOgk2Hnk",
-  "version": 3
+  "version": 1
 }
