@@ -25,7 +25,6 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": 36,
   "iteration": 1639487976334,
   "links": [],
   "liveNow": false,
@@ -136,7 +135,7 @@
       "repeat": null,
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "mongodb_mongod_replset_my_state{pod=~\"$pod\"}",
           "interval": "5m",
           "intervalFactor": 1,
@@ -207,7 +206,7 @@
       "pluginVersion": "8.2.3",
       "targets": [
         {
-          "exemplar": true,
+          "exemplar": false,
           "expr": "count by (set) (mongodb_mongod_replset_number_of_members{set=~\"$replset\"} or mongodb_mongod_replset_my_state{set=~\"$replset\"})",
           "interval": "5m",
           "intervalFactor": 1,
@@ -1381,6 +1380,5 @@
   },
   "timezone": "browser",
   "title": "KubeDB / MongoDB / Database (ReplicaSet)",
-  "uid": "jH7B6vIny",
   "version": 2
 }
