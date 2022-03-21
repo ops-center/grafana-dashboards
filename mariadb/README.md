@@ -106,3 +106,7 @@ If you followed the instruction properly, you should see the MariaDB Grafana das
 #### KubeDB / MariaDB / Pod
 
 ![KubeDB / MariaDB / Pod](/mariadb/images/kubedb-mariadb-pod.png)
+
+#### KubeDB / MariaDB / Galera-Cluster
+
+![KubeDB / MariaDB / Pod](/mariadb/images/kubedb-mariadb-galera.png)
