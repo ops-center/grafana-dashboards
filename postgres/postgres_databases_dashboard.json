@@ -1748,7 +1748,7 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Rows",
-      "type": "timeseries"
+      "type": "graph"
     }
   ],
   "refresh": "",

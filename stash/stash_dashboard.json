@@ -923,7 +923,7 @@
       "timeShift": null,
       "title": "CPU Usage (Backup Job/Sidecar)",
       "transformations": [],
-      "type": "timeseries"
+      "type": "graph"
     },
     {
       "datasource": "${datasource}",
@@ -1022,7 +1022,7 @@
       ],
       "title": "Memory Usage (Backup Job/Sidecar)",
       "transformations": [],
-      "type": "timeseries"
+      "type": "graph"
     },
     {
       "datasource": "${datasource}",
@@ -1684,7 +1684,7 @@
       ],
       "title": "Repository Sizes",
       "transformations": [],
-      "type": "timeseries"
+      "type": "graph"
     },
     {
       "collapsed": false,
@@ -2401,7 +2401,7 @@
       "timeShift": null,
       "title": "CPU Usage (Restore Job/Sidecar)",
       "transformations": [],
-      "type": "timeseries"
+      "type": "graph"
     },
     {
       "datasource": "${datasource}",
@@ -2500,7 +2500,7 @@
       ],
       "title": "Memory Usage (Restore Job/Sidecar)",
       "transformations": [],
-      "type": "timeseries"
+      "type": "graph"
     },
     {
       "collapsed": false,
@@ -2597,7 +2597,7 @@
         }
       ],
       "title": "CPU Usage",
-      "type": "timeseries"
+      "type": "graph"
     },
     {
       "datasource": "${datasource}",
@@ -2687,7 +2687,7 @@
         }
       ],
       "title": "Memory Usage",
-      "type": "timeseries"
+      "type": "graph"
     }
   ],
   "refresh": "10s",

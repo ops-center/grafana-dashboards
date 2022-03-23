@@ -1746,7 +1746,7 @@
         }
       ],
       "title": "Disk Usage",
-      "type": "timeseries"
+      "type": "graph"
     },
     {
       "datasource": "${datasource}",
@@ -1885,7 +1885,7 @@
         }
       ],
       "title": "Disk R/W Info",
-      "type": "timeseries"
+      "type": "graph"
     },
     {
       "datasource": "${datasource}",
@@ -1977,7 +1977,7 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "IOPS (Reads+Writes)",
-      "type": "timeseries"
+      "type": "graph"
     },
     {
       "datasource": "${datasource}",
@@ -2069,7 +2069,7 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "ThroughPut (Read+Write)",
-      "type": "timeseries"
+      "type": "graph"
     },
     {
       "datasource": "${datasource}",
@@ -2495,7 +2495,7 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Receive Bandwidth",
-      "type": "timeseries"
+      "type": "graph"
     },
     {
       "datasource": "${datasource}",
@@ -2587,7 +2587,7 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Transmit Bandwidth",
-      "type": "timeseries"
+      "type": "graph"
     }
   ],
   "refresh": "10s",
