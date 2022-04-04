@@ -3,8 +3,8 @@
 There are three dashboards to monitor a Postgres Database managed by KubeDB.
 
 - KubeDB / Postgres / Summary: Shows overall summary of a Postgres instance.
-- KubeDB / Postgres / Pods: Shows individual database pod-level information.
-- KubeDB / Postgres / Databases: shows Postgres internal databases metrics.
+- KubeDB / Postgres / Pod: Shows individual database pod-level information.
+- KubeDB / Postgres / Database: shows Postgres internal databases metrics.
 
 Note: These dashboards are developed in **Grafana version 7.4.5**
 

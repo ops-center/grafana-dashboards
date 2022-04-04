@@ -3,8 +3,8 @@
 There are three dashboards to monitor MongoDB Databases managed by KubeDB.
 
 - KubeDB / MongoDB / Summary: Shows overall summary of a MongoDB database.
-- KubeDB / MongoDB / Pods: Shows individual pod-level information.
-- KubeDB / MongoDB / Databases (ReplicaSet): Shows MongoDB ReplicaSets internal metrics.
+- KubeDB / MongoDB / Pod: Shows individual pod-level information.
+- KubeDB / MongoDB / Database (ReplicaSet): Shows MongoDB ReplicaSets internal metrics.
 
 Note: These dashboards are developed in **Grafana version 8.2.3**
 

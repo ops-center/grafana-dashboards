@@ -3,8 +3,8 @@
 There are three dashboards to monitor Redis Databases managed by KubeDB.
 
 - KubeDB / Redis / Summary: Shows overall summary of an Redis instance.
-- KubeDB / Redis / Pods: Shows individual pod-level information.
-- KubeDB / Redis / Shards: shows Redis Shard Cluster internal metrics such as shard slots, shards nodes, cluster masters, etc.
+- KubeDB / Redis / Pod: Shows individual pod-level information.
+- KubeDB / Redis / Shard: shows Redis Shard Cluster internal metrics such as shard slots, shards nodes, cluster masters, etc.
 
 Note: These dashboards are developed in **Grafana version 7.5.5**
 

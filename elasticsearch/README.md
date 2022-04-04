@@ -3,8 +3,8 @@
 There are three dashboards to monitor Elasticsearch Databases managed by KubeDB.
 
 - KubeDB / Elasticsearch / Summary: Shows overall summary of an Elasticsearch instance.
-- KubeDB / Elasticsearch / Pods: Shows individual pod-level information.
-- KubeDB / Elasticsearch / Databases: shows Elasticsearch internal metrics such as index, shards, docs, etc.
+- KubeDB / Elasticsearch / Pod: Shows individual pod-level information.
+- KubeDB / Elasticsearch / Database: shows Elasticsearch internal metrics such as index, shards, docs, etc.
 
 Note: These dashboards are developed in **Grafana version 7.5.5**
 

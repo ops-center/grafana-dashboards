@@ -3,8 +3,8 @@
 There are three dashboards to monitor MariaDB Databases managed by KubeDB.
 
 - KubeDB / MariaDB / Summary: Shows overall summary of a MariaDB instance.
-- KubeDB / MariaDB / Pods: Shows individual pod-level information.
-- KubeDB / MariaDB / Databases: Shows MariaDB internal metrics for an instance.
+- KubeDB / MariaDB / Pod: Shows individual pod-level information.
+- KubeDB / MariaDB / Database: Shows MariaDB internal metrics for an instance.
 
 Note: These dashboards are developed in **Grafana version 7.5.5**
 
