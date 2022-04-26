@@ -1641,7 +1641,7 @@
           "value": "ps-demo-2"
         },
         "datasource": "${datasource}",
-        "definition": "label_values(pg_up{namespace=~\"$namespace\",pod=~\"${db}-.*\"},pod)",
+        "definition": "label_values(pg_up{namespace=~\"$namespace\",pod=~\"${app}-.*\"},pod)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -1650,7 +1650,7 @@
         "multi": false,
         "name": "pod",
         "options": [],
-        "query": "label_values(pg_up{namespace=~\"$namespace\",pod=~\"${db}-.*\"},pod)",
+        "query": "label_values(pg_up{namespace=~\"$namespace\",pod=~\"${app}-.*\"},pod)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
