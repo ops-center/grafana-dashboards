@@ -59,13 +59,21 @@ spec:
   monitor:
     agent: prometheus.io/operator
     prometheus:
-      exporter:
-        args:
-          - --compatible-mode
       serviceMonitor:
         labels:
           release: prometheus
         interval: 10s
+```
+
+If you are using mongodb exporter image `kubedb/mongodb_exporter:v0.20.4` please add the following part in the monitoring section.
+
+```yaml
+  monitor:
+    agent: prometheus.io/operator
+    prometheus:
+      exporter:
+        args:
+          - --compatible-mode
 ```
 
 ### Using Dashboards
@@ -82,7 +90,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubedb/installer/master/chart
 
 #### Import Grafana Dashboard
 
-Now, on your Grafana UI, import the json files of dashboards located in the `mongodb` folder of this repository.
+Now, on your Grafana UI, import the json files of dashboards located in the `mongodb` folder of this repository. If you are using mongodb exporter image `kubedb/mongodb_exporter:v0.20.4` please use the dashboards json from `mongodb/legacy` folder of this repository.
 
 
 1. Select `Import` from the `Plus(+)` icon from the left bar of the Grafana UI

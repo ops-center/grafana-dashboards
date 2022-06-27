@@ -514,7 +514,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "kubedb_com_mongodb_replicas{namespace=\"$namespace\",app=\"$app\"} or (kubedb_com_mongodb_shard_shards{namespace=\"$namespace\",app=\"$app\"} * kubedb_com_mongodb_shard_replicas{namespace=\"$namespace\",app=\"$app\"} +kubedb_com_mongodb_mongos_replicas{namespace=\"$namespace\",app=\"$app\"}+ kubedb_com_mongodb_configsvr_replicas{namespace=\"$namespace\",app=\"$app\"})",
+          "expr": "kubedb_com_mongodb_replicas{namespace=\"$namespace\",app=\"$app\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
