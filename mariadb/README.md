@@ -74,7 +74,7 @@ At first, you have to create a `MetricsConfiguration` object for MariaDB CR. Thi
 Run the below command to create the `MetricsConfiguration` object:
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/kubedb/installer/master/charts/kubedb-metrics/templates/metricsconfig-kubedb-com-mariadb.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubedb/installer/master/charts/kubedb-metrics/templates/mariadb/kubedb-com-mariadb.yaml
 ```
 
 #### Import Grafana Dashboard
