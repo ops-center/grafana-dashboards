@@ -78,14 +78,17 @@ If you are using mongodb exporter image `kubedb/mongodb_exporter:v0.20.4` please
 
 ### Using Dashboards
 
-#### Create MongoDB Metrics Configurations
+#### Create DB Metrics Configurations
 
-At first, you have to create a `MetricsConfiguration` object for MongoDB CR. This `MetricsConfiguration` object is used by Panopticon to generate metrics for the MongoDB databases.
+At first, you have to create a `MetricsConfiguration` object for DB. This `MetricsConfiguration` object is used by Panopticon to generate metrics for DB instances.
 
-Run the below command to create the `MetricsConfiguration` object:
+Install `kubedb-metrics` charts which will create the `MetricsConfiguration` object for DB:
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/kubedb/installer/master/charts/kubedb-metrics/templates/metricsconfig-kubedb-com-mongodb.yaml
+$ helm repo add appscode https://charts.appscode.com/stable/
+$ helm repo update
+$ helm search repo appscode/kubedb-metrics --version=v2022.10.18
+$ helm upgrade -i kubedb-metrics appscode/kubedb-metrics -n kubedb --create-namespace --version=v2022.10.18
 ```
 
 #### Import Grafana Dashboard

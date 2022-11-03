@@ -68,14 +68,17 @@ spec:
 
 ### Using Dashboards
 
-#### Create MySQL Metrics Configurations
+#### Create DB Metrics Configurations
 
-At first, you have to create a `MetricsConfiguration` object for MySQL CR. This `MetricsConfiguration` object is used by Panopticon to generate metrics for the MySQL instances.
+At first, you have to create a `MetricsConfiguration` object for DB. This `MetricsConfiguration` object is used by Panopticon to generate metrics for DB instances.
 
-Run the below command to create the `MetricsConfiguration` object:
+Install `kubedb-metrics` charts which will create the `MetricsConfiguration` object for DB:
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/kubedb/installer/master/charts/kubedb-metrics/templates/metricsconfig-kubedb-com-mysql.yaml
+$ helm repo add appscode https://charts.appscode.com/stable/
+$ helm repo update
+$ helm search repo appscode/kubedb-metrics --version=v2022.10.18
+$ helm upgrade -i kubedb-metrics appscode/kubedb-metrics -n kubedb --create-namespace --version=v2022.10.18
 ```
 
 #### Import Grafana Dashboard
