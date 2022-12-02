@@ -131,7 +131,7 @@
       {
         "cacheTimeout": null,
         "datasource": "Prometheus",
-        "description": "MariaDB CR Name",
+        "description": "ProxySQL CR Name",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -358,7 +358,7 @@
       },
       {
         "datasource": null,
-        "description": "Total node count of MariaDB cluster",
+        "description": "Total node count of ProxySQL cluster",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -420,7 +420,7 @@
       },
       {
         "datasource": null,
-        "description": "Initial Requested CPU amount by MariaDB Instance",
+        "description": "Initial Requested CPU amount by ProxySQL Instance",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -479,7 +479,7 @@
       },
       {
         "datasource": null,
-        "description": "CPU Limit in core by MariaDB instance",
+        "description": "CPU Limit in core by ProxySQL instance",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -537,7 +537,7 @@
       },
       {
         "datasource": null,
-        "description": "KubeDB mariadb Total Memory Limit",
+        "description": "KubeDB ProxySQL Total Memory Limit",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -596,7 +596,7 @@
       },
       {
         "datasource": null,
-        "description": "Initial Requested Memory amount by MariaDB Instance",
+        "description": "Initial Requested Memory amount by ProxySQL Instance",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -754,7 +754,7 @@
         "dashLength": 10,
         "dashes": false,
         "datasource": null,
-        "description": "CPU Usage by MariaDB pods",
+        "description": "CPU Usage by ProxySQL pods",
         "fieldConfig": {
           "defaults": {},
           "overrides": []
@@ -1155,7 +1155,7 @@
         "dashLength": 10,
         "dashes": false,
         "datasource": null,
-        "description": "Memory Usage by MariaDB pods",
+        "description": "Memory Usage by ProxySQL pods",
         "fieldConfig": {
           "defaults": {
             "unit": "bytes"
@@ -1662,7 +1662,7 @@
         "dashLength": 10,
         "dashes": false,
         "datasource": null,
-        "description": "Disk usage by MariaDB pods",
+        "description": "Disk usage by ProxySQL pods",
         "fieldConfig": {
           "defaults": {
             "unit": "bytes"

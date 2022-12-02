@@ -613,7 +613,7 @@
     },
     {
       "datasource": null,
-      "description": "KubeDB mariadb Total Memory Limit",
+      "description": "KubeDB MariaDB Total Memory Limit",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -672,7 +672,7 @@
     },
     {
       "datasource": null,
-      "description": "Total storage request by mariadb nodes",
+      "description": "Total storage request by MariaDB nodes",
       "fieldConfig": {
         "defaults": {
           "color": {

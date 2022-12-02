@@ -18,7 +18,7 @@
       }
     ]
   },
-  "description": "The dashboard is designed for KubeDB managed MariaDB",
+  "description": "The dashboard is designed for KubeDB managed MySQL",
   "editable": true,
   "gnetId": 9628,
   "graphTooltip": 0,
@@ -131,7 +131,7 @@
     {
       "cacheTimeout": null,
       "datasource": "Prometheus",
-      "description": "MariaDB CR Name",
+      "description": "MySQL CR Name",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -214,7 +214,7 @@
     {
       "cacheTimeout": null,
       "datasource": "Prometheus",
-      "description": "MariaDB CR Name",
+      "description": "MySQL CR Name",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -457,7 +457,7 @@
     },
     {
       "datasource": null,
-      "description": "Total node count of MariaDB cluster",
+      "description": "Total node count of MySQL cluster",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -519,7 +519,7 @@
     },
     {
       "datasource": null,
-      "description": "Initial Requested CPU amount by MariaDB Instance",
+      "description": "Initial Requested CPU amount by MySQL Instance",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -578,7 +578,7 @@
     },
     {
       "datasource": null,
-      "description": "CPU Limit in core by MariaDB instance",
+      "description": "CPU Limit in core by MySQL instance",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -636,7 +636,7 @@
     },
     {
       "datasource": null,
-      "description": "Initial Requested Memory amount by MariaDB Instance",
+      "description": "Initial Requested Memory amount by MySQL Instance",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -696,7 +696,7 @@
     },
     {
       "datasource": null,
-      "description": "KubeDB mariadb Total Memory Limit",
+      "description": "KubeDB MySQL Total Memory Limit",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -755,7 +755,7 @@
     },
     {
       "datasource": null,
-      "description": "Total storage request by mariadb nodes",
+      "description": "Total storage request by MySQL nodes",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -833,7 +833,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "description": "CPU Usage by MariaDB pods",
+      "description": "CPU Usage by MySQL pods",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
@@ -1234,7 +1234,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "description": "Memory Usage by MariaDB pods",
+      "description": "Memory Usage by MySQL pods",
       "fieldConfig": {
         "defaults": {
           "unit": "bytes"
@@ -1741,7 +1741,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "description": "Disk usage by MariaDB pods",
+      "description": "Disk usage by MySQL pods",
       "fieldConfig": {
         "defaults": {
           "unit": "bytes"
@@ -2417,7 +2417,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", pod=~\"$mariadb.*\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", pod=~\"$mysql.*\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2428,7 +2428,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_writes_bytes_total{container!=\"\", pod=~\"$mariadb.*\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_writes_bytes_total{container!=\"\", pod=~\"$mysql.*\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2439,7 +2439,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", pod=~\"$mariadb.*\",namespace=~\"$namespace\"}[5m]) + rate(container_fs_writes_bytes_total{container!=\"\",pod=~\"$mariadb.*\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", pod=~\"$mysql.*\",namespace=~\"$namespace\"}[5m]) + rate(container_fs_writes_bytes_total{container!=\"\",pod=~\"$mysql.*\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2684,7 +2684,7 @@
     "db",
     "stats",
     "kubedb",
-    "mariadb"
+    "mysql"
   ],
   "templating": {
     "list": [

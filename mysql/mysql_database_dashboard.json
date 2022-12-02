@@ -1224,7 +1224,7 @@
   "style": "dark",
   "tags": [
     "galera",
-    "mariadb"
+    "mysql"
   ],
   "templating": {
     "list": [
@@ -1281,8 +1281,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "sample-mariadb-stats",
-          "value": "sample-mariadb-stats"
+          "text": "sample-mysql-stats",
+          "value": "sample-mysql-stats"
         },
         "datasource": "${datasource}",
         "definition": "label_values(mysql_up{namespace=~\"$namespace\"}, service)",
