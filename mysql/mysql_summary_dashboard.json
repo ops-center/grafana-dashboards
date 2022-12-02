@@ -2417,7 +2417,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", pod=~\"$mysql.*\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2428,7 +2428,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_writes_bytes_total{container!=\"\", pod=~\"$mysql.*\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_writes_bytes_total{container!=\"\", pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2439,7 +2439,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", pod=~\"$mysql.*\",namespace=~\"$namespace\"}[5m]) + rate(container_fs_writes_bytes_total{container!=\"\",pod=~\"$mysql.*\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"}[5m]) + rate(container_fs_writes_bytes_total{container!=\"\",pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
