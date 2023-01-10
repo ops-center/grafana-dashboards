@@ -6,7 +6,7 @@ There are four dashboards to monitor scanning information
 - `Appscode / Scanner / Namespace CVEs`: Shows vulnerability info in namespace level.
 - `Appscode / Scanner / Image CVEs`: Shows vulnerability info for a particular image.
 - `Appscode / Scanner / App CVEs`: Shows vulnerability info for a particular workload. Ex: MongoDB, Deployment, ReplicaSet etc.
-- `Appscode / Scanner / CVE Details`: Shows the occurrence information of a particular CVE, both in cluster level & namespace level.
+- `Appscode / Scanner / CVE Report`: Shows the occurrence information of a particular CVE, both in cluster level & namespace level.
 
 Note: These dashboards are developed in **Grafana version 7.5.11**
 
@@ -84,5 +84,5 @@ If you followed the instruction properly, you should see the Scanner Grafana das
 
 ![Appscode / Scanner / App CVEs](/scanner/images/app-level-cves.png)
 
-#### Appscode / Scanner / CVE Details
-![Appscode / Scanner / CVE Details](/scanner/images/cve-details.png)
+#### Appscode / Scanner / CVE Report
+![Appscode / Scanner / CVE Report](/scanner/images/cve-details.png)
