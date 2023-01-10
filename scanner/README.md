@@ -2,11 +2,11 @@
 
 There are four dashboards to monitor scanning information
 
-- `Appscode / Scanner / Cluster CVEs`: Shows vulnerability info in cluster level.
-- `Appscode / Scanner / Namespace CVEs`: Shows vulnerability info in namespace level.
-- `Appscode / Scanner / Image CVEs`: Shows vulnerability info for a particular image.
-- `Appscode / Scanner / App CVEs`: Shows vulnerability info for a particular workload. Ex: MongoDB, Deployment, ReplicaSet etc.
-- `Appscode / Scanner / CVE Report`: Shows the occurrence information of a particular CVE, both in cluster level & namespace level.
+- `ACE / Scanner / Cluster CVEs`: Shows vulnerability info in cluster level.
+- `ACE / Scanner / Namespace CVEs`: Shows vulnerability info in namespace level.
+- `ACE / Scanner / Image CVEs`: Shows vulnerability info for a particular image.
+- `ACE / Scanner / App CVEs`: Shows vulnerability info for a particular workload. Ex: MongoDB, Deployment, ReplicaSet etc.
+- `ACE / Scanner / CVE Report`: Shows the occurrence information of a particular CVE, both in cluster level & namespace level.
 
 Note: These dashboards are developed in **Grafana version 7.5.11**
 
@@ -45,7 +45,7 @@ spec:
           release: prometheus
         interval: 10s
 ```
-Now, this db will be used as a workload in the `Appscode / Scanner / App CVEs` dashboard. And you can monitor the vulnerabilities for the images under this db.
+Now, this db will be used as a workload in the `ACE / Scanner / App CVEs` dashboard. And you can monitor the vulnerabilities for the images under this db.
 
 ### Using Dashboards
 
@@ -67,22 +67,22 @@ If you followed the instruction properly, you should see the Scanner Grafana das
 
 ### Samples
 
-####  Appscode / Scanner / Cluster CVEs
+####  ACE / Scanner / Cluster CVEs
 
-![Appscode / Scanner / Cluster CVEs](/scanner/images/cluster-level-cves.png)
+![ACE / Scanner / Cluster CVEs](/scanner/images/cluster-level-cves.png)
 
-####  Appscode / Scanner / Image CVEs
+####  ACE / Scanner / Image CVEs
 
-![Appscode / Scanner / Image CVEs](/scanner/images/image-level-cves.png)
+![ACE / Scanner / Image CVEs](/scanner/images/image-level-cves.png)
 
 
-####  Appscode / Scanner / Namespace CVEs
+####  ACE / Scanner / Namespace CVEs
 
-![Appscode / Scanner / Namespace CVEs](/scanner/images/namespace-level-cves.png)
+![ACE / Scanner / Namespace CVEs](/scanner/images/namespace-level-cves.png)
 
-####  Appscode / Scanner / App CVEs
+####  ACE / Scanner / App CVEs
 
-![Appscode / Scanner / App CVEs](/scanner/images/app-level-cves.png)
+![ACE / Scanner / App CVEs](/scanner/images/app-level-cves.png)
 
-#### Appscode / Scanner / CVE Report
-![Appscode / Scanner / CVE Report](/scanner/images/cve-details.png)
+#### ACE / Scanner / CVE Report
+![ACE / Scanner / CVE Report](/scanner/images/cve-details.png)
