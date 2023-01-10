@@ -1,0 +1,416 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 29,
+  "iteration": 1673340860305,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "Severity distribution of total number of vulnerabilities for an image",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 18,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.11",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "scanner_appscode_com_image_cve_occurrence_total{image=\"$img\"}",
+          "interval": "",
+          "legendFormat": "{{severity}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Image CVE Occurance Total",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "Severity distribution of unique vulnerabilities for an image",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 18,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 4,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.11",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "scanner_appscode_com_image_cve_count_total{image=\"$img\"}",
+          "interval": "",
+          "legendFormat": "{{severity}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Image CVE Count Total",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "schemaVersion": 27,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "index.docker.io/kubedb/kubedb-webhook-server@sha256:d6e196f537ceda0d8660fae73102eff907653677c3c1e7bc363288a11a377eeb",
+          "value": "index.docker.io/kubedb/kubedb-webhook-server@sha256:d6e196f537ceda0d8660fae73102eff907653677c3c1e7bc363288a11a377eeb"
+        },
+        "datasource": null,
+        "definition": "label_values(scanner_appscode_com_image_cve_occurrence_total{},image)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "img",
+        "multi": false,
+        "name": "img",
+        "options": [
+          {
+            "selected": false,
+            "text": "index.docker.io/appscode/kube-ui-server:v0.0.13-7-gdb7819797-dirty_linux_amd64",
+            "value": "index.docker.io/appscode/kube-ui-server:v0.0.13-7-gdb7819797-dirty_linux_amd64"
+          },
+          {
+            "selected": false,
+            "text": "index.docker.io/appscode/panopticon@sha256:a1081bd776e44fe760970cb441b02d0eae5da821e27870c3cde9e92831512eb1",
+            "value": "index.docker.io/appscode/panopticon@sha256:a1081bd776e44fe760970cb441b02d0eae5da821e27870c3cde9e92831512eb1"
+          },
+          {
+            "selected": false,
+            "text": "index.docker.io/appscode/scanner:status_linux_amd64",
+            "value": "index.docker.io/appscode/scanner:status_linux_amd64"
+          },
+          {
+            "selected": false,
+            "text": "index.docker.io/appscode/trivydb:0.0.1",
+            "value": "index.docker.io/appscode/trivydb:0.0.1"
+          },
+          {
+            "selected": false,
+            "text": "index.docker.io/appscode/trivydb@sha256:efafbecdb2e689e6d122d6c56eef899a98aae7c08424bfc85966cc9c50460c91",
+            "value": "index.docker.io/appscode/trivydb@sha256:efafbecdb2e689e6d122d6c56eef899a98aae7c08424bfc85966cc9c50460c91"
+          },
+          {
+            "selected": false,
+            "text": "index.docker.io/aquasec/trivy:latest",
+            "value": "index.docker.io/aquasec/trivy:latest"
+          },
+          {
+            "selected": false,
+            "text": "index.docker.io/aquasec/trivy@sha256:fcd4eddc8082be2d7c929cb07c989d62d2d50669513b8a0889116b40feab435f",
+            "value": "index.docker.io/aquasec/trivy@sha256:fcd4eddc8082be2d7c929cb07c989d62d2d50669513b8a0889116b40feab435f"
+          },
+          {
+            "selected": false,
+            "text": "index.docker.io/grafana/grafana@sha256:8c65b333a3d369a095d752da2e784b484d4246659e9a4ac6a09b74353f95d1c9",
+            "value": "index.docker.io/grafana/grafana@sha256:8c65b333a3d369a095d752da2e784b484d4246659e9a4ac6a09b74353f95d1c9"
+          },
+          {
+            "selected": false,
+            "text": "index.docker.io/kindest/kindnetd:v20220726-ed811e41",
+            "value": "index.docker.io/kindest/kindnetd:v20220726-ed811e41"
+          },
+          {
+            "selected": false,
+            "text": "index.docker.io/kindest/local-path-provisioner:v0.0.22-kind.0",
+            "value": "index.docker.io/kindest/local-path-provisioner:v0.0.22-kind.0"
+          },
+          {
+            "selected": false,
+            "text": "index.docker.io/kubedb/kubedb-provisioner@sha256:d92329b4106f927e573e13c4f7e2e966ee20ce2b96d5b180e8734eb518514665",
+            "value": "index.docker.io/kubedb/kubedb-provisioner@sha256:d92329b4106f927e573e13c4f7e2e966ee20ce2b96d5b180e8734eb518514665"
+          },
+          {
+            "selected": true,
+            "text": "index.docker.io/kubedb/kubedb-webhook-server@sha256:d6e196f537ceda0d8660fae73102eff907653677c3c1e7bc363288a11a377eeb",
+            "value": "index.docker.io/kubedb/kubedb-webhook-server@sha256:d6e196f537ceda0d8660fae73102eff907653677c3c1e7bc363288a11a377eeb"
+          },
+          {
+            "selected": false,
+            "text": "index.docker.io/kubedb/mongodb-init@sha256:878a54318ce830ede0f29c874166d2ef7f90d67540e788dbcf06ff0fe4a02389",
+            "value": "index.docker.io/kubedb/mongodb-init@sha256:878a54318ce830ede0f29c874166d2ef7f90d67540e788dbcf06ff0fe4a02389"
+          },
+          {
+            "selected": false,
+            "text": "index.docker.io/kubedb/mongodb_exporter@sha256:12c0d2f8c27a9747eba06cf623cbe5b7651cc6c7c9f48a2df16002eb4cd5d762",
+            "value": "index.docker.io/kubedb/mongodb_exporter@sha256:12c0d2f8c27a9747eba06cf623cbe5b7651cc6c7c9f48a2df16002eb4cd5d762"
+          },
+          {
+            "selected": false,
+            "text": "index.docker.io/kubedb/replication-mode-detector@sha256:d99035b130aa1c4525135428c7f60ea346142e463bcd27604b4a7243073f538f",
+            "value": "index.docker.io/kubedb/replication-mode-detector@sha256:d99035b130aa1c4525135428c7f60ea346142e463bcd27604b4a7243073f538f"
+          },
+          {
+            "selected": false,
+            "text": "index.docker.io/library/mongo@sha256:6efa052039903e731e4a5550c68a13c4869ddc93742c716332883fd9c77eb79b",
+            "value": "index.docker.io/library/mongo@sha256:6efa052039903e731e4a5550c68a13c4869ddc93742c716332883fd9c77eb79b"
+          },
+          {
+            "selected": false,
+            "text": "index.docker.io/openpolicyagent/gatekeeper@sha256:1936f6892a3783732183eb2d7df575c1c8e565a6bf191abdf08f0bef63889270",
+            "value": "index.docker.io/openpolicyagent/gatekeeper@sha256:1936f6892a3783732183eb2d7df575c1c8e565a6bf191abdf08f0bef63889270"
+          },
+          {
+            "selected": false,
+            "text": "quay.io/kiwigrid/k8s-sidecar@sha256:710e23b489c5cad305fdcffd6ee3b5578f6a5a1bb73b7c181a05b5be068a0d6b",
+            "value": "quay.io/kiwigrid/k8s-sidecar@sha256:710e23b489c5cad305fdcffd6ee3b5578f6a5a1bb73b7c181a05b5be068a0d6b"
+          },
+          {
+            "selected": false,
+            "text": "quay.io/prometheus-operator/prometheus-config-reloader@sha256:cb4611cb1738388fe2b55b7d43fd27e47a1cad66559a033d9bb6c05fea1bdbec",
+            "value": "quay.io/prometheus-operator/prometheus-config-reloader@sha256:cb4611cb1738388fe2b55b7d43fd27e47a1cad66559a033d9bb6c05fea1bdbec"
+          },
+          {
+            "selected": false,
+            "text": "quay.io/prometheus-operator/prometheus-operator@sha256:cd7d1a82ef007e74240c00d3a5a0275b7babfe47ed384f61ca431b71ebe44687",
+            "value": "quay.io/prometheus-operator/prometheus-operator@sha256:cd7d1a82ef007e74240c00d3a5a0275b7babfe47ed384f61ca431b71ebe44687"
+          },
+          {
+            "selected": false,
+            "text": "quay.io/prometheus/alertmanager@sha256:fd4d9a3dd1fd0125108417be21be917f19cc76262347086509a0d43f29b80e98",
+            "value": "quay.io/prometheus/alertmanager@sha256:fd4d9a3dd1fd0125108417be21be917f19cc76262347086509a0d43f29b80e98"
+          },
+          {
+            "selected": false,
+            "text": "quay.io/prometheus/node-exporter@sha256:39c642b2b337e38c18e80266fb14383754178202f40103646337722a594d984c",
+            "value": "quay.io/prometheus/node-exporter@sha256:39c642b2b337e38c18e80266fb14383754178202f40103646337722a594d984c"
+          },
+          {
+            "selected": false,
+            "text": "quay.io/prometheus/prometheus@sha256:2028b133eee0854854a6ddfff37a8a2e74e0520873164b602abbb04ad62ff572",
+            "value": "quay.io/prometheus/prometheus@sha256:2028b133eee0854854a6ddfff37a8a2e74e0520873164b602abbb04ad62ff572"
+          },
+          {
+            "selected": false,
+            "text": "registry.k8s.io/coredns/coredns:v1.9.3",
+            "value": "registry.k8s.io/coredns/coredns:v1.9.3"
+          },
+          {
+            "selected": false,
+            "text": "registry.k8s.io/etcd:3.5.4-0",
+            "value": "registry.k8s.io/etcd:3.5.4-0"
+          },
+          {
+            "selected": false,
+            "text": "registry.k8s.io/etcd@sha256:dd75ec974b0a2a6f6bb47001ba09207976e625db898d1b16735528c009cb171c",
+            "value": "registry.k8s.io/etcd@sha256:dd75ec974b0a2a6f6bb47001ba09207976e625db898d1b16735528c009cb171c"
+          },
+          {
+            "selected": false,
+            "text": "registry.k8s.io/kube-apiserver:v1.25.2",
+            "value": "registry.k8s.io/kube-apiserver:v1.25.2"
+          },
+          {
+            "selected": false,
+            "text": "registry.k8s.io/kube-controller-manager:v1.25.2",
+            "value": "registry.k8s.io/kube-controller-manager:v1.25.2"
+          },
+          {
+            "selected": false,
+            "text": "registry.k8s.io/kube-proxy:v1.25.2",
+            "value": "registry.k8s.io/kube-proxy:v1.25.2"
+          },
+          {
+            "selected": false,
+            "text": "registry.k8s.io/kube-scheduler:v1.25.2",
+            "value": "registry.k8s.io/kube-scheduler:v1.25.2"
+          },
+          {
+            "selected": false,
+            "text": "registry.k8s.io/kube-state-metrics/kube-state-metrics@sha256:a15ca437f2309b769caa36a88240ce0266d67028f02da90f1c817c849b144273",
+            "value": "registry.k8s.io/kube-state-metrics/kube-state-metrics@sha256:a15ca437f2309b769caa36a88240ce0266d67028f02da90f1c817c849b144273"
+          }
+        ],
+        "query": {
+          "query": "label_values(scanner_appscode_com_image_cve_occurrence_total{},image)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Appscode / Scanner / Image CVEs",
+  "uid": "JAqfn0h4k",
+  "version": 1
+}

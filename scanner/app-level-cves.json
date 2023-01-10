@@ -1,0 +1,612 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 30,
+  "iteration": 1673340890665,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "Severity distribution of vulnerability occurrences under a workload ",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 18,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.11",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by(severity) (scanner_appscode_com_image_cve_occurrence_total * on(image) group_left scanner_appscode_com_image_lineage{group=\"$group\",kind=\"$kind\",exported_namespace=\"$ns\",name=\"$name\"})",
+          "interval": "",
+          "legendFormat": "{{ severity }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "App CVE Occurance Total",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "Severity distribution of unique vulnerabilities under a workload ",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 18,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 4,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.11",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by(severity) (scanner_appscode_com_image_cve_count_total * on(image) group_left scanner_appscode_com_image_lineage{group=\"$group\",kind=\"$kind\",exported_namespace=\"$ns\",name=\"$name\"})",
+          "interval": "",
+          "legendFormat": "{{ severity }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "App CVE Count Total",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "schemaVersion": 27,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "apps",
+          "value": "apps"
+        },
+        "datasource": null,
+        "definition": "label_values(apiserver_request_total{},group)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "group",
+        "multi": false,
+        "name": "group",
+        "options": [
+          {
+            "selected": false,
+            "text": "core.k8s.appscode.com",
+            "value": "core.k8s.appscode.com"
+          },
+          {
+            "selected": false,
+            "text": "admissionregistration.k8s.io",
+            "value": "admissionregistration.k8s.io"
+          },
+          {
+            "selected": false,
+            "text": "apiextensions.k8s.io",
+            "value": "apiextensions.k8s.io"
+          },
+          {
+            "selected": false,
+            "text": "apiregistration.k8s.io",
+            "value": "apiregistration.k8s.io"
+          },
+          {
+            "selected": false,
+            "text": "appcatalog.appscode.com",
+            "value": "appcatalog.appscode.com"
+          },
+          {
+            "selected": true,
+            "text": "apps",
+            "value": "apps"
+          },
+          {
+            "selected": false,
+            "text": "autoscaling",
+            "value": "autoscaling"
+          },
+          {
+            "selected": false,
+            "text": "batch",
+            "value": "batch"
+          },
+          {
+            "selected": false,
+            "text": "catalog.kubedb.com",
+            "value": "catalog.kubedb.com"
+          },
+          {
+            "selected": false,
+            "text": "certificates.k8s.io",
+            "value": "certificates.k8s.io"
+          },
+          {
+            "selected": false,
+            "text": "config.gatekeeper.sh",
+            "value": "config.gatekeeper.sh"
+          },
+          {
+            "selected": false,
+            "text": "coordination.k8s.io",
+            "value": "coordination.k8s.io"
+          },
+          {
+            "selected": false,
+            "text": "discovery.k8s.io",
+            "value": "discovery.k8s.io"
+          },
+          {
+            "selected": false,
+            "text": "expansion.gatekeeper.sh",
+            "value": "expansion.gatekeeper.sh"
+          },
+          {
+            "selected": false,
+            "text": "externaldata.gatekeeper.sh",
+            "value": "externaldata.gatekeeper.sh"
+          },
+          {
+            "selected": false,
+            "text": "flowcontrol.apiserver.k8s.io",
+            "value": "flowcontrol.apiserver.k8s.io"
+          },
+          {
+            "selected": false,
+            "text": "helm.toolkit.fluxcd.io",
+            "value": "helm.toolkit.fluxcd.io"
+          },
+          {
+            "selected": false,
+            "text": "kubedb.com",
+            "value": "kubedb.com"
+          },
+          {
+            "selected": false,
+            "text": "metrics.appscode.com",
+            "value": "metrics.appscode.com"
+          },
+          {
+            "selected": false,
+            "text": "monitoring.coreos.com",
+            "value": "monitoring.coreos.com"
+          },
+          {
+            "selected": false,
+            "text": "mutations.gatekeeper.sh",
+            "value": "mutations.gatekeeper.sh"
+          },
+          {
+            "selected": false,
+            "text": "networking.k8s.io",
+            "value": "networking.k8s.io"
+          },
+          {
+            "selected": false,
+            "text": "node.k8s.io",
+            "value": "node.k8s.io"
+          },
+          {
+            "selected": false,
+            "text": "policy",
+            "value": "policy"
+          },
+          {
+            "selected": false,
+            "text": "rbac.authorization.k8s.io",
+            "value": "rbac.authorization.k8s.io"
+          },
+          {
+            "selected": false,
+            "text": "scheduling.k8s.io",
+            "value": "scheduling.k8s.io"
+          },
+          {
+            "selected": false,
+            "text": "source.toolkit.fluxcd.io",
+            "value": "source.toolkit.fluxcd.io"
+          },
+          {
+            "selected": false,
+            "text": "status.gatekeeper.sh",
+            "value": "status.gatekeeper.sh"
+          },
+          {
+            "selected": false,
+            "text": "storage.k8s.io",
+            "value": "storage.k8s.io"
+          },
+          {
+            "selected": false,
+            "text": "templates.gatekeeper.sh",
+            "value": "templates.gatekeeper.sh"
+          },
+          {
+            "selected": false,
+            "text": "ui.k8s.appscode.com",
+            "value": "ui.k8s.appscode.com"
+          },
+          {
+            "selected": false,
+            "text": "authentication.k8s.io",
+            "value": "authentication.k8s.io"
+          },
+          {
+            "selected": false,
+            "text": "authorization.k8s.io",
+            "value": "authorization.k8s.io"
+          },
+          {
+            "selected": false,
+            "text": "events.k8s.io",
+            "value": "events.k8s.io"
+          }
+        ],
+        "query": {
+          "query": "label_values(apiserver_request_total{},group)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "Deployment",
+          "value": "Deployment"
+        },
+        "datasource": null,
+        "definition": "label_values(apiserver_watch_events_total{group=~\"$group\"},kind)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "kind",
+        "multi": false,
+        "name": "kind",
+        "options": [
+          {
+            "selected": false,
+            "text": "ControllerRevision",
+            "value": "ControllerRevision"
+          },
+          {
+            "selected": false,
+            "text": "DaemonSet",
+            "value": "DaemonSet"
+          },
+          {
+            "selected": true,
+            "text": "Deployment",
+            "value": "Deployment"
+          },
+          {
+            "selected": false,
+            "text": "ReplicaSet",
+            "value": "ReplicaSet"
+          },
+          {
+            "selected": false,
+            "text": "StatefulSet",
+            "value": "StatefulSet"
+          }
+        ],
+        "query": {
+          "query": "label_values(apiserver_watch_events_total{group=~\"$group\"},kind)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "gatekeeper-system",
+          "value": "gatekeeper-system"
+        },
+        "datasource": null,
+        "definition": "label_values(kube_namespace_labels{},namespace)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "ns",
+        "multi": false,
+        "name": "ns",
+        "options": [
+          {
+            "selected": false,
+            "text": "default",
+            "value": "default"
+          },
+          {
+            "selected": false,
+            "text": "demo",
+            "value": "demo"
+          },
+          {
+            "selected": true,
+            "text": "gatekeeper-system",
+            "value": "gatekeeper-system"
+          },
+          {
+            "selected": false,
+            "text": "kube-node-lease",
+            "value": "kube-node-lease"
+          },
+          {
+            "selected": false,
+            "text": "kube-public",
+            "value": "kube-public"
+          },
+          {
+            "selected": false,
+            "text": "kube-system",
+            "value": "kube-system"
+          },
+          {
+            "selected": false,
+            "text": "kubedb",
+            "value": "kubedb"
+          },
+          {
+            "selected": false,
+            "text": "kubeops",
+            "value": "kubeops"
+          },
+          {
+            "selected": false,
+            "text": "local-path-storage",
+            "value": "local-path-storage"
+          },
+          {
+            "selected": false,
+            "text": "monitoring",
+            "value": "monitoring"
+          }
+        ],
+        "query": {
+          "query": "label_values(kube_namespace_labels{},namespace)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "gatekeeper-audit",
+          "value": "gatekeeper-audit"
+        },
+        "datasource": null,
+        "definition": "label_values(scanner_appscode_com_image_lineage{group=~\"$group\",kind=~\"$kind\",exported_namespace=~\"$ns\"},name)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "name",
+        "multi": false,
+        "name": "name",
+        "options": [
+          {
+            "selected": true,
+            "text": "gatekeeper-audit",
+            "value": "gatekeeper-audit"
+          },
+          {
+            "selected": false,
+            "text": "gatekeeper-controller-manager",
+            "value": "gatekeeper-controller-manager"
+          }
+        ],
+        "query": {
+          "query": "label_values(scanner_appscode_com_image_lineage{group=~\"$group\",kind=~\"$kind\",exported_namespace=~\"$ns\"},name)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Appscode / Scanner / App CVEs",
+  "uid": "Egwi40hVz",
+  "version": 1
+}
