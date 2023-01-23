@@ -19,7 +19,13 @@
   "links": [],
   "panels": [
     {
-      "aliasColors": {},
+      "aliasColors": {
+        "CRITICAL": "#ea3d2f",
+        "HIGH": "#f7ad2a",
+        "LOW": "#27b064",
+        "MEDIUM": "#0aafff",
+        "UNKNOWN": "#8f8f8f"
+      },
       "bars": false,
       "dashLength": 10,
       "dashes": false,
@@ -114,7 +120,13 @@
       }
     },
     {
-      "aliasColors": {},
+      "aliasColors": {
+        "CRITICAL": "#ea3d2f",
+        "HIGH": "#f7ad2a",
+        "LOW": "#27b064",
+        "MEDIUM": "#0aafff",
+        "UNKNOWN": "#8f8f8f"
+      },
       "bars": false,
       "dashLength": 10,
       "dashes": false,
