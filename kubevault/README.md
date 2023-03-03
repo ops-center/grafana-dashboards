@@ -101,11 +101,7 @@ If you followed the instruction properly, you should see the KubeVault Grafana d
 
 ### Samples
 
-####  KubeVault / Summary
+####  KubeVault / VaultServer / Summary
 
-![KubeVault / Summary](/kubevault/images/kubevault_summary.png)
-
-
-#### KubeVault / Vault
-
-![KubeVault / Vault](/kubevault/images/vault-dashboard.png)
+![KubeVault / VaultServer / Summary](/kubevault/images/VaultServerSummary1.png)
+![KubeVault / VaultServer / Summary](/kubevault/images/VaultServerSummary2.png)
