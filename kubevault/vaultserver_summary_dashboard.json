@@ -18,7 +18,7 @@
       }
     ]
   },
-  "description": "The dashboard is designed for KubeVault",
+  "description": "The dashboard is designed for KubeVault managed VaultServer",
   "editable": true,
   "gnetId": 9628,
   "graphTooltip": 0,
@@ -2724,7 +2724,7 @@
     ]
   },
   "timezone": "",
-  "title": "KubeVault / Summary",
+  "title": "KubeVault / VaultServer / Summary",
   "uid": "wzK8X8Nrd",
   "version": 1
 }
