@@ -1,34 +1,33 @@
 # Kafka Grafana Dashboards
 
 There is a dashboard to monitor Kafka instances managed by KubeDB.
-- KubeDB / Elasticsearch / Database: shows Elasticsearch internal metrics such as index, shards, docs, etc.
+- KubeDB / Kafka / Database: shows Kafka internal metrics.
 
-Note: These dashboards are developed in **Grafana version 7.5.5**
+Note: These dashboards are developed in **Grafana version 9.3.8**
 
 ### Dependencies
 
-Elasticsearch Dashboards are heavily dependent on:
+Kafka Dashboards are heavily dependent on:
 
 - [Prometheus Node Exporter](https://github.com/prometheus/node_exporter)
-- [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)
-- [Panopticon by Appscode](https://blog.byte.builders/post/introducing-panopticon/)
+- [Prometheus JMX Exporter](https://github.com/prometheus/jmx_exporter)
 
 
 ### Installation
 
 #### 1. Install Prometheus Stack
 
-Install Prometheus stack if you haven't done it already. You can use [kube-prometheus-stack](https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack) which installs the necessary components required for the Elasticsearch Grafana dashboards.
+Install Prometheus stack if you haven't done it already. You can use [kube-prometheus-stack](https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack) which installs the necessary components required for the Kafka Grafana dashboards.
 
-#### 3. Add monitoring configuration in KubeDB managed Elasticsearch spec
+#### 2. Add monitoring configuration in KubeDB managed Kafka spec
 
-To enable monitoring of a KubeDB Elasticsearch instance, you have to add monitoring configuration in the Elasticsearch CR spec like below:
+To enable monitoring of a KubeDB Kafka instance, you have to add monitoring configuration in the Kafka CR spec like below:
 
 ```
 apiVersion: kubedb.com/v1alpha2
-kind: Elasticsearch
+kind: Kafka
 metadata:
-  name: sample-es
+  name: sample-kf
   namespace: demo
 spec:
   ...
@@ -42,47 +41,30 @@ spec:
         interval: 10s
 ```
 
-### Using Dashboards
-
-#### Create DB Metrics Configurations
-
-At first, you have to create a `MetricsConfiguration` object for DB. This `MetricsConfiguration` object is used by Panopticon to generate metrics for DB instances.
-
-Install `kubedb-metrics` charts which will create the `MetricsConfiguration` object for DB:
-
-```bash
-$ helm repo add appscode https://charts.appscode.com/stable/
-$ helm repo update
-$ helm search repo appscode/kubedb-metrics --version=v2022.10.18
-$ helm upgrade -i kubedb-metrics appscode/kubedb-metrics -n kubedb --create-namespace --version=v2022.10.18
-```
-
 #### Import Grafana Dashboard
 
-Now, on your Grafana UI, import the json files of dashboards located in the `elasticsearch` folder of this repository.
+Now, on your Grafana UI, import the json files of dashboards located in the `kafka` folder of this repository.
 
 
 1. Select `Import` from the `Plus(+)` icon from the left bar of the Grafana UI
 
-![Import New Dashboard](/elasticsearch/images/import_dashboard_1.png)
+![Import New Dashboard](/kafka/images/import_dashboard_1.png)
 
 2. Upload the json file and hit load button:
 
-![Upload Dashboard JSON](/elasticsearch/images/import_dashboard_2.png)
+![Upload Dashboard JSON](/kafka/images/import_dashboard_2.png)
 
 
-If you followed the instruction properly, you should see the Elasticsearch Grafana dashboard in your Grafana UI.
+If you followed the instruction properly, you should see the Kafka Grafana dashboard in your Grafana UI.
 
 ### Samples
 
-####  KubeDB / Elasticsearch / Summary
+#### KubeDB / Kafka / Database
 
-![KubeDB / Elasticsearch / Summary](/elasticsearch/images/kubedb-elasticsearch-summary.png)
-
-#### KubeDB / Elasticsearch / Database
-
-![KubeDB / Elasticsearch / Database](/elasticsearch/images/kubedb-elasticsearch-database.png)
-
-#### KubeDB / Elasticsearch / Pod
-
-![KubeDB / Elasticsearch / Pod](/elasticsearch/images/kubedb-elasticsearch-pod.png)
+![KubeDB / Kafka / Database](/kafka/images/Kafka-server-metrics-0.png)
+![KubeDB / Kafka / Database](/kafka/images/kafka-server-metrics-1.png)
+![KubeDB / Kafka / Database](/kafka/images/Kafka-broker-topic-metrics-0.png)
+![KubeDB / Kafka / Database](/kafka/images/kafka-broker-topic-metrics-1.png)
+![KubeDB / Kafka / Database](/kafka/images/Kafka-broker-topic-metrics-2.png)
+![KubeDB / Kafka / Database](/kafka/images/kafka-kraft-quorum-monitoring-metrics.png)
+![KubeDB / Kafka / Database](/kafka/images/kafka-kraft-controller-monitoring-metrics.png)
