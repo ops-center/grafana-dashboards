@@ -3859,9 +3859,9 @@
       "30d"
     ]
   },
-  "timezone": "",
-  "title": "KubeDB Kafka Dashboard",
+  "timezone": "utc",
+  "title": "KubeDB / Elasticsearch / Database",
   "uid": "LwWjURa4k",
-  "version": 5,
+  "version": 1,
   "weekStart": ""
 }
