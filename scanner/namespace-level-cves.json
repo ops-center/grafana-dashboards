@@ -230,9 +230,10 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "text": "kubeops",
-          "value": "kubeops"
+          "isNone": true,
+          "selected": false,
+          "text": "None",
+          "value": ""
         },
         "datasource": null,
         "definition": "label_values(kube_namespace_labels,namespace)",
@@ -243,63 +244,12 @@
         "label": "ns",
         "multi": false,
         "name": "ns",
-        "options": [
-          {
-            "selected": false,
-            "text": "default",
-            "value": "default"
-          },
-          {
-            "selected": false,
-            "text": "demo",
-            "value": "demo"
-          },
-          {
-            "selected": false,
-            "text": "gatekeeper-system",
-            "value": "gatekeeper-system"
-          },
-          {
-            "selected": false,
-            "text": "kube-node-lease",
-            "value": "kube-node-lease"
-          },
-          {
-            "selected": false,
-            "text": "kube-public",
-            "value": "kube-public"
-          },
-          {
-            "selected": false,
-            "text": "kube-system",
-            "value": "kube-system"
-          },
-          {
-            "selected": false,
-            "text": "kubedb",
-            "value": "kubedb"
-          },
-          {
-            "selected": true,
-            "text": "kubeops",
-            "value": "kubeops"
-          },
-          {
-            "selected": false,
-            "text": "local-path-storage",
-            "value": "local-path-storage"
-          },
-          {
-            "selected": false,
-            "text": "monitoring",
-            "value": "monitoring"
-          }
-        ],
+        "options": [],
         "query": {
           "query": "label_values(kube_namespace_labels,namespace)",
           "refId": "StandardVariableQuery"
         },
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
