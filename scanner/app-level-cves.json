@@ -230,9 +230,10 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "text": "apps",
-          "value": "apps"
+          "isNone": true,
+          "selected": false,
+          "text": "None",
+          "value": ""
         },
         "datasource": null,
         "definition": "label_values(apiserver_request_total{},group)",
@@ -243,183 +244,12 @@
         "label": "group",
         "multi": false,
         "name": "group",
-        "options": [
-          {
-            "selected": false,
-            "text": "core.k8s.appscode.com",
-            "value": "core.k8s.appscode.com"
-          },
-          {
-            "selected": false,
-            "text": "admissionregistration.k8s.io",
-            "value": "admissionregistration.k8s.io"
-          },
-          {
-            "selected": false,
-            "text": "apiextensions.k8s.io",
-            "value": "apiextensions.k8s.io"
-          },
-          {
-            "selected": false,
-            "text": "apiregistration.k8s.io",
-            "value": "apiregistration.k8s.io"
-          },
-          {
-            "selected": false,
-            "text": "appcatalog.appscode.com",
-            "value": "appcatalog.appscode.com"
-          },
-          {
-            "selected": true,
-            "text": "apps",
-            "value": "apps"
-          },
-          {
-            "selected": false,
-            "text": "autoscaling",
-            "value": "autoscaling"
-          },
-          {
-            "selected": false,
-            "text": "batch",
-            "value": "batch"
-          },
-          {
-            "selected": false,
-            "text": "catalog.kubedb.com",
-            "value": "catalog.kubedb.com"
-          },
-          {
-            "selected": false,
-            "text": "certificates.k8s.io",
-            "value": "certificates.k8s.io"
-          },
-          {
-            "selected": false,
-            "text": "config.gatekeeper.sh",
-            "value": "config.gatekeeper.sh"
-          },
-          {
-            "selected": false,
-            "text": "coordination.k8s.io",
-            "value": "coordination.k8s.io"
-          },
-          {
-            "selected": false,
-            "text": "discovery.k8s.io",
-            "value": "discovery.k8s.io"
-          },
-          {
-            "selected": false,
-            "text": "expansion.gatekeeper.sh",
-            "value": "expansion.gatekeeper.sh"
-          },
-          {
-            "selected": false,
-            "text": "externaldata.gatekeeper.sh",
-            "value": "externaldata.gatekeeper.sh"
-          },
-          {
-            "selected": false,
-            "text": "flowcontrol.apiserver.k8s.io",
-            "value": "flowcontrol.apiserver.k8s.io"
-          },
-          {
-            "selected": false,
-            "text": "helm.toolkit.fluxcd.io",
-            "value": "helm.toolkit.fluxcd.io"
-          },
-          {
-            "selected": false,
-            "text": "kubedb.com",
-            "value": "kubedb.com"
-          },
-          {
-            "selected": false,
-            "text": "metrics.appscode.com",
-            "value": "metrics.appscode.com"
-          },
-          {
-            "selected": false,
-            "text": "monitoring.coreos.com",
-            "value": "monitoring.coreos.com"
-          },
-          {
-            "selected": false,
-            "text": "mutations.gatekeeper.sh",
-            "value": "mutations.gatekeeper.sh"
-          },
-          {
-            "selected": false,
-            "text": "networking.k8s.io",
-            "value": "networking.k8s.io"
-          },
-          {
-            "selected": false,
-            "text": "node.k8s.io",
-            "value": "node.k8s.io"
-          },
-          {
-            "selected": false,
-            "text": "policy",
-            "value": "policy"
-          },
-          {
-            "selected": false,
-            "text": "rbac.authorization.k8s.io",
-            "value": "rbac.authorization.k8s.io"
-          },
-          {
-            "selected": false,
-            "text": "scheduling.k8s.io",
-            "value": "scheduling.k8s.io"
-          },
-          {
-            "selected": false,
-            "text": "source.toolkit.fluxcd.io",
-            "value": "source.toolkit.fluxcd.io"
-          },
-          {
-            "selected": false,
-            "text": "status.gatekeeper.sh",
-            "value": "status.gatekeeper.sh"
-          },
-          {
-            "selected": false,
-            "text": "storage.k8s.io",
-            "value": "storage.k8s.io"
-          },
-          {
-            "selected": false,
-            "text": "templates.gatekeeper.sh",
-            "value": "templates.gatekeeper.sh"
-          },
-          {
-            "selected": false,
-            "text": "ui.k8s.appscode.com",
-            "value": "ui.k8s.appscode.com"
-          },
-          {
-            "selected": false,
-            "text": "authentication.k8s.io",
-            "value": "authentication.k8s.io"
-          },
-          {
-            "selected": false,
-            "text": "authorization.k8s.io",
-            "value": "authorization.k8s.io"
-          },
-          {
-            "selected": false,
-            "text": "events.k8s.io",
-            "value": "events.k8s.io"
-          }
-        ],
+        "options": [],
         "query": {
           "query": "label_values(apiserver_request_total{},group)",
           "refId": "StandardVariableQuery"
         },
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
