@@ -1,25 +1,26 @@
-# Scanner Grafana Dashboards
+# Policy Grafana Dashboards
 
-There are four dashboards to monitor gatekeeper policy information
+There are two dashboards to monitor gatekeeper policy information
 
-- `ACE / Policy / Cluster Violations`: Shows vulnerability info in cluster level.
-- `ACE / Policy / Namespace Violations`: Shows vulnerability info in namespace level.
+- `ACE / Policy / Cluster Violations`: Shows policy violations info in cluster level.
+- `ACE / Policy / Namespace Violations`: Shows policy violations info in namespace level.
 
 Note: These dashboards are developed in **Grafana version 7.5.11**
 
-### Dependencies
-
-Scanner Dashboards are heavily dependent on:
-
-- [Prometheus Node Exporter](https://github.com/prometheus/node_exporter)
-- [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)
-
-
 ### Installation
+
+Policy Dashboards are heavily dependent on:
+
+- [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)
+- [gatekeeper](https://github.com/open-policy-agent/gatekeeper)
 
 #### Install Prometheus Stack
 
-Install Prometheus stack if you haven't done it already. You can use [kube-prometheus-stack](https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack) which installs the necessary components required for the Scanner Grafana dashboards.
+Install Prometheus stack if you haven't done it already. You can use [kube-prometheus-stack](https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack) which installs the necessary components required for the Policy Grafana dashboards.
+
+#### Install Gatekeeper
+
+Follow the steps here to install [Gatekeeper](https://github.com/open-policy-agent/gatekeeper/tree/master/charts/gatekeeper)
 
 ### Using Dashboards
 
