@@ -14,7 +14,7 @@ MongoDB Dashboards are heavily dependent on:
 
 - [Prometheus Node Exporter](https://github.com/prometheus/node_exporter)
 - [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)
-- [Panopticon by Appscode](https://blog.byte.builders/post/introducing-panopticon/)
+- [Panopticon by Appscode](https://byte.builders/blog/post/introducing-panopticon/)
 
 
 ### Installation
@@ -25,7 +25,7 @@ Install Prometheus stack if you haven't done it already. You can use [kube-prome
 
 #### 2. Install Panopticon
 
-Install Panopticon if you haven't done it already. Like other AppsCode products, [Panopticon](https://blog.byte.builders/post/introducing-panopticon/) also need a license to run. You can grab a 30 days trial license for Panopticon from [here](https://license-issuer.appscode.com/?p=panopticon-enterprise).
+Install Panopticon if you haven't done it already. Like other AppsCode products, [Panopticon](https://byte.builders/blog/post/introducing-panopticon/) also need a license to run.
 
 **If you already have an enterprise license for KubeDB or Stash, you do not need to issue a new license for Panopticon. Your existing KubeDB or Stash license will work with Panopticon.**
 

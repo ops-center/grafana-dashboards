@@ -61,7 +61,7 @@ Here, we can use the `prometheus-stack-kube-prom-prometheus` Service to access t
 
 #### 2. Install Panopticon
 
-Like other AppsCode products, [Panopticon](https://blog.byte.builders/post/introducing-panopticon/) also needs a license to run. You can grab a 30 days trial license for Panopticon from [here](https://license-issuer.appscode.com/?p=panopticon-enterprise).
+Like other AppsCode products, [Panopticon](https://byte.builders/blog/post/introducing-panopticon/) also needs a license to run.
 
 **If you already have an enterprise license for KubeDB or Stash, you do not need to issue a new license for Panopticon. Your existing KubeDB or Stash license will work with Panopticon.**
 
