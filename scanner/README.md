@@ -45,6 +45,7 @@ spec:
           release: prometheus
         interval: 10s
 ```
+
 Now, this db will be used as a workload in the `ACE / Scanner / App CVEs` dashboard. And you can monitor the vulnerabilities for the images under this db.
 
 ### Using Dashboards

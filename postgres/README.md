@@ -75,8 +75,9 @@ Install `kubedb-metrics` charts which will create the `MetricsConfiguration` obj
 ```bash
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
-$ helm search repo appscode/kubedb-metrics --version=v2022.10.18
-$ helm upgrade -i kubedb-metrics appscode/kubedb-metrics -n kubedb --create-namespace --version=v2022.10.18
+$ helm search repo appscode/kubedb-metrics
+$ helm upgrade -i kubedb-metrics appscode/kubedb-metrics \
+  -n kubedb --create-namespace
 ```
 
 #### Import Grafana Dashboard

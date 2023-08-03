@@ -79,8 +79,9 @@ Install `kubevault-metrics` charts which will create the `MetricsConfiguration` 
 ```bash
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
-$ helm search repo appscode/kubevault-metrics --version=v2022.12.28
-$ helm upgrade -i kubevault-metrics appscode/kubevault-metrics -n kubevault --create-namespace --version=v2022.12.28
+$ helm search repo appscode/kubevault-metrics
+$ helm upgrade -i kubevault-metrics appscode/kubevault-metrics \
+  -n kubevault --create-namespace
 ```
 
 #### Import Grafana Dashboard
