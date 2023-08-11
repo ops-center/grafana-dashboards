@@ -1997,8 +1997,8 @@
       "30d"
     ]
   },
-  "timezone": "",
-  "title": "KubeDB / Redis / Pod",
+  "timezone": "utc",
+  "title": "KubeDB / RedisSentinel / Pod",
   "uid": "fF-N4cH7k",
   "version": 4
 }
