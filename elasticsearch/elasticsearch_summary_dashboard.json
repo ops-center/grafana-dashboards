@@ -28,7 +28,7 @@
   "panels": [
     {
       "collapsed": false,
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -41,7 +41,7 @@
       "type": "row"
     },
     {
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "description": "Represent database status",
       "fieldConfig": {
         "defaults": {
@@ -113,7 +113,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -130,7 +130,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "description": "ElasticsearchVersion CR Name",
       "fieldConfig": {
         "defaults": {
@@ -189,7 +189,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": false,
@@ -207,7 +207,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "description": "ElasticsearchVersion CR Name",
       "fieldConfig": {
         "defaults": {
@@ -270,7 +270,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -287,7 +287,7 @@
       "type": "stat"
     },
     {
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "description": "KubeDB Elasticsearch HTTP layer status",
       "fieldConfig": {
         "defaults": {
@@ -353,7 +353,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -369,7 +369,7 @@
       "type": "stat"
     },
     {
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "description": "KubeDB Database Resource terminationPolicy",
       "fieldConfig": {
         "defaults": {
@@ -433,7 +433,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -449,7 +449,7 @@
       "type": "stat"
     },
     {
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "description": "Total node count of Elasticsearch cluster",
       "fieldConfig": {
         "defaults": {
@@ -496,7 +496,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -511,7 +511,7 @@
       "type": "stat"
     },
     {
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "description": "Initial Requested CPU amount by Postgres Instance",
       "fieldConfig": {
         "defaults": {
@@ -555,7 +555,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -570,7 +570,7 @@
       "type": "stat"
     },
     {
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "description": "CPU Limit in core by Elasticsearch instance",
       "fieldConfig": {
         "defaults": {
@@ -613,7 +613,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -627,7 +627,7 @@
       "type": "stat"
     },
     {
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "description": "Initial Requested Memory amount by Elasticsearch Instance",
       "fieldConfig": {
         "defaults": {
@@ -672,7 +672,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -687,7 +687,7 @@
       "type": "stat"
     },
     {
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "description": "KubeDB Elasticsearch Total Memory Limit",
       "fieldConfig": {
         "defaults": {
@@ -731,7 +731,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -745,7 +745,7 @@
       "type": "stat"
     },
     {
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "description": "Total storage request by Elasticsearch nodes",
       "fieldConfig": {
         "defaults": {
@@ -790,7 +790,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -806,7 +806,7 @@
     },
     {
       "collapsed": false,
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -823,7 +823,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "description": "CPU Usage by Elasticsearch pods",
       "fieldConfig": {
         "defaults": {
@@ -861,7 +861,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -920,7 +920,7 @@
       }
     },
     {
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "description": "CPU Quote information in details",
       "fieldConfig": {
         "defaults": {
@@ -1144,7 +1144,7 @@
           }
         ]
       },
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -1218,7 +1218,7 @@
     },
     {
       "collapsed": false,
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1235,7 +1235,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "description": "Memory Usage by Elasticsearch pods",
       "fieldConfig": {
         "defaults": {
@@ -1273,7 +1273,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1332,7 +1332,7 @@
       }
     },
     {
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1623,7 +1623,7 @@
           }
         ]
       },
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -1729,7 +1729,7 @@
     },
     {
       "collapsed": false,
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1746,7 +1746,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "description": "Disk usage by Elasticsearch pods",
       "fieldConfig": {
         "defaults": {
@@ -1791,7 +1791,7 @@
         }
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1854,7 +1854,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "description": "System Disk Usage Information",
       "fieldConfig": {
         "defaults": {
@@ -1899,7 +1899,7 @@
         }
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1973,7 +1973,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "unit": "short"
@@ -2018,7 +2018,7 @@
         }
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2085,7 +2085,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "unit": "Bps"
@@ -2130,7 +2130,7 @@
         }
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2193,7 +2193,7 @@
       }
     },
     {
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2430,7 +2430,7 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -2514,7 +2514,7 @@
     },
     {
       "collapsed": false,
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2527,7 +2527,7 @@
       "type": "row"
     },
     {
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "description": "This panel describes allocated persistent storage in a table format\n",
       "fieldConfig": {
         "defaults": {
@@ -2563,7 +2563,7 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -2602,7 +2602,7 @@
       "type": "table"
     },
     {
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "description": "This panel shows the persistent volume usage in percentage. ",
       "fieldConfig": {
         "defaults": {
@@ -2647,7 +2647,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -2663,7 +2663,7 @@
       "type": "bargauge"
     },
     {
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "description": "This panel describes the persistent volume usage in a time series. ",
       "fieldConfig": {
         "defaults": {
@@ -2747,7 +2747,7 @@
     },
     {
       "collapsed": false,
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2764,7 +2764,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "unit": "Bps"
@@ -2809,7 +2809,7 @@
         }
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2876,7 +2876,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "tamal-kubedb-linode",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "unit": "Bps"
@@ -2921,7 +2921,7 @@
         }
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2997,7 +2997,7 @@
           "text": "default",
           "value": "default"
         },
-        "datasource": "tamal-kubedb-linode",
+        "datasource": null,
         "definition": "label_values(kube_namespace_labels,namespace)",
         "description": null,
         "error": null,
@@ -3028,7 +3028,7 @@
           "text": "es-prod",
           "value": "es-prod"
         },
-        "datasource": "tamal-kubedb-linode",
+        "datasource": null,
         "definition": "label_values(kubedb_com_elasticsearch_status_phase{namespace=~\"$namespace\"},app)",
         "description": null,
         "error": null,
