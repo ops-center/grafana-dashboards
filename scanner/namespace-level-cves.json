@@ -8,16 +8,24 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "editable": true,
+  "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 28,
-  "iteration": 1673340822665,
+  "id": 64,
+  "iteration": 1693982769114,
   "links": [],
+  "liveNow": true,
   "panels": [
     {
       "aliasColors": {
@@ -32,10 +40,6 @@
       "dashes": false,
       "datasource": null,
       "description": "Total number of vulnerabilities occurred in namespace scope",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -62,7 +66,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -73,7 +77,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "scanner_appscode_com_namespace_cve_occurrence_total{exported_namespace=\"$ns\"}",
+          "expr": "sum by (job, severity) (scanner_appscode_com_namespace_cve_occurrence_total{namespace=\"$ns\"})",
           "interval": "",
           "legendFormat": "{{severity}}",
           "refId": "A"
@@ -133,10 +137,6 @@
       "dashes": false,
       "datasource": null,
       "description": "Number of unique vulnerabilities in namespace scope",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -163,7 +163,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -174,7 +174,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "scanner_appscode_com_namespace_cve_count_total{exported_namespace=\"$ns\"}",
+          "expr": "sum by (job, severity) (scanner_appscode_com_namespace_cve_count_total{namespace=\"$ns\"})",
           "interval": "",
           "legendFormat": "{{severity}}",
           "refId": "A"
@@ -222,11 +222,32 @@
       }
     }
   ],
-  "schemaVersion": 27,
+  "schemaVersion": 31,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Prometheus",
+          "value": "Prometheus"
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "datasource",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
       {
         "allValue": null,
         "current": {
@@ -236,7 +257,7 @@
           "value": ""
         },
         "datasource": null,
-        "definition": "label_values(kube_namespace_labels,namespace)",
+        "definition": "label_values(kube_namespace_created,namespace)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -246,7 +267,7 @@
         "name": "ns",
         "options": [],
         "query": {
-          "query": "label_values(kube_namespace_labels,namespace)",
+          "query": "label_values(kube_namespace_created,namespace)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -254,7 +275,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -262,12 +282,12 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "ACE / Scanner / Namespace CVEs",
   "uid": "Edocn0hVz",
-  "version": 1
+  "version": 2
 }
