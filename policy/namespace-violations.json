@@ -8,16 +8,24 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "editable": true,
+  "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 38,
-  "iteration": 1679918498219,
+  "id": 58,
+  "iteration": 1693976877324,
   "links": [],
+  "liveNow": true,
   "panels": [
     {
       "aliasColors": {},
@@ -26,10 +34,6 @@
       "dashes": false,
       "datasource": null,
       "description": "Total number of Gatekeeper policy violations occurred in namespace scope",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -56,7 +60,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -67,9 +71,9 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "policy_appscode_com_namespace_violation_occurrence_total{exported_namespace=\"$ns\"}",
+          "expr": "policy_appscode_com_namespace_violation_occurrence_total{namespace=\"$ns\"}",
           "interval": "",
-          "legendFormat": "{{ exported_namespace }}",
+          "legendFormat": "{{ namespace }}",
           "refId": "A"
         }
       ],
@@ -121,10 +125,6 @@
       "dashes": false,
       "datasource": null,
       "description": "Total number of policy violations occurred in namespace scope by constraint type",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
@@ -151,7 +151,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.11",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -162,9 +162,9 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "policy_appscode_com_namespace_violation_occurrence_by_constraint_type{exported_namespace=\"$ns\",constraint=\"$constraint\"}",
+          "expr": "policy_appscode_com_namespace_violation_occurrence_by_constraint_type{namespace=\"$ns\",constraint=\"$constraint\"}",
           "interval": "",
-          "legendFormat": "ns={{ exported_namespace }}  , constraint= {{ constraint }}",
+          "legendFormat": "ns={{ namespace }}  , constraint= {{ constraint }}",
           "refId": "A"
         }
       ],
@@ -210,21 +210,41 @@
       }
     }
   ],
-  "schemaVersion": 27,
+  "schemaVersion": 31,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
+        "current": {
+          "selected": false,
+          "text": "Prometheus",
+          "value": "Prometheus"
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "datasource",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
         "allValue": null,
         "current": {
-          "isNone": true,
-          "selected": false,
-          "text": "None",
-          "value": ""
+          "selected": true,
+          "text": "cert-manager",
+          "value": "cert-manager"
         },
         "datasource": null,
-        "definition": "label_values(kube_namespace_labels,namespace)",
+        "definition": "label_values(kube_namespace_created,namespace)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -234,7 +254,7 @@
         "name": "ns",
         "options": [],
         "query": {
-          "query": "label_values(kube_namespace_labels,namespace)",
+          "query": "label_values(kube_namespace_created,namespace)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -242,7 +262,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -250,10 +269,9 @@
       {
         "allValue": null,
         "current": {
-          "isNone": true,
-          "selected": false,
-          "text": "None",
-          "value": ""
+          "selected": true,
+          "text": "K8sContainerRequests",
+          "value": "K8sContainerRequests"
         },
         "datasource": null,
         "definition": "label_values(policy_appscode_com_cluster_violation_occurrence_by_constraint_type, constraint) ",
@@ -274,7 +292,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -282,12 +299,12 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "ACE / Policy / Namespace Violations",
   "uid": "stTXBS-4z",
-  "version": 6
+  "version": 2
 }

@@ -5,7 +5,7 @@ There are two dashboards to monitor gatekeeper policy information
 - `ACE / Policy / Cluster Violations`: Shows policy violations info in cluster level.
 - `ACE / Policy / Namespace Violations`: Shows policy violations info in namespace level.
 
-Note: These dashboards are developed in **Grafana version 7.5.11**
+Note: These dashboards are developed in **Grafana version 7.5.5**
 
 ### Installation
 

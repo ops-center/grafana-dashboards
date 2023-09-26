@@ -8,7 +8,7 @@ There are four dashboards to monitor scanning information
 - `ACE / Scanner / App CVEs`: Shows vulnerability info for a particular workload. Ex: MongoDB, Deployment, ReplicaSet etc.
 - `ACE / Scanner / CVE Report`: Shows the occurrence information of a particular CVE, both in cluster level & namespace level.
 
-Note: These dashboards are developed in **Grafana version 7.5.11**
+Note: These dashboards are developed in **Grafana version 7.5.5**
 
 ### Dependencies
 
