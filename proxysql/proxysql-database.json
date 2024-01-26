@@ -7744,7 +7744,7 @@
           "value": "demo"
         },
         "datasource": "${datasource}",
-        "definition": "label_values(kube_namespace_labels,namespace)",
+        "definition": "label_values(kube_namespace_created,namespace)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -7754,7 +7754,7 @@
         "name": "namespace",
         "options": [],
         "query": {
-          "query": "label_values(kube_namespace_labels,namespace)",
+          "query": "label_values(kube_namespace_created,namespace)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
