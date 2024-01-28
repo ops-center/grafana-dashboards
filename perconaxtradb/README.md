@@ -32,15 +32,14 @@ Install Panopticon if you haven't done it already. Like other AppsCode products,
 Now, install Panopticon using the following commands:
 
 ```bash
-$ helm repo add appscode https://charts.appscode.com/stable/
-$ helm repo update
+helm upgrade -i monitoring-operator oci://ghcr.io/appscode-charts/monitoring-operator \
+  --version v0.0.4 \
+  -n monitoring --create-namespace
 
-$ helm install panopticon appscode/panopticon -n kubeops \
-    --create-namespace \
-    --set monitoring.enabled=true \
-    --set monitoring.agent=prometheus.io/operator \
-    --set monitoring.serviceMonitor.labels.release=<helm-release-name-of-kube-prometheus-stack> \
-    --set-file license=/path/to/license-file.txt
+helm upgrade -i panopticon oci://ghcr.io/appscode-charts/panopticon \
+  --version v2023.10.1 \
+  -n kubeops --create-namespace \
+  --set-file license=/path/to/license-file.txt
 ```
 
 #### 3. Add monitoring configuration in KubeDB managed PerconaXtraDB spec
@@ -74,10 +73,8 @@ At first, you have to create a `MetricsConfiguration` object for DB. This `Metri
 Install `kubedb-metrics` charts which will create the `MetricsConfiguration` object for DB:
 
 ```bash
-$ helm repo add appscode https://charts.appscode.com/stable/
-$ helm repo update
-$ helm search repo appscode/kubedb-metrics
-$ helm upgrade -i kubedb-metrics appscode/kubedb-metrics \
+helm upgrade -i kubedb-metrics oci://ghcr.io/appscode-charts/kubedb-metrics \
+  --version v2023.12.28 \
   -n kubedb --create-namespace
 ```
 
