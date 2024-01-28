@@ -12,7 +12,6 @@ Stash Grafana Dashboard heavily depends on the following projects.
 
 ### Installation
 
-
 #### 1. Install Prometheus Stack
 
 Install Prometheus stack if you haven't done it already. You can use [kube-prometheus-stack](https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack) which installs the necessary components required for the MariaDB Grafana dashboards.
@@ -36,8 +35,6 @@ helm upgrade -i panopticon oci://ghcr.io/appscode-charts/panopticon \
   --set-file license=/path/to/license-file.txt
 ```
 
-Make sure to use the appropriate label in `monitoring.serviceMonitor.labels` field according to your setup. This label is used by the Prometheus server to select the desired ServiceMonitor.
-
 #### 3. Install / Upgrade Stash to Enable Monitoring
 
 Now, install Stash Enterprise edition with monitoring enabled. You can follow the following guide for detailed instructions on enabling monitoring in Stash from [here](https://stash.run/docs/laster/guides/latest/monitoring/prometheus_operator/#enable-monitoring-in-stash).
@@ -45,25 +42,29 @@ Now, install Stash Enterprise edition with monitoring enabled. You can follow th
 - **New Installation**
 
 ```bash
-$ helm install stash appscode/stash -n kube-system \
---version v2022.05.18 \
---set features.enterprise=true               \
---set stash-enterprise.monitoring.agent=prometheus.io/operator \
---set stash-enterprise.monitoring.backup=true \
---set stash-enterprise.monitoring.operator=true \
---set stash-enterprise.monitoring.serviceMonitor.labels.release=prometheus-stack \
---set-file global.license=/path/to/license-file.txt
+helm upgrade -i stash oci://ghcr.io/appscode-charts/stash \
+  --version v2023.10.9 \
+  --namespace stash --create-namespace \
+  --set features.enterprise=true \
+  --set-file global.license=/path/to/the/license.txt \
+  --set stash-enterprise.monitoring.agent=prometheus.io/operator \
+  --set stash-enterprise.monitoring.backup=true \
+  --set stash-enterprise.monitoring.operator=true \
+  --set 'stash-enterprise.monitoring.serviceMonitor.labels.monitoring\.appscode\.com/prometheus=federated' \
+  --wait --burst-limit=10000 --debug
 ```
 
 - **Existing Installation**
 
 ```bash
-$ helm upgrade stash appscode/stash -n kube-system \
---reuse-values \
---set stash-enterprise.monitoring.agent=prometheus.io/operator \
---set stash-enterprise.monitoring.backup=true \
---set stash-enterprise.monitoring.operator=true \
---set stash-enterprise.monitoring.serviceMonitor.labels.release=prometheus-stack
+helm upgrade -i stash oci://ghcr.io/appscode-charts/stash \
+  --version v2023.10.9 \
+  --namespace stash \
+  --reuse-values \
+  --set stash-enterprise.monitoring.agent=prometheus.io/operator \
+  --set stash-enterprise.monitoring.backup=true \
+  --set stash-enterprise.monitoring.operator=true \
+  --set 'stash-enterprise.monitoring.serviceMonitor.labels.monitoring\.appscode\.com/prometheus=federated'
 ```
 
 ### Using Dashboard
