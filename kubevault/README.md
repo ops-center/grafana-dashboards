@@ -21,16 +21,12 @@ KubeVault Dashboards are heavily dependent on:
 #### 1. Install Prometheus Stack
 
 Install Prometheus stack if you haven't done it already. You can use [kube-prometheus-stack](https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack) which installs the necessary components required for the KubeVault Grafana dashboards.
-You can use Prometheus using following command 
-```bash
-helm install prometheus prometheus-community/kube-prometheus-stack -n monitoring --set grafana.image.tag=7.5.17 --create-namespace
-```
 
 #### 2. Install Panopticon
 
 Install Panopticon if you haven't done it already. Like other AppsCode products, [Panopticon](https://byte.builders/blog/post/introducing-panopticon/) also need a license to run.
 
-**If you already have an enterprise license for KubeDB or Stash, you do not need to issue a new license for Panopticon. Your existing KubeDB or Stash license will work with Panopticon.**
+**If you already have a license for KubeDB or Stash, you do not need to issue a new license for Panopticon. Your existing KubeDB or Stash license will work with Panopticon.**
 
 Now, install Panopticon using the following commands:
 
