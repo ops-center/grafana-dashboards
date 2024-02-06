@@ -3,7 +3,7 @@
       "list": [
         {
           "builtIn": 1,
-          "datasource": "-- Grafana --",
+          "datasource": "${datasource}",
           "enable": true,
           "hide": true,
           "iconColor": "rgba(0, 211, 255, 1)",
@@ -28,7 +28,7 @@
     "panels": [
       {
         "collapsed": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "gridPos": {
           "h": 1,
           "w": 24,
@@ -41,7 +41,7 @@
         "type": "row"
       },
       {
-        "datasource": null,
+        "datasource": "${datasource}",
         "description": "Represent database status",
         "fieldConfig": {
           "defaults": {
@@ -130,7 +130,7 @@
       },
       {
         "cacheTimeout": null,
-        "datasource": "Prometheus",
+        "datasource": "${datasource}",
         "description": "ProxySQL CR Name",
         "fieldConfig": {
           "defaults": {
@@ -212,7 +212,7 @@
         "type": "stat"
       },
       {
-        "datasource": null,
+        "datasource": "${datasource}",
         "description": "Backend Server Kind and Instance",
         "fieldConfig": {
           "defaults": {
@@ -278,7 +278,7 @@
         "type": "stat"
       },
       {
-        "datasource": null,
+        "datasource": "${datasource}",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -357,7 +357,7 @@
         "type": "stat"
       },
       {
-        "datasource": null,
+        "datasource": "${datasource}",
         "description": "Total node count of ProxySQL cluster",
         "fieldConfig": {
           "defaults": {
@@ -419,7 +419,7 @@
         "type": "stat"
       },
       {
-        "datasource": null,
+        "datasource": "${datasource}",
         "description": "Initial Requested CPU amount by ProxySQL Instance",
         "fieldConfig": {
           "defaults": {
@@ -478,7 +478,7 @@
         "type": "stat"
       },
       {
-        "datasource": null,
+        "datasource": "${datasource}",
         "description": "CPU Limit in core by ProxySQL instance",
         "fieldConfig": {
           "defaults": {
@@ -536,7 +536,7 @@
         "type": "stat"
       },
       {
-        "datasource": null,
+        "datasource": "${datasource}",
         "description": "KubeDB ProxySQL Total Memory Limit",
         "fieldConfig": {
           "defaults": {
@@ -595,7 +595,7 @@
         "type": "stat"
       },
       {
-        "datasource": null,
+        "datasource": "${datasource}",
         "description": "Initial Requested Memory amount by ProxySQL Instance",
         "fieldConfig": {
           "defaults": {
@@ -655,7 +655,7 @@
         "type": "stat"
       },
       {
-        "datasource": null,
+        "datasource": "${datasource}",
         "description": "KubeDB Database Resource terminationPolicy",
         "fieldConfig": {
           "defaults": {
@@ -736,7 +736,7 @@
       },
       {
         "collapsed": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "gridPos": {
           "h": 1,
           "w": 24,
@@ -753,7 +753,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "description": "CPU Usage by ProxySQL pods",
         "fieldConfig": {
           "defaults": {},
@@ -844,7 +844,7 @@
         }
       },
       {
-        "datasource": null,
+        "datasource": "${datasource}",
         "description": "CPU Quote information in details",
         "fieldConfig": {
           "defaults": {
@@ -1137,7 +1137,7 @@
       },
       {
         "collapsed": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "gridPos": {
           "h": 1,
           "w": 24,
@@ -1154,7 +1154,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "description": "Memory Usage by ProxySQL pods",
         "fieldConfig": {
           "defaults": {
@@ -1247,7 +1247,7 @@
         }
       },
       {
-        "datasource": null,
+        "datasource": "${datasource}",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -1644,7 +1644,7 @@
       },
       {
         "collapsed": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "gridPos": {
           "h": 1,
           "w": 24,
@@ -1661,7 +1661,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "description": "Disk usage by ProxySQL pods",
         "fieldConfig": {
           "defaults": {
@@ -1758,7 +1758,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "description": "System Disk Usage Information",
         "fieldConfig": {
           "defaults": {
@@ -1866,7 +1866,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "fieldConfig": {
           "defaults": {
             "unit": "short"
@@ -1967,7 +1967,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "fieldConfig": {
           "defaults": {
             "unit": "Bps"
@@ -2065,7 +2065,7 @@
       },
       {
         "collapsed": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "gridPos": {
           "h": 1,
           "w": 24,
@@ -2082,7 +2082,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "fieldConfig": {
           "defaults": {},
           "overrides": []
@@ -2181,7 +2181,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "fieldConfig": {
           "defaults": {
             "unit": "Bps"

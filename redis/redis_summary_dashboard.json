@@ -3,7 +3,7 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": "${datasource}",
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -28,7 +28,7 @@
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -41,7 +41,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Represent database status",
       "fieldConfig": {
         "defaults": {
@@ -130,7 +130,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "RedisVersion CR Name",
       "fieldConfig": {
         "defaults": {
@@ -211,7 +211,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "redis_config_maxclients",
       "fieldConfig": {
         "defaults": {
@@ -278,7 +278,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "RedisMode CR Name",
       "fieldConfig": {
         "defaults": {
@@ -358,7 +358,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "KubeDB Database Resource terminationPolicy",
       "fieldConfig": {
         "defaults": {
@@ -438,7 +438,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Total node count of Redis cluster",
       "fieldConfig": {
         "defaults": {
@@ -500,7 +500,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Initial Requested CPU amount by Postgres Instance",
       "fieldConfig": {
         "defaults": {
@@ -559,7 +559,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "CPU Limit in core by Redis instance",
       "fieldConfig": {
         "defaults": {
@@ -616,7 +616,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Initial Requested Memory amount by Redis Instance",
       "fieldConfig": {
         "defaults": {
@@ -676,7 +676,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "KubeDB Redis Total Memory Limit",
       "fieldConfig": {
         "defaults": {
@@ -734,7 +734,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Total storage request by Redis nodes",
       "fieldConfig": {
         "defaults": {
@@ -795,7 +795,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -812,7 +812,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "CPU Usage by Redis pods",
       "fieldConfig": {
         "defaults": {},
@@ -914,7 +914,7 @@
       }
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "CPU Quote information in details",
       "fieldConfig": {
         "defaults": {
@@ -1207,7 +1207,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1224,7 +1224,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Memory Usage by Redis pods",
       "fieldConfig": {
         "defaults": {
@@ -1328,7 +1328,7 @@
       }
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1725,7 +1725,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1742,7 +1742,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Disk usage by Redis pods",
       "fieldConfig": {
         "defaults": {
@@ -1850,7 +1850,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "System Disk Usage Information",
       "fieldConfig": {
         "defaults": {
@@ -1969,7 +1969,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "unit": "short"
@@ -2081,7 +2081,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "unit": "Bps"
@@ -2189,7 +2189,7 @@
       }
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2510,7 +2510,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2523,7 +2523,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "This panel describes allocated persistent storage in a table format\n",
       "fieldConfig": {
         "defaults": {
@@ -2598,7 +2598,7 @@
       "type": "table"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "This panel shows the persistent volume usage in percentage. ",
       "fieldConfig": {
         "defaults": {
@@ -2659,7 +2659,7 @@
       "type": "bargauge"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "This panel describes the persistent volume usage in a time series. ",
       "fieldConfig": {
         "defaults": {
@@ -2743,7 +2743,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2760,7 +2760,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "unit": "Bps"
@@ -2872,7 +2872,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "unit": "Bps"
@@ -2981,7 +2981,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2998,7 +2998,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "decimals": null,
       "description": "",
       "fieldConfig": {
@@ -3098,7 +3098,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "decimals": null,
       "description": "",
       "fieldConfig": {
@@ -3207,7 +3207,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "decimals": null,
       "description": "",
       "fieldConfig": {

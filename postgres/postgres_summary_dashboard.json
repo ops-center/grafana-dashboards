@@ -3,7 +3,7 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": "${datasource}",
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -2817,7 +2817,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2830,7 +2830,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "This panel describes allocated persistent storage in a table format\n",
       "fieldConfig": {
         "defaults": {
@@ -2905,7 +2905,7 @@
       "type": "table"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "This panel shows the persistent volume usage in percentage. ",
       "fieldConfig": {
         "defaults": {
@@ -2966,7 +2966,7 @@
       "type": "bargauge"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "This panel describes the persistent volume usage in a time series. ",
       "fieldConfig": {
         "defaults": {

@@ -3,7 +3,7 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": "${datasource}",
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -28,7 +28,7 @@
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -42,7 +42,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -137,7 +137,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -235,7 +235,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -319,7 +319,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -413,7 +413,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -496,7 +496,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Number of goroutines that currently exist",
       "fieldConfig": {
         "defaults": {
@@ -572,7 +572,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -643,7 +643,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -724,7 +724,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "editable": true,
       "error": false,
       "fieldConfig": {
@@ -831,7 +831,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "decimals": 2,
       "editable": true,
       "error": false,
@@ -955,7 +955,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "editable": true,
       "error": false,
       "fieldConfig": {
@@ -1070,7 +1070,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "editable": true,
       "error": false,
       "fieldConfig": {
@@ -1178,7 +1178,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -1276,7 +1276,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1295,7 +1295,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "editable": true,
       "error": false,
       "fieldConfig": {
@@ -1419,7 +1419,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Average user and system CPU time spent in seconds.",
       "editable": true,
       "error": false,
@@ -1533,7 +1533,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Virtual and Resident memory size in bytes, averages over 5 min interval",
       "editable": true,
       "error": false,
@@ -1666,7 +1666,7 @@
           "text": "demo",
           "value": "demo"
         },
-        "datasource": "Prometheus",
+        "datasource": "${datasource}",
         "definition": "label_values(redis_up, namespace)",
         "description": null,
         "error": null,
@@ -1694,7 +1694,7 @@
           "text": "demo-rd",
           "value": "demo-rd"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "query_result(kubedb_com_redis_created{namespace=\"$namespace\"})",
         "description": null,
         "error": null,
@@ -1722,7 +1722,7 @@
           "text": "demo-rd-shard0-0",
           "value": "demo-rd-shard0-0"
         },
-        "datasource": "Prometheus",
+        "datasource": "${datasource}",
         "definition": "label_values(redis_up{namespace=~\"$namespace\",pod=~\"${app}-.*\"},pod)",
         "description": null,
         "error": null,

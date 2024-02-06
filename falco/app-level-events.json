@@ -3,7 +3,7 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": "${datasource}",
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -28,7 +28,7 @@
   "liveNow": true,
   "panels": [
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Total number of FalcoEvents occurred in application scope",
       "fieldConfig": {
         "defaults": {
@@ -110,7 +110,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Total number of FalcoEvents occurred in application scope by priority",
       "fieldConfig": {
         "defaults": {
@@ -223,7 +223,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Total number of FalcoEvents occurred in application scope by pod",
       "fieldConfig": {
         "defaults": {
@@ -336,7 +336,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Total number of FalcoEvents occurred in application scope by rule",
       "fieldConfig": {
         "defaults": {
@@ -449,7 +449,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Total number of FalcoEvents occurred in application scope by node",
       "fieldConfig": {
         "defaults": {
@@ -596,7 +596,7 @@
           "text": "None",
           "value": ""
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(k8s_appscode_com_pod_ancestor, group)",
         "description": null,
         "error": null,
@@ -623,7 +623,7 @@
           "text": "StatefulSet",
           "value": "StatefulSet"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(k8s_appscode_com_pod_ancestor{group=~\"$group\"},kind)",
         "description": null,
         "error": null,
@@ -650,7 +650,7 @@
           "text": "demo",
           "value": "demo"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(kube_namespace_created,namespace)",
         "description": null,
         "error": null,
@@ -677,7 +677,7 @@
           "text": "mg",
           "value": "mg"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(k8s_appscode_com_pod_ancestor{group=~\"$group\",kind=~\"$kind\",namespace=~\"$ns\"}, app)",
         "description": null,
         "error": null,

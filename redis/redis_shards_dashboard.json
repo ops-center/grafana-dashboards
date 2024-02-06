@@ -3,7 +3,7 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": "${datasource}",
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -28,7 +28,7 @@
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -42,7 +42,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -128,7 +128,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -222,7 +222,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -308,7 +308,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -427,7 +427,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -509,7 +509,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -581,7 +581,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -683,7 +683,7 @@
           "text": "demo",
           "value": "demo"
         },
-        "datasource": "Prometheus",
+        "datasource": "${datasource}",
         "definition": "label_values(redis_up, namespace)",
         "description": null,
         "error": null,
@@ -711,7 +711,7 @@
           "text": "demo-rd",
           "value": "demo-rd"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "query_result(kubedb_com_redis_created{namespace=\"$namespace\"})",
         "description": null,
         "error": null,
@@ -739,7 +739,7 @@
           "text": "demo-rd-shard0-0",
           "value": "demo-rd-shard0-0"
         },
-        "datasource": "Prometheus",
+        "datasource": "${datasource}",
         "definition": "label_values(redis_up{namespace=~\"$namespace\",pod=~\"${app}-shard.*\"},pod)",
         "description": null,
         "error": null,
@@ -761,7 +761,7 @@
         "useTags": false
       },
       {
-        "datasource": "Prometheus",
+        "datasource": "${datasource}",
         "description": null,
         "error": null,
         "filters": [],

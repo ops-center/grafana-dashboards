@@ -3,7 +3,7 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": "${datasource}",
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -38,7 +38,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Severity distribution of vulnerability occurrences under a workload ",
       "fill": 0,
       "fillGradient": 0,
@@ -135,7 +135,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Severity distribution of unique vulnerabilities under a workload ",
       "fill": 0,
       "fillGradient": 0,
@@ -256,7 +256,7 @@
           "text": "None",
           "value": ""
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(apiserver_request_total{},group)",
         "description": null,
         "error": null,
@@ -286,7 +286,7 @@
           "text": "MongoDB",
           "value": "MongoDB"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(apiserver_watch_events_total{group=~\"$group\"},kind)",
         "description": null,
         "error": null,
@@ -316,7 +316,7 @@
           "text": "demo",
           "value": "demo"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(kube_namespace_created{},namespace)",
         "description": null,
         "error": null,
@@ -346,7 +346,7 @@
           "text": "mg",
           "value": "mg"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(scanner_appscode_com_image_lineage{group=~\"$group\",kind=~\"$kind\",namespace=~\"$ns\"},name)",
         "description": null,
         "error": null,
