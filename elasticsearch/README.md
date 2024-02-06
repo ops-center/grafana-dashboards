@@ -38,7 +38,7 @@ helm upgrade -i monitoring-operator oci://ghcr.io/appscode-charts/monitoring-ope
 
 helm upgrade -i panopticon oci://ghcr.io/appscode-charts/panopticon \
   --version v2023.10.1 \
-  -n kubeops --create-namespace \
+  -n monitoring --create-namespace \
   --set-file license=/path/to/license-file.txt
 ```
 
