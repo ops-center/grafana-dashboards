@@ -3,7 +3,7 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": "${datasource}",
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -30,7 +30,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Severity distribution of total number of vulnerabilities for an image",
       "fieldConfig": {
         "defaults": {},
@@ -131,7 +131,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Severity distribution of unique vulnerabilities for an image",
       "fieldConfig": {
         "defaults": {},
@@ -256,7 +256,7 @@
           "text": "None",
           "value": ""
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(scanner_appscode_com_image_cve_occurrence_total{},image)",
         "description": null,
         "error": null,

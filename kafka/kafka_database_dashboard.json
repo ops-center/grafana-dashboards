@@ -5,7 +5,7 @@
         "builtIn": 1,
         "datasource": {
           "type": "datasource",
-          "uid": "grafana"
+          "uid": "$datasource"
         },
         "enable": true,
         "hide": true,
@@ -26,7 +26,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 8878,
   "graphTooltip": 0,
-  "id": 27,
+  "id": 28,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -34,7 +34,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "$datasource"
       },
       "gridPos": {
         "h": 1,
@@ -48,7 +48,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "$datasource"
           },
           "refId": "A"
         }
@@ -143,7 +143,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -217,7 +217,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -284,7 +284,7 @@
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -364,7 +364,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -441,7 +441,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -499,7 +499,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -624,7 +624,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -714,7 +714,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -775,7 +775,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -803,7 +803,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -815,7 +815,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "jvm_classes_currently_loaded{namespace=\"$namespace\",service=\"$service\",pod=\"$pod\"}",
@@ -895,7 +895,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -999,7 +999,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "Incoming message rate per topic. Omitting 'topic=(...)' will yield the all-topic rate.",
       "fieldConfig": {
@@ -1009,7 +1009,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -1038,7 +1040,9 @@
       },
       "id": 70,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -1047,12 +1051,12 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "kafka_server_brokertopicmetrics_messagesin_total{namespace=\"$namespace\", pod=\"$pod\", service=\"$service\"}",
@@ -1099,7 +1103,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "Byte in (from the clients) rate per topic. Omitting 'topic=(...)' will yield the all-topic rate.",
       "fieldConfig": {
@@ -1109,7 +1113,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -1138,7 +1144,9 @@
       },
       "id": 64,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -1147,12 +1155,12 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "kafka_server_brokertopicmetrics_bytesin_total{namespace=\"$namespace\", pod=\"$pod\", service=\"$service\"}",
@@ -1209,7 +1217,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -1238,7 +1248,9 @@
       },
       "id": 76,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -1247,7 +1259,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -1307,7 +1319,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "Byte out (to the other brokers) rate per topic.",
       "fieldConfig": {
@@ -1317,7 +1329,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -1346,7 +1360,9 @@
       },
       "id": 84,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -1355,12 +1371,12 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "kafka_server_brokertopicmetrics_replicationbytesout_total{namespace=\"$namespace\", pod=\"$pod\", service=\"$service\"}",
@@ -1406,7 +1422,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "Byte in (from the other brokers) rate per topic. Omitting 'topic=(...)' will yield the all-topic rate.",
       "fieldConfig": {
@@ -1416,7 +1432,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -1445,7 +1463,9 @@
       },
       "id": 72,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -1454,12 +1474,12 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "kafka_server_brokertopicmetrics_replicationbytesin_total{namespace=\"$namespace\", pod=\"$pod\", service=\"$service\"}",
@@ -1507,7 +1527,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "Produce request rate per topic.",
       "fieldConfig": {
@@ -1517,7 +1537,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -1546,7 +1568,9 @@
       },
       "id": 74,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -1555,12 +1579,12 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "kafka_server_brokertopicmetrics_totalproducerequests_total{namespace=\"$namespace\", pod=\"$pod\", service=\"$service\"}",
@@ -1616,7 +1640,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "Failed Peoducer request (from clients or followers) rate per topic.",
       "fieldConfig": {
@@ -1626,7 +1650,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -1655,7 +1681,9 @@
       },
       "id": 78,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -1664,12 +1692,12 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "kafka_server_brokertopicmetrics_failedproducerequests_total{namespace=\"$namespace\", pod=\"$pod\", service=\"$service\"}",
@@ -1723,7 +1751,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "Byte out (to the clients) rate per topic.",
       "fieldConfig": {
@@ -1733,7 +1761,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -1762,7 +1792,9 @@
       },
       "id": 82,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -1771,12 +1803,12 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "kafka_server_brokertopicmetrics_bytesout_total{namespace=\"$namespace\", pod=\"$pod\", service=\"$service\"}",
@@ -1822,7 +1854,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "The first offset in a partition.",
       "fieldConfig": {
@@ -1832,7 +1864,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -1861,7 +1895,9 @@
       },
       "id": 90,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -1870,12 +1906,12 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "kafka_log_log_logstartoffset{namespace=\"$namespace\", pod=\"$pod\", service=\"$service\"}",
@@ -1925,7 +1961,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "The last offset in a partition.",
       "fieldConfig": {
@@ -1935,7 +1971,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -1964,7 +2002,9 @@
       },
       "id": 87,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -1974,12 +2014,12 @@
         "frameIndex": 1,
         "showHeader": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "kafka_log_log_logendoffset{namespace=\"$namespace\", pod=\"$pod\", service=\"$service\"}",
@@ -2029,7 +2069,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "between 0 and 1, ideally > 0.3",
       "fieldConfig": {
@@ -2051,6 +2091,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -2107,7 +2148,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2133,7 +2174,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -2162,7 +2205,9 @@
       },
       "id": 80,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -2171,7 +2216,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -2247,7 +2292,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "The current quorum leader's id; -1 indicates unknown.",
       "fieldConfig": {
@@ -2294,12 +2339,12 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2319,7 +2364,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "The high watermark maintained on this member; -1 if it is unknown.\t",
       "fieldConfig": {
@@ -2363,12 +2408,12 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "kafka_server_raft_metrics_high_watermark{container=\"$container\", namespace=\"$namespace\", pod=\"$pod\"}",
@@ -2385,7 +2430,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "Number of unknown voters whose connection information is not cached. This value of this metric is always 0.\t",
       "fieldConfig": {
@@ -2428,12 +2473,12 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "kafka_server_raft_metrics_number_unknown_voter_connections{container=\"$container\", namespace=\"$namespace\", pod=\"$pod\"}",
@@ -2480,7 +2525,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2522,12 +2567,12 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "kafka_server_raft_metrics_current_epoch{container=\"$container\", namespace=\"$namespace\", pod=\"$pod\"}",
@@ -2543,7 +2588,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "The average time in milliseconds to commit an entry in the raft log",
       "fieldConfig": {
@@ -2587,12 +2632,12 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "kafka_server_raft_metrics_commit_latency_avg{container=\"$container\", namespace=\"$namespace\", pod=\"$pod\"}",
@@ -2608,7 +2653,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "The average number of records appended per sec by the leader of the raft quorum.\t",
       "fieldConfig": {
@@ -2618,7 +2663,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "mappings": [],
@@ -2646,7 +2693,9 @@
       },
       "id": 95,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -2655,12 +2704,12 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2697,7 +2746,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "The current voted leader's id; -1 indicates not voted for anyone.",
       "fieldConfig": {
@@ -2707,7 +2756,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "mappings": [],
@@ -2735,7 +2786,9 @@
       },
       "id": 120,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -2744,12 +2797,12 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2785,7 +2838,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "The current raft log end offset.\t",
       "fieldConfig": {
@@ -2828,12 +2881,12 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "kafka_server_raft_metrics_log_end_offset{container=\"$container\", namespace=\"$namespace\", pod=\"$pod\"}",
@@ -2850,7 +2903,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "The average fraction of time the client's poll() is idle as opposed to waiting for the user code to process records.\t",
       "fieldConfig": {
@@ -2894,12 +2947,12 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2944,7 +2997,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "The number of active brokers as observed by this Controller.",
       "fieldConfig": {
@@ -2988,12 +3041,12 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -3012,7 +3065,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "The number of Active Controllers on this node.",
       "fieldConfig": {
@@ -3060,12 +3113,12 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "kafka_controller_kafkacontroller_activecontrollercount{namespace=\"$namespace\", pod=\"$pod\", service=\"$service\"}",
@@ -3082,7 +3135,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "The number of fenced brokers as observed by this Controller",
       "fieldConfig": {
@@ -3129,12 +3182,12 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "kafka_controller_kafkacontroller_fencedbrokercount{container=\"$container\", namespace=\"$namespace\", pod=\"$pod\"}",
@@ -3151,7 +3204,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "The number of times this controller node has encountered an error during metadata log processing.\t",
       "fieldConfig": {
@@ -3198,12 +3251,12 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "kafka_controller_kafkacontroller_metadataerrorcount{container=\"$container\", namespace=\"$namespace\", pod=\"$pod\"}",
@@ -3220,7 +3273,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "The number of global partitions as observed by this Controller.",
       "fieldConfig": {
@@ -3230,7 +3283,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -3259,7 +3314,9 @@
       },
       "id": 109,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -3268,12 +3325,12 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "kafka_controller_kafkacontroller_globalpartitioncount",
@@ -3317,7 +3374,8 @@
     },
     {
       "datasource": {
-        "uid": "${datasource}"
+        "type": "prometheus",
+        "uid": "prometheus"
       },
       "description": "The number of global topics as observed by this Controller.",
       "fieldConfig": {
@@ -3327,7 +3385,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -3356,7 +3416,9 @@
       },
       "id": 56,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -3365,12 +3427,13 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "repeatDirection": "v",
       "targets": [
         {
           "datasource": {
-            "uid": "${datasource}"
+            "type": "prometheus",
+            "uid": "prometheus"
           },
           "exemplar": true,
           "expr": "kafka_controller_kafkacontroller_globaltopiccount",
@@ -3416,7 +3479,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "The number of offline topic partitions (non-internal) as observed by this Controller.\t",
       "fieldConfig": {
@@ -3426,7 +3489,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -3455,7 +3520,9 @@
       },
       "id": 111,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -3464,12 +3531,12 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "kafka_controller_kafkacontroller_offlinepartitionscount",
@@ -3515,7 +3582,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "The count of topic partitions for which the leader is not the preferred leader.\t",
       "fieldConfig": {
@@ -3525,7 +3592,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -3554,7 +3623,9 @@
       },
       "id": 113,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -3563,12 +3634,12 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "kafka_controller_kafkacontroller_preferredreplicaimbalancecount",
@@ -3612,8 +3683,8 @@
       "type": "table"
     }
   ],
-  "refresh": false,
-  "schemaVersion": 37,
+  "refresh": "",
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [
     "kafka",
@@ -3627,7 +3698,7 @@
         "current": {
           "selected": false,
           "text": "Prometheus",
-          "value": "Prometheus"
+          "value": "prometheus"
         },
         "hide": 0,
         "includeAll": false,
@@ -3644,8 +3715,8 @@
       {
         "current": {
           "selected": false,
-          "text": "demo",
-          "value": "demo"
+          "text": "default",
+          "value": "default"
         },
         "datasource": {
           "type": "prometheus",
@@ -3674,9 +3745,9 @@
       {
         "allValue": ".*",
         "current": {
-          "selected": false,
-          "text": "kafka-stats",
-          "value": "kafka-stats"
+          "selected": true,
+          "text": "tasdid-stats",
+          "value": "tasdid-stats"
         },
         "datasource": {
           "type": "prometheus",
@@ -3705,9 +3776,9 @@
       {
         "allValue": ".*",
         "current": {
-          "selected": true,
-          "text": "kafka-1",
-          "value": "kafka-1"
+          "selected": false,
+          "text": "tasdid-0",
+          "value": "tasdid-0"
         },
         "datasource": {
           "type": "prometheus",
