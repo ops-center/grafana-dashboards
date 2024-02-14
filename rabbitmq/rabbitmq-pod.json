@@ -18,12 +18,12 @@
       }
     ]
   },
-  "description": "rabbitmq Dashboard for pods",
+  "description": "rabbitmq Dashboard for Prometheus rabbitmq Exporter 1.x, it works with helm stable/rabbitmq-ha exporter.\r\n\r\nIf you missing rabbitmq memory utilization, please modify \"maxmemory\" value in values.yaml",
   "editable": true,
   "gnetId": 11835,
   "graphTooltip": 0,
   "id": 30,
-  "iteration": 1707717715138,
+  "iteration": 1707884067037,
   "links": [],
   "panels": [
     {
@@ -477,7 +477,7 @@
           "exemplar": true,
           "expr": "rabbitmq_queue_messages_ram_bytes{pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -576,7 +576,7 @@
           "expr": "rabbitmq_queue_messages_persistent{pod=~\"$pod\"}",
           "instant": false,
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -672,7 +672,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rabbitmq_erlang_gc_runs_total{pod=~\"$pod\"}",
+          "expr": "rate(rabbitmq_erlang_gc_runs_total{pod=~\"$pod\"}[5m])",
           "interval": "",
           "legendFormat": "Number of total GC runs",
           "refId": "A"
@@ -682,7 +682,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Total number of Erlang GC runs",
+      "title": "Erlang GC runs Frequency",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -728,7 +728,9 @@
       "dashes": false,
       "datasource": "${datasource}",
       "fieldConfig": {
-        "defaults": {},
+        "defaults": {
+          "unit": "kbytes"
+        },
         "overrides": []
       },
       "fill": 1,
@@ -768,9 +770,9 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rabbitmq_erlang_gc_reclaimed_bytes_total{pod=~\"$pod\"} / 1024 / 1024",
+          "expr": "rate(rabbitmq_erlang_gc_reclaimed_bytes_total{pod=~\"$pod\"}[5m])",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "{{ pod }}",
           "refId": "A"
         }
       ],
@@ -778,7 +780,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Total number of bytes of memory reclaimed by Erlang GC",
+      "title": "Memory reclaimed by Erlang GC",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -795,7 +797,7 @@
       "yaxes": [
         {
           "$$hashKey": "object:622",
-          "format": "short",
+          "format": "kbytes",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -1389,7 +1391,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "default",
           "value": "default"
         },
@@ -1411,7 +1413,7 @@
       {
         "allValue": "\".+\"",
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "rabbit",
           "value": "rabbit"
         },
@@ -1473,9 +1475,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "text": "rabbit-dev-2",
-          "value": "rabbit-dev-2"
+          "selected": false,
+          "text": "rabbit-dev-0",
+          "value": "rabbit-dev-0"
         },
         "datasource": "${datasource}",
         "definition": "label_values(rabbitmq_build_info{namespace=~\"$namespace\",pod=~\"${app}-.*\"},pod)",
@@ -1535,5 +1537,5 @@
   "timezone": "",
   "title": "KubeDB / RabbitMQ / Pod",
   "uid": "FktZiiOnz",
-  "version": 20
+  "version": 27
 }
