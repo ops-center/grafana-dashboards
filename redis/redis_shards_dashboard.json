@@ -23,7 +23,7 @@
   "gnetId": 11835,
   "graphTooltip": 0,
   "id": 32,
-  "iteration": 1633495120866,
+  "iteration": 1707899799028,
   "links": [],
   "panels": [
     {
@@ -107,7 +107,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": true,
@@ -201,7 +201,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": true,
@@ -287,7 +287,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": true,
@@ -370,7 +370,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": false,
@@ -488,7 +488,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": true,
@@ -558,7 +558,7 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": false,
@@ -646,7 +646,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": true,
@@ -677,6 +677,27 @@
   "templating": {
     "list": [
       {
+        "current": {
+          "selected": true,
+          "text": "Prometheus",
+          "value": "Prometheus"
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
         "allValue": null,
         "current": {
           "selected": false,
@@ -693,7 +714,10 @@
         "multi": false,
         "name": "namespace",
         "options": [],
-        "query": "label_values(redis_up, namespace)",
+        "query": {
+          "query": "label_values(redis_up, namespace)",
+          "refId": "Prometheus-namespace-Variable-Query"
+        },
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -708,8 +732,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "demo-rd",
-          "value": "demo-rd"
+          "text": "redis-cluster",
+          "value": "redis-cluster"
         },
         "datasource": "${datasource}",
         "definition": "query_result(kubedb_com_redis_created{namespace=\"$namespace\"})",
@@ -721,7 +745,10 @@
         "multi": false,
         "name": "app",
         "options": [],
-        "query": "query_result(kubedb_com_redis_created{namespace=\"$namespace\"})",
+        "query": {
+          "query": "query_result(kubedb_com_redis_created{namespace=\"$namespace\"})",
+          "refId": "Prometheus-app-Variable-Query"
+        },
         "refresh": 1,
         "regex": "/.*app=\"([^\"]+).*/",
         "skipUrlSync": false,
@@ -735,9 +762,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "demo-rd-shard0-0",
-          "value": "demo-rd-shard0-0"
+          "selected": true,
+          "text": "redis-cluster-shard0-0",
+          "value": "redis-cluster-shard0-0"
         },
         "datasource": "${datasource}",
         "definition": "label_values(redis_up{namespace=~\"$namespace\",pod=~\"${app}-shard.*\"},pod)",
@@ -749,7 +776,10 @@
         "multi": false,
         "name": "pod",
         "options": [],
-        "query": "label_values(redis_up{namespace=~\"$namespace\",pod=~\"${app}-shard.*\"},pod)",
+        "query": {
+          "query": "label_values(redis_up{namespace=~\"$namespace\",pod=~\"${app}-shard.*\"},pod)",
+          "refId": "Prometheus-pod-Variable-Query"
+        },
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
@@ -805,5 +835,5 @@
   "timezone": "",
   "title": "KubeDB / Redis / Shard",
   "uid": "fF-N4cHsh",
-  "version": 7
+  "version": 2
 }
