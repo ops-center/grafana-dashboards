@@ -112,4 +112,5 @@ If you followed the instruction properly, you should see the RabbitMQ Grafana da
 
 #### KubeDB / RabbitMQ / Pod
 
-![KubeDB / RabbitMQ / Pod](/rabbitmq/images/rabbitmq-pod.png)
+![KubeDB / RabbitMQ / Pod](/rabbitmq/images/rabbitmq-pod-1.png)
+![KubeDB / RabbitMQ / Pod](/rabbitmq/images/rabbitmq-pod-2.png)
