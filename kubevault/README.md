@@ -73,7 +73,7 @@ Install `kubevault-metrics` charts which will create the `MetricsConfiguration` 
 
 ```bash
 helm upgrade -i kubedb-metrics oci://ghcr.io/appscode-charts/kubedb-metrics \
-  --version v2023.12.28 \
+  --version v2024.2.14 \
   -n kubedb --create-namespace
 ```
 
