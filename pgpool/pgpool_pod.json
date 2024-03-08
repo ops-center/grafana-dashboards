@@ -912,6 +912,7 @@
         {
           "exemplar": true,
           "expr": "pgpool2_scrapes_total{namespace=~\"$namespace\",pod=~\"$pod\"}",
+          "instant": true,
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
