@@ -3,7 +3,7 @@
 There is a dashboard to monitor Kafka instances managed by KubeDB.
 - KubeDB / Kafka / Database: shows Kafka internal metrics.
 
-Note: These dashboards are developed in **Grafana version 9.3.8**
+Note: These dashboards are developed in **Grafana version 7.5.5**
 
 ### Dependencies
 

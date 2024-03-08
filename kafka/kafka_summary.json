@@ -18,12 +18,12 @@
       }
     ]
   },
-  "description": "The dashboard is designed for KubeDB managed RabbitMQ",
+  "description": "The dashboard is designed for KubeDB managed Kafka",
   "editable": true,
   "gnetId": 9628,
   "graphTooltip": 0,
-  "id": 27,
-  "iteration": 1682776538666,
+  "id": 30,
+  "iteration": 1709727446795,
   "links": [],
   "panels": [
     {
@@ -117,12 +117,12 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_rabbitmq_status_phase{namespace=\"$namespace\", app=\"$app\"} == 1\n",
+          "expr": "kubedb_com_kafka_status_phase{namespace=\"$namespace\", app=\"$app\"} == 1",
           "format": "table",
           "instant": true,
           "interval": "",
           "legendFormat": "{{phase}}",
-        "refId": "A"
+          "refId": "A"
         }
       ],
       "title": "Database Status",
@@ -131,7 +131,7 @@
     {
       "cacheTimeout": null,
       "datasource": "${datasource}",
-      "description": "RabbitMQ CR Name",
+      "description": "Kafka CR Name",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -199,13 +199,13 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_rabbitmq_info{namespace=\"$namespace\", app=\"$app\"}",
+          "expr": "kubedb_com_kafka_info{namespace=\"$namespace\", app=\"$app\"}",
           "format": "time_series",
           "instant": true,
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{ version }}",
-        "refId": "A"
+          "refId": "A"
         }
       ],
       "title": "Version",
@@ -279,12 +279,12 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_rabbitmq_info{namespace=\"$namespace\", app=\"$app\"}",
+          "expr": "kubedb_com_kafka_info{namespace=\"$namespace\", app=\"$app\"}",
           "format": "time_series",
           "instant": true,
           "interval": "",
           "legendFormat": "{{requireSSL}}",
-        "refId": "A"
+          "refId": "A"
         }
       ],
       "timeFrom": null,
@@ -361,12 +361,12 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_rabbitmq_info{namespace=\"$namespace\", app=\"$app\"}",
+          "expr": "kubedb_com_kafka_info{namespace=\"$namespace\", app=\"$app\"}",
           "format": "table",
           "instant": true,
           "interval": "",
           "legendFormat": "{{terminationPolicy}}",
-        "refId": "A"
+          "refId": "A"
         }
       ],
       "title": "Termination Policy",
@@ -374,7 +374,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "Total node count of RabbitMQ cluster",
+      "description": "Total node count of Kafka cluster",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -424,7 +424,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_rabbitmq_replicas{namespace=\"$namespace\",app=\"$app\"}",
+          "expr": "kubedb_com_kafka_replicas{namespace=\"$namespace\",app=\"$app\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -436,7 +436,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "Initial Requested CPU amount by RabbitMQ Instance",
+      "description": "Initial Requested CPU amount by Kafka Instance",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -483,7 +483,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_rabbitmq_resource_request_cpu{namespace=\"$namespace\", app=\"$app\"}",
+          "expr": "kubedb_com_kafka_resource_request_cpu{namespace=\"$namespace\", app=\"$app\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -495,7 +495,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "CPU Limit in core by RabbitMQ instance",
+      "description": "CPU Limit in core by Kafka instance",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -541,7 +541,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_rabbitmq_resource_limit_cpu{namespace=\"$namespace\", app=\"$app\"}",
+          "expr": "kubedb_com_kafka_resource_limit_cpu{namespace=\"$namespace\", app=\"$app\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -553,7 +553,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "Initial Requested Memory amount by RabbitMQ Instance",
+      "description": "Initial Requested Memory amount by Kafka Instance",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -601,7 +601,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_rabbitmq_resource_request_memory{namespace=\"$namespace\", app=\"$app\"}",
+          "expr": "kubedb_com_kafka_resource_request_memory{namespace=\"$namespace\", app=\"$app\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -613,7 +613,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "KubeDB RabbitMQ Total Memory Limit",
+      "description": "KubeDB Kafka Total Memory Limit",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -660,7 +660,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_rabbitmq_resource_limit_memory{namespace=\"$namespace\", app=\"$app\"}",
+          "expr": "kubedb_com_kafka_resource_limit_memory{namespace=\"$namespace\", app=\"$app\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -672,7 +672,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "Total storage request by RabbitMQ nodes",
+      "description": "Total storage request by Kafka nodes",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -720,7 +720,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_rabbitmq_resource_request_storage{namespace=\"$namespace\", app=\"$app\"}",
+          "expr": "kubedb_com_kafka_resource_request_storage{namespace=\"$namespace\", app=\"$app\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -750,7 +750,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
-      "description": "CPU Usage by RabbitMQ pods",
+      "description": "CPU Usage by Kafka pods",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
@@ -795,7 +795,7 @@
           "expr": "sum(sum by (namespace, pod, container) (irate(container_cpu_usage_seconds_total{image!=\"\",job=\"kubelet\",metrics_path=\"/metrics/cadvisor\",namespace=\"$namespace\", pod=~\"$app-.+$\"}[5m])) * on (namespace, pod) group_left (node) topk by (namespace, pod) (1, max by (namespace, pod, node) (kube_pod_info{node!=\"\",namespace=\"$namespace\", pod=~\"$app-.+$\"}))) by (pod)",
           "interval": "",
           "legendFormat": "{{pod}}",
-        "refId": "A"
+          "refId": "A"
         }
       ],
       "thresholds": [],
@@ -1151,7 +1151,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
-      "description": "Memory Usage by RabbitMQ pods",
+      "description": "Memory Usage by Kafka pods",
       "fieldConfig": {
         "defaults": {
           "unit": "bytes"
@@ -1198,7 +1198,7 @@
           "expr": "sum(container_memory_working_set_bytes{image!=\"\",job=\"kubelet\",metrics_path=\"/metrics/cadvisor\",namespace=\"$namespace\", pod=~\"$app-.+$\",container!=\"\"} * on (namespace, pod) group_left (node) topk by (namespace, pod) (1, max by (namespace, pod, node) (kube_pod_info{node!=\"\"}))) by (pod)",
           "interval": "",
           "legendFormat": "{{pod}}",
-        "refId": "A"
+          "refId": "A"
         }
       ],
       "thresholds": [],
@@ -1658,7 +1658,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
-      "description": "Disk usage by RabbitMQ pods",
+      "description": "Disk usage by Kafka pods",
       "fieldConfig": {
         "defaults": {
           "unit": "bytes"
@@ -1702,10 +1702,10 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg(container_blkio_device_usage_total{namespace=\"$namespace\", pod=~\"$app-\\\\d+$\"}) by (pod)",
+          "expr": "avg(container_blkio_device_usage_total{namespace=\"$namespace\", pod=~\"$app-.+$\"}) by (pod)",
           "interval": "",
           "legendFormat": "{{pod}}",
-        "refId": "A"
+          "refId": "A"
         }
       ],
       "thresholds": [],
@@ -1799,21 +1799,21 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(container_fs_writes_total{namespace=\"$namespace\", pod=~\"$app-\\\\d+$\"}[5m]))by(pod)",
+          "expr": "sum(rate(container_fs_writes_total{namespace=\"$namespace\", pod=~\"$app-.+$\"}[5m])) by (pod)",
           "instant": false,
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}-disk-write",
-        "refId": "A"
+          "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(container_fs_reads_total{namespace=\"$namespace\", pod=~\"$app-\\\\d+$\"}[5m]))by(pod)",
+          "expr": "sum(rate(container_fs_reads_total{namespace=\"$namespace\", pod=~\"$app-.+$\"}[5m])) by (pod)",
           "hide": false,
           "instant": false,
           "interval": "",
-          "legendFormat": "{{pod}}-disk-write",
-        "refId": "B"
+          "legendFormat": "{{pod}}-disk-read",
+          "refId": "B"
         }
       ],
       "thresholds": [],
@@ -1907,14 +1907,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "ceil(sum by(pod) (rate(container_fs_reads_total{container!=\"\", namespace=~\"$namespace\", pod=~\"$app-\\\\d+$\"}[5m]) + rate(container_fs_writes_total{container!=\"\" ,namespace=~\"$namespace\", pod=~\"$app-\\\\d+$\"}[5m])))",
+          "expr": "ceil(sum by(pod) (rate(container_fs_reads_total{container!=\"\", namespace=~\"$namespace\", pod=~\"$app-.+$\"}[5m]) + rate(container_fs_writes_total{container!=\"\" ,namespace=~\"$namespace\", pod=~\"$app-.+$\"}[5m])))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{pod}}",
-        "legendLink": null,
-        "refId": "A",
-        "step": 10
+          "legendLink": null,
+          "refId": "A",
+          "step": 10
         }
       ],
       "thresholds": [],
@@ -2008,14 +2008,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", namespace=~\"$namespace\", pod=~\"$app-\\\\d+$\"}[5m]) + rate(container_fs_writes_bytes_total{container!=\"\" ,namespace=~\"$namespace\", pod=~\"$app-\\\\d+$\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", namespace=~\"$namespace\", pod=~\"$app-.+$\"}[5m]) + rate(container_fs_writes_bytes_total{container!=\"\" ,namespace=~\"$namespace\", pod=~\"$app-.+$\"}[5m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{pod}}",
-        "legendLink": null,
-        "refId": "A",
-        "step": 10
+          "legendLink": null,
+          "refId": "A",
+          "step": 10
         }
       ],
       "thresholds": [],
@@ -2301,7 +2301,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_reads_total{container!=\"\", pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_reads_total{container!=\"\", pod=~\"$app-.+$\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2312,7 +2312,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_writes_total{container!=\"\", pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_writes_total{container!=\"\", pod=~\"$app-.+$\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2323,7 +2323,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_reads_total{container!=\"\", pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"}[5m]) + rate(container_fs_writes_total{container!=\"\",pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_reads_total{container!=\"\", pod=~\"$app-.+$\",namespace=~\"$namespace\"}[5m]) + rate(container_fs_writes_total{container!=\"\",pod=~\"$app-.+$\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2334,7 +2334,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", pod=~\"$app-.+$\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2345,7 +2345,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_writes_bytes_total{container!=\"\", pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_writes_bytes_total{container!=\"\", pod=~\"$app-.+$\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2356,7 +2356,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"}[5m]) + rate(container_fs_writes_bytes_total{container!=\"\",pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"}[5m]))",
+          "expr": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", pod=~\"$app-.+$\",namespace=~\"$namespace\"}[5m]) + rate(container_fs_writes_bytes_total{container!=\"\",pod=~\"$app-.+$\",namespace=~\"$namespace\"}[5m]))",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2434,7 +2434,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubelet_volume_stats_capacity_bytes + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"^$app.*\",namespace=~\"$namespace\"}",
+          "expr": "kubelet_volume_stats_capacity_bytes + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-.+$\",namespace=~\"$namespace\"}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2518,11 +2518,11 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(kubelet_volume_stats_used_bytes / on(persistentvolumeclaim) group_left(pod) (kubelet_volume_stats_capacity_bytes + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"^$app.*\",namespace=~\"$namespace\"}) )* 100",
+          "expr": "(kubelet_volume_stats_used_bytes / on(persistentvolumeclaim) group_left(pod) (kubelet_volume_stats_capacity_bytes + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-.+$\",namespace=~\"$namespace\"}) )* 100",
           "instant": true,
           "interval": "",
           "legendFormat": "{{pod}}",
-        "refId": "A"
+          "refId": "A"
         }
       ],
       "title": "Persistent Volume Usage",
@@ -2602,11 +2602,11 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(kubelet_volume_stats_used_bytes + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"^$app.*\",namespace=~\"$namespace\"}) ",
+          "expr": "(kubelet_volume_stats_used_bytes + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-.+$\",namespace=~\"$namespace\"}) ",
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}",
-        "refId": "A"
+          "refId": "A"
         }
       ],
       "title": "Persistent Volume Usage History",
@@ -2674,14 +2674,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(irate(container_network_receive_bytes_total{namespace=~\"$namespace\", pod=~\"$app-\\\\d+$\"}[$__rate_interval])) by (pod)",
+          "expr": "sum(irate(container_network_receive_bytes_total{namespace=~\"$namespace\", pod=~\"$app-.+$\"}[$__rate_interval])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{pod}}",
-        "legendLink": null,
-        "refId": "A",
-        "step": 10
+          "legendLink": null,
+          "refId": "A",
+          "step": 10
         }
       ],
       "thresholds": [],
@@ -2775,14 +2775,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(irate(container_network_transmit_bytes_total{namespace=~\"$namespace\", pod=~\"$app-\\\\d+$\"}[$__rate_interval])) by (pod)",
+          "expr": "sum(irate(container_network_transmit_bytes_total{namespace=~\"$namespace\", pod=~\"$app-.+$\"}[$__rate_interval])) by (pod)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{pod}}",
-        "legendLink": null,
-        "refId": "A",
-        "step": 10
+          "legendLink": null,
+          "refId": "A",
+          "step": 10
         }
       ],
       "thresholds": [],
@@ -2834,15 +2834,15 @@
     "db",
     "stats",
     "kubedb",
-    "rabbitmq"
+    "kafka"
   ],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": false,
-          "text": "Prometheus",
-          "value": "Prometheus"
+          "selected": true,
+          "text": "default",
+          "value": "default"
         },
         "description": null,
         "error": null,
@@ -2863,10 +2863,11 @@
         "allValue": "\".+\"",
         "current": {
           "selected": false,
-          "text": "demo",
-          "value": "demo"
+          "text": "kafka",
+          "value": "kafka"
         },
         "datasource": "${datasource}",
+        "definition": "",
         "description": null,
         "error": null,
         "hide": 0,
@@ -2875,55 +2876,56 @@
         "multi": false,
         "name": "namespace",
         "options": [],
-      "query": {
-        "query": "label_values(kube_namespace_created,namespace)",
-        "refId": "Prometheus-namespace-Variable-Query"
-      },
-      "type": "query",
-      "refresh": 1,
-      "regex": "",
-      "skipUrlSync": false,
-      "sort": 0,
-      "tagValuesQuery": "",
-      "tags": [],
-      "tagsQuery": "",
-      "useTags": false
+        "query": {
+          "query": "label_values(kube_namespace_created,namespace)",
+          "refId": "Prometheus-namespace-Variable-Query"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       },
       {
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "mg4",
-          "value": "mg4"
+          "text": "kafka-prod",
+          "value": "kafka-prod"
         },
         "datasource": "${datasource}",
+        "definition": "",
         "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": "RabbitMQ",
+        "label": "Kafka",
         "multi": false,
         "name": "app",
         "options": [],
-      "query": {
-        "query": "label_values(kubedb_com_rabbitmq_status_phase{namespace=~\"$namespace\"},app)",
-        "refId": "Prometheus-app-Variable-Query"
-      },
-      "type": "query",
-      "refresh": 1,
-      "regex": "",
-      "skipUrlSync": false,
-      "sort": 0,
-      "tagValuesQuery": "",
-      "tags": [],
-      "tagsQuery": "",
-      "useTags": false
+        "query": {
+          "query": "label_values(kubedb_com_kafka_status_phase{namespace=~\"$namespace\"},app)",
+          "refId": "Prometheus-app-Variable-Query"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       }
     ]
   },
   "time": {
-  "from": "now-6h",
-  "to": "now"
+    "from": "now-6h",
+    "to": "now"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -2951,7 +2953,7 @@
     ]
   },
   "timezone": "",
-  "title": "KubeDB / RabbitMQ / Summary",
-  "uid": "rAbbItMqSumMaRy",
-  "version": 1
+  "title": "KubeDB / Kafka / Summary",
+  "uid": "kafkaSumMaRy",
+  "version": 3
 }
