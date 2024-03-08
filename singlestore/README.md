@@ -37,7 +37,7 @@ helm upgrade -i monitoring-operator oci://ghcr.io/appscode-charts/monitoring-ope
   -n monitoring --create-namespace
 
 helm upgrade -i panopticon oci://ghcr.io/appscode-charts/panopticon \
-  --version v2023.10.1 \
+  --version v2024.2.5 \
   -n monitoring --create-namespace \
   --set-file license=/path/to/license-file.txt
 ```
@@ -74,7 +74,7 @@ Install `kubedb-metrics` charts which will create the `MetricsConfiguration` obj
 
 ```bash
 helm upgrade -i kubedb-metrics oci://ghcr.io/appscode-charts/kubedb-metrics \
-  --version v2023.12.28 \
+  --version v2024.2.14 \
   -n kubedb --create-namespace
 ```
 
