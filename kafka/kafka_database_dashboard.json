@@ -2333,124 +2333,114 @@
       }
     },
     {
-      "datasource": "${datasource}",
-      "description": "Byte in (from the clients) rate per topic. Omitting 'topic=(...)' will yield the all-topic rate.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "align": "auto",
-            "displayMode": "auto",
-            "filterable": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
+    "datasource": "${datasource}",
+    "description": "Byte in (from the clients) rate per topic. Omitting 'topic=(...)' will yield the all-topic rate.",
+    "fieldConfig": {
+      "defaults": {
+        "custom": {
+          "align": "auto",
+          "filterable": false,
+          "displayMode": "auto"
         },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 86
-      },
-      "id": 157,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
+        "thresholds": {
+          "mode": "absolute",
+          "steps": [
+            {
+              "color": "green",
+              "value": null
+            },
+            {
+              "color": "red",
+              "value": 80
+            }
+          ]
         },
-        "frameIndex": 0,
-        "showHeader": true
-      },
-      "pluginVersion": "7.5.5",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "exemplar": true,
-          "expr": "kafka_server_brokertopicmetrics_bytesin_total{namespace=\"$namespace\",pod=~\"$app-.+$\"}",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "kafka_server_brokertopicmetrics_bytesin_total{namespace=\"$namespace\",pod=~\"$app-.+$\"}",
-          "format": "table",
-          "hide": false,
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "B"
+        "mappings": [],
+        "color": {
+          "mode": "thresholds"
         }
-      ],
-      "title": "Byte in/out total from clients",
-      "transformations": [
-        {
-          "id": "reduce",
-          "options": {
-            "includeTimeField": false,
-            "mode": "reduceFields",
-            "reducers": [
-              "lastNotNull"
-            ]
-          }
+      },
+      "overrides": []
+    },
+    "gridPos": {
+      "h": 8,
+      "w": 12,
+      "x": 0,
+      "y": 86
+    },
+    "id": 23763571993,
+    "options": {
+      "showHeader": true,
+      "cellHeight": "sm",
+      "footer": {
+        "countRows": false,
+        "fields": "",
+        "reducer": [
+          "sum"
+        ],
+        "show": false
+      },
+      "frameIndex": 0
+    },
+    "pluginVersion": "7.5.5",
+    "targets": [
+      {
+        "expr": "kafka_server_brokertopicmetrics_bytesin_total{namespace=\"$namespace\",pod=~\"$app-.+$\"}",
+        "legendFormat": "",
+        "interval": "",
+        "exemplar": true,
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
         },
-        {
-          "id": "merge",
-          "options": {}
-        },
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {},
-            "indexByName": {},
-            "renameByName": {
-              "Value #A": "Bytes In",
-              "Value #B": "Bytes Out"
-            }
-          }
-        },
-        {
-          "id": "filterFieldsByName",
-          "options": {
-            "include": {
-              "names": [
-                "pod",
-                "service",
-                "topic",
-                "Bytes In",
-                "Bytes Out"
-              ]
-            }
+        "format": "table",
+        "instant": true,
+        "refId": "A"
+      },
+      {
+        "expr": "kafka_server_brokertopicmetrics_bytesin_total{namespace=\"$namespace\",pod=~\"$app-.+$\"}",
+        "legendFormat": "",
+        "interval": "",
+        "exemplar": true,
+        "format": "table",
+        "hide": false,
+        "instant": true,
+        "refId": "B"
+      }
+    ],
+    "title": "Byte in/out total from clients",
+    "transformations": [
+      {
+        "id": "merge",
+        "options": {}
+      },
+      {
+        "id": "organize",
+        "options": {
+          "excludeByName": {},
+          "indexByName": {},
+          "renameByName": {
+            "Value #A": "Bytes In",
+            "Value #B": "Bytes Out"
           }
         }
-      ],
-      "type": "table"
+      },
+      {
+        "id": "filterFieldsByName",
+        "options": {
+          "include": {
+            "names": [
+              "pod",
+              "service",
+              "topic",
+              "Bytes In",
+              "Bytes Out"
+            ]
+          }
+        }
+      }
+    ],
+    "type": "table"
     },
     {
       "datasource": "${datasource}",
