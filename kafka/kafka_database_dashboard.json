@@ -2177,7 +2177,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(kafka_server_brokertopicmetrics_bytesin_total{pod=~\"$app-broker-.+$\",namespace=~\"$namespace\",topic!~\"\"}[5m])) by (topic)",
+          "expr": "sum(rate(kafka_server_brokertopicmetrics_bytesin_total{pod=~\"$app-.+$\",namespace=~\"$namespace\",topic!~\"\"}[5m])) by (topic)",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -2186,7 +2186,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(kafka_server_brokertopicmetrics_bytesout_total{pod=~\"$app-broker-.+$\",namespace=~\"$namespace\",topic!~\"\"}[5m])) by (topic)",
+          "expr": "sum(rate(kafka_server_brokertopicmetrics_bytesout_total{pod=~\"$app-.+$\",namespace=~\"$namespace\",topic!~\"\"}[5m])) by (topic)",
           "hide": false,
           "interval": "",
           "legendFormat": "{{ topic }} (out)",
