@@ -98,11 +98,15 @@ If you followed the instruction properly, you should see the Pgpool Grafana dash
 
 ####  KubeDB / Pgpool / Summary
 
-![KubeDB / Pgpool / Summary](/pgpool/images/kubedb-pgpool-summary.png)
+![KubeDB / Pgpool / Summary](/pgpool/images/kubedb-pgpool-summary-1.png)
+![KubeDB / Pgpool / Summary](/pgpool/images/kubedb-pgpool-summary-2.png)
+![KubeDB / Pgpool / Summary](/pgpool/images/kubedb-pgpool-summary-3.png)
 
 #### KubeDB / Pgpool / Database
 
-![KubeDB / Pgpool / Shard](/pgpool/images/kubedb-pgpool-database.png)
+![KubeDB / Pgpool / Database](/pgpool/images/kubedb-pgpool-database-1.png)
+![KubeDB / Pgpool / Database](/pgpool/images/kubedb-pgpool-database-2.png)
+![KubeDB / Pgpool / Database](/pgpool/images/kubedb-pgpool-database-3.png)
 
 #### KubeDB / Pgpool / Pod
 

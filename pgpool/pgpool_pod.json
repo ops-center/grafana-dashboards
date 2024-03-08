@@ -15,8 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 50,
-  "iteration": 1709798258835,
+  "id": 2,
+  "iteration": 1709899235613,
   "links": [],
   "panels": [
     {
@@ -56,7 +56,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 5,
+        "h": 7,
         "w": 12,
         "x": 0,
         "y": 1
@@ -84,7 +84,7 @@
           "expr": "pgpool2_up{namespace=~\"$namespace\",pod=~\"$pod\"}",
           "instant": true,
           "interval": "",
-          "legendFormat": "{{pod}} ",
+          "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
@@ -118,7 +118,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 5,
+        "h": 7,
         "w": 12,
         "x": 12,
         "y": 1
@@ -161,7 +161,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 6
+        "y": 8
       },
       "id": 57,
       "panels": [],
@@ -187,7 +187,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 7
+        "y": 9
       },
       "hiddenSeries": false,
       "id": 61,
@@ -286,7 +286,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 7
+        "y": 9
       },
       "hiddenSeries": false,
       "id": 59,
@@ -372,7 +372,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 14
+        "y": 16
       },
       "id": 10,
       "panels": [],
@@ -408,9 +408,9 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 4,
+        "w": 7,
         "x": 0,
-        "y": 15
+        "y": 17
       },
       "id": 73,
       "options": {
@@ -472,9 +472,9 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 4,
-        "x": 4,
-        "y": 15
+        "w": 5,
+        "x": 7,
+        "y": 17
       },
       "id": 69,
       "options": {
@@ -535,9 +535,9 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 4,
-        "x": 8,
-        "y": 15
+        "w": 6,
+        "x": 12,
+        "y": 17
       },
       "id": 70,
       "options": {
@@ -588,9 +588,9 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 5,
-        "w": 4,
-        "x": 12,
-        "y": 15
+        "w": 6,
+        "x": 18,
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 72,
@@ -677,7 +677,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 20
+        "y": 22
       },
       "id": 63,
       "panels": [],
@@ -729,9 +729,9 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 4,
+        "w": 9,
         "x": 0,
-        "y": 21
+        "y": 23
       },
       "id": 65,
       "options": {
@@ -780,9 +780,9 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 5,
-        "w": 4,
-        "x": 4,
-        "y": 21
+        "w": 8,
+        "x": 9,
+        "y": 23
       },
       "hiddenSeries": false,
       "id": 66,
@@ -887,9 +887,9 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 4,
-        "x": 8,
-        "y": 21
+        "w": 7,
+        "x": 17,
+        "y": 23
       },
       "id": 67,
       "options": {
