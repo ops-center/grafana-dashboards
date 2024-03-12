@@ -22,7 +22,7 @@
   "gnetId": 11835,
   "graphTooltip": 0,
   "id": 29,
-  "iteration": 1707899683962,
+  "iteration": 1710410857677,
   "links": [],
   "panels": [
     {
@@ -1895,10 +1895,9 @@
       {
         "allValue": null,
         "current": {
-          "isNone": true,
           "selected": false,
-          "text": "None",
-          "value": ""
+          "text": "demo",
+          "value": "demo"
         },
         "datasource": "${datasource}",
         "definition": "label_values(redis_up, namespace)",
@@ -1927,10 +1926,9 @@
       {
         "allValue": null,
         "current": {
-          "isNone": true,
           "selected": false,
-          "text": "None",
-          "value": ""
+          "text": "sentinel",
+          "value": "sentinel"
         },
         "datasource": "${datasource}",
         "definition": "query_result(kubedb_com_redissentinel_created{namespace=\"$namespace\"})",
@@ -1947,7 +1945,7 @@
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": "/.*name=\"([^\"]+).*/",
+        "regex": "/.*redissentinel=\"([^\"]+).*/",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
@@ -1959,10 +1957,9 @@
       {
         "allValue": null,
         "current": {
-          "isNone": true,
           "selected": false,
-          "text": "None",
-          "value": ""
+          "text": "sentinel-0",
+          "value": "sentinel-0"
         },
         "datasource": "${datasource}",
         "definition": "label_values(redis_up{namespace=~\"$namespace\",pod=~\"${app}-.*\"},pod)",
@@ -1991,8 +1988,8 @@
     ]
   },
   "time": {
-    "from": "2023-08-10T11:03:25.233Z",
-    "to": "2023-08-10T11:13:25.233Z"
+    "from": "now-3h",
+    "to": "now"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -2022,5 +2019,5 @@
   "timezone": "utc",
   "title": "KubeDB / RedisSentinel / Pod",
   "uid": "fF-N4cH7k",
-  "version": 14
+  "version": 3
 }
