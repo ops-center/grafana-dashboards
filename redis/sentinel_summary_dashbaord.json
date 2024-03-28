@@ -18,12 +18,12 @@
       }
     ]
   },
-  "description": "The dashboard is designed for KubeDB managed ZooKeeper",
+  "description": "The dashboard is designed for KubeDB managed RedisSentinel",
   "editable": true,
   "gnetId": 9628,
   "graphTooltip": 0,
-  "id": 30,
-  "iteration": 1709893100646,
+  "id": 28,
+  "iteration": 1710923062186,
   "links": [],
   "panels": [
     {
@@ -113,11 +113,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_zookeeper_status_phase{namespace=\"$namespace\", app=\"$app\"} == 1\n",
+          "expr": "kubedb_com_redissentinel_status_phase{namespace=\"$namespace\", redissentinel=\"$app\"} == 1\n",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -131,7 +131,7 @@
     {
       "cacheTimeout": null,
       "datasource": "${datasource}",
-      "description": "ZooKeeperVersion CR Name",
+      "description": "RedisVersion CR Name",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -193,11 +193,11 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_zookeeper_info{namespace=\"$namespace\", app=\"$app\"}",
+          "expr": "kubedb_com_redissentinel_info{namespace=\"$namespace\", redissentinel=\"$app\"}",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -212,7 +212,7 @@
     {
       "cacheTimeout": null,
       "datasource": "${datasource}",
-      "description": "ZooKeeper Quorum Size",
+      "description": "Sentinel Blocked Clients",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -260,11 +260,11 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": true,
-          "expr": "max(quorum_size{namespace=\"$namespace\",pod=~\"$app-\\\\d+$\"})",
+          "expr": "avg(redis_blocked_clients{namespace=\"$namespace\" , pod=~\"$app-\\\\d+$\"}) ",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -273,13 +273,13 @@
           "refId": "A"
         }
       ],
-      "title": "Quorum Size",
+      "title": "Blocked Clients",
       "type": "stat"
     },
     {
       "cacheTimeout": null,
       "datasource": "${datasource}",
-      "description": "ZooKeeper Leader Node",
+      "description": "Sentinel Storage Type",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -341,20 +341,20 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": true,
-          "expr": "leader_uptime{namespace=\"$namespace\",pod=~\"$app-\\\\d+$\"}",
+          "expr": "kubedb_com_redissentinel_info{namespace=\"$namespace\", redissentinel=\"$app\"}",
           "format": "time_series",
           "instant": true,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{storageType}}",
           "refId": "A"
         }
       ],
-      "title": "Leader",
+      "title": "Sentinel Storage Type",
       "type": "stat"
     },
     {
@@ -422,11 +422,11 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_zookeeper_info{namespace=\"$namespace\", app=\"$app\"}",
+          "expr": "kubedb_com_redissentinel_info{namespace=\"$namespace\", redissentinel=\"$app\"}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -439,7 +439,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "Total node count of ZooKeeper cluster",
+      "description": "Total node count of RedisSentinel cluster",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -485,11 +485,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_zookeeper_replicas{namespace=\"$namespace\",app=\"$app\"}",
+          "expr": "kubedb_com_redissentinel_replicas{namespace=\"$namespace\",redissentinel=\"$app\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -544,11 +544,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_zookeeper_resource_request_cpu{namespace=\"$namespace\", app=\"$app\"}",
+          "expr": "kubedb_com_redissentinel_resource_request_cpu{namespace=\"$namespace\", redissentinel=\"$app\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -560,7 +560,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "CPU Limit in core by ZooKeeper instance",
+      "description": "CPU Limit in core by RedisSentinel instance",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -602,11 +602,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_zookeeper_resource_limit_cpu{namespace=\"$namespace\", app=\"$app\"}",
+          "expr": "kubedb_com_redissentinel_resource_limit_cpu{namespace=\"$namespace\", redissentinel=\"$app\"}",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -617,7 +617,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "Initial Requested Memory amount by ZooKeeper Instance",
+      "description": "Initial Requested Memory amount by RedisSentinel Instance",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -661,11 +661,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_zookeeper_resource_request_memory{namespace=\"$namespace\", app=\"$app\"}",
+          "expr": "kubedb_com_redissentinel_resource_request_memory{namespace=\"$namespace\", redissentinel=\"$app\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -677,7 +677,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "KubeDB ZooKeeper Total Memory Limit",
+      "description": "KubeDB RedisSentinel Total Memory Limit",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -720,11 +720,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_zookeeper_resource_limit_memory{namespace=\"$namespace\", app=\"$app\"}",
+          "expr": "kubedb_com_redissentinel_resource_limit_memory{namespace=\"$namespace\", redissentinel=\"$app\"}",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -735,7 +735,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "Total storage request by ZooKeeper nodes",
+      "description": "Total storage request by RedisSentinel nodes",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -779,11 +779,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_zookeeper_resource_request_storage{namespace=\"$namespace\", app=\"$app\"}",
+          "expr": "kubedb_com_redissentinel_resource_request_storage{namespace=\"$namespace\", redissentinel=\"$app\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -813,6 +813,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
+      "description": "CPU Usage by RedisSentinel pods",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
@@ -840,10 +841,21 @@
       "linewidth": 1,
       "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "alertThreshold": true,
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "single"
+        },
+        "tooltipOptions": {
+          "mode": "single"
+        }
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1121,7 +1133,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": true,
@@ -1213,7 +1225,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
-      "description": "Memory Usage by ZooKeeper pods",
+      "description": "Memory Usage by RedisSentinel pods",
       "fieldConfig": {
         "defaults": {
           "unit": "bytes"
@@ -1257,7 +1269,7 @@
         }
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1607,7 +1619,7 @@
           }
         ]
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": true,
@@ -1633,7 +1645,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$app-.+$\",container!=\"\", image!=\"\"}) by (pod) / sum(kube_pod_container_resource_requests{job=\"kube-state-metrics\",resource=\"memory\",namespace=\"$namespace\",pod=~\"$app-.+$\"} * on (namespace, pod, cluster) group_left () max by (namespace, pod, cluster) ((kube_pod_status_phase{phase=~\"Pending|Running\"} == 1))) by (pod)",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$app-\\\\d+$\",container!=\"\", image!=\"\"}) by (pod) / sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_requests{namespace=\"$namespace\",pod=~\"$app-\\\\d+$\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1655,7 +1667,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$app-.+$\",container!=\"\", image!=\"\"}) by (pod) / sum(kube_pod_container_resource_limits{job=\"kube-state-metrics\",resource=\"memory\",namespace=\"$namespace\",pod=~\"$app-.+$\"} * on (namespace, pod, cluster) group_left () max by (namespace, pod, cluster) ((kube_pod_status_phase{phase=~\"Pending|Running\"} == 1))) by (pod)",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$app-\\\\d+$\",container!=\"\", image!=\"\"}) by (pod) / sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$app-\\\\d+$\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1731,7 +1743,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
-      "description": "Disk usage by ZooKeeper pods",
+      "description": "Disk usage by RedisSentinel pods",
       "fieldConfig": {
         "defaults": {
           "unit": "bytes"
@@ -1775,7 +1787,7 @@
         }
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1883,7 +1895,7 @@
         }
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2002,7 +2014,7 @@
         }
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2114,7 +2126,7 @@
         }
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2414,7 +2426,7 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": true,
@@ -2547,7 +2559,7 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": true,
@@ -2594,8 +2606,6 @@
             "mode": "thresholds"
           },
           "mappings": [],
-          "max": 100,
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -2633,7 +2643,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "targets": [
         {
           "exemplar": true,
@@ -2668,8 +2678,7 @@
             "hideFrom": {
               "graph": false,
               "legend": false,
-              "tooltip": false,
-              "viz": false
+              "tooltip": false
             },
             "lineInterpolation": "linear",
             "lineStyle": {
@@ -2713,9 +2722,6 @@
           ],
           "displayMode": "table",
           "placement": "right"
-        },
-        "tooltip": {
-          "mode": "single"
         },
         "tooltipOptions": {
           "mode": "single"
@@ -2799,7 +2805,7 @@
         }
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2911,7 +2917,7 @@
         }
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "7.5.17",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2980,7 +2986,7 @@
   "tags": [
     "db",
     "stats",
-    "zookeeper",
+    "redissentinel",
     "kubedb"
   ],
   "templating": {
@@ -3041,11 +3047,11 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "zk-cluster",
-          "value": "zk-cluster"
+          "text": "sentinel",
+          "value": "sentinel"
         },
         "datasource": "${datasource}",
-        "definition": "label_values(kubedb_com_zookeeper_status_phase{namespace=~\"$namespace\"},app)",
+        "definition": "label_values(kubedb_com_redissentinel_status_phase{namespace=~\"$namespace\"},redissentinel)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -3055,8 +3061,8 @@
         "name": "app",
         "options": [],
         "query": {
-          "query": "label_values(kubedb_com_zookeeper_status_phase{namespace=~\"$namespace\"},app)",
-          "refId": "Prometheus-app-Variable-Query"
+          "query": "label_values(kubedb_com_redissentinel_status_phase{namespace=~\"$namespace\"},redissentinel)",
+          "refId": "StandardVariableQuery"
         },
         "refresh": 1,
         "regex": "",
@@ -3100,7 +3106,7 @@
     ]
   },
   "timezone": "",
-  "title": "KubeDB / ZooKeeper / Summary",
-  "uid": "Vj9GtJ0Iz",
+  "title": "KubeDB / RedisSentinel / Summary",
+  "uid": "wzK8X8Nrd",
   "version": 3
 }
