@@ -22,8 +22,8 @@
   "editable": true,
   "gnetId": 9628,
   "graphTooltip": 0,
-  "id": 29,
-  "iteration": 1710508943947,
+  "id": 73,
+  "iteration": 1711613804576,
   "links": [],
   "panels": [
     {
@@ -1186,7 +1186,7 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 6,
+        "h": 8,
         "w": 24,
         "x": 0,
         "y": 22
@@ -1544,10 +1544,10 @@
         ]
       },
       "gridPos": {
-        "h": 6,
+        "h": 7,
         "w": 24,
         "x": 0,
-        "y": 28
+        "y": 30
       },
       "id": 124,
       "links": [],
@@ -1671,7 +1671,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 37
       },
       "id": 142,
       "panels": [],
@@ -1697,7 +1697,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 35
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 112,
@@ -1794,7 +1794,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 35
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 108,
@@ -1902,7 +1902,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 44
+        "y": 47
       },
       "hiddenSeries": false,
       "id": 126,
@@ -2003,7 +2003,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 44
+        "y": 47
       },
       "hiddenSeries": false,
       "id": 128,
@@ -2317,7 +2317,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 51
+        "y": 54
       },
       "id": 130,
       "links": [],
@@ -2413,7 +2413,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 58
+        "y": 61
       },
       "id": 144,
       "panels": [],
@@ -2436,7 +2436,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 59
+        "y": 62
       },
       "hiddenSeries": false,
       "id": 132,
@@ -2537,7 +2537,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 59
+        "y": 62
       },
       "hiddenSeries": false,
       "id": 134,
@@ -2621,7 +2621,7 @@
       }
     }
   ],
-  "refresh": "10s",
+  "refresh": false,
   "schemaVersion": 27,
   "style": "dark",
   "tags": [
@@ -2657,7 +2657,7 @@
       {
         "allValue": "\".+\"",
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "demo",
           "value": "demo"
         },
@@ -2688,7 +2688,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "connect-cluster",
           "value": "connect-cluster"
         },
@@ -2749,6 +2749,6 @@
   },
   "timezone": "",
   "title": "KubeDB / Kafka / ConnectCluster / Summary",
-  "uid": "xcfgdvr",
-  "version": 17
+  "uid": "lLHclMbIz",
+  "version": 1
 }
