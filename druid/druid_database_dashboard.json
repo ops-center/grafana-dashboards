@@ -16,13 +16,17 @@
   "editable": true,
   "gnetId": 12155,
   "graphTooltip": 0,
-  "id": 31,
-  "iteration": 1711089572456,
+  "id": 4,
+  "iteration": 1712331830278,
   "links": [],
   "panels": [
     {
       "collapsed": false,
       "datasource": "${datasource}",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -41,20 +45,15 @@
         "defaults": {
           "mappings": [
             {
-              "from": "",
-              "id": 0,
-              "text": "UP",
-              "to": "",
-              "type": 1,
-              "value": "1"
-            },
-            {
-              "from": "",
-              "id": 1,
-              "text": "Down",
-              "to": "",
-              "type": 1,
-              "value": "0"
+              "options": {
+                "0": {
+                  "text": "Down"
+                },
+                "1": {
+                  "text": "UP"
+                }
+              },
+              "type": "value"
             }
           ],
           "thresholds": {
@@ -99,11 +98,11 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.7",
       "targets": [
         {
           "exemplar": true,
-          "expr": "min(druid_service_heartbeat{job=\"$app-stats\", namespace=\"$namespace\"})",
+          "expr": "min(druid_service_heartbeat{service=\"$app-stats\", namespace=\"$namespace\"})",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -121,20 +120,15 @@
         "defaults": {
           "mappings": [
             {
-              "from": "",
-              "id": 0,
-              "text": "Connected",
-              "to": "",
-              "type": 1,
-              "value": "1"
-            },
-            {
-              "from": "",
-              "id": 1,
-              "text": "Disconnected",
-              "to": "",
-              "type": 1,
-              "value": "0"
+              "options": {
+                "0": {
+                  "text": "Disconnected"
+                },
+                "1": {
+                  "text": "Connected"
+                }
+              },
+              "type": "value"
             }
           ],
           "thresholds": {
@@ -179,11 +173,11 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.7",
       "targets": [
         {
           "exemplar": true,
-          "expr": "min(druid_zk_connected{job=\"$app-stats\", namespace=\"$namespace\"})",
+          "expr": "min(druid_zk_connected{service=\"$app-stats\", namespace=\"$namespace\"})",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -238,11 +232,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.7",
       "targets": [
         {
           "exemplar": true,
-          "expr": "floor(count(count_values(\"dataSource\", druid_segment_size{job=\"$app-stats\", namespace=\"$namespace\"})))",
+          "expr": "floor(count(count_values(\"dataSource\", druid_segment_size{service=\"$app-stats\", namespace=\"$namespace\"})))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -298,11 +292,11 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.7",
       "targets": [
         {
           "exemplar": true,
-          "expr": "ceil(sum(druid_segment_loadqueue_count{job=\"$app-stats\", namespace=\"$namespace\"}))",
+          "expr": "ceil(sum(druid_segment_loadqueue_count{service=\"$app-stats\", namespace=\"$namespace\"}))",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -320,12 +314,12 @@
         "defaults": {
           "mappings": [
             {
-              "from": "",
-              "id": 0,
-              "text": "",
-              "to": "",
-              "type": 1,
-              "value": ""
+              "options": {
+                "": {
+                  "text": ""
+                }
+              },
+              "type": "value"
             }
           ],
           "thresholds": {
@@ -362,11 +356,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.7",
       "targets": [
         {
           "exemplar": true,
-          "expr": "count_over_time(druid_task_success_count_created{job=\"$app-stats\", namespace=\"$namespace\"}[$__range])",
+          "expr": "count_over_time(druid_task_success_count_created{service=\"$app-stats\", namespace=\"$namespace\"}[$__range])",
           "interval": "",
           "legendFormat": "{{task_status}}",
           "refId": "A"
@@ -422,11 +416,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.7",
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(druid_segment_size{job=\"$app-stats\", namespace=\"$namespace\"}) / (1024 * 1024)",
+          "expr": "sum(druid_segment_size{service=\"$app-stats\", namespace=\"$namespace\"}) / (1024 * 1024)",
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "",
@@ -445,12 +439,12 @@
         "defaults": {
           "mappings": [
             {
-              "from": "",
-              "id": 0,
-              "text": "test",
-              "to": "",
-              "type": 1,
-              "value": "#A"
+              "options": {
+                "#A": {
+                  "text": "test"
+                }
+              },
+              "type": "value"
             }
           ],
           "thresholds": {
@@ -492,11 +486,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.7",
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(druid_segment_loadqueue_size{job=\"$app-stats\", namespace=\"$namespace\"}) / (1024 * 1024)",
+          "expr": "sum(druid_segment_loadqueue_size{service=\"$app-stats\", namespace=\"$namespace\"}) / (1024 * 1024)",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -510,6 +504,10 @@
     {
       "collapsed": false,
       "datasource": "${datasource}",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -528,10 +526,6 @@
       "dashes": false,
       "datasource": "${datasource}",
       "description": "Used memory",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -558,7 +552,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -569,7 +563,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg(increase(druid_jvm_mem_used{job=\"$app-stats\", namespace=\"$namespace\"}[$__range])) by (pod)",
+          "expr": "avg(increase(druid_jvm_mem_used{service=\"$app-stats\", namespace=\"$namespace\"}[$__range])) by (pod)",
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}",
@@ -624,10 +618,6 @@
       "dashes": false,
       "datasource": "${datasource}",
       "description": "Pool used",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -654,7 +644,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -665,7 +655,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg(increase(druid_jvm_pool_used{job=\"$app-stats\", namespace=\"$namespace\"}[$__range])) by (pod)",
+          "expr": "avg(increase(druid_jvm_pool_used{service=\"$app-stats\", namespace=\"$namespace\"}[$__range])) by (pod)",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -740,7 +730,14 @@
               "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": false
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -774,10 +771,6 @@
           "showLegend": true
         },
         "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        },
-        "tooltipOptions": {
           "mode": "single"
         }
       },
@@ -789,7 +782,7 @@
           },
           "editorMode": "builder",
           "exemplar": true,
-          "expr": "druid_jvm_bufferpool_count{bufferpoolName=\"direct\", job=\"$app-stats\", namespace=\"$namespace\"}",
+          "expr": "druid_jvm_bufferpool_count{bufferpoolName=\"direct\", service=\"$app-stats\", namespace=\"$namespace\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "{{pod}}",
@@ -845,7 +838,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.7",
       "targets": [
         {
           "datasource": {
@@ -854,7 +847,7 @@
           },
           "editorMode": "builder",
           "exemplar": true,
-          "expr": "druid_jvm_gc_cpu_total{job=\"$app-stats\", namespace=\"$namespace\"}",
+          "expr": "druid_jvm_gc_cpu_total{service=\"$app-stats\", namespace=\"$namespace\"}",
           "interval": "",
           "legendFormat": "{{pod}}",
           "range": true,
@@ -867,6 +860,10 @@
     {
       "collapsed": false,
       "datasource": "${datasource}",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -885,12 +882,12 @@
         "defaults": {
           "mappings": [
             {
-              "from": "",
-              "id": 0,
-              "text": "test",
-              "to": "",
-              "type": 1,
-              "value": "#A"
+              "options": {
+                "#A": {
+                  "text": "test"
+                }
+              },
+              "type": "value"
             }
           ],
           "thresholds": {
@@ -928,11 +925,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.7",
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(druid_segment_size{job=\"$app-stats\", namespace=\"$namespace\"})",
+          "expr": "sum(druid_segment_size{service=\"$app-stats\", namespace=\"$namespace\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -950,10 +947,6 @@
       "dashes": false,
       "datasource": "${datasource}",
       "description": "",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -980,7 +973,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
+      "pluginVersion": "8.0.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -991,7 +984,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(increase(druid_segment_size{job=\"$app-stats\", namespace=\"$namespace\"}[$__range])) by (dataSource)",
+          "expr": "sum(increase(druid_segment_size{service=\"$app-stats\", namespace=\"$namespace\"}[$__range])) by (dataSource)",
           "interval": "",
           "legendFormat": "{{dataSource}}",
           "refId": "A"
@@ -1041,6 +1034,10 @@
     {
       "collapsed": false,
       "datasource": "${datasource}",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1049,202 +1046,160 @@
       },
       "id": 40,
       "panels": [],
-      "title": "Ingestion Overview",
+      "title": "Query Overview",
       "type": "row"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${datasource}",
-      "description": "Number of events processed per emission period.",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {},
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
         "overrides": []
       },
-      "fill": 10,
-      "fillGradient": 0,
       "gridPos": {
         "h": 8,
         "w": 12,
         "x": 0,
         "y": 36
       },
-      "hiddenSeries": false,
       "id": 37,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 10,
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "displayMode": "gradient",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
       },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "8.0.7",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "sum(increase(druid_ingest_events_processed_total{job=\"$app-stats\", namespace=\"$namespace\"}[$__range])) by (dataSource)",
-          "interval": "",
-          "legendFormat": "{{host}}",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheusdata"
+          },
+          "editorMode": "builder",
+          "expr": "count by(le) (druid_query_time_bucket)",
+          "format": "heatmap",
+          "legendFormat": "{{le}}",
+          "range": true,
           "refId": "A"
         }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Ingestion Events",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "title": "Query Time Histogram (Seconds taken to complete a query)",
+      "type": "bargauge"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${datasource}",
-      "description": "Total lag between the offsets consumed by the Kafka indexing tasks and latest offsets in Kafka brokers across all partitions. ",
+      "datasource": null,
       "fieldConfig": {
-        "defaults": {},
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
         "overrides": []
       },
-      "fill": 10,
-      "fillGradient": 0,
       "gridPos": {
         "h": 8,
         "w": 12,
         "x": 12,
         "y": 36
       },
-      "hiddenSeries": false,
       "id": 38,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 10,
-      "nullPointMode": "null",
       "options": {
-        "alertThreshold": true
+        "displayMode": "gradient",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "text": {}
       },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "pluginVersion": "8.0.7",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "sum(increase(druid_ingest_kafka_lag{job=\"$app-stats\", namespace=\"$namespace\"}[$__range]))",
-          "interval": "",
-          "legendFormat": "",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheusdata"
+          },
+          "editorMode": "builder",
+          "exemplar": false,
+          "expr": "count by(le) (druid_query_wait_time_bucket)",
+          "format": "heatmap",
+          "instant": true,
+          "legendFormat": "{{le}}",
+          "range": false,
           "refId": "A"
         }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Ingestion Lag",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
+      "title": "Druid Query Wait Time Histogram (Seconds waiting for a segment to be scanned)",
+      "transformations": [
         {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "0.1": {
+                "aggregations": []
+              },
+              "0.25": {
+                "aggregations": []
+              },
+              "0.5": {
+                "aggregations": []
+              },
+              "0.75": {
+                "aggregations": []
+              },
+              "1.0": {
+                "aggregations": []
+              }
+            }
+          }
         }
       ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "type": "bargauge"
     }
   ],
   "refresh": false,
-  "schemaVersion": 27,
+  "schemaVersion": 30,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1272,11 +1227,6 @@
       },
       {
         "allValue": null,
-        "current": {
-          "selected": false,
-          "text": "druid",
-          "value": "druid"
-        },
         "datasource": "${datasource}",
         "definition": "label_values(kube_namespace_created,namespace)",
         "description": null,
@@ -1286,28 +1236,18 @@
         "label": "",
         "multi": false,
         "name": "namespace",
-        "options": [],
-        "query": {
-          "query": "label_values(kube_namespace_created,namespace)",
-          "refId": "Prometheus-namespace-Variable-Query"
-        },
+        "query": "druid",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
-        "type": "query",
+        "type": "constant",
         "useTags": false
       },
       {
         "allValue": null,
-        "current": {
-          "selected": false,
-          "text": "druid-sample",
-          "value": "druid-sample"
-        },
         "datasource": "${datasource}",
         "definition": "label_values(kubedb_com_druid_created{druid=~\".+\",namespace=~\"$namespace\"},app)",
         "description": null,
@@ -1317,19 +1257,14 @@
         "label": null,
         "multi": false,
         "name": "app",
-        "options": [],
-        "query": {
-          "query": "label_values(kubedb_com_druid_created{druid=~\".+\",namespace=~\"$namespace\"},app)",
-          "refId": "StandardVariableQuery"
-        },
+        "query": "druid-sample",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
-        "type": "query",
+        "type": "constant",
         "useTags": false
       }
     ]
@@ -1353,6 +1288,6 @@
   },
   "timezone": "",
   "title": "KubeDB / Druid / Database",
-  "uid": "druidDatabase",
-  "version": 27
+  "uid": "i_yH4_xSk",
+  "version": 2
 }
