@@ -61,11 +61,20 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        k8s: [1.27.3]
+        k8s: [v1.27.3]
 #        kubedb-version: ${{ fromJSON(needs.config.outputs.kubedb-version) }}
     steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ci
+
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          detached: true
+
       - name: Set up Go 1.22
-        uses: actions/setup-go@v1
+        uses: actions/setup-go@v4
         with:
           go-version: '1.22'
         id: go
@@ -129,24 +138,24 @@ jobs:
             --version ${{ needs.config.outputs.kubedb }} \
             --namespace kubedb --create-namespace \
             --set-file global.license=${LICENSE_FILE} \
-            --set global.featureGates.Druid=true
-            --set global.featureGates.FerretDB=true
-            --set global.featureGates.Memcached=true
-            --set global.featureGates.MSSQLServer=true
-            --set global.featureGates.PerconaXtraDB=true
-            --set global.featureGates.PgBouncer=true
-            --set global.featureGates.Pgpool=true
-            --set global.featureGates.ProxySQL=true
-            --set global.featureGates.RabbitMQ=true
-            --set global.featureGates.Singlestore=true
-            --set global.featureGates.Solr=true
-            --set global.featureGates.ZooKeeper=true
+            --set global.featureGates.Druid=true \
+            --set global.featureGates.FerretDB=true \
+            --set global.featureGates.Memcached=true \
+            --set global.featureGates.MSSQLServer=true \
+            --set global.featureGates.PerconaXtraDB=true \
+            --set global.featureGates.PgBouncer=true \
+            --set global.featureGates.Pgpool=true \
+            --set global.featureGates.ProxySQL=true \
+            --set global.featureGates.RabbitMQ=true \
+            --set global.featureGates.Singlestore=true \
+            --set global.featureGates.Solr=true \
+            --set global.featureGates.ZooKeeper=true \
             --wait --burst-limit=10000 --debug
 
       - name: Install KubeDB CLI
         run: |
           cd ..
-          git clone git@github.com:kubedb/cli.git
+          git clone https://github.com/kubedb/cli.git
           cd cli
           git checkout master
           go get ./...
