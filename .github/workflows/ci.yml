@@ -154,29 +154,27 @@ jobs:
 
       - name: Install KubeDB CLI
         run: |
-          cd ..
-          git clone https://github.com/kubedb/cli.git
-          cd cli
-          git checkout master
-          go get ./...
+          curl -o kubectl-dba.tar.gz -fsSL https://github.com/kubedb/cli/releases/download/v0.45.0/kubectl-dba-linux-amd64.tar.gz \
+          && tar zxvf kubectl-dba.tar.gz \
+          && chmod +x kubectl-dba-linux-amd64 \
+          && sudo mv kubectl-dba-linux-amd64 /usr/local/bin/kubectl-dba \
+          && rm kubectl-dba.tar.gz LICENSE.md
 
       - name: Install Prometheus
         run: |
           helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
           helm repo update
-          helm install prometheus prometheus-community/kube-prometheus-stack -n monitoring
+          helm install prometheus prometheus-community/kube-prometheus-stack -n monitoring --create-namespace
 
       - name: Install Panopticon
         run: |
           helm repo add appscode https://charts.appscode.com/stable/
           helm repo update
-          helm upgrade -i panopticon appscode/panopticon -n kubeops --create-namespace --version=v2024.2.5
-
-      - name: Apply MetricsConfigurations
-        run: |
-          helm repo add appscode https://charts.appscode.com/stable/
-          helm repo update
-          helm upgrade -i kubedb-metrics appscode/kubedb-metrics -n kubedb --create-namespace --version=${{ needs.config.outputs.kubedb }}
+          helm install panopticon appscode/panopticon \
+          -n kubeops --create-namespace \
+          --set monitoring.agent=prometheus.io/operator \
+          --set monitoring.serviceMonitor.labels.release=prometheus \
+          --set-file license=/tmp/license.txt
 
       - name: Install Falco UI Server
         run: |
@@ -184,7 +182,13 @@ jobs:
           helm repo update
           helm upgrade -i falco-ui-server appscode/falco-ui-server -n kubeops --create-namespace --version=v2024.2.5
 
+      - name: Apply MetricsConfigurations
+        run: |
+          helm repo add appscode https://charts.appscode.com/stable/
+          helm repo update
+          helm upgrade -i kubedb-metrics appscode/kubedb-metrics -n kubedb --create-namespace --version=${{ needs.config.outputs.kubedb }}    
+
       - name: Check Dashboard Metrics
         run: |
-          DB=${{ fromJSON(needs.config.outputs.databases) }}
+          DB=${{ needs.config.outputs.databases }}
           bash hack/scripts/check-dashboard.sh "$DB"
