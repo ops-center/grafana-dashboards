@@ -3,6 +3,11 @@ on:
   push:
     branches:
       - "*.*"
+  pull_request:
+    branches:
+      - "master"
+    paths:
+      - ".github/workflows/ci.yml"
   issue_comment:
     types: [ created ]
   schedule:
