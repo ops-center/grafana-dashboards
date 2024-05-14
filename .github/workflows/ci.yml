@@ -6,8 +6,8 @@ on:
   pull_request:
     branches:
       - "master"
-    paths:
-      - ".github/workflows/ci.yml"
+#    paths:
+#      - ".github/workflows/ci.yml"
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
@@ -31,25 +31,38 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       dbs: ${{ steps.defaulter.outputs.databases }}
-      kubedb-version : ${{ steps.defaulter.outputs.kubedb-version }}
+      kubedb : ${{ steps.defaulter.outputs.kubedb }}
     steps:
       - name: Defaulter
         id: defaulter
         env:
-          V_DATABASES: ${{ inputs.databases }}
-          V_KUBEDB_VERSION: ${{ inputs.kubedb-version }}
+#          V_DATABASES: ${{ inputs.databases }}
+#          V_KUBEDB_VERSION: ${{ inputs.kubedb-version }}
+           V_DATABASES: "all"
+           V_KUBEDB_VERSION: "v2024.4.27"
         run: |
           echo "databases=${V_DATABASES:-all}" >> $GITHUB_OUTPUT
-          echo "kubedb-version=${V_KUBEDB_VERSION:-v2024.4.27}" >> $GITHUB_OUTPUT
+          echo "kubedb=${V_KUBEDB_VERSION:-v2024.4.27}" >> $GITHUB_OUTPUT
   test:
     name: Test
     runs-on: ubuntu-latest
+#    needs: config
+#    strategy:
+#      fail-fast: false
+#      matrix:
+#        k8s: [ 1.27.3 ]
+#        kubedb: ${{ needs.config.outputs.kubedb }}
+#    steps:
+#      - name: test
+#        run: |
+#          echo "hh"
+#          echo "${{ needs.config.outputs.kubedb }}"
     needs: config
     strategy:
       fail-fast: false
       matrix:
         k8s: [1.27.3]
-        kubedb-version: ${{ fromJSON(needs.config.outputs.kubedb-version) }}
+#        kubedb-version: ${{ fromJSON(needs.config.outputs.kubedb-version) }}
     steps:
       - name: Set up Go 1.22
         uses: actions/setup-go@v1
@@ -106,14 +119,14 @@ jobs:
         run: |
           export KUBECONFIG="${HOME}/.kube/config"
           CLUSTER_UID=$(kubectl get ns kube-system -o=jsonpath='{.metadata.uid}')
-          curl -X POST -o /tmp/license.txt -d "name=1gtm&email=1gtm@appscode.com&product=kubedb-enterprise&cluster=${CLUSTER_UID}&tos=true&token=${BYTEBUILDERS_LICENSE_TOKEN}" https://license-issuer.appscode.com/issue-license        
+          curl -X POST -o /tmp/license.txt -d "name=1gtm&email=1gtm@appscode.com&product=kubedb-enterprise&cluster=${CLUSTER_UID}&tos=true&token=${BYTEBUILDERS_LICENSE_TOKEN}" https://license-issuer.appscode.com/issue-license
 
       - name: Install KubeDB
         env:
           LICENSE_FILE: /tmp/license.txt
         run: |
           helm install kubedb oci://ghcr.io/appscode-charts/kubedb \
-            --version ${{ matrix.kubedb-version }} \
+            --version ${{ needs.config.outputs.kubedb }} \
             --namespace kubedb --create-namespace \
             --set-file global.license=${LICENSE_FILE} \
             --set global.featureGates.Druid=true
@@ -154,7 +167,7 @@ jobs:
         run: |
           helm repo add appscode https://charts.appscode.com/stable/
           helm repo update
-          helm upgrade -i kubedb-metrics appscode/kubedb-metrics -n kubedb --create-namespace --version=${{ matrix.kubedb-version }}
+          helm upgrade -i kubedb-metrics appscode/kubedb-metrics -n kubedb --create-namespace --version=${{ needs.config.outputs.kubedb }}
 
       - name: Install Falco UI Server
         run: |
