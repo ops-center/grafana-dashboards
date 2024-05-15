@@ -1,0 +1,16 @@
+apiVersion: stash.appscode.com/v1alpha1
+kind: Repository
+metadata:
+  name: minio-repo
+  namespace: demo
+spec:
+  usagePolicy:
+    allowedNamespaces:
+      from: Same
+  backend:
+    s3:
+      endpoint: http://minio.demo.svc.cluster.local:80
+      bucket: myminio
+      region: us-east-1
+      prefix: /hhh/sayed/
+    storageSecretName: minio-secret
