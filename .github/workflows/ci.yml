@@ -6,8 +6,6 @@ on:
   pull_request:
     branches:
       - "master"
-#    paths:
-#      - ".github/workflows/ci.yml"
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
@@ -36,33 +34,19 @@ jobs:
       - name: Defaulter
         id: defaulter
         env:
-#          V_DATABASES: ${{ inputs.databases }}
-#          V_KUBEDB_VERSION: ${{ inputs.kubedb-version }}
-           V_DATABASES: "all"
-           V_KUBEDB_VERSION: "v2024.4.27"
+          DATABASES: "policy"
+          KUBEDB_VERSION: "v2024.4.27"
         run: |
-          echo "databases=${V_DATABASES:-all}" >> $GITHUB_OUTPUT
-          echo "kubedb=${V_KUBEDB_VERSION:-v2024.4.27}" >> $GITHUB_OUTPUT
+          echo "databases=${DATABASES:-all}" >> $GITHUB_OUTPUT
+          echo "kubedb=${KUBEDB_VERSION:-v2024.4.27}" >> $GITHUB_OUTPUT
   test:
     name: Test
     runs-on: ubuntu-latest
-#    needs: config
-#    strategy:
-#      fail-fast: false
-#      matrix:
-#        k8s: [ 1.27.3 ]
-#        kubedb: ${{ needs.config.outputs.kubedb }}
-#    steps:
-#      - name: test
-#        run: |
-#          echo "hh"
-#          echo "${{ needs.config.outputs.kubedb }}"
     needs: config
     strategy:
       fail-fast: false
       matrix:
         k8s: [v1.27.3]
-#        kubedb-version: ${{ fromJSON(needs.config.outputs.kubedb-version) }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -154,17 +138,17 @@ jobs:
 
       - name: Install KubeDB CLI
         run: |
-          curl -o kubectl-dba.tar.gz -fsSL https://github.com/kubedb/cli/releases/download/v0.45.0/kubectl-dba-linux-amd64.tar.gz \
-          && tar zxvf kubectl-dba.tar.gz \
-          && chmod +x kubectl-dba-linux-amd64 \
-          && sudo mv kubectl-dba-linux-amd64 /usr/local/bin/kubectl-dba \
-          && rm kubectl-dba.tar.gz LICENSE.md
+          cd ..
+          git clone https://github.com/kubedb/cli.git
+          cd cli
+          git checkout check
+          go install ./...
 
       - name: Install Prometheus
         run: |
           helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
           helm repo update
-          helm install prometheus prometheus-community/kube-prometheus-stack -n monitoring --create-namespace
+          helm install prometheus prometheus-community/kube-prometheus-stack -n monitoring --create-namespace --wait --burst-limit=10000
 
       - name: Install Panopticon
         run: |
@@ -174,21 +158,37 @@ jobs:
           -n kubeops --create-namespace \
           --set monitoring.agent=prometheus.io/operator \
           --set monitoring.serviceMonitor.labels.release=prometheus \
-          --set-file license=/tmp/license.txt
+          --set-file license=/tmp/license.txt \
+          --wait --burst-limit=10000
+          sleep 5s
+          kubectl wait --for=condition=ready pod -l "app.kubernetes.io/name=panopticon,app.kubernetes.io/instance=panopticon" -n kubeops --timeout=10m
 
-      - name: Install Falco UI Server
-        run: |
-          helm repo add appscode https://charts.appscode.com/stable/
-          helm repo update
-          helm upgrade -i falco-ui-server appscode/falco-ui-server -n kubeops --create-namespace --version=v2024.2.5
+#      - name: Install Falco UI Server
+#        run: |
+#          helm repo add appscode https://charts.appscode.com/stable/
+#          helm repo update
+#          helm upgrade -i falco-ui-server appscode/falco-ui-server -n kubeops --create-namespace --version=v2024.2.5
 
       - name: Apply MetricsConfigurations
         run: |
           helm repo add appscode https://charts.appscode.com/stable/
           helm repo update
-          helm upgrade -i kubedb-metrics appscode/kubedb-metrics -n kubedb --create-namespace --version=${{ needs.config.outputs.kubedb }}    
+          helm upgrade -i kubedb-metrics appscode/kubedb-metrics -n kubedb --create-namespace --version=${{ needs.config.outputs.kubedb }} --wait --burst-limit=10000 --debug
+
+      - name: Prepare smaples
+        run: |
+          cd ..
+          git clone https://github.com/kubedb/samples.git
+          cd samples
+          git checkout old-dbs
 
       - name: Check Dashboard Metrics
+        env:
+          SINGLESTORE_LICENSE_USERNAME: ${{ secrets.SINGLESTORE_LICENSE_USERNAME }}
+          SINGLESTORE_LICENSE_PASSWORD: ${{ secrets.SINGLESTORE_LICENSE_PASSWORD }}
+          DATABASES: ${{ needs.config.outputs.dbs }}
         run: |
-          DB=${{ needs.config.outputs.databases }}
-          bash hack/scripts/check-dashboard.sh "$DB"
+          echo "SINGLESTORE_LICENSE_USERNAME=$(echo $SINGLESTORE_LICENSE_USERNAME)" >> ./hack/scripts/.env
+          echo "SINGLESTORE_LICENSE_PASSWORD=$(echo $SINGLESTORE_LICENSE_PASSWORD)" >> ./hack/scripts/.env
+          echo "DATABASES=$(echo $DATABASES)" >> ./hack/scripts/.env
+          bash hack/scripts/check-dashboard.sh

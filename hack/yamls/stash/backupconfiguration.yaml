@@ -1,0 +1,18 @@
+apiVersion: stash.appscode.com/v1beta1
+kind: BackupConfiguration
+metadata:
+  name: mg-st-backup
+  namespace: demo
+spec:
+  schedule: "*/50 * * * *"
+  repository:
+    name: minio-repo
+  target:
+    ref:
+      apiVersion: appcatalog.appscode.com/v1alpha1
+      kind: AppBinding
+      name: mongodb-standalone
+  retentionPolicy:
+    name: keep-last-5
+    keepLast: 5
+    prune: true
