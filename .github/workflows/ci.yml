@@ -1,21 +1,15 @@
 name: dashboard-check
 on:
-  push:
-    branches:
-      - "*.*"
-  pull_request:
-    branches:
-      - "master"
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
     inputs:
-      databases:
-        description: 'Databases'
+      folders:
+        description: 'Folders'
         required: true
         default: 'all'
         type: string
-      kubedb-version:
+      kubedb_version:
         description: 'KubeDB Version'
         required: true
         default: 'v2024.4.27'  #needs to be dynamic
@@ -28,17 +22,17 @@ jobs:
     name: Configure Inputs
     runs-on: ubuntu-latest
     outputs:
-      dbs: ${{ steps.defaulter.outputs.databases }}
-      kubedb : ${{ steps.defaulter.outputs.kubedb }}
+      folders: ${{ steps.defaulter.outputs.folders }}
+      kubedb_version : ${{ steps.defaulter.outputs.kubedb_version }}
     steps:
       - name: Defaulter
         id: defaulter
         env:
-          DATABASES: "policy"
-          KUBEDB_VERSION: "v2024.4.27"
+          FOLDERS: ${{ inputs.folders }}
+          KUBEDB_VERSION: ${{ inputs.kubedb_version }}
         run: |
-          echo "databases=${DATABASES:-all}" >> $GITHUB_OUTPUT
-          echo "kubedb=${KUBEDB_VERSION:-v2024.4.27}" >> $GITHUB_OUTPUT
+          echo "folders=${FOLDERS:-all}" >> $GITHUB_OUTPUT
+          echo "kubedb_version=${KUBEDB_VERSION:-v2024.4.27}" >> $GITHUB_OUTPUT
   test:
     name: Test
     runs-on: ubuntu-latest
@@ -48,15 +42,6 @@ jobs:
       matrix:
         k8s: [v1.27.3]
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ci
-
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-        with:
-          detached: true
-
       - name: Set up Go 1.22
         uses: actions/setup-go@v4
         with:
@@ -141,7 +126,6 @@ jobs:
           cd ..
           git clone https://github.com/kubedb/cli.git
           cd cli
-          git checkout check
           go install ./...
 
       - name: Install Prometheus
@@ -163,12 +147,6 @@ jobs:
           sleep 5s
           kubectl wait --for=condition=ready pod -l "app.kubernetes.io/name=panopticon,app.kubernetes.io/instance=panopticon" -n kubeops --timeout=10m
 
-#      - name: Install Falco UI Server
-#        run: |
-#          helm repo add appscode https://charts.appscode.com/stable/
-#          helm repo update
-#          helm upgrade -i falco-ui-server appscode/falco-ui-server -n kubeops --create-namespace --version=v2024.2.5
-
       - name: Apply MetricsConfigurations
         run: |
           helm repo add appscode https://charts.appscode.com/stable/
@@ -179,16 +157,14 @@ jobs:
         run: |
           cd ..
           git clone https://github.com/kubedb/samples.git
-          cd samples
-          git checkout old-dbs
 
       - name: Check Dashboard Metrics
         env:
           SINGLESTORE_LICENSE_USERNAME: ${{ secrets.SINGLESTORE_LICENSE_USERNAME }}
           SINGLESTORE_LICENSE_PASSWORD: ${{ secrets.SINGLESTORE_LICENSE_PASSWORD }}
-          DATABASES: ${{ needs.config.outputs.dbs }}
+          FOLDERS: ${{ needs.config.outputs.folders }}
         run: |
           echo "SINGLESTORE_LICENSE_USERNAME=$(echo $SINGLESTORE_LICENSE_USERNAME)" >> ./hack/scripts/.env
           echo "SINGLESTORE_LICENSE_PASSWORD=$(echo $SINGLESTORE_LICENSE_PASSWORD)" >> ./hack/scripts/.env
-          echo "DATABASES=$(echo $DATABASES)" >> ./hack/scripts/.env
+          echo "FOLDERS=$(echo $FOLDERS)" >> ./hack/scripts/.env
           bash hack/scripts/check-dashboard.sh

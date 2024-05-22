@@ -12,8 +12,8 @@ fi
 kubectl create ns demo
 
 readarray -t folder_array < <(ls)
-IFS=',' read -r -a user_array <<< "$DATABASES"
-if [ $DATABASES != "all" ]; then
+IFS=',' read -r -a user_array <<< "$FOLDERS"
+if [ $FOLDERS != "all" ]; then
     folder_array=("${user_array[@]}")
 fi
 
