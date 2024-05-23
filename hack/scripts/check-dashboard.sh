@@ -5,36 +5,22 @@ declare -A kind=(["connectcluster"]="ConnectCluster" ["druid"]="Druid" ["elastic
             ["mongodb"]="MongoDB" ["mysql"]="MySQL" ["perconaxtradb"]="PerconaXtraDB" ["pgpool"]="Pgpool" ["postgres"]="Postgres" ["proxysql"]="ProxySQL"
             ["rabbitmq"]="RabbitMQ" ["redis"]="Redis" ["singlestore"]="Singlestore" ["solr"]="Solr" ["zookeeper"]="ZooKeeper")
 
+# export the ENVs from .env file
 if [ -f .env ]; then
     export $(grep -v '^#' .env | xargs)
 fi
 
-kubectl create ns demo
-
+# folder_array will hold all the folder names that we are going to check
 readarray -t folder_array < <(ls)
 IFS=',' read -r -a user_array <<< "$FOLDERS"
 if [ $FOLDERS != "all" ]; then
     folder_array=("${user_array[@]}")
 fi
+echo "folder_array = ${folder_array}"
 
-for folder in "${folder_array[@]}"; do
-  if [[ -v kind["$folder"] ]]; then
-    echo "db name: $folder"
-
-    readarray -t inside_files_array < <(ls "$folder")
-
-    path=../samples/"$folder"/monitoring/
-
-    if [ "$folder" == "connectcluster" ]; then
-        path=../samples/kafka/connectcluster/monitoring/
-    fi
-
-    if [ "$folder" == "pgpool" ]; then
-      kubectl apply -f ../samples/pgpool/monitoring/conf.yaml
-      kubectl apply -f ../samples/pgpool/monitoring/postgres.yaml
-      kubectl wait --for=jsonpath='{.status.phase}'=Ready Postgres postgres -n demo --timeout=10m
-    fi
-
+create_db_dependencies() {
+    folder="$1"
+    echo "folder=$folder"
     if [ "$folder" == "druid" ]; then
         kubectl create configmap -n demo my-init-script \
           --from-literal=init.sql="$(curl -fsSL https://raw.githubusercontent.com/kubedb/samples/old-dbs/druid/monitoring/mysql-init-script.sql)"
@@ -57,9 +43,10 @@ for folder in "${folder_array[@]}"; do
         kubectl wait --for=jsonpath='{.status.phase}'=Ready ZooKeeper zookeeper -n demo --timeout=10m
     fi
 
-    if [ "$folder" == "solr" ]; then
-        kubectl apply -f ../samples/solr/monitoring/zookeeper.yaml
-        kubectl wait --for=jsonpath='{.status.phase}'=Ready ZooKeeper zookeeper -n demo --timeout=10m
+    if [ "$folder" == "pgpool" ]; then
+      kubectl apply -f ../samples/pgpool/monitoring/conf.yaml
+      kubectl apply -f ../samples/pgpool/monitoring/postgres.yaml
+      kubectl wait --for=jsonpath='{.status.phase}'=Ready Postgres postgres -n demo --timeout=10m
     fi
 
     if [ "$folder" == "singlestore" ]; then
@@ -68,10 +55,51 @@ for folder in "${folder_array[@]}"; do
           --from-literal=password=$SINGLESTORE_LICENSE_PASSWORD
     fi
 
+    if [ "$folder" == "solr" ]; then
+        kubectl apply -f ../samples/solr/monitoring/zookeeper.yaml
+        kubectl wait --for=jsonpath='{.status.phase}'=Ready ZooKeeper zookeeper -n demo --timeout=10m
+    fi
+}
+
+delete_db_dependencies() {
+
+}
+
+check_dashboard_for_non_dbs() {
+    sleep 30s # waiting for the metrics to be generated
+    folder="$1"
+    inside_files_array="$2"
+    for file in "${inside_files_array[@]}"; do
+      if [[ $file == *.json ]]; then
+        dashboard_name="${file::-5}"
+        echo "checking for dashboard $dashboard_name"
+        url="https://raw.githubusercontent.com/appscode/grafana-dashboards/master/$folder/$file"
+        $HOME/go/bin/kubectl-dba monitor dashboard -u $url -o=true --prom-svc-name=prometheus-kube-prometheus-prometheus --prom-svc-namespace=monitoring --prom-svc-port=9090
+      fi
+    done
+}
+
+
+kubectl create ns demo
+
+for folder in "${folder_array[@]}"; do
+  if [[ -v kind["$folder"] ]]; then
+    echo "db name: $folder"
+
+    readarray -t inside_files_array < <(ls "$folder")
+
+    path=../samples/"$folder"/monitoring/
+
+    if [ "$folder" == "connectcluster" ]; then
+        path=../samples/kafka/connectcluster/monitoring/
+    fi
+
+    create_db_dependencies "$folder"
+
     kubectl apply -f $path
     kubectl wait --for=jsonpath='{.status.phase}'=Ready ${kind[$folder]} $folder -n demo --timeout=10m
 
-    sleep 120s
+    sleep 30s
     for file in "${inside_files_array[@]}"; do
       if [[ $file == *.json ]]; then
         dashboard_name="${file::-5}"
@@ -81,21 +109,13 @@ for folder in "${folder_array[@]}"; do
     done
 
     kubectl delete -f $path
+    delete_db_dependencies "$folder"
   elif [ "$folder" == "stash" ]; then
     echo "non db object name: $folder"
     readarray -t inside_files_array < <(ls "$folder")
 
     bash ./hack/scripts/stash-flow.sh
-
-    sleep 120s
-    for file in "${inside_files_array[@]}"; do
-      if [[ $file == *.json ]]; then
-        dashboard_name="${file::-5}"
-        echo "checking for dashboard $dashboard_name"
-        url="https://raw.githubusercontent.com/appscode/grafana-dashboards/ci/stash/$file"
-        $HOME/go/bin/kubectl-dba monitor dashboard -u $url -o=true --prom-svc-name=prometheus-kube-prometheus-prometheus --prom-svc-namespace=monitoring --prom-svc-port=9090
-      fi
-    done
+    check_dashboard_for_non_dbs "$folder" "$inside_files_array"
 
     kubectl delete -f ./hack/yamls/backupconfiguration.yaml
     kubectl delete -f ./hack/yamls/restoresession.yaml
@@ -107,16 +127,7 @@ for folder in "${folder_array[@]}"; do
     readarray -t inside_files_array < <(ls "$folder")
 
     bash ./hack/scripts/policy-flow.sh
-
-    sleep 120s
-    for file in "${inside_files_array[@]}"; do
-      if [[ $file == *.json ]]; then
-        dashboard_name="${file::-5}"
-        echo "checking for dashboard $dashboard_name"
-        url="https://raw.githubusercontent.com/appscode/grafana-dashboards/ci/policy/$file"
-        $HOME/go/bin/kubectl-dba monitor dashboard -u $url -o=true --prom-svc-name=prometheus-kube-prometheus-prometheus --prom-svc-namespace=monitoring --prom-svc-port=9090
-      fi
-    done
+    check_dashboard_for_non_dbs "$folder" "$inside_files_array"
 
     kubectl delete -f ./hack/yamls/policy/constraint-template.yaml
     kubectl delete -f ./hack/yamls/policy/constraint.yaml
