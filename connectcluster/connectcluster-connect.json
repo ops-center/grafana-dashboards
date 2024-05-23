@@ -749,7 +749,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kafka_connect_app_info{instance=~\"$instance\",start_time_ms!=\"\"}",
+          "expr": "kafka_connect_app_info{instance=~\"$instance\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "",
@@ -781,7 +781,7 @@
           "refId": "D"
         },
         {
-          "expr": "sum by (pod) (kafka_connect_worker__connector_startup_failure_total{namespace=~\"$namespace\",pod=~\"$app-.+$\"})",
+          "expr": "sum by (pod) (kafka_connect_worker_connector_startup_failure_total{namespace=~\"$namespace\",pod=~\"$app-.+$\"})",
           "format": "table",
           "instant": true,
           "interval": "",

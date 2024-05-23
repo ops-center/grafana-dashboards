@@ -27,7 +27,7 @@ helm install stash oci://ghcr.io/appscode-charts/stash \
   --set stash-enterprise.monitoring.backup=true \
   --set stash-enterprise.monitoring.operator=true \
   --set stash-enterprise.monitoring.serviceMonitor.labels.release=prometheus \
-  --set-file global.license=/tmp/license.txt \
+  --set-file global.license=/tmp/kubedb-license.txt \
   --wait --burst-limit=10000
 
 curl -o kubectl-stash.tar.gz -fsSL https://github.com/stashed/cli/releases/download/v0.34.0/kubectl-stash-linux-amd64.tar.gz \
@@ -39,7 +39,7 @@ curl -o kubectl-stash.tar.gz -fsSL https://github.com/stashed/cli/releases/downl
 kubectl apply -f ./hack/yamls/stash/repository.yaml
 sleep 10
 
-kubectl apply -f ../samples/mongodb/monitoring/mongodb_standalone.yaml
+kubectl apply -f ./hack/yamls/stash/mongodb_standalone.yaml
 kubectl wait --for=jsonpath='{.status.phase}'=Ready MongoDB mongodb-standalone -n demo --timeout=10m
 
 kubectl apply -f ./hack/yamls/stash/backupconfiguration.yaml

@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+#set -e
 
 declare -A kind=(["connectcluster"]="ConnectCluster" ["druid"]="Druid" ["elasticsearch"]="Elasticsearch" ["kafka"]="Kafka" ["mariadb"]="MariaDB"
             ["mongodb"]="MongoDB" ["mysql"]="MySQL" ["perconaxtradb"]="PerconaXtraDB" ["pgpool"]="Pgpool" ["postgres"]="Postgres" ["proxysql"]="ProxySQL"
@@ -18,12 +18,21 @@ if [ $FOLDERS != "all" ]; then
 fi
 echo "folder_array = ${folder_array}"
 
+PROMETHEUS_SERVICE_NAMESPACE="monitoring"
+PROMETHEUS_SERVICE_NAME="prometheus-kube-prometheus-prometheus"
+kubectl port-forward svc/${PROMETHEUS_SERVICE_NAME} 9090:9090 -n ${PROMETHEUS_SERVICE_NAMESPACE} &
+# `$!` is a special variable in bash that holds the PID of the most recently executed background command.
+PORT_FORWARD_PID=$!
+
+# Give port-forwarding some time to establish
+sleep 5
+
 create_db_dependencies() {
     folder="$1"
     echo "folder=$folder"
     if [ "$folder" == "druid" ]; then
         kubectl create configmap -n demo my-init-script \
-          --from-literal=init.sql="$(curl -fsSL https://raw.githubusercontent.com/kubedb/samples/old-dbs/druid/monitoring/mysql-init-script.sql)"
+          --from-literal=init.sql="$(curl -fsSL https://raw.githubusercontent.com/kubedb/samples/master/druid/monitoring/mysql-init-script.sql)"
 
         helm repo add minio https://operator.min.io/
         helm upgrade --install --namespace "minio-operator" --create-namespace "minio-operator" minio/operator --set operator.replicaCount=1 --wait
@@ -59,14 +68,31 @@ create_db_dependencies() {
         kubectl apply -f ../samples/solr/monitoring/zookeeper.yaml
         kubectl wait --for=jsonpath='{.status.phase}'=Ready ZooKeeper zookeeper -n demo --timeout=10m
     fi
+
+    if [ "$folder" == "connectcluster" ]; then
+        kubectl apply -f ../samples/kafka/connectcluster/monitoring/kafka.yaml
+        kubectl wait --for=jsonpath='{.status.phase}'=Ready Kafka kafka -n demo --timeout=10m
+
+        kubectl apply -f ../samples/kafka/connectcluster/monitoring/connect-cluster.yaml
+        kubectl wait --for=jsonpath='{.status.phase}'=Ready ConnectCluster connectcluster -n demo --timeout=10m
+
+        kubectl apply -f ../samples/kafka/connectcluster/monitoring/file-source.yaml
+        sleep 2s
+    fi
 }
 
-delete_db_dependencies() {
-
+cleanup() {
+  path="$1"
+  folder="$2"
+  if [ $folder == "connectcluster" ]; then
+    kubectl delete -f ../samples/kafka/connectcluster/monitoring/connect-cluster.yaml
+  fi
+  kubectl delete -f $path
+#  kubectl delete secret -n demo --all
 }
 
 check_dashboard_for_non_dbs() {
-    sleep 30s # waiting for the metrics to be generated
+    sleep 60s # waiting for the metrics to be generated
     folder="$1"
     inside_files_array="$2"
     for file in "${inside_files_array[@]}"; do
@@ -74,9 +100,25 @@ check_dashboard_for_non_dbs() {
         dashboard_name="${file::-5}"
         echo "checking for dashboard $dashboard_name"
         url="https://raw.githubusercontent.com/appscode/grafana-dashboards/master/$folder/$file"
-        $HOME/go/bin/kubectl-dba monitor dashboard -u $url -o=true --prom-svc-name=prometheus-kube-prometheus-prometheus --prom-svc-namespace=monitoring --prom-svc-port=9090
+        echo "$HOME/go/bin/kubectl-dba monitor dashboard -u $url -o=true --prom-svc-name=prometheus-kube-prometheus-prometheus --prom-svc-namespace=monitoring --prom-svc-port=9090"
+        $HOME/go/bin/kubectl-dba monitor dashboard -u $url -d=false --prom-svc-name=prometheus-kube-prometheus-prometheus --prom-svc-namespace=monitoring --prom-svc-port=9090
       fi
     done
+}
+
+wait_for_prometheus_target() {
+  target="$1"
+  echo "checking if $target-stats target exist in prometheus..."
+  for (( i=1; i<=600; i++ )); do
+      # Curl the Prometheus API to get the targets and extract the pool information
+      Targets=$(curl -s http://localhost:9090/api/v1/targets | jq -r '.data.activeTargets[] | .labels.service')
+      if echo "$Targets" | grep -q "$target"; then
+        echo "$target target found in prometheus"
+        sleep 30s
+        break
+      fi
+      sleep 5s
+  done
 }
 
 
@@ -99,37 +141,39 @@ for folder in "${folder_array[@]}"; do
     kubectl apply -f $path
     kubectl wait --for=jsonpath='{.status.phase}'=Ready ${kind[$folder]} $folder -n demo --timeout=10m
 
-    sleep 30s
+    wait_for_prometheus_target "$folder-stats"
+
     for file in "${inside_files_array[@]}"; do
       if [[ $file == *.json ]]; then
         dashboard_name="${file::-5}"
         echo "checking for dashboard $dashboard_name"
-        $HOME/go/bin/kubectl-dba monitor dashboard $folder $folder -n demo $dashboard_name --prom-svc-name=prometheus-kube-prometheus-prometheus --prom-svc-namespace=monitoring --prom-svc-port=9090
+        echo "$HOME/go/bin/kubectl-dba monitor dashboard $folder $folder -n demo $dashboard_name --prom-svc-name=prometheus-kube-prometheus-prometheus --prom-svc-namespace=monitoring --prom-svc-port=9090 -b=workflow"
+        $HOME/go/bin/kubectl-dba monitor dashboard $folder $folder -n demo $dashboard_name --prom-svc-name=prometheus-kube-prometheus-prometheus --prom-svc-namespace=monitoring --prom-svc-port=9090 -b=workflow
       fi
     done
+#    cleanup "$path" "$folder"
 
-    kubectl delete -f $path
-    delete_db_dependencies "$folder"
   elif [ "$folder" == "stash" ]; then
     echo "non db object name: $folder"
     readarray -t inside_files_array < <(ls "$folder")
 
     bash ./hack/scripts/stash-flow.sh
+    wait_for_prometheus_target "stash-stash-enterprise"
     check_dashboard_for_non_dbs "$folder" "$inside_files_array"
 
-    kubectl delete -f ./hack/yamls/backupconfiguration.yaml
-    kubectl delete -f ./hack/yamls/restoresession.yaml
-    kubectl delete -f ./hack/yamls/repository.yaml
-    kubectl delete -f ../samples/mongodb/monitoring/mongodb_standalone.yaml
+    cleanup "./hack/yamls/stash"
 
   elif [ "$folder" == "policy" ]; then
     echo "non db object name: $folder"
     readarray -t inside_files_array < <(ls "$folder")
 
     bash ./hack/scripts/policy-flow.sh
+    wait_for_prometheus_target "falco-ui-server"
     check_dashboard_for_non_dbs "$folder" "$inside_files_array"
 
-    kubectl delete -f ./hack/yamls/policy/constraint-template.yaml
-    kubectl delete -f ./hack/yamls/policy/constraint.yaml
+    cleanup "./hack/yamls/policy"
   fi
+
 done
+
+kill $PORT_FORWARD_PID
