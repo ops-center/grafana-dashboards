@@ -1,5 +1,11 @@
 name: dashboard-check
 on:
+  push:
+    branches:
+      - "*.*"
+  pull_request:
+    branches:
+      - "master"
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
@@ -42,6 +48,10 @@ jobs:
       matrix:
         k8s: [v1.27.3]
     steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: workflow
+
       - name: Set up Go 1.22
         uses: actions/setup-go@v4
         with:
@@ -91,22 +101,26 @@ jobs:
         run: |
           kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.11.0/cert-manager.yaml
 
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          detached: true
+
       - name: Issue License
         env:
           BYTEBUILDERS_LICENSE_TOKEN: ${{ secrets.BYTEBUILDERS_LICENSE_TOKEN }}
         run: |
           export KUBECONFIG="${HOME}/.kube/config"
           CLUSTER_UID=$(kubectl get ns kube-system -o=jsonpath='{.metadata.uid}')
-          curl -X POST -o /tmp/license.txt -d "name=1gtm&email=1gtm@appscode.com&product=kubedb-enterprise&cluster=${CLUSTER_UID}&tos=true&token=${BYTEBUILDERS_LICENSE_TOKEN}" https://license-issuer.appscode.com/issue-license
+          curl -X POST -o /tmp/kubedb-license.txt -d "name=1gtm&email=1gtm@appscode.com&product=kubedb-enterprise&cluster=${CLUSTER_UID}&tos=true&token=${BYTEBUILDERS_LICENSE_TOKEN}" https://license-issuer.appscode.com/issue-license
+          curl -X POST -o /tmp/platform-license.txt -d "name=1gtm&email=1gtm@appscode.com&product=platform&cluster=${CLUSTER_UID}&tos=true&token=${BYTEBUILDERS_LICENSE_TOKEN}" https://license-issuer.appscode.com/issue-license
 
       - name: Install KubeDB
-        env:
-          LICENSE_FILE: /tmp/license.txt
         run: |
           helm install kubedb oci://ghcr.io/appscode-charts/kubedb \
-            --version ${{ needs.config.outputs.kubedb }} \
+            --version ${{ needs.config.outputs.kubedb_version }} \
             --namespace kubedb --create-namespace \
-            --set-file global.license=${LICENSE_FILE} \
+            --set-file global.license=/tmp/kubedb-license.txt \
             --set global.featureGates.Druid=true \
             --set global.featureGates.FerretDB=true \
             --set global.featureGates.Memcached=true \
@@ -126,6 +140,7 @@ jobs:
           cd ..
           git clone https://github.com/kubedb/cli.git
           cd cli
+          git checkout check
           go install ./...
 
       - name: Install Prometheus
@@ -142,7 +157,7 @@ jobs:
           -n kubeops --create-namespace \
           --set monitoring.agent=prometheus.io/operator \
           --set monitoring.serviceMonitor.labels.release=prometheus \
-          --set-file license=/tmp/license.txt \
+          --set-file license=/tmp/kubedb-license.txt \
           --wait --burst-limit=10000
           sleep 5s
           kubectl wait --for=condition=ready pod -l "app.kubernetes.io/name=panopticon,app.kubernetes.io/instance=panopticon" -n kubeops --timeout=10m
