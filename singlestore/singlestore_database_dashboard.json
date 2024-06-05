@@ -827,7 +827,7 @@
       "options": {
         "colorMode": "value",
         "graphMode": "area",
-        "justifyMode": "auto",
+        "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -888,7 +888,7 @@
       "options": {
         "colorMode": "value",
         "graphMode": "area",
-        "justifyMode": "auto",
+        "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -950,7 +950,7 @@
       "options": {
         "colorMode": "value",
         "graphMode": "area",
-        "justifyMode": "auto",
+        "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
