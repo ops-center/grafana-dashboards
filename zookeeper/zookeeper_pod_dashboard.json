@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 29,
-  "iteration": 1709892836675,
+  "iteration": 1716976464702,
   "links": [],
   "panels": [
     {
@@ -8748,7 +8748,7 @@
         "y": 277
       },
       "hiddenSeries": false,
-      "id": 126,
+      "id": 42,
       "legend": {
         "avg": false,
         "current": false,
@@ -8776,18 +8776,18 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(ack_latency_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
+          "expr": "proposal_ack_creation_latency{namespace=~\"$namespace\",pod=~\"$pod\"}",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}} ack_latency_sum",
-          "refId": "C"
+          "legendFormat": "{{instance}} proposal_ack_creation_latency-{{quantile}}",
+          "refId": "A"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "ack_latency",
+      "title": "proposal_ack_creation_latency",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -8803,7 +8803,7 @@
       },
       "yaxes": [
         {
-          "format": "short",
+          "format": "ms",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -9015,101 +9015,6 @@
       }
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${datasource}",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 293
-      },
-      "hiddenSeries": false,
-      "id": 42,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 2,
-      "links": [],
-      "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "proposal_ack_creation_latency{namespace=~\"$namespace\",pod=~\"$pod\"}",
-          "format": "time_series",
-          "intervalFactor": 2,
-          "legendFormat": "{{instance}} proposal_ack_creation_latency-{{quantile}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "proposal_ack_creation_latency",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "ms",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
       "collapsed": false,
       "datasource": null,
       "fieldConfig": {
@@ -9120,7 +9025,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 301
+        "y": 293
       },
       "id": 238,
       "panels": [],
@@ -9143,7 +9048,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 302
+        "y": 294
       },
       "hiddenSeries": false,
       "id": 236,
@@ -9245,7 +9150,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 302
+        "y": 294
       },
       "hiddenSeries": false,
       "id": 64,
@@ -9349,7 +9254,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 310
+        "y": 302
       },
       "id": 227,
       "panels": [],
@@ -9396,7 +9301,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 311
+        "y": 303
       },
       "id": 204,
       "interval": null,
@@ -9472,7 +9377,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 311
+        "y": 303
       },
       "id": 229,
       "interval": null,
@@ -9548,7 +9453,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 311
+        "y": 303
       },
       "id": 230,
       "interval": null,
@@ -9600,7 +9505,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 319
+        "y": 311
       },
       "hiddenSeries": false,
       "id": 231,
@@ -9695,7 +9600,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 319
+        "y": 311
       },
       "hiddenSeries": false,
       "id": 232,
@@ -9790,7 +9695,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 319
+        "y": 311
       },
       "hiddenSeries": false,
       "id": 233,
@@ -9885,7 +9790,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 327
+        "y": 319
       },
       "hiddenSeries": false,
       "id": 234,
@@ -10058,8 +9963,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "zk-cluster-1",
-          "value": "zk-cluster-1"
+          "text": "zk-cluster-2",
+          "value": "zk-cluster-2"
         },
         "datasource": "${datasource}",
         "definition": "label_values(up{namespace=~\"$namespace\",pod=~\"${app}-.*\"},pod)",
@@ -10119,5 +10024,5 @@
   "timezone": "",
   "title": "KubeDB / ZooKeeper / Pod",
   "uid": "NBKKAJAIz",
-  "version": 2
+  "version": 1
 }
