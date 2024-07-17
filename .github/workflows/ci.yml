@@ -18,7 +18,7 @@ on:
       kubedb_version:
         description: 'KubeDB Version'
         required: true
-        default: 'v2024.6.4'  #needs to be dynamic
+        default: 'v2024.7.11-rc.1'  #needs to be dynamic
         type: string
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}-dashboard-check
@@ -38,7 +38,7 @@ jobs:
           KUBEDB_VERSION: ${{ inputs.kubedb_version }}
         run: |
           echo "folders=${FOLDERS:-mongodb}" >> $GITHUB_OUTPUT
-          echo "kubedb_version=${KUBEDB_VERSION:-v2024.6.4}" >> $GITHUB_OUTPUT
+          echo "kubedb_version=${KUBEDB_VERSION:-v2024.7.11-rc.1}" >> $GITHUB_OUTPUT
   test:
     name: Test
     runs-on: ubuntu-latest
@@ -173,7 +173,7 @@ jobs:
           cd ..
           git clone https://github.com/kubedb/samples.git
           cd samples
-          git checkout fr-web
+          git checkout mg-args
 
       - name: Check Dashboard Metrics
         env:

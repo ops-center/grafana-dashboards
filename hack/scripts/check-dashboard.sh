@@ -88,7 +88,6 @@ cleanup() {
     kubectl delete -f ../samples/kafka/connectcluster/monitoring/connect-cluster.yaml
   fi
   kubectl delete -f $path
-#  kubectl delete secret -n demo --all
 }
 
 check_dashboard_for_non_dbs() {
