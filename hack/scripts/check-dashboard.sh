@@ -3,7 +3,7 @@
 
 declare -A kind=(["connectcluster"]="ConnectCluster" ["druid"]="Druid" ["elasticsearch"]="Elasticsearch" ["kafka"]="Kafka" ["mariadb"]="MariaDB"
             ["mongodb"]="MongoDB" ["mysql"]="MySQL" ["perconaxtradb"]="PerconaXtraDB" ["pgpool"]="Pgpool" ["postgres"]="Postgres" ["proxysql"]="ProxySQL"
-            ["rabbitmq"]="RabbitMQ" ["redis"]="Redis" ["singlestore"]="Singlestore" ["solr"]="Solr" ["zookeeper"]="ZooKeeper")
+            ["rabbitmq"]="RabbitMQ" ["redis"]="Redis" ["singlestore"]="Singlestore" ["solr"]="Solr" ["zookeeper"]="ZooKeeper" ["mssqlserver"]="MSSQLServer")
 
 # export the ENVs from .env file
 if [ -f .env ]; then
@@ -77,8 +77,13 @@ create_db_dependencies() {
         kubectl wait --for=jsonpath='{.status.phase}'=Ready ConnectCluster connectcluster -n demo --timeout=10m
 
         kubectl apply -f ../samples/kafka/connectcluster/monitoring/file-source.yaml
-        sleep 2s
     fi
+
+    if [ "$folder" == "redis" ]; then
+        kubectl apply -f ../samples/redis/monitoring/sentinel.yaml
+        kubectl wait --for=jsonpath='{.status.phase}'=Ready RedisSentinel sentinel -n demo --timeout=10m
+    fi
+    sleep 2s
 }
 
 cleanup() {
@@ -97,7 +102,7 @@ check_dashboard_for_non_dbs() {
     for file in "${inside_files_array[@]}"; do
       if [[ $file == *.json ]]; then
         dashboard_name="${file::-5}"
-        echo "checking for dashboard  $dashboard_name"
+        echo "checking for dashboard $dashboard_name"
         url="https://raw.githubusercontent.com/appscode/grafana-dashboards/master/$folder/$file"
         echo "$HOME/go/bin/kubectl-dba monitor dashboard -u $url -o=true --prom-svc-name=prometheus-kube-prometheus-prometheus --prom-svc-namespace=monitoring --prom-svc-port=9090"
         $HOME/go/bin/kubectl-dba monitor dashboard -u $url -d=false --prom-svc-name=prometheus-kube-prometheus-prometheus --prom-svc-namespace=monitoring --prom-svc-port=9090
@@ -107,7 +112,7 @@ check_dashboard_for_non_dbs() {
 
 wait_for_prometheus_target() {
   target="$1"
-  echo "checking if $target-stats target exist in prometheus..."
+  echo "checking if $target-stats target exist in prometheus...."
   for (( i=1; i<=600; i++ )); do
       # Curl the Prometheus API to get the targets and extract the pool information
       Targets=$(curl -s http://localhost:9090/api/v1/targets | jq -r '.data.activeTargets[] | .labels.service')
@@ -150,7 +155,7 @@ for folder in "${folder_array[@]}"; do
         $HOME/go/bin/kubectl-dba monitor dashboard $folder $folder -n demo $dashboard_name --prom-svc-name=prometheus-kube-prometheus-prometheus --prom-svc-namespace=monitoring --prom-svc-port=9090 -b=workflow
       fi
     done
-#    cleanup "$path" "$folder"
+    cleanup "$path" "$folder"
 
   elif [ "$folder" == "stash" ]; then
     echo "non db object name: $folder"

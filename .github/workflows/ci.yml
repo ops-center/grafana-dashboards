@@ -1,11 +1,11 @@
 name: dashboard-check
 on:
-  push:
-    branches:
-      - "*.*"
-  pull_request:
-    branches:
-      - "master"
+#  push:
+#    branches:
+#      - "*.*"
+#  pull_request:
+#    branches:
+#      - "master"
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
@@ -13,12 +13,12 @@ on:
       folders:
         description: 'Folders'
         required: true
-        default: 'mongodb'
+        default: 'all'
         type: string
       kubedb_version:
         description: 'KubeDB Version'
         required: true
-        default: 'v2024.7.11-rc.1'  #needs to be dynamic
+        default: 'v2024.8.21'  #needs to be dynamic
         type: string
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}-dashboard-check
@@ -26,7 +26,7 @@ concurrency:
 jobs:
   config:
     name: Configure Inputs
-    runs-on: ubuntu-latest
+    runs-on: label-detector
     outputs:
       folders: ${{ steps.defaulter.outputs.folders }}
       kubedb_version : ${{ steps.defaulter.outputs.kubedb_version }}
@@ -34,14 +34,14 @@ jobs:
       - name: Defaulter
         id: defaulter
         env:
-          FOLDERS: "mongodb"
+          FOLDERS: "all"
           KUBEDB_VERSION: ${{ inputs.kubedb_version }}
         run: |
-          echo "folders=${FOLDERS:-mongodb}" >> $GITHUB_OUTPUT
-          echo "kubedb_version=${KUBEDB_VERSION:-v2024.7.11-rc.1}" >> $GITHUB_OUTPUT
+          echo "folders=${FOLDERS:-all}" >> $GITHUB_OUTPUT
+          echo "kubedb_version=${KUBEDB_VERSION:-v2024.8.21}" >> $GITHUB_OUTPUT
   test:
     name: Test
-    runs-on: ubuntu-latest
+    runs-on: firecracker
     needs: config
     strategy:
       fail-fast: false
@@ -52,10 +52,10 @@ jobs:
         with:
           ref: workflow
 
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-        with:
-          detached: true
+#      - name: Setup tmate session
+#        uses: mxschmitt/action-tmate@v3
+#        with:
+#          detached: true
 
       - name: Set up Go 1.22
         uses: actions/setup-go@v4
@@ -146,7 +146,6 @@ jobs:
           cd ..
           git clone https://github.com/kubedb/cli.git
           cd cli
-#          git checkout check
           go install ./...
 
       - name: Install Prometheus
@@ -179,7 +178,7 @@ jobs:
           cd ..
           git clone https://github.com/kubedb/samples.git
           cd samples
-          git checkout mg-args
+          git checkout mssql-monitoring
 
       - name: Check Dashboard Metrics
         env:
