@@ -1,6 +1,6 @@
 # Grafana Dashboards
 
-There are one dashboard to monitor MS SQL Server Databases managed by KubeDB.
+There are currently one dashboard to monitor MS SQL Server Databases managed by KubeDB.
 
 - KubeDB / MSSQLServer / Summary: Shows overall summary of MS SQL Server instance.
 
