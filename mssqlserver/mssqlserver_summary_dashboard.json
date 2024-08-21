@@ -23,7 +23,7 @@
   "gnetId": 9628,
   "graphTooltip": 0,
   "id": 28,
-  "iteration": 1723642200469,
+  "iteration": 1723728705422,
   "links": [],
   "panels": [
     {
@@ -223,18 +223,18 @@
             {
               "from": "",
               "id": 1,
-              "text": "Enabled",
+              "text": "Disabled",
               "to": "",
               "type": 1,
-              "value": "1"
+              "value": "false"
             },
             {
               "from": "",
               "id": 2,
-              "text": "Disabled",
+              "text": "Enabled",
               "to": "",
               "type": 1,
-              "value": "null"
+              "value": "true"
             }
           ],
           "thresholds": {
@@ -273,7 +273,7 @@
           "values": false
         },
         "text": {},
-        "textMode": "value"
+        "textMode": "name"
       },
       "pluginVersion": "7.5.5",
       "targets": [
@@ -283,7 +283,7 @@
           "format": "time_series",
           "instant": true,
           "interval": "",
-          "legendFormat": "{{requireSSL}}",
+          "legendFormat": "{{clientTLS}}",
           "refId": "A"
         }
       ],
@@ -2924,7 +2924,7 @@
     ]
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {
@@ -2955,5 +2955,5 @@
   "timezone": "",
   "title": "KubeDB / MSSQLServer / Summary",
   "uid": "qDMhbh0Iz",
-  "version": 2
+  "version": 9
 }
