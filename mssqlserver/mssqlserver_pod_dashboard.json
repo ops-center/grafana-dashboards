@@ -17,7 +17,7 @@
   "gnetId": 13919,
   "graphTooltip": 0,
   "id": 29,
-  "iteration": 1724252090103,
+  "iteration": 1724336238703,
   "links": [],
   "panels": [
     {
@@ -659,9 +659,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "mssql_io_stall_total{job=~\"$Job\"}",
+          "exemplar": true,
+          "expr": "mssql_io_stall_total_seconds{pod=\"$pod\"}",
           "interval": "",
-          "legendFormat": "{{database}}",
+          "legendFormat": "{{db}}",
           "refId": "A"
         }
       ],
@@ -752,7 +753,7 @@
         "rightSide": true,
         "show": true,
         "sort": "current",
-        "sortDesc": true,
+        "sortDesc": false,
         "total": false,
         "values": true
       },
@@ -784,11 +785,11 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mssql_io_stall_seconds{database=\"$database\", pod=\"$pod\"}",
+          "expr": "mssql_io_stall_seconds{db=\"$database\", pod=\"$pod\"}",
           "instant": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{type}}",
+          "legendFormat": "{{db}}",
           "refId": "A"
         }
       ],
@@ -865,7 +866,7 @@
         "rightSide": true,
         "show": true,
         "sort": "current",
-        "sortDesc": true,
+        "sortDesc": false,
         "total": false,
         "values": true
       },
@@ -882,7 +883,7 @@
       "points": false,
       "renderer": "flot",
       "repeatDirection": "h",
-      "repeatIteration": 1724252090103,
+      "repeatIteration": 1724336238703,
       "repeatPanelId": 12,
       "scopedVars": {
         "database": {
@@ -898,11 +899,11 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mssql_io_stall_seconds{database=\"$database\", pod=\"$pod\"}",
+          "expr": "mssql_io_stall_seconds{db=\"$database\", pod=\"$pod\"}",
           "instant": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{type}}",
+          "legendFormat": "{{db}}",
           "refId": "A"
         }
       ],
@@ -979,7 +980,7 @@
         "rightSide": true,
         "show": true,
         "sort": "current",
-        "sortDesc": true,
+        "sortDesc": false,
         "total": false,
         "values": true
       },
@@ -996,7 +997,7 @@
       "points": false,
       "renderer": "flot",
       "repeatDirection": "h",
-      "repeatIteration": 1724252090103,
+      "repeatIteration": 1724336238703,
       "repeatPanelId": 12,
       "scopedVars": {
         "database": {
@@ -1012,11 +1013,11 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mssql_io_stall_seconds{database=\"$database\", pod=\"$pod\"}",
+          "expr": "mssql_io_stall_seconds{db=\"$database\", pod=\"$pod\"}",
           "instant": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{type}}",
+          "legendFormat": "{{db}}",
           "refId": "A"
         }
       ],
@@ -1093,7 +1094,7 @@
         "rightSide": true,
         "show": true,
         "sort": "current",
-        "sortDesc": true,
+        "sortDesc": false,
         "total": false,
         "values": true
       },
@@ -1110,7 +1111,7 @@
       "points": false,
       "renderer": "flot",
       "repeatDirection": "h",
-      "repeatIteration": 1724252090103,
+      "repeatIteration": 1724336238703,
       "repeatPanelId": 12,
       "scopedVars": {
         "database": {
@@ -1126,11 +1127,11 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mssql_io_stall_seconds{database=\"$database\", pod=\"$pod\"}",
+          "expr": "mssql_io_stall_seconds{db=\"$database\", pod=\"$pod\"}",
           "instant": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{type}}",
+          "legendFormat": "{{db}}",
           "refId": "A"
         }
       ],
@@ -1207,7 +1208,7 @@
         "rightSide": true,
         "show": true,
         "sort": "current",
-        "sortDesc": true,
+        "sortDesc": false,
         "total": false,
         "values": true
       },
@@ -1224,7 +1225,7 @@
       "points": false,
       "renderer": "flot",
       "repeatDirection": "h",
-      "repeatIteration": 1724252090103,
+      "repeatIteration": 1724336238703,
       "repeatPanelId": 12,
       "scopedVars": {
         "database": {
@@ -1240,11 +1241,11 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mssql_io_stall_seconds{database=\"$database\", pod=\"$pod\"}",
+          "expr": "mssql_io_stall_seconds{db=\"$database\", pod=\"$pod\"}",
           "instant": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{type}}",
+          "legendFormat": "{{db}}",
           "refId": "A"
         }
       ],
@@ -1360,7 +1361,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "Prometheus",
           "value": "Prometheus"
         },
@@ -1373,7 +1374,6 @@
         "name": "datasource",
         "options": [],
         "query": "prometheus",
-        "queryValue": "",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1445,8 +1445,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "ms-ag-mon-1",
-          "value": "ms-ag-mon-1"
+          "text": "ms-ag-mon-0",
+          "value": "ms-ag-mon-0"
         },
         "datasource": "${datasource}",
         "definition": "label_values(up{target=\"mssqlserver_database\",namespace=~\"$namespace\",pod=~\"${app}-.*\"},pod)",
@@ -1482,5 +1482,5 @@
   "timezone": "",
   "title": "KubeDB / Microsoft SQL Server / Pod",
   "uid": "9J6ObCEMz",
-  "version": 1
+  "version": 4
 }
