@@ -17,9 +17,65 @@
   "gnetId": 13919,
   "graphTooltip": 0,
   "id": 29,
-  "iteration": 1724336238703,
+  "iteration": 1724391887302,
   "links": [],
   "panels": [
+    {
+      "datasource": "${datasource}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 5,
+        "x": 0,
+        "y": 0
+      },
+      "id": 70,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "mssql_hostname{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
+          "interval": "",
+          "legendFormat": "{{pod}} ",
+          "refId": "A"
+        }
+      ],
+      "title": "Pod Name",
+      "type": "stat"
+    },
     {
       "columns": [],
       "datasource": "Prometheus",
@@ -33,9 +89,9 @@
         "h": 3,
         "w": 24,
         "x": 0,
-        "y": 0
+        "y": 3
       },
-      "id": 45,
+      "id": 64,
       "pageSize": null,
       "showHeader": true,
       "sort": {
@@ -361,7 +417,310 @@
           "interval": "",
           "legendFormat": "",
           "refId": "APF"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$Job：Server resource overview",
+      "transform": "table",
+      "type": "table-old"
+    },
+    {
+      "columns": [],
+      "datasource": "Prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fontSize": "80%",
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 6
+      },
+      "id": 63,
+      "pageSize": null,
+      "showHeader": true,
+      "sort": {
+        "col": null,
+        "desc": false
+      },
+      "styles": [
+        {
+          "alias": "Server local time",
+          "align": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "link": false,
+          "mappingType": 1,
+          "pattern": "Value #LT",
+          "preserveFormat": false,
+          "sanitize": false,
+          "thresholds": [],
+          "type": "date",
+          "unit": "Date & time",
+          "valueMaps": []
         },
+        {
+          "alias": "Total RAM (available)",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "link": false,
+          "linkTooltip": "",
+          "linkUrl": "",
+          "mappingType": 1,
+          "pattern": "Value #TM",
+          "preserveFormat": false,
+          "thresholds": [],
+          "type": "number",
+          "unit": "kbytes"
+        },
+        {
+          "alias": "Total page faults",
+          "align": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "link": false,
+          "linkTargetBlank": false,
+          "linkTooltip": "${__cell_4}",
+          "linkUrl": "/d/Kdh0OoSGz/?var-job=${__cell_5}&var-hostname=All&var-instance=${__cell_4}",
+          "mappingType": 1,
+          "pattern": "Value #TPF",
+          "thresholds": [],
+          "type": "number",
+          "unit": "string"
+        },
+        {
+          "alias": "Total RAM",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "link": false,
+          "mappingType": 1,
+          "pattern": "Value #TM",
+          "thresholds": [],
+          "type": "number",
+          "unit": "kbytes"
+        },
+        {
+          "alias": "Total pagefile size (available)",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": null,
+          "mappingType": 1,
+          "pattern": "Value #PF",
+          "thresholds": [],
+          "type": "number",
+          "unit": "kbytes"
+        },
+        {
+          "alias": "Pagefile size (used)",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": null,
+          "mappingType": 1,
+          "pattern": "Value #APF",
+          "thresholds": [
+            "259200",
+            "432000"
+          ],
+          "type": "number",
+          "unit": "kbytes"
+        },
+        {
+          "alias": "RAM used",
+          "align": "auto",
+          "colorMode": "cell",
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value #RA",
+          "thresholds": [
+            "10485760",
+            "31457280"
+          ],
+          "type": "number",
+          "unit": "kbytes"
+        },
+        {
+          "alias": "Batch reqs / sec",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(245, 54, 54, 0.9)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value #BR",
+          "thresholds": [
+            "60",
+            "80"
+          ],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "Page life expectancy (sec)",
+          "align": "auto",
+          "colorMode": "cell",
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "link": false,
+          "mappingType": 1,
+          "pattern": "Value #PLE",
+          "thresholds": [
+            "300",
+            "600"
+          ],
+          "type": "number",
+          "unit": "dtdurations"
+        },
+        {
+          "alias": "Deadlocks",
+          "align": "auto",
+          "colorMode": "cell",
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(245, 54, 54, 0.9)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #DL",
+          "thresholds": [
+            "1",
+            "10"
+          ],
+          "type": "number",
+          "unit": "string"
+        },
+        {
+          "alias": "User errors / sec",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(245, 54, 54, 0.9)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value #UE",
+          "thresholds": [
+            "50",
+            "70"
+          ],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "Kill conn errors / sec",
+          "align": "auto",
+          "colorMode": "cell",
+          "colors": [
+            "rgba(50, 172, 45, 0.97)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(245, 54, 54, 0.9)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value #KC",
+          "thresholds": [
+            "1",
+            "10"
+          ],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "Total databases",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value #DBC",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "",
+          "align": "right",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        }
+      ],
+      "targets": [
         {
           "exemplar": true,
           "expr": "mssql_page_fault_count{job=~\"$Job\", pod=\"$pod\"}-0",
@@ -446,7 +805,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 3
+        "y": 9
       },
       "id": 4,
       "panels": [],
@@ -482,7 +841,7 @@
         "h": 7,
         "w": 7,
         "x": 0,
-        "y": 4
+        "y": 10
       },
       "id": 6,
       "options": {
@@ -531,7 +890,7 @@
         "h": 7,
         "w": 9,
         "x": 7,
-        "y": 4
+        "y": 10
       },
       "hiddenSeries": false,
       "id": 8,
@@ -627,7 +986,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 4
+        "y": 10
       },
       "hiddenSeries": false,
       "id": 58,
@@ -714,7 +1073,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 11
+        "y": 17
       },
       "id": 10,
       "panels": [],
@@ -738,7 +1097,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 12
+        "y": 18
       },
       "hiddenSeries": false,
       "id": 12,
@@ -771,348 +1130,6 @@
       "renderer": "flot",
       "repeat": "database",
       "repeatDirection": "h",
-      "scopedVars": {
-        "database": {
-          "selected": false,
-          "text": "agdb1",
-          "value": "agdb1"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "mssql_io_stall_seconds{db=\"$database\", pod=\"$pod\"}",
-          "instant": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "{{db}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Database ${database} wait by I/O stall ",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "ms",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 4,
-      "gridPos": {
-        "h": 7,
-        "w": 8,
-        "x": 8,
-        "y": 12
-      },
-      "hiddenSeries": false,
-      "id": 59,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": true,
-        "show": true,
-        "sort": "current",
-        "sortDesc": false,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "maxPerRow": 3,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeatDirection": "h",
-      "repeatIteration": 1724336238703,
-      "repeatPanelId": 12,
-      "scopedVars": {
-        "database": {
-          "selected": false,
-          "text": "agdb2",
-          "value": "agdb2"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "mssql_io_stall_seconds{db=\"$database\", pod=\"$pod\"}",
-          "instant": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "{{db}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Database ${database} wait by I/O stall ",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "ms",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 4,
-      "gridPos": {
-        "h": 7,
-        "w": 8,
-        "x": 16,
-        "y": 12
-      },
-      "hiddenSeries": false,
-      "id": 60,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": true,
-        "show": true,
-        "sort": "current",
-        "sortDesc": false,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "maxPerRow": 3,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeatDirection": "h",
-      "repeatIteration": 1724336238703,
-      "repeatPanelId": 12,
-      "scopedVars": {
-        "database": {
-          "selected": false,
-          "text": "kubedb_system",
-          "value": "kubedb_system"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "mssql_io_stall_seconds{db=\"$database\", pod=\"$pod\"}",
-          "instant": false,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "{{db}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Database ${database} wait by I/O stall ",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "ms",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 4,
-      "gridPos": {
-        "h": 7,
-        "w": 8,
-        "x": 0,
-        "y": 19
-      },
-      "hiddenSeries": false,
-      "id": 61,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "hideEmpty": false,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": true,
-        "show": true,
-        "sort": "current",
-        "sortDesc": false,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "maxPerRow": 3,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "7.5.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "repeatDirection": "h",
-      "repeatIteration": 1724336238703,
-      "repeatPanelId": 12,
       "scopedVars": {
         "database": {
           "selected": false,
@@ -1193,10 +1210,10 @@
         "h": 7,
         "w": 8,
         "x": 8,
-        "y": 19
+        "y": 18
       },
       "hiddenSeries": false,
-      "id": 62,
+      "id": 71,
       "legend": {
         "alignAsTable": true,
         "avg": false,
@@ -1225,13 +1242,241 @@
       "points": false,
       "renderer": "flot",
       "repeatDirection": "h",
-      "repeatIteration": 1724336238703,
+      "repeatIteration": 1724391887302,
       "repeatPanelId": 12,
       "scopedVars": {
         "database": {
           "selected": false,
           "text": "msdb",
           "value": "msdb"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "mssql_io_stall_seconds{db=\"$database\", pod=\"$pod\"}",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{db}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Database ${database} wait by I/O stall ",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "ms",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 4,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 18
+      },
+      "hiddenSeries": false,
+      "id": 72,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "current",
+        "sortDesc": false,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "maxPerRow": 3,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatDirection": "h",
+      "repeatIteration": 1724391887302,
+      "repeatPanelId": 12,
+      "scopedVars": {
+        "database": {
+          "selected": false,
+          "text": "agdb1",
+          "value": "agdb1"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "mssql_io_stall_seconds{db=\"$database\", pod=\"$pod\"}",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{db}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Database ${database} wait by I/O stall ",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "ms",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 4,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 25
+      },
+      "hiddenSeries": false,
+      "id": 73,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "current",
+        "sortDesc": false,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "maxPerRow": 3,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatDirection": "h",
+      "repeatIteration": 1724391887302,
+      "repeatPanelId": 12,
+      "scopedVars": {
+        "database": {
+          "selected": false,
+          "text": "agdb2",
+          "value": "agdb2"
         }
       },
       "seriesOverrides": [],
@@ -1331,7 +1576,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "All",
           "value": "$__all"
         },
@@ -1475,12 +1720,12 @@
     ]
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "KubeDB / Microsoft SQL Server / Pod",
   "uid": "9J6ObCEMz",
-  "version": 4
+  "version": 13
 }
