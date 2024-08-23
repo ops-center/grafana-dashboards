@@ -17,7 +17,7 @@
   "gnetId": 13919,
   "graphTooltip": 0,
   "id": 29,
-  "iteration": 1724391887302,
+  "iteration": 1724404649722,
   "links": [],
   "panels": [
     {
@@ -42,7 +42,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
+        "h": 7,
         "w": 5,
         "x": 0,
         "y": 0
@@ -77,6 +77,101 @@
       "type": "stat"
     },
     {
+      "cacheTimeout": null,
+      "datasource": "${datasource}",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 1,
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "yellow",
+                  "index": 1,
+                  "text": "Down"
+                },
+                "1": {
+                  "index": 2,
+                  "text": "Running"
+                }
+              },
+              "text": "Running",
+              "type": 1,
+              "value": "1"
+            },
+            {
+              "from": "",
+              "id": null,
+              "text": "",
+              "to": "",
+              "type": 1
+            }
+          ],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "rgba(50, 172, 45, 0.97)",
+                "value": null
+              }
+            ]
+          },
+          "unit": "string"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 5,
+        "y": 0
+      },
+      "hideTimeOverride": true,
+      "id": 75,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value"
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "up{pod=~\"$pod\", target=\"mssql_database\"}",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "{{pod}}",
+          "metric": "",
+          "refId": "A",
+          "step": 2
+        }
+      ],
+      "timeFrom": "1m",
+      "timeShift": null,
+      "title": "Status",
+      "type": "stat"
+    },
+    {
       "columns": [],
       "datasource": "Prometheus",
       "description": "",
@@ -86,10 +181,10 @@
       },
       "fontSize": "80%",
       "gridPos": {
-        "h": 3,
+        "h": 5,
         "w": 24,
         "x": 0,
-        "y": 3
+        "y": 7
       },
       "id": 64,
       "pageSize": null,
@@ -435,10 +530,10 @@
       },
       "fontSize": "80%",
       "gridPos": {
-        "h": 3,
+        "h": 5,
         "w": 24,
         "x": 0,
-        "y": 6
+        "y": 12
       },
       "id": 63,
       "pageSize": null,
@@ -805,7 +900,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 9
+        "y": 17
       },
       "id": 4,
       "panels": [],
@@ -841,7 +936,7 @@
         "h": 7,
         "w": 7,
         "x": 0,
-        "y": 10
+        "y": 18
       },
       "id": 6,
       "options": {
@@ -890,7 +985,7 @@
         "h": 7,
         "w": 9,
         "x": 7,
-        "y": 10
+        "y": 18
       },
       "hiddenSeries": false,
       "id": 8,
@@ -986,7 +1081,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 10
+        "y": 18
       },
       "hiddenSeries": false,
       "id": 58,
@@ -1073,7 +1168,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 25
       },
       "id": 10,
       "panels": [],
@@ -1097,7 +1192,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 18
+        "y": 26
       },
       "hiddenSeries": false,
       "id": 12,
@@ -1210,10 +1305,10 @@
         "h": 7,
         "w": 8,
         "x": 8,
-        "y": 18
+        "y": 26
       },
       "hiddenSeries": false,
-      "id": 71,
+      "id": 76,
       "legend": {
         "alignAsTable": true,
         "avg": false,
@@ -1242,7 +1337,7 @@
       "points": false,
       "renderer": "flot",
       "repeatDirection": "h",
-      "repeatIteration": 1724391887302,
+      "repeatIteration": 1724404649722,
       "repeatPanelId": 12,
       "scopedVars": {
         "database": {
@@ -1324,10 +1419,10 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 18
+        "y": 26
       },
       "hiddenSeries": false,
-      "id": 72,
+      "id": 77,
       "legend": {
         "alignAsTable": true,
         "avg": false,
@@ -1356,7 +1451,7 @@
       "points": false,
       "renderer": "flot",
       "repeatDirection": "h",
-      "repeatIteration": 1724391887302,
+      "repeatIteration": 1724404649722,
       "repeatPanelId": 12,
       "scopedVars": {
         "database": {
@@ -1438,10 +1533,10 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 25
+        "y": 33
       },
       "hiddenSeries": false,
-      "id": 73,
+      "id": 78,
       "legend": {
         "alignAsTable": true,
         "avg": false,
@@ -1470,7 +1565,7 @@
       "points": false,
       "renderer": "flot",
       "repeatDirection": "h",
-      "repeatIteration": 1724391887302,
+      "repeatIteration": 1724404649722,
       "repeatPanelId": 12,
       "scopedVars": {
         "database": {
@@ -1690,8 +1785,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "ms-ag-mon-0",
-          "value": "ms-ag-mon-0"
+          "text": "ms-ag-mon-2",
+          "value": "ms-ag-mon-2"
         },
         "datasource": "${datasource}",
         "definition": "label_values(up{target=\"mssqlserver_database\",namespace=~\"$namespace\",pod=~\"${app}-.*\"},pod)",
@@ -1727,5 +1822,5 @@
   "timezone": "",
   "title": "KubeDB / Microsoft SQL Server / Pod",
   "uid": "9J6ObCEMz",
-  "version": 13
+  "version": 18
 }
