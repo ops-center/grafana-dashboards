@@ -17,7 +17,7 @@
   "gnetId": 13919,
   "graphTooltip": 0,
   "id": 29,
-  "iteration": 1724404649722,
+  "iteration": 1724418468809,
   "links": [],
   "panels": [
     {
@@ -179,9 +179,9 @@
         "defaults": {},
         "overrides": []
       },
-      "fontSize": "80%",
+      "fontSize": "150%",
       "gridPos": {
-        "h": 5,
+        "h": 7,
         "w": 24,
         "x": 0,
         "y": 7
@@ -190,7 +190,7 @@
       "pageSize": null,
       "showHeader": true,
       "sort": {
-        "col": null,
+        "col": 11,
         "desc": false
       },
       "styles": [
@@ -516,7 +516,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "$Job：Server resource overview",
+      "title": "Microsoft SQL Server Resource Overview",
       "transform": "table",
       "type": "table-old"
     },
@@ -528,12 +528,12 @@
         "defaults": {},
         "overrides": []
       },
-      "fontSize": "80%",
+      "fontSize": "150%",
       "gridPos": {
-        "h": 5,
+        "h": 7,
         "w": 24,
         "x": 0,
-        "y": 12
+        "y": 14
       },
       "id": 63,
       "pageSize": null,
@@ -889,7 +889,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "$Job：Server resource overview",
+      "title": "Server Resouce Overview",
       "transform": "table",
       "type": "table-old"
     },
@@ -900,7 +900,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 21
       },
       "id": 4,
       "panels": [],
@@ -936,7 +936,7 @@
         "h": 7,
         "w": 7,
         "x": 0,
-        "y": 18
+        "y": 22
       },
       "id": 6,
       "options": {
@@ -985,7 +985,7 @@
         "h": 7,
         "w": 9,
         "x": 7,
-        "y": 18
+        "y": 22
       },
       "hiddenSeries": false,
       "id": 8,
@@ -1081,7 +1081,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 18
+        "y": 22
       },
       "hiddenSeries": false,
       "id": 58,
@@ -1168,7 +1168,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 29
       },
       "id": 10,
       "panels": [],
@@ -1192,7 +1192,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 26
+        "y": 30
       },
       "hiddenSeries": false,
       "id": 12,
@@ -1305,7 +1305,7 @@
         "h": 7,
         "w": 8,
         "x": 8,
-        "y": 26
+        "y": 30
       },
       "hiddenSeries": false,
       "id": 76,
@@ -1337,7 +1337,7 @@
       "points": false,
       "renderer": "flot",
       "repeatDirection": "h",
-      "repeatIteration": 1724404649722,
+      "repeatIteration": 1724418468809,
       "repeatPanelId": 12,
       "scopedVars": {
         "database": {
@@ -1419,7 +1419,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 26
+        "y": 30
       },
       "hiddenSeries": false,
       "id": 77,
@@ -1451,7 +1451,7 @@
       "points": false,
       "renderer": "flot",
       "repeatDirection": "h",
-      "repeatIteration": 1724404649722,
+      "repeatIteration": 1724418468809,
       "repeatPanelId": 12,
       "scopedVars": {
         "database": {
@@ -1533,7 +1533,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 33
+        "y": 37
       },
       "hiddenSeries": false,
       "id": 78,
@@ -1565,7 +1565,7 @@
       "points": false,
       "renderer": "flot",
       "repeatDirection": "h",
-      "repeatIteration": 1724404649722,
+      "repeatIteration": 1724418468809,
       "repeatPanelId": 12,
       "scopedVars": {
         "database": {
@@ -1785,8 +1785,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "ms-ag-mon-2",
-          "value": "ms-ag-mon-2"
+          "text": "ms-ag-mon-0",
+          "value": "ms-ag-mon-0"
         },
         "datasource": "${datasource}",
         "definition": "label_values(up{target=\"mssqlserver_database\",namespace=~\"$namespace\",pod=~\"${app}-.*\"},pod)",
@@ -1822,5 +1822,5 @@
   "timezone": "",
   "title": "KubeDB / Microsoft SQL Server / Pod",
   "uid": "9J6ObCEMz",
-  "version": 18
+  "version": 26
 }
