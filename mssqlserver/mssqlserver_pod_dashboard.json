@@ -17,7 +17,7 @@
   "gnetId": 13919,
   "graphTooltip": 0,
   "id": 28,
-  "iteration": 1724852467070,
+  "iteration": 1724854168877,
   "links": [],
   "panels": [
     {
@@ -385,7 +385,7 @@
           "valueMaps": []
         },
         {
-          "alias": "Total RAM (available)",
+          "alias": "Total Available RAM",
           "align": "auto",
           "colorMode": null,
           "colors": [
@@ -403,46 +403,7 @@
           "preserveFormat": false,
           "thresholds": [],
           "type": "number",
-          "unit": "kbytes"
-        },
-        {
-          "alias": "Total page faults",
-          "align": "",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "link": false,
-          "linkTargetBlank": false,
-          "linkTooltip": "${__cell_4}",
-          "linkUrl": "/d/Kdh0OoSGz/?var-job=${__cell_5}&var-hostname=All&var-instance=${__cell_4}",
-          "mappingType": 1,
-          "pattern": "Value #TPF",
-          "thresholds": [],
-          "type": "number",
-          "unit": "string"
-        },
-        {
-          "alias": "Total RAM",
-          "align": "auto",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "link": false,
-          "mappingType": 1,
-          "pattern": "Value #TM",
-          "thresholds": [],
-          "type": "number",
-          "unit": "kbytes"
+          "unit": "bytes"
         },
         {
           "alias": "Total pagefile size (available)",
@@ -459,7 +420,7 @@
           "pattern": "Value #PF",
           "thresholds": [],
           "type": "number",
-          "unit": "kbytes"
+          "unit": "bytes"
         },
         {
           "alias": "Pagefile size (used)",
@@ -479,7 +440,7 @@
             "432000"
           ],
           "type": "number",
-          "unit": "kbytes"
+          "unit": "bytes"
         },
         {
           "alias": "RAM used",
@@ -499,7 +460,7 @@
             "31457280"
           ],
           "type": "number",
-          "unit": "kbytes"
+          "unit": "bytes"
         },
         {
           "alias": "Batch reqs / sec",
@@ -685,7 +646,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Microsoft SQL Server Resource Overview",
+      "title": "Server Resource Overview",
       "transform": "table",
       "type": "table-old"
     },
@@ -1506,7 +1467,7 @@
       "points": false,
       "renderer": "flot",
       "repeatDirection": "h",
-      "repeatIteration": 1724852467070,
+      "repeatIteration": 1724854168877,
       "repeatPanelId": 12,
       "scopedVars": {
         "database": {
@@ -1620,7 +1581,7 @@
       "points": false,
       "renderer": "flot",
       "repeatDirection": "h",
-      "repeatIteration": 1724852467070,
+      "repeatIteration": 1724854168877,
       "repeatPanelId": 12,
       "scopedVars": {
         "database": {
@@ -1734,7 +1695,7 @@
       "points": false,
       "renderer": "flot",
       "repeatDirection": "h",
-      "repeatIteration": 1724852467070,
+      "repeatIteration": 1724854168877,
       "repeatPanelId": 12,
       "scopedVars": {
         "database": {
@@ -1991,5 +1952,5 @@
   "timezone": "",
   "title": "KubeDB / Microsoft SQL Server / Pod",
   "uid": "9J6ObCEMz",
-  "version": 3
+  "version": 6
 }
