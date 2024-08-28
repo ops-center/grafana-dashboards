@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": 13919,
   "graphTooltip": 0,
-  "id": 29,
-  "iteration": 1724418468809,
+  "id": 28,
+  "iteration": 1724852467070,
   "links": [],
   "panels": [
     {
@@ -43,7 +43,7 @@
       },
       "gridPos": {
         "h": 7,
-        "w": 5,
+        "w": 6,
         "x": 0,
         "y": 0
       },
@@ -128,8 +128,8 @@
       },
       "gridPos": {
         "h": 7,
-        "w": 4,
-        "x": 5,
+        "w": 6,
+        "x": 6,
         "y": 0
       },
       "hideTimeOverride": true,
@@ -172,6 +172,175 @@
       "type": "stat"
     },
     {
+      "cacheTimeout": null,
+      "datasource": "${datasource}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "light-blue",
+            "mode": "fixed"
+          },
+          "decimals": 0,
+          "mappings": [
+            {
+              "options": {
+                "master": {
+                  "color": "light-blue",
+                  "index": 1,
+                  "text": "master"
+                },
+                "slave": {
+                  "color": "super-light-blue",
+                  "index": 2,
+                  "text": "slave"
+                }
+              },
+              "type": "value"
+            },
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "index": 0,
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "noValue": "N/A",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "string"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 12,
+        "y": 0
+      },
+      "hideTimeOverride": true,
+      "id": 17,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "name"
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": false,
+          "expr": "mssql_pod_role{pod=~\"$pod\"}",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "{{role}}",
+          "metric": "",
+          "refId": "A",
+          "step": 2
+        }
+      ],
+      "timeFrom": "1m",
+      "timeShift": null,
+      "title": "Role",
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "${datasource}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "blue",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "id": 9,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "max(max_over_time(mssql_uptime_seconds{pod=~\"$pod\"}[$__interval]))",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "",
+          "metric": "",
+          "refId": "A",
+          "step": 1800
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Uptime",
+      "type": "stat"
+    },
+    {
       "columns": [],
       "datasource": "Prometheus",
       "description": "",
@@ -190,7 +359,7 @@
       "pageSize": null,
       "showHeader": true,
       "sort": {
-        "col": 11,
+        "col": null,
         "desc": false
       },
       "styles": [
@@ -1337,7 +1506,7 @@
       "points": false,
       "renderer": "flot",
       "repeatDirection": "h",
-      "repeatIteration": 1724418468809,
+      "repeatIteration": 1724852467070,
       "repeatPanelId": 12,
       "scopedVars": {
         "database": {
@@ -1451,7 +1620,7 @@
       "points": false,
       "renderer": "flot",
       "repeatDirection": "h",
-      "repeatIteration": 1724418468809,
+      "repeatIteration": 1724852467070,
       "repeatPanelId": 12,
       "scopedVars": {
         "database": {
@@ -1565,7 +1734,7 @@
       "points": false,
       "renderer": "flot",
       "repeatDirection": "h",
-      "repeatIteration": 1724418468809,
+      "repeatIteration": 1724852467070,
       "repeatPanelId": 12,
       "scopedVars": {
         "database": {
@@ -1822,5 +1991,5 @@
   "timezone": "",
   "title": "KubeDB / Microsoft SQL Server / Pod",
   "uid": "9J6ObCEMz",
-  "version": 26
+  "version": 3
 }
