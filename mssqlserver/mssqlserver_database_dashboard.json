@@ -23,7 +23,7 @@
   "gnetId": 13106,
   "graphTooltip": 0,
   "id": 29,
-  "iteration": 1724931873580,
+  "iteration": 1724933203202,
   "links": [],
   "panels": [
     {
@@ -1273,5 +1273,5 @@
   "timezone": "",
   "title": "KubeDB / MSSQLServer / Database",
   "uid": "ohrahgv7T",
-  "version": 36
+  "version": 37
 }
