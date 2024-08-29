@@ -17,7 +17,7 @@
   "gnetId": 13919,
   "graphTooltip": 0,
   "id": 28,
-  "iteration": 1724854168877,
+  "iteration": 1724934136350,
   "links": [],
   "panels": [
     {
@@ -599,7 +599,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mssql_local_time_seconds{job=~\"$Job\", pod=\"$pod\"}*1000",
+          "expr": "(mssql_local_time_seconds{job=~\"$Job\", pod=\"$pod\"}*1000)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -648,6 +648,35 @@
       "timeShift": null,
       "title": "Server Resource Overview",
       "transform": "table",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Value #APF": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Value #LT": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Value #PF": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Value #RA": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Value #TM": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        }
+      ],
       "type": "table-old"
     },
     {
@@ -1467,7 +1496,7 @@
       "points": false,
       "renderer": "flot",
       "repeatDirection": "h",
-      "repeatIteration": 1724854168877,
+      "repeatIteration": 1724934136350,
       "repeatPanelId": 12,
       "scopedVars": {
         "database": {
@@ -1581,7 +1610,7 @@
       "points": false,
       "renderer": "flot",
       "repeatDirection": "h",
-      "repeatIteration": 1724854168877,
+      "repeatIteration": 1724934136350,
       "repeatPanelId": 12,
       "scopedVars": {
         "database": {
@@ -1695,7 +1724,7 @@
       "points": false,
       "renderer": "flot",
       "repeatDirection": "h",
-      "repeatIteration": 1724854168877,
+      "repeatIteration": 1724934136350,
       "repeatPanelId": 12,
       "scopedVars": {
         "database": {
@@ -1915,8 +1944,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "ms-ag-mon-0",
-          "value": "ms-ag-mon-0"
+          "text": "ms-ag-mon-2",
+          "value": "ms-ag-mon-2"
         },
         "datasource": "${datasource}",
         "definition": "label_values(up{target=\"mssqlserver_database\",namespace=~\"$namespace\",pod=~\"${app}-.*\"},pod)",
@@ -1952,5 +1981,5 @@
   "timezone": "",
   "title": "KubeDB / Microsoft SQL Server / Pod",
   "uid": "9J6ObCEMz",
-  "version": 6
+  "version": 8
 }
