@@ -1,8 +1,10 @@
 # Grafana Dashboards
 
-There are currently one dashboard to monitor MS SQL Server Databases managed by KubeDB.
+There are three dashboards to monitor Microsoft SQL Server Databases managed by KubeDB.
 
-- KubeDB / MSSQLServer / Summary: Shows overall summary of MS SQL Server instance.
+- KubeDB / MSSQLServer / Summary: Shows overall summary of Microsoft SQL Server instance.
+- KubeDB / MSSQLServer / Pod: Shows individual pod-level information.
+- KubeDB / MSSQLServer / Database: Shows Microsoft SQL Server internal metrics for an instance.
 
 Note: These dashboards are developed in **Grafana version 7.5.5**
 
@@ -99,3 +101,13 @@ If you followed the instruction properly, you should see the MSSQLServer Grafana
 ![KubeDB / MSSQLServer / Summary](/mssqlserver/images/mssqlserver-summary-1.png)
 ![KubeDB / MSSQLServer / Summary](/mssqlserver/images/mssqlserver-summary-2.png)
 ![KubeDB / MSSQLServer / Summary](/mssqlserver/images/mssqlserver-summary-3.png)
+
+####  KubeDB / MSSQLServer / Pod
+
+![KubeDB / MSSQLServer / Pod](/mssqlserver/images/mssqlserver-pod-1.png)
+![KubeDB / MSSQLServer / Pod](/mssqlserver/images/mssqlserver-pod-2.png)
+
+####  KubeDB / MSSQLServer / Database
+
+![KubeDB / MSSQLServer / Database](/mssqlserver/images/mssqlserver-database-1.png)
+![KubeDB / MSSQLServer / Database](/mssqlserver/images/mssqlserver-database-2.png)
