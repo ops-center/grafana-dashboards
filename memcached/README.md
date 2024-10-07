@@ -33,11 +33,11 @@ Now, install Panopticon using the following commands:
 
 ```bash
 helm upgrade -i monitoring-operator oci://ghcr.io/appscode-charts/monitoring-operator \
-  --version v0.0.4 \
+  --version v2024.9.30 \
   -n monitoring --create-namespace
 
 helm upgrade -i panopticon oci://ghcr.io/appscode-charts/panopticon \
-  --version v2023.10.1 \
+  --version v2024.9.30 \
   -n monitoring --create-namespace \
   --set-file license=/path/to/license-file.txt
 ```
@@ -47,7 +47,7 @@ helm upgrade -i panopticon oci://ghcr.io/appscode-charts/panopticon \
 To enable monitoring of a KubeDB Memcached instance, you have to add monitoring configuration in the Memcached CR spec like below:
 
 ```
-apiVersion: kubedb.com/v1alpha2
+apiVersion: kubedb.com/v1
 kind: Memcached
 metadata:
   name: memcached-sample
@@ -74,7 +74,7 @@ Install `kubedb-metrics` charts which will create the `MetricsConfiguration` obj
 
 ```bash
 helm upgrade -i kubedb-metrics oci://ghcr.io/appscode-charts/kubedb-metrics \
-  --version v2023.12.28 \
+  --version v2024.9.30 \
   -n kubedb --create-namespace
 ```
 

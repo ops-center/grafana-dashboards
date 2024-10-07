@@ -29,7 +29,7 @@ Install Prometheus stack if you haven't done it already. You can use [kube-prome
 Let's say, You want to monitor a kubeDB managed MongoDB. To enable monitoring in that instance, you have to add monitoring configuration in the MongoDB CR spec like below:
 
 ```
-apiVersion: kubedb.com/v1alpha2
+apiVersion: kubedb.com/v1
 kind: MongoDB
 metadata:
   name: mg-rs
