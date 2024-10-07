@@ -195,7 +195,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "sum(rate(mongodb_ss_opcounters{pod=~\"$pod\",type!=\"command\"}[$interval]) or irate(mongodb_ss_opcounters{pod=~\"$pod\",type!=\"command\"}[5m]))",
+          "expr": "sum(rate(mongodb_ss_opcounters{pod=~\"$pod\",legacy_op_type!=\"command\"}[$interval]) or irate(mongodb_ss_opcounters{pod=~\"$pod\",legacy_op_type!=\"command\"}[5m]))",
           "interval": "$interval",
           "legendFormat": "",
           "refId": "A"
@@ -261,7 +261,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "avg by (service) (rate(mongodb_ss_opLatencies_latency{service=~\"${app}-stats\"}[$interval]) / (rate(mongodb_ss_opLatencies_ops{service=~\"${app}-stats\"}[$interval]) > 0) or irate(mongodb_ss_opLatencies_latency{service=~\"${app}-stats\"}[5m]) / (irate(mongodb_ss_opLatencies_ops{service=~\"${app}-stats\"}[5m]) > 0))\n",
+          "expr": "avg by (service) (rate(mongodb_ss_opLatencies_latency{service=~\"$app-stats\"}[$interval]) / (rate(mongodb_ss_opLatencies_ops{service=~\"$app-stats\"}[$interval]) > 0) or irate(mongodb_ss_opLatencies_latency{service=~\"$app-stats\"}[5m]) / (irate(mongodb_ss_opLatencies_ops{service=~\"$app-stats\"}[5m]) > 0))\n",
           "interval": "$interval",
           "legendFormat": "",
           "refId": "A"
@@ -478,7 +478,7 @@
       "targets": [
         {
           "exemplar": false,
-          "expr": "avg by (service,op_type) (rate(mongodb_ss_opLatencies_latency{service=~\"${app}-stats\"}[$interval]) / (rate(mongodb_ss_opLatencies_ops{service=~\"${app}-stats\"}[$interval]) > 0) or irate(mongodb_ss_opLatencies_latency{service=~\"${app}-stats\"}[5m]) / (irate(mongodb_ss_opLatencies_ops{service=~\"${app}-stats\"}[5m]) > 0))",
+          "expr": "avg by (service,op_type) (rate(mongodb_ss_opLatencies_latency{service=~\"$app-stats\"}[$interval]) / (rate(mongodb_ss_opLatencies_ops{service=~\"$app-stats\"}[$interval]) > 0) or irate(mongodb_ss_opLatencies_latency{service=~\"$app-stats\"}[5m]) / (irate(mongodb_ss_opLatencies_ops{service=~\"$app-stats\"}[5m]) > 0))",
           "interval": "$interval",
           "legendFormat": "{{op_type}}",
           "range": true,
@@ -1890,7 +1890,7 @@
         "name": "pod",
         "options": [],
         "query": {
-          "query": "label_values(mongodb_up{namespace=~\"$namespace\",service=\"${app}-stats\"}, pod)",
+          "query": "label_values(mongodb_up{namespace=~\"$namespace\",service=\"$app-stats\"}, pod)",
           "refId": "Prometheus-pod-Variable-Query"
         },
         "refresh": 2,
