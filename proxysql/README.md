@@ -33,11 +33,11 @@ Now, install Panopticon using the following commands:
 
 ```bash
 helm upgrade -i monitoring-operator oci://ghcr.io/appscode-charts/monitoring-operator \
-  --version v0.0.4 \
+  --version v2024.9.30 \
   -n monitoring --create-namespace
 
 helm upgrade -i panopticon oci://ghcr.io/appscode-charts/panopticon \
-  --version v2024.2.5 \
+  --version v2024.9.30 \
   -n monitoring --create-namespace \
   --set-file license=/path/to/license-file.txt
 ```
@@ -47,7 +47,7 @@ helm upgrade -i panopticon oci://ghcr.io/appscode-charts/panopticon \
 To enable monitoring of a KubeDB ProxySQL instance, you have to add monitoring configuration in the ProxySQL CR spec like below:
 
 ```
-apiVersion: kubedb.com/v1alpha2
+apiVersion: kubedb.com/v1
 kind: ProxySQL
 metadata:
   name: sample-proxysql
