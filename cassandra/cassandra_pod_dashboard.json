@@ -294,7 +294,7 @@
       "targets": [
         {
           "datasource": "Prometheus",
-          "expr": "sum(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",name=~\"org:apache:cassandra:metrics:clientrequest:(read|write|casread|caswrite|rangeslice|viewwrite):latency:oneminuterate\"})",
+          "expr": "sum(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",name=~\"org:apache:cassandra:metrics:clientrequest:(read|write|casread|caswrite|rangeslice|viewwrite):latency:oneminuterate\"})",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -303,7 +303,7 @@
         },
         {
           "datasource": "Prometheus",
-          "expr": "sum(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",name=~\"org:apache:cassandra:metrics:clientrequest:read:latency:oneminuterate\"})",
+          "expr": "sum(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",name=~\"org:apache:cassandra:metrics:clientrequest:read:latency:oneminuterate\"})",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -312,7 +312,7 @@
         },
         {
           "datasource": "Prometheus",
-          "expr": "sum(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",name=~\"org:apache:cassandra:metrics:clientrequest:write:latency:oneminuterate\"})",
+          "expr": "sum(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",name=~\"org:apache:cassandra:metrics:clientrequest:write:latency:oneminuterate\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "Write",
@@ -320,7 +320,7 @@
         },
         {
           "datasource": "Prometheus",
-          "expr": "sum(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",name=~\"org:apache:cassandra:metrics:clientrequest:casread:latency:oneminuterate\"})",
+          "expr": "sum(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",name=~\"org:apache:cassandra:metrics:clientrequest:casread:latency:oneminuterate\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "CasRead",
@@ -328,7 +328,7 @@
         },
         {
           "datasource": "Prometheus",
-          "expr": "sum(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",name=~\"org:apache:cassandra:metrics:clientrequest:caswrite:latency:oneminuterate\"})",
+          "expr": "sum(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",name=~\"org:apache:cassandra:metrics:clientrequest:caswrite:latency:oneminuterate\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "CasWrite",
@@ -336,7 +336,7 @@
         },
         {
           "datasource": "Prometheus",
-          "expr": "sum(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",name=~\"org:apache:cassandra:metrics:clientrequest:rangeslice:latency:oneminuterate\"})",
+          "expr": "sum(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",name=~\"org:apache:cassandra:metrics:clientrequest:rangeslice:latency:oneminuterate\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "RangeSlice",
@@ -344,7 +344,7 @@
         },
         {
           "datasource": "Prometheus",
-          "expr": "sum(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",name=~\"org:apache:cassandra:metrics:clientrequest:viewwrite:latency:oneminuterate\"})",
+          "expr": "sum(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",name=~\"org:apache:cassandra:metrics:clientrequest:viewwrite:latency:oneminuterate\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "ViewWrite",
@@ -438,7 +438,7 @@
         {
           "datasource": "Prometheus",
           "exemplar": true,
-          "expr": "label_replace(sum(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:clientrequest:(read|write|casread|caswrite|rangeslice|viewwrite):latency:oneminuterate\"}) by (instance), \"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
+          "expr": "label_replace(sum(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:clientrequest:(read|write|casread|caswrite|rangeslice|viewwrite):latency:oneminuterate\"}) by (instance), \"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -555,7 +555,7 @@
       "targets": [
         {
           "datasource": "Prometheus",
-          "expr": "label_replace(sum(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:clientrequest:read:latency:oneminuterate\"}+0.00000001) by (instance),\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
+          "expr": "label_replace(sum(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:clientrequest:read:latency:oneminuterate\"}+0.00000001) by (instance),\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{short_instance}}",
@@ -647,7 +647,7 @@
       "targets": [
         {
           "datasource": "Prometheus",
-          "expr": "label_replace(sum(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:clientrequest:write:latency:oneminuterate\"}+0.00000001) by (instance),\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
+          "expr": "label_replace(sum(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:clientrequest:write:latency:oneminuterate\"}+0.00000001) by (instance),\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{short_instance}}",
@@ -763,7 +763,7 @@
       "targets": [
         {
           "datasource": "Prometheus",
-          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:clientrequest:read:latency:50thpercentile\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
+          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:clientrequest:read:latency:50thpercentile\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
           "format": "time_series",
           "instant": false,
           "intervalFactor": 1,
@@ -856,7 +856,7 @@
       "targets": [
         {
           "datasource": "Prometheus",
-          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:clientrequest:read:latency:75thpercentile\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
+          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:clientrequest:read:latency:75thpercentile\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
           "format": "time_series",
           "instant": false,
           "intervalFactor": 1,
@@ -949,7 +949,7 @@
       "targets": [
         {
           "datasource": "Prometheus",
-          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:clientrequest:read:latency:99thpercentile\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
+          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:clientrequest:read:latency:99thpercentile\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{short_instance}}",
@@ -1041,7 +1041,7 @@
       "targets": [
         {
           "datasource": "Prometheus",
-          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:clientrequest:write:latency:75thpercentile\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
+          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:clientrequest:write:latency:75thpercentile\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{short_instance}}",
@@ -1133,7 +1133,7 @@
       "targets": [
         {
           "datasource": "Prometheus",
-          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:clientrequest:write:latency:75thpercentile\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
+          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:clientrequest:write:latency:75thpercentile\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{short_instance}}",
@@ -1225,7 +1225,7 @@
       "targets": [
         {
           "datasource": "Prometheus",
-          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:clientrequest:write:latency:99thpercentile\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
+          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:clientrequest:write:latency:99thpercentile\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{short_instance}}",
@@ -1346,7 +1346,7 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".+\",name=~\"org:apache:cassandra:metrics:compaction:pendingtasks:value\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
+          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".+\",name=~\"org:apache:cassandra:metrics:compaction:pendingtasks:value\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{short_instance}}_P",
@@ -1354,7 +1354,7 @@
         },
         {
           "datasource": "Prometheus",
-          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".+\",name=~\"org:apache:cassandra:metrics:threadpools:internal:compactionexecutor:activetasks:value\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
+          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".+\",name=~\"org:apache:cassandra:metrics:threadpools:internal:compactionexecutor:activetasks:value\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{short_instance}}_A",
@@ -1445,7 +1445,7 @@
       "targets": [
         {
           "datasource": "Prometheus",
-          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",name=~\"org:apache:cassandra:metrics:compaction:completedtasks:value\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
+          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",name=~\"org:apache:cassandra:metrics:compaction:completedtasks:value\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{short_instance}}",
@@ -1536,7 +1536,7 @@
       "targets": [
         {
           "datasource": "Prometheus",
-          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:compaction:totalcompactionscompleted:count\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
+          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:compaction:totalcompactionscompleted:count\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{short_instance}}",
@@ -1747,7 +1747,7 @@
       "targets": [
         {
           "datasource": "Prometheus",
-          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:compaction:bytescompacted:count\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
+          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:compaction:bytescompacted:count\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
@@ -1756,7 +1756,7 @@
         },
         {
           "datasource": "Prometheus",
-          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".*\", name=~\"org:apache:cassandra:metrics:table:dfce:documents:compactionbyteswritten:count\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
+          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".*\", name=~\"org:apache:cassandra:metrics:table:dfce:documents:compactionbyteswritten:count\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
           "hide": false,
           "legendFormat": "{{short_instance}}_docs",
           "refId": "A"
@@ -1847,7 +1847,7 @@
       "targets": [
         {
           "datasource": "Prometheus",
-          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:table:livesstablecount:value\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
+          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:table:livesstablecount:value\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{short_instance}}",
@@ -1939,7 +1939,7 @@
       "targets": [
         {
           "datasource": "Prometheus",
-          "expr": "avg(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".+\",job=~\".+\",name=~\"org:apache:cassandra:metrics:table:sstablesperreadhistogram:50thpercentile\"})",
+          "expr": "avg(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".+\",job=~\".+\",name=~\"org:apache:cassandra:metrics:table:sstablesperreadhistogram:50thpercentile\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "p55",
@@ -1947,7 +1947,7 @@
         },
         {
           "datasource": "Prometheus",
-          "expr": "avg(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".+\",job=~\".+\",name=~\"org:apache:cassandra:metrics:table:sstablesperreadhistogram:75thpercentile\"})",
+          "expr": "avg(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".+\",job=~\".+\",name=~\"org:apache:cassandra:metrics:table:sstablesperreadhistogram:75thpercentile\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "p75",
@@ -1955,7 +1955,7 @@
         },
         {
           "datasource": "Prometheus",
-          "expr": "avg(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".+\",job=~\".+\",name=~\"org:apache:cassandra:metrics:table:sstablesperreadhistogram:99thpercentile\"})",
+          "expr": "avg(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".+\",job=~\".+\",name=~\"org:apache:cassandra:metrics:table:sstablesperreadhistogram:99thpercentile\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "p99",
@@ -1963,7 +1963,7 @@
         },
         {
           "datasource": "Prometheus",
-          "expr": "avg(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".+\",job=~\".+\",name=~\"org:apache:cassandra:metrics:table:sstablesperreadhistogram:mean\"})",
+          "expr": "avg(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".+\",job=~\".+\",name=~\"org:apache:cassandra:metrics:table:sstablesperreadhistogram:mean\"})",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "mean",
@@ -2080,7 +2080,7 @@
       "targets": [
         {
           "datasource": "Prometheus",
-          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:cache:keycache:oneminutehitrate:value\"}*100,\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
+          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:cache:keycache:oneminutehitrate:value\"}*100,\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{short_instance}}",
@@ -2167,7 +2167,7 @@
         {
           "datasource": "Prometheus",
           "exemplar": true,
-          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:cache:keycache:size:value\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
+          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:cache:keycache:size:value\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -2177,7 +2177,7 @@
         {
           "datasource": "Prometheus",
           "exemplar": true,
-          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:cache:keycache:entries:value\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
+          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:cache:keycache:entries:value\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -2270,7 +2270,7 @@
       "targets": [
         {
           "datasource": "Prometheus",
-          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:cache:keycache:hits:count\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
+          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:cache:keycache:hits:count\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{short_instance}}_hits",
@@ -2278,7 +2278,7 @@
         },
         {
           "datasource": "Prometheus",
-          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\"$datacenter\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:cache:keycache:requests:count\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
+          "expr": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".*\",name=~\"org:apache:cassandra:metrics:cache:keycache:requests:count\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{short_instance}}_reqs",
@@ -2318,41 +2318,17 @@
         "useTags": false
       },
       {
-        "allValue": ".+",
         "current": {},
         "datasource": "Prometheus",
-        "definition": "label_values(cassandra_stats{name=\"java:lang:memory:heapmemoryusage:max\"},datacenter)",
+        "definition": "label_values(cassandra_stats{name=\"java:lang:memory:heapmemoryusage:max\"}, pod)",
         "hide": 0,
-        "includeAll": true,
-        "multi": false,
-        "name": "datacenter",
-        "options": [],
-        "query": {
-          "query": "label_values(cassandra_stats{name=\"java:lang:memory:heapmemoryusage:max\"},datacenter)",
-          "refId": "Prometheus-datacenter-Variable-Query"
-        },
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 1,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      },
-      {
-        "allValue": ".+",
-        "current": {},
-        "datasource": "Prometheus",
-        "definition": "label_values(cassandra_stats{name=\"java:lang:memory:heapmemoryusage:max\"},pod)",
-        "hide": 0,
-        "includeAll": true,
+        "includeAll": false,
         "multi": false,
         "name": "pod",
         "options": [],
         "query": {
-          "query": "label_values(cassandra_stats{name=\"java:lang:memory:heapmemoryusage:max\"},pod)",
-          "refId": "Prometheus-pod-Variable-Query"
+          "query": "label_values(cassandra_stats{name=\"java:lang:memory:heapmemoryusage:max\"}, pod)",
+          "refId": "Prometheus-cluster-Variable-Query"
         },
         "refresh": 1,
         "regex": "",
