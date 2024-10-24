@@ -30,7 +30,7 @@
       },
       "id": 2,
       "panels": [],
-      "title": "MariaDB Pod Summary",
+      "title": "ClickHouse Pod Summary",
       "type": "row"
     },
     {
@@ -80,7 +80,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mysql_up{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
+          "expr": "up{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
           "interval": "",
           "legendFormat": "{{pod}} ",
           "refId": "A"
@@ -153,7 +153,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mysql_global_status_uptime{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
+          "expr": "ClickHouseAsyncMetrics_Uptime{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -161,7 +161,7 @@
           "refId": "A"
         }
       ],
-      "title": "MySQL Uptime",
+      "title": "ClickHouse Uptime",
       "type": "stat"
     },
     {
@@ -185,7 +185,7 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -209,13 +209,13 @@
           "values": false
         },
         "text": {},
-        "textMode": "name"
+        "textMode": "value"
       },
       "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "mysql_version_info{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
+          "expr": "ClickHouseMetrics_VersionInteger{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
           "interval": "",
           "legendFormat": "{{version}}",
           "refId": "A"
@@ -271,7 +271,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rate(mysql_global_status_queries{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[5m])",
+          "expr": "rate(ClickHouseMetrics_Query{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[5m])",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -346,7 +346,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mysql_global_variables_innodb_buffer_pool_size{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
+          "expr": "ClickHouseMetrics_StorageBufferBytes{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -354,7 +354,7 @@
           "refId": "A"
         }
       ],
-      "title": "InnoDB Buffer Pool Size",
+      "title": "Storage Buffer Size",
       "type": "stat"
     },
     {
@@ -726,17 +726,17 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mysql_global_status_max_used_connections{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
+          "expr": "ClickHouseMetrics_TCPConnection{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
           "interval": "",
-          "legendFormat": "Max Used Connects - {{pod}}",
+          "legendFormat": "TCP Connection - {{pod}}",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "mysql_global_variables_max_connections{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
+          "expr": "ClickHouseMetrics_HTTPConnection{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "Max Connects - {{pod}}",
+          "legendFormat": "HTTP Connection - {{pod}}",
           "refId": "B"
         }
       ],
@@ -744,7 +744,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "MySQL Connections",
+      "title": "ClickHouse Connections",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -831,25 +831,17 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mysql_global_status_aborted_connects{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
+          "expr": "sum(rate(ClickHouseProfileEvents_HTTPConnectionsErrors{namespace=~\"$namespace\", service=~\"$app-stats\", pod=~\"$pod\"}[5m]))",
           "interval": "",
           "legendFormat": "Aborted Connects - {{pod}}",
           "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "mysql_global_status_aborted_clients{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Aborted Clients - {{pod}}",
-          "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "MySQL Aborted Connections",
+      "title": "ClickHouse Aborted Connections",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -952,7 +944,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mysql_global_status_threads_connected{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
+          "expr": "ClickHouseMetrics_GlobalThreadActive{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
           "interval": "",
           "legendFormat": "Threads Connected - {{pod}}",
           "refId": "A"
@@ -970,7 +962,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "MySQL Client Thread Activity",
+      "title": "ClickHouse Client Thread Activity",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -3467,20 +3459,20 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "sample-mariadb-stats",
-          "value": "sample-mariadb-stats"
+          "text": "sample-clickhouse-stats",
+          "value": "sample-clickhouse-stats"
         },
         "datasource": "${datasource}",
-        "definition": "label_values(kubedb_com_mariadb_status_phase{namespace=~\"$namespace\"},app)",
+        "definition": "label_values(kubedb_com_clickhouse_status_phase{namespace=~\"$namespace\"},app)",
         "description": "",
         "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": "MariaDB",
+        "label": "ClickHouse",
         "multi": false,
         "name": "app",
         "options": [],
-        "query": "label_values(kubedb_com_mariadb_status_phase{namespace=~\"$namespace\"},app)",
+        "query": "label_values(kubedb_com_clickhouse_status_phase{namespace=~\"$namespace\"},app)",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -3497,14 +3489,14 @@
           "selected": true,
           "tags": [],
           "text": [
-            "sample-mariadb-0"
+            "sample-clickhouse-0"
           ],
           "value": [
-            "sample-mariadb-0"
+            "sample-clickhouse-0"
           ]
         },
         "datasource": "${datasource}",
-        "definition": "label_values(mysql_up{namespace=~\"$namespace\", service=~\"$app+-stats\"}, pod)",
+        "definition": "label_values(up{namespace=~\"$namespace\", service=~\"$app+-stats\"}, pod)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -3513,7 +3505,7 @@
         "multi": true,
         "name": "pod",
         "options": [],
-        "query": "label_values(mysql_up{namespace=~\"$namespace\", service=~\"$app+-stats\"}, pod)",
+        "query": "label_values(up{namespace=~\"$namespace\", service=~\"$app+-stats\"}, pod)",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -3532,7 +3524,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "KubeDB / MariaDB / Pod",
-  "uid": "FktZiiOnz",
+  "title": "KubeDB / ClickHouse / Pod",
+  "uid": "A1b2C3d4E",
   "version": 3
 }

@@ -133,7 +133,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mysql_up{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
+          "expr": "up{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -238,7 +238,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mysql_global_status_uptime{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
+          "expr": "ClickHouseAsyncMetrics_Uptime{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -321,7 +321,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mysql_global_status_wsrep_cluster_size{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
+          "expr": "count(ClickHouseAsyncMetrics_Uptime{namespace=~\"$namespace\",service=~\"$app+-stats\"} > 0)",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -414,7 +414,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mysql_global_status_wsrep_cluster_status{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
+          "expr": "up{namespace=~\"$namespace\",job=~\"$app+-stats\"} == 1",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -484,7 +484,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rate(mysql_global_status_queries{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
+          "expr": "rate(clickhouse_queries_total[1m])",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -584,7 +584,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mysql_global_status_max_used_connections{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
+          "expr": "clickhouse_active_connections{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -593,7 +593,7 @@
         },
         {
           "exemplar": true,
-          "expr": "mysql_global_variables_max_connections{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
+          "expr": "clickhouse_connections{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -605,7 +605,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "MySQL Connections",
+      "title": "ClickHouse Connections",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -699,7 +699,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rate(mysql_global_status_innodb_data_reads{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
+          "expr": "rate(ClickHouseMetrics_Read{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -708,7 +708,7 @@
         },
         {
           "exemplar": true,
-          "expr": "rate(mysql_global_status_innodb_data_writes{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
+          "expr": "rate(ClickHouseMetrics_Write{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -720,7 +720,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "MySQL  disk reads vs writes",
+      "title": "ClickHouse Metrics reads vs writes",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -814,7 +814,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rate(mysql_global_status_bytes_received{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
+          "expr": "rate(ClickHouseMetrics_NetworkReceive{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -823,7 +823,7 @@
         },
         {
           "exemplar": true,
-          "expr": "rate(mysql_global_status_bytes_sent{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
+          "expr": "rate(ClickHouseMetrics_NetworkSend{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -835,7 +835,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "MySQL network received vs sent",
+      "title": "ClickHouse network received vs sent",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1394,7 +1394,7 @@
   "style": "dark",
   "tags": [
     "galera",
-    "mariadb"
+    "clickhouse"
   ],
   "templating": {
     "list": [
@@ -1451,20 +1451,20 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "sample-mariadb-stats",
-          "value": "sample-mariadb-stats"
+          "text": "sample-clickhouse-stats",
+          "value": "sample-clickhouse-stats"
         },
         "datasource": "${datasource}",
-        "definition": "label_values(kubedb_com_mariadb_status_phase{namespace=~\"$namespace\"},app)",
-        "description": "MariaDB stats service name",
+        "definition": "label_values(kubedb_com_clickhouse_status_phase{namespace=~\"$namespace\"},app)",
+        "description": "ClickHouse stats service name",
         "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": "MariaDB",
+        "label": "ClickHouse",
         "multi": false,
         "name": "app",
         "options": [],
-        "query": "label_values(kubedb_com_mariadb_status_phase{namespace=~\"$namespace\"},app)",
+        "query": "label_values(kubedb_com_clickhouse_status_phase{namespace=~\"$namespace\"},app)",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1483,7 +1483,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "KubeDB / MariaDB / Database",
+  "title": "KubeDB / ClickHouse / Database",
   "uid": "ohrahgv7z",
   "version": 8
 }
