@@ -6,7 +6,7 @@ There are three dashboards to monitor RabbitMQ Databases managed by KubeDB.
 - KubeDB / RabbitMQ / Database: Shows RabbitMQ internal metrics for an instance.
 - KubeDB / RabbitMQ / Pod: Shows individual pod-level information.
 
-Note: These dashboards are developed in **Grafana version 7.5.5**
+Note: These dashboards are developed and tested in **Grafana version 8.0.7**
 
 ### Dependencies
 
