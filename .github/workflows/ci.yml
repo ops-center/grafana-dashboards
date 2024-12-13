@@ -1,0 +1,194 @@
+name: dashboard-check
+on:
+  push:
+    branches:
+      - "*.*"
+  pull_request:
+    branches:
+      - "master"
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    inputs:
+      databases:
+        description: 'Databases'
+        required: true
+        default: 'all'
+        type: string
+      kubedb-version:
+        description: 'KubeDB Version'
+        required: true
+        default: 'v2024.4.27'  #needs to be dynamic
+        type: string
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}-dashboard-check
+  cancel-in-progress: true
+jobs:
+  config:
+    name: Configure Inputs
+    runs-on: ubuntu-latest
+    outputs:
+      dbs: ${{ steps.defaulter.outputs.databases }}
+      kubedb : ${{ steps.defaulter.outputs.kubedb }}
+    steps:
+      - name: Defaulter
+        id: defaulter
+        env:
+          DATABASES: "policy"
+          KUBEDB_VERSION: "v2024.4.27"
+        run: |
+          echo "databases=${DATABASES:-all}" >> $GITHUB_OUTPUT
+          echo "kubedb=${KUBEDB_VERSION:-v2024.4.27}" >> $GITHUB_OUTPUT
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: config
+    strategy:
+      fail-fast: false
+      matrix:
+        k8s: [v1.27.3]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ci
+
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          detached: true
+
+      - name: Set up Go 1.22
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.22'
+        id: go
+
+      - name: Install Homebrew
+        run: |
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+      - uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Prepare host
+        run: |
+          brew instal gh kubectl helm kind
+
+      - name: Prepare git
+        env:
+          GITHUB_USER: 1gtm
+          GITHUB_TOKEN: ${{ secrets.LGTM_GITHUB_TOKEN }}
+        run: |
+          set -x
+          git config --global user.name "1gtm"
+          git config --global user.email "1gtm@appscode.com"
+          git config --global \
+            url."https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com".insteadOf \
+            "https://github.com"
+
+      - name: Create Kubernetes ${{ matrix.k8s }} cluster
+        id: kind
+        uses: engineerd/setup-kind@v0.5.0
+        with:
+          version: v0.20.0
+          config: hack/kubernetes/kind.yaml
+          image: kindest/node:${{ matrix.k8s }}
+
+      - name: Prepare cluster for testing
+        id: local-path
+        run: |
+          echo "waiting for nodes to be ready ..."
+          kubectl wait --for=condition=Ready nodes --all --timeout=5m
+          kubectl get nodes
+          kubectl wait --for=condition=Ready pods -n kube-system --all --timeout=10m
+          kubectl get pods -n kube-system
+
+      - name: Install cert-manager
+        run: |
+          kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.11.0/cert-manager.yaml
+
+      - name: Issue License
+        env:
+          BYTEBUILDERS_LICENSE_TOKEN: ${{ secrets.BYTEBUILDERS_LICENSE_TOKEN }}
+        run: |
+          export KUBECONFIG="${HOME}/.kube/config"
+          CLUSTER_UID=$(kubectl get ns kube-system -o=jsonpath='{.metadata.uid}')
+          curl -X POST -o /tmp/license.txt -d "name=1gtm&email=1gtm@appscode.com&product=kubedb-enterprise&cluster=${CLUSTER_UID}&tos=true&token=${BYTEBUILDERS_LICENSE_TOKEN}" https://license-issuer.appscode.com/issue-license
+
+      - name: Install KubeDB
+        env:
+          LICENSE_FILE: /tmp/license.txt
+        run: |
+          helm install kubedb oci://ghcr.io/appscode-charts/kubedb \
+            --version ${{ needs.config.outputs.kubedb }} \
+            --namespace kubedb --create-namespace \
+            --set-file global.license=${LICENSE_FILE} \
+            --set global.featureGates.Druid=true \
+            --set global.featureGates.FerretDB=true \
+            --set global.featureGates.Memcached=true \
+            --set global.featureGates.MSSQLServer=true \
+            --set global.featureGates.PerconaXtraDB=true \
+            --set global.featureGates.PgBouncer=true \
+            --set global.featureGates.Pgpool=true \
+            --set global.featureGates.ProxySQL=true \
+            --set global.featureGates.RabbitMQ=true \
+            --set global.featureGates.Singlestore=true \
+            --set global.featureGates.Solr=true \
+            --set global.featureGates.ZooKeeper=true \
+            --wait --burst-limit=10000 --debug
+
+      - name: Install KubeDB CLI
+        run: |
+          cd ..
+          git clone https://github.com/kubedb/cli.git
+          cd cli
+          git checkout check
+          go install ./...
+
+      - name: Install Prometheus
+        run: |
+          helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+          helm repo update
+          helm install prometheus prometheus-community/kube-prometheus-stack -n monitoring --create-namespace --wait --burst-limit=10000
+
+      - name: Install Panopticon
+        run: |
+          helm repo add appscode https://charts.appscode.com/stable/
+          helm repo update
+          helm install panopticon appscode/panopticon \
+          -n kubeops --create-namespace \
+          --set monitoring.agent=prometheus.io/operator \
+          --set monitoring.serviceMonitor.labels.release=prometheus \
+          --set-file license=/tmp/license.txt \
+          --wait --burst-limit=10000
+          sleep 5s
+          kubectl wait --for=condition=ready pod -l "app.kubernetes.io/name=panopticon,app.kubernetes.io/instance=panopticon" -n kubeops --timeout=10m
+
+#      - name: Install Falco UI Server
+#        run: |
+#          helm repo add appscode https://charts.appscode.com/stable/
+#          helm repo update
+#          helm upgrade -i falco-ui-server appscode/falco-ui-server -n kubeops --create-namespace --version=v2024.2.5
+
+      - name: Apply MetricsConfigurations
+        run: |
+          helm repo add appscode https://charts.appscode.com/stable/
+          helm repo update
+          helm upgrade -i kubedb-metrics appscode/kubedb-metrics -n kubedb --create-namespace --version=${{ needs.config.outputs.kubedb }} --wait --burst-limit=10000 --debug
+
+      - name: Prepare smaples
+        run: |
+          cd ..
+          git clone https://github.com/kubedb/samples.git
+          cd samples
+          git checkout old-dbs
+
+      - name: Check Dashboard Metrics
+        env:
+          SINGLESTORE_LICENSE_USERNAME: ${{ secrets.SINGLESTORE_LICENSE_USERNAME }}
+          SINGLESTORE_LICENSE_PASSWORD: ${{ secrets.SINGLESTORE_LICENSE_PASSWORD }}
+          DATABASES: ${{ needs.config.outputs.dbs }}
+        run: |
+          echo "SINGLESTORE_LICENSE_USERNAME=$(echo $SINGLESTORE_LICENSE_USERNAME)" >> ./hack/scripts/.env
+          echo "SINGLESTORE_LICENSE_PASSWORD=$(echo $SINGLESTORE_LICENSE_PASSWORD)" >> ./hack/scripts/.env
+          echo "DATABASES=$(echo $DATABASES)" >> ./hack/scripts/.env
+          bash hack/scripts/check-dashboard.sh
