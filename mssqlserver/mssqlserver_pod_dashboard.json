@@ -1973,13 +1973,13 @@
       }
     ]
   },
-  "time": {
+  "time": 
     "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "KubeDB / Microsoft SQL Server / Pod",
+  "title": "KubeDB / MSSQLServer / Pod",
   "uid": "9J6ObCEMz",
   "version": 8
 }
