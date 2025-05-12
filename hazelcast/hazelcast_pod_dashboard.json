@@ -16,11 +16,11 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 31,
-  "iteration": 1746780978407,
+  "iteration": 1747052695746,
   "links": [],
   "panels": [
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -85,7 +85,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
@@ -175,6 +175,626 @@
       }
     },
     {
+      "datasource": "${datasource}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 10,
+        "x": 14,
+        "y": 0
+      },
+      "id": 6,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "com_hazelcast_Metrics_usedHeap{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\",pod=~\"$pod\"}",
+          "interval": "",
+          "legendFormat": "{{pod}}",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "com_hazelcast_Metrics_maxHeap{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\",pod=~\"$pod\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Max",
+          "refId": "B"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Heap used",
+      "type": "gauge"
+    },
+    {
+      "datasource": "${datasource}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 7,
+        "x": 0,
+        "y": 6
+      },
+      "id": 8,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "(com_hazelcast_Metrics_totalPhysicalMemorySize{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\",pod=~\"$pod\"}-com_hazelcast_Metrics_freePhysicalMemorySize{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\",pod=~\"$pod\"})",
+          "interval": "",
+          "legendFormat": "{{pod}}",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "com_hazelcast_Metrics_totalPhysicalMemorySize{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\",pod=~\"$pod\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Max",
+          "refId": "B"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Physical Usage",
+      "type": "gauge"
+    },
+    {
+      "datasource": "${datasource}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 7,
+        "x": 7,
+        "y": 6
+      },
+      "id": 10,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(com_hazelcast_Metrics_totalPhysicalMemorySize{namespace=\"$namespace\", service=\"hazelcast-sample-stats\", pod=~\"$pod\"}) by (pod) - sum(com_hazelcast_Metrics_freePhysicalMemorySize{namespace=\"$namespace\", service=\"hazelcast-sample-stats\", pod=~\"$pod\"}) by (pod) - sum(com_hazelcast_Metrics_committedHeap{namespace=\"$namespace\", service=\"hazelcast-sample-stats\", pod=~\"$pod\"}) by (pod)",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{pod}}",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(com_hazelcast_Metrics_totalPhysicalMemorySize{namespace=\"$namespace\", service=\"hazelcast-sample-stats\", pod=~\"$pod\"}) by (pod) - sum(com_hazelcast_Metrics_maxHeap{namespace=\"$namespace\", service=\"hazelcast-sample-stats\", pod=~\"$pod\"}) by (pod)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Max",
+          "refId": "B"
+        }
+      ],
+      "title": "Non-Heap used",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "graph": false,
+              "legend": false,
+              "tooltip": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 10,
+        "x": 14,
+        "y": 6
+      },
+      "id": 12,
+      "options": {
+        "graph": {},
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltipOptions": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "com_hazelcast_Metrics_freePhysicalMemorySize{namespace=\"$namespace\", service=\"hazelcast-sample-stats\", pod=~\"$pod\"} / 1024",
+          "interval": "",
+          "legendFormat": "{{pod}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Free Physical Memory",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 7,
+        "x": 0,
+        "y": 11
+      },
+      "id": 14,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "( sum(com_hazelcast_Metrics_totalPhysicalMemorySize{namespace=\"$namespace\", service=\"hazelcast-sample-stats\", pod=~\"$pod\"}) by (pod) - sum(com_hazelcast_Metrics_freePhysicalMemorySize{namespace=\"$namespace\", service=\"hazelcast-sample-stats\", pod=~\"$pod\"}) by (pod) - sum(com_hazelcast_Metrics_committedHeap{namespace=\"$namespace\", service=\"hazelcast-sample-stats\", pod=~\"$pod\"}) by (pod) )",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{pod}}",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "min( sum(com_hazelcast_Metrics_totalPhysicalMemorySize{namespace=\"$namespace\", service=\"hazelcast-sample-stats\", pod=~\"$pod\"}) by (pod) - sum(com_hazelcast_Metrics_maxHeap{namespace=\"$namespace\", service=\"hazelcast-sample-stats\", pod=~\"$pod\"}) by (pod) )",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Limit",
+          "refId": "B"
+        }
+      ],
+      "title": "Non-heap Usage",
+      "type": "gauge"
+    },
+    {
+      "datasource": "${datasource}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "graph": false,
+              "legend": false,
+              "tooltip": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 17,
+        "x": 7,
+        "y": 11
+      },
+      "id": 16,
+      "options": {
+        "graph": {},
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltipOptions": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "com_hazelcast_Metrics_ownedEntryMemoryCost{namespace=\"$namespace\", pod=~\"$pod\", service=\"hazelcast-sample-stats\",tag0=~'$map'}",
+          "interval": "",
+          "legendFormat": "owned-entry-{{pod}}-{{tag0}}",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "com_hazelcast_Metrics_backupEntryMemoryCost{namespace=\"$namespace\", pod=~\"$pod\", service=\"hazelcast-sample-stats\",tag0=~'$map'}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "backup-entry-{{pod}}-{{tag0}}",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "com_hazelcast_Metrics_heapCost{namespace=\"$namespace\", pod=~\"$pod\", service=\"hazelcast-sample-stats\",tag0=~'$map'}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "heap-cost-{{pod}}-{{tag0}}",
+          "refId": "C"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Memory Usage",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "graph": false,
+              "legend": false,
+              "tooltip": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 17
+      },
+      "id": 20,
+      "options": {
+        "graph": {},
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltipOptions": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "com_hazelcast_Metrics_evictionCount{namespace=\"$namespace\", pod=~\"$pod\", service=\"hazelcast-sample-stats\", tag0=~'$map'}",
+          "interval": "",
+          "legendFormat": "Owned entries: {{tag0}} - {{pod}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Eviction Count",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "graph": false,
+              "legend": false,
+              "tooltip": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 11,
+        "x": 12,
+        "y": 17
+      },
+      "id": 18,
+      "options": {
+        "graph": {},
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltipOptions": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "com_hazelcast_Metrics_ownedEntryCount{namespace=\"$namespace\", pod=~\"$pod\", service=\"hazelcast-sample-stats\", tag0=~'$map'}",
+          "interval": "",
+          "legendFormat": "Owned entries: {{tag0}} - {{pod}}",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "com_hazelcast_Metrics_backupEntryCount{namespace=\"$namespace\", pod=~\"$pod\", service=\"hazelcast-sample-stats\", tag0=~'$map'}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "ackup entries: {{tag0}} - {{pod}}",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "com_hazelcast_Metrics_lockedEntryCount{namespace=\"$namespace\", pod=~\"$pod\", service=\"hazelcast-sample-stats\", tag0=~'$map'}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Locked entries: {{tag0}} - {{pod}}",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "com_hazelcast_Metrics_dirtyEntryCount{namespace=\"$namespace\", pod=~\"$pod\", service=\"hazelcast-sample-stats\", tag0=~'$map'}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Dirty entries: {{tag0}} - {{pod}}",
+          "refId": "D"
+        }
+      ],
+      "title": "Entry Count",
+      "type": "timeseries"
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -187,13 +807,13 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 6,
-        "w": 10,
-        "x": 14,
-        "y": 0
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 25
       },
       "hiddenSeries": false,
-      "id": 6,
+      "id": 24,
       "legend": {
         "avg": false,
         "current": false,
@@ -221,17 +841,415 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "com_hazelcast_Metrics_usedHeap{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\",pod=~\"$pod\"}/(com_hazelcast_Metrics_usedHeap{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\",pod=~\"$pod\"}+com_hazelcast_Metrics_freeHeap{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\",pod=~\"$pod\"})*100",
+          "expr": "increase(com_hazelcast_Metrics_putCount{namespace=\"$namespace\", pod=~\"$pod\", service=\"hazelcast-sample-stats\", tag0=~'$map'}[1m])",
           "interval": "",
-          "legendFormat": "{{pod}}",
+          "legendFormat": "{{tag0}} - {{pod}}",
           "refId": "A"
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
-      "title": "Heap usage",
+      "title": "Put Rate Per Minute",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "graph": false,
+              "legend": false,
+              "tooltip": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 25
+      },
+      "id": 22,
+      "options": {
+        "graph": {},
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltipOptions": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "increase(com_hazelcast_Metrics_getCount{namespace=\"$namespace\", pod=~\"$pod\", service=\"hazelcast-sample-stats\", tag0=~'$map'}[1m])",
+          "interval": "",
+          "legendFormat": "{{tag0}} - {{pod}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Get Rate Per Minute",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "graph": false,
+              "legend": false,
+              "tooltip": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 33
+      },
+      "id": 28,
+      "options": {
+        "graph": {},
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltipOptions": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "com_hazelcast_Metrics_totalGetLatency{namespace=\"$namespace\", pod=~\"$pod\", service=\"hazelcast-sample-stats\", tag0=~'$map'} / ignoring(unit) com_hazelcast_Metrics_getCount{namespace=\"$namespace\", pod=~\"$pod\", service=\"hazelcast-sample-stats\", tag0=~'$map'}",
+          "interval": "",
+          "legendFormat": "{{pod}} - {{tag0}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Average get times",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "graph": false,
+              "legend": false,
+              "tooltip": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 33
+      },
+      "id": 26,
+      "options": {
+        "graph": {},
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltipOptions": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "increase(com_hazelcast_Metrics_removeCount{namespace=\"$namespace\", pod=~\"$pod\", service=\"hazelcast-sample-stats\", tag0=~'$map'}[1m])",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Remove Rate Per Minute",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "graph": false,
+              "legend": false,
+              "tooltip": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 41
+      },
+      "id": 30,
+      "options": {
+        "graph": {},
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltipOptions": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "com_hazelcast_Metrics_totalPutLatency{namespace=\"$namespace\", pod=~\"$pod\", service=\"hazelcast-sample-stats\", tag0=~'$map'} / ignoring(unit) com_hazelcast_Metrics_putCount{namespace=\"$namespace\", pod=~\"$pod\", service=\"hazelcast-sample-stats\", tag0=~'$map'}",
+          "interval": "",
+          "legendFormat": "{{pod}} - {{tag0}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Average put times",
+      "type": "timeseries"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 41
+      },
+      "hiddenSeries": false,
+      "id": 32,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "com_hazelcast_Metrics_totalRemoveLatency{namespace=\"$namespace\", pod=~\"$pod\", service=\"hazelcast-sample-stats\", tag0=~'$map'} / ignoring(unit) com_hazelcast_Metrics_removeCount{namespace=\"$namespace\", pod=~\"$pod\", service=\"hazelcast-sample-stats\", tag0=~'$map'}",
+          "interval": "",
+          "legendFormat": "{{pod}} - {{tag0}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "Average Remove time",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -286,9 +1304,10 @@
         "includeAll": false,
         "label": null,
         "multi": false,
-        "name": "prometheus",
+        "name": "datasource",
         "options": [],
         "query": "prometheus",
+        "queryValue": "",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -365,8 +1384,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "hazelcast-sample-0",
-          "value": "hazelcast-sample-0"
+          "text": "hazelcast-sample-1",
+          "value": "hazelcast-sample-1"
         },
         "datasource": "${prometheus}",
         "definition": "label_values(com_hazelcast_Metrics_activeMembers{namespace=\"$namespace\",service=\"hazelcast-sample-stats\"},pod)",
@@ -379,12 +1398,12 @@
         "name": "pod",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "hazelcast-sample-0",
             "value": "hazelcast-sample-0"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "hazelcast-sample-1",
             "value": "hazelcast-sample-1"
           },
@@ -407,6 +1426,48 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "\"name=__sql.catalog\"",
+          "value": "\"name=__sql.catalog\""
+        },
+        "datasource": null,
+        "definition": "label_values(com_hazelcast_Metrics_ownedEntryCount{namespace=\"$namespace\"},tag0)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "map",
+        "options": [
+          {
+            "selected": false,
+            "text": "\"name=kubedb-system\"",
+            "value": "\"name=kubedb-system\""
+          },
+          {
+            "selected": true,
+            "text": "\"name=__sql.catalog\"",
+            "value": "\"name=__sql.catalog\""
+          }
+        ],
+        "query": {
+          "query": "label_values(com_hazelcast_Metrics_ownedEntryCount{namespace=\"$namespace\"},tag0)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       }
     ]
   },
@@ -418,5 +1479,5 @@
   "timezone": "",
   "title": "Hazelcast-Pod",
   "uid": "hFvlarxHz",
-  "version": 8
+  "version": 16
 }
