@@ -15,10 +15,24 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 30,
-  "iteration": 1746707673312,
+  "id": null,
+  "iteration": 1747983413298,
   "links": [],
   "panels": [
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 38,
+      "panels": [],
+      "title": "Hazelcast Server",
+      "type": "row"
+    },
     {
       "datasource": "${datasource}",
       "description": "Total number of active members",
@@ -49,7 +63,7 @@
         "h": 6,
         "w": 3,
         "x": 0,
-        "y": 0
+        "y": 1
       },
       "id": 2,
       "options": {
@@ -71,7 +85,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "count(com_hazelcast_Metrics_activeMembers{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"})",
+          "expr": "count(com_hazelcast_Metrics_activeMembers{namespace=~\"$namespace\",service=~\"$app-stats\"})",
           "interval": "",
           "legendFormat": "Member Count",
           "refId": "A"
@@ -111,7 +125,7 @@
         "h": 6,
         "w": 3,
         "x": 3,
-        "y": 0
+        "y": 1
       },
       "id": 4,
       "options": {
@@ -133,7 +147,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "max(com_hazelcast_Metrics_uptime{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"})/(1000*60)",
+          "expr": "max(com_hazelcast_Metrics_uptime{namespace=~\"$namespace\",service=~\"$app-stats\"})/(1000*60)",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -171,7 +185,7 @@
         "h": 6,
         "w": 3,
         "x": 6,
-        "y": 0
+        "y": 1
       },
       "id": 6,
       "options": {
@@ -193,7 +207,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "count(com_hazelcast_Metrics_clientCount{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"})",
+          "expr": "count(com_hazelcast_Metrics_clientCount{namespace=~\"$namespace\",service=\"$app-stats\"})",
           "interval": "",
           "legendFormat": "Client Count",
           "refId": "A"
@@ -231,7 +245,7 @@
         "h": 6,
         "w": 15,
         "x": 9,
-        "y": 0
+        "y": 1
       },
       "id": 8,
       "options": {
@@ -251,7 +265,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "com_hazelcast_Metrics_activePartitionCount{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"}",
+          "expr": "com_hazelcast_Metrics_activePartitionCount{namespace=~\"$namespace\",service=~\"$app-stats\"}",
           "interval": "",
           "legendFormat": "{{ pod }}",
           "refId": "A"
@@ -261,6 +275,20 @@
       "timeShift": null,
       "title": "Partition counts",
       "type": "bargauge"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 36,
+      "panels": [],
+      "title": "Hazelcast Memory Usage",
+      "type": "row"
     },
     {
       "aliasColors": {},
@@ -279,7 +307,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 6
+        "y": 8
       },
       "hiddenSeries": false,
       "id": 10,
@@ -310,7 +338,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "com_hazelcast_Metrics_systemLoadAverage{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"}\n",
+          "expr": "com_hazelcast_Metrics_systemLoadAverage{namespace=~\"$namespace\",service=~\"$app-stats\"}\n",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -386,7 +414,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 6
+        "y": 8
       },
       "id": 12,
       "options": {
@@ -405,7 +433,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "com_hazelcast_Metrics_usedHeap{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"}/(com_hazelcast_Metrics_usedHeap{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"}+com_hazelcast_Metrics_freeHeap{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"})*100",
+          "expr": "com_hazelcast_Metrics_usedHeap{namespace=~\"$namespace\",service=~\"$app-stats\"}/(com_hazelcast_Metrics_usedHeap{namespace=~\"$namespace\",service=~\"$app-stats\"}+com_hazelcast_Metrics_freeHeap{namespace=~\"$namespace\",service=~\"$app-stats\"})*100",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -430,7 +458,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 14
+        "y": 16
       },
       "hiddenSeries": false,
       "id": 14,
@@ -461,7 +489,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "com_hazelcast_Metrics_ownedEntryMemoryCost{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"}/1000\n",
+          "expr": "com_hazelcast_Metrics_ownedEntryMemoryCost{namespace=~\"$namespace\",service=~\"$app-stats\"}/1000\n",
           "interval": "",
           "legendFormat": "{{pod}} {{tag0}}",
           "refId": "A"
@@ -525,7 +553,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 14
+        "y": 16
       },
       "hiddenSeries": false,
       "id": 16,
@@ -556,7 +584,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "com_hazelcast_Metrics_backupEntryMemoryCost{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"}/1000\n",
+          "expr": "com_hazelcast_Metrics_backupEntryMemoryCost{namespace=~\"$namespace\",service=~\"$app-stats\"}/1000\n",
           "interval": "",
           "legendFormat": "{{pod}} {{tag0}}",
           "refId": "A"
@@ -620,7 +648,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 22
+        "y": 24
       },
       "hiddenSeries": false,
       "id": 18,
@@ -651,7 +679,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "com_hazelcast_Metrics_heapCost{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"}/1000",
+          "expr": "com_hazelcast_Metrics_heapCost{namespace=~\"$namespace\",service=~\"$app-stats\"}/1000",
           "interval": "",
           "legendFormat": "{{pod}} {{tag0}}",
           "refId": "A"
@@ -699,6 +727,20 @@
       }
     },
     {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 31
+      },
+      "id": 40,
+      "panels": [],
+      "title": "Hazelcast Operation Latency ",
+      "type": "row"
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -716,7 +758,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 29
+        "y": 32
       },
       "hiddenSeries": false,
       "id": 20,
@@ -747,7 +789,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "com_hazelcast_Metrics_totalGetLatency{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"}",
+          "expr": "com_hazelcast_Metrics_totalGetLatency{namespace=~\"$namespace\",service=~\"$app-stats\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "GetLatency {{pod}} {{tag0}}",
@@ -755,7 +797,7 @@
         },
         {
           "exemplar": true,
-          "expr": "com_hazelcast_Metrics_getCount{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"}",
+          "expr": "com_hazelcast_Metrics_getCount{namespace=~\"$namespace\",service=~\"$app-stats\"}",
           "hide": false,
           "instant": false,
           "interval": "",
@@ -821,7 +863,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 29
+        "y": 32
       },
       "hiddenSeries": false,
       "id": 22,
@@ -852,14 +894,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "com_hazelcast_Metrics_totalPutLatency{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"}",
+          "expr": "com_hazelcast_Metrics_totalPutLatency{namespace=~\"$namespace\",service=~\"$app-stats\"}",
           "interval": "",
           "legendFormat": "Put Latency {{pod}} {{tag0}}",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "com_hazelcast_Metrics_putCount{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"}\n",
+          "expr": "com_hazelcast_Metrics_putCount{namespace=~\"$namespace\",service=~\"$app-stats\"}\n",
           "hide": false,
           "interval": "",
           "legendFormat": "Put Count {{pod}} {{tag0}}",
@@ -923,7 +965,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 37
+        "y": 40
       },
       "hiddenSeries": false,
       "id": 24,
@@ -954,14 +996,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "com_hazelcast_Metrics_totalSetLatency{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"}\n",
+          "expr": "com_hazelcast_Metrics_totalSetLatency{namespace=~\"$namespace\",service=~\"$app-stats\"}\n",
           "interval": "",
           "legendFormat": "setLatency {{pod}} {{tag0}}",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "com_hazelcast_Metrics_setCount{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"}\n",
+          "expr": "com_hazelcast_Metrics_setCount{namespace=~\"$namespace\",service=~\"$app-stats\"}\n",
           "hide": false,
           "interval": "",
           "legendFormat": "setCount {{pod}} {{tag0}}",
@@ -1026,7 +1068,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 37
+        "y": 40
       },
       "hiddenSeries": false,
       "id": 26,
@@ -1057,14 +1099,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "com_hazelcast_Metrics_totalRemoveLatency{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"}",
+          "expr": "com_hazelcast_Metrics_totalRemoveLatency{namespace=~\"$namespace\",service=~\"$app-stats\"}",
           "interval": "",
           "legendFormat": "RemoveLatency {{pod}} {{tag0}}",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "com_hazelcast_Metrics_removeCount{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"}",
+          "expr": "com_hazelcast_Metrics_removeCount{namespace=~\"$namespace\",service=~\"$app-stats\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "RemoveCount {{pod}} {{tag0}}",
@@ -1129,7 +1171,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 45
+        "y": 48
       },
       "hiddenSeries": false,
       "id": 28,
@@ -1160,7 +1202,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "com_hazelcast_Metrics_entryCount{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"}",
+          "expr": "com_hazelcast_Metrics_entryCount{namespace=~\"$namespace\",service=~\"$app-stats\"}",
           "interval": "",
           "legendFormat": "{{pod}} {{tag0}}",
           "refId": "A"
@@ -1224,7 +1266,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 45
+        "y": 48
       },
       "hiddenSeries": false,
       "id": 30,
@@ -1255,7 +1297,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "com_hazelcast_Metrics_backupEntryCount{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"}",
+          "expr": "com_hazelcast_Metrics_backupEntryCount{namespace=~\"$namespace\",service=~\"$app-stats\"}",
           "interval": "",
           "legendFormat": "{{pod}} {{tag0}}",
           "refId": "A"
@@ -1319,7 +1361,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 53
+        "y": 56
       },
       "hiddenSeries": false,
       "id": 32,
@@ -1350,7 +1392,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "com_hazelcast_Metrics_lockedEntryCount{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"}\n",
+          "expr": "com_hazelcast_Metrics_lockedEntryCount{namespace=~\"$namespace\",service=~\"$app-stats\"}\n",
           "interval": "",
           "legendFormat": "{{pod}} {{tag0}}",
           "refId": "A"
@@ -1414,7 +1456,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 53
+        "y": 56
       },
       "hiddenSeries": false,
       "id": 34,
@@ -1445,7 +1487,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "com_hazelcast_Metrics_dirtyEntryCount{namespace=~\"$namespace\",service=\"hazelcast-sample-stats\"}\n",
+          "expr": "com_hazelcast_Metrics_dirtyEntryCount{namespace=~\"$namespace\",service=~\"$app-stats\"}\n",
           "interval": "",
           "legendFormat": "{{pod}} {{tag0}}",
           "refId": "A"
@@ -1495,7 +1537,11 @@
   ],
   "schemaVersion": 27,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "kubedb",
+    "database",
+    "stats"
+  ],
   "templating": {
     "list": [
       {
@@ -1525,7 +1571,7 @@
           "text": "default",
           "value": "default"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(kube_namespace_created,namespace)",
         "description": null,
         "error": null,
@@ -1584,16 +1630,53 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "hazelcast-sample",
+          "value": "hazelcast-sample"
+        },
+        "datasource": "${datasource}",
+        "definition": "label_values(kubedb_com_hazelcast_status_phase{namespace=~\"$namespace\"},app)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "app",
+        "multi": false,
+        "name": "app",
+        "options": [
+          {
+            "selected": true,
+            "text": "hazelcast-sample",
+            "value": "hazelcast-sample"
+          }
+        ],
+        "query": {
+          "query": "label_values(kubedb_com_hazelcast_status_phase{namespace=~\"$namespace\"},app)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       }
     ]
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Hazelcast-Database",
   "uid": "LrqJZlxHz",
-  "version": 16
+  "version": 1
 }
