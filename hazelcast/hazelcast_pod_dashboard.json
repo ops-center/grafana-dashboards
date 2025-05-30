@@ -15,8 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": null,
-  "iteration": 1747990453877,
+  "id": 30,
+  "iteration": 1748584442699,
   "links": [],
   "panels": [
     {
@@ -1300,11 +1300,11 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "default",
-          "value": "default"
+          "selected": true,
+          "text": "demo",
+          "value": "demo"
         },
-        "datasource": "${prometheus}",
+        "datasource": "${datasource}",
         "definition": "label_values(kube_namespace_created,namespace)",
         "description": null,
         "error": null,
@@ -1313,48 +1313,12 @@
         "label": null,
         "multi": false,
         "name": "namespace",
-        "options": [
-          {
-            "selected": false,
-            "text": "monitoring",
-            "value": "monitoring"
-          },
-          {
-            "selected": true,
-            "text": "default",
-            "value": "default"
-          },
-          {
-            "selected": false,
-            "text": "kube-node-lease",
-            "value": "kube-node-lease"
-          },
-          {
-            "selected": false,
-            "text": "kube-public",
-            "value": "kube-public"
-          },
-          {
-            "selected": false,
-            "text": "kube-system",
-            "value": "kube-system"
-          },
-          {
-            "selected": false,
-            "text": "kubedb",
-            "value": "kubedb"
-          },
-          {
-            "selected": false,
-            "text": "kubeops",
-            "value": "kubeops"
-          }
-        ],
+        "options": [],
         "query": {
           "query": "label_values(kube_namespace_created,namespace)",
           "refId": "StandardVariableQuery"
         },
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
@@ -1405,8 +1369,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "hazelcast-sample-0",
-          "value": "hazelcast-sample-0"
+          "text": "hazelcast-sample-1",
+          "value": "hazelcast-sample-1"
         },
         "datasource": "${datasource}",
         "definition": "label_values(com_hazelcast_Metrics_activeMembers{namespace=\"$namespace\",pod=~\"$app.+$\"},pod)",
@@ -1420,11 +1384,6 @@
         "options": [
           {
             "selected": true,
-            "text": "hazelcast-sample-0",
-            "value": "hazelcast-sample-0"
-          },
-          {
-            "selected": false,
             "text": "hazelcast-sample-1",
             "value": "hazelcast-sample-1"
           },
@@ -1432,6 +1391,11 @@
             "selected": false,
             "text": "hazelcast-sample-2",
             "value": "hazelcast-sample-2"
+          },
+          {
+            "selected": false,
+            "text": "hazelcast-sample-0",
+            "value": "hazelcast-sample-0"
           }
         ],
         "query": {
@@ -1451,9 +1415,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "text": "\"name=kubedb-system\"",
-          "value": "\"name=kubedb-system\""
+          "selected": false,
+          "text": "\"name=__sql.catalog\"",
+          "value": "\"name=__sql.catalog\""
         },
         "datasource": "${datasource}",
         "definition": "label_values(com_hazelcast_Metrics_ownedEntryCount{namespace=\"$namespace\",pod=~\"$app.+$\"},tag0)",
@@ -1466,12 +1430,12 @@
         "name": "map",
         "options": [
           {
-            "selected": false,
+            "selected": true,
             "text": "\"name=__sql.catalog\"",
             "value": "\"name=__sql.catalog\""
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "\"name=kubedb-system\"",
             "value": "\"name=kubedb-system\""
           }
@@ -1500,5 +1464,5 @@
   "timezone": "",
   "title": "KubeDB / Hazelcast / Pod",
   "uid": "hFvlarxHz",
-  "version": 3
+  "version": 2
 }

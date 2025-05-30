@@ -22,8 +22,8 @@
   "editable": true,
   "gnetId": 9628,
   "graphTooltip": 0,
-  "id": 32,
-  "iteration": 1747724156165,
+  "id": 31,
+  "iteration": 1748584324656,
   "links": [],
   "panels": [
     {
@@ -2576,7 +2576,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(kubelet_volume_stats_used_bytes / on(persistentvolumeclaim) group_left(pod) (kubelet_volume_stats_capacity_bytes + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\\\"$app-\\\\\\\\d+$\\\",namespace=~\\\"$namespace\\\"}) )* 100",
+          "expr": "(kubelet_volume_stats_used_bytes{service=\"prometheus-kube-prometheus-kubelet\"} / on(persistentvolumeclaim) group_left(pod) (kubelet_volume_stats_capacity_bytes{service=\"prometheus-kube-prometheus-kubelet\"} + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-\\\\d+$\",namespace=~\"$namespace\"}) )* 100",
           "instant": true,
           "interval": "",
           "legendFormat": "{{pod}}",
@@ -2943,9 +2943,9 @@
       {
         "allValue": "\".+\"",
         "current": {
-          "selected": false,
-          "text": "default",
-          "value": "default"
+          "selected": true,
+          "text": "demo",
+          "value": "demo"
         },
         "datasource": "${datasource}",
         "definition": "label_values(kube_namespace_created,namespace)",
@@ -3036,5 +3036,5 @@
   "timezone": "",
   "title": "KubeDB / Hazelcast / Summary",
   "uid": "92M7QvyVk",
-  "version": 9
+  "version": 2
 }

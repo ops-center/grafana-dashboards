@@ -15,8 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": null,
-  "iteration": 1747983413298,
+  "id": 29,
+  "iteration": 1748584625754,
   "links": [],
   "panels": [
     {
@@ -1559,6 +1559,7 @@
         "name": "datasource",
         "options": [],
         "query": "prometheus",
+        "queryValue": "",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1567,9 +1568,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "default",
-          "value": "default"
+          "selected": true,
+          "text": "demo",
+          "value": "demo"
         },
         "datasource": "${datasource}",
         "definition": "label_values(kube_namespace_created,namespace)",
@@ -1580,48 +1581,12 @@
         "label": null,
         "multi": false,
         "name": "namespace",
-        "options": [
-          {
-            "selected": true,
-            "text": "default",
-            "value": "default"
-          },
-          {
-            "selected": false,
-            "text": "kube-node-lease",
-            "value": "kube-node-lease"
-          },
-          {
-            "selected": false,
-            "text": "kube-public",
-            "value": "kube-public"
-          },
-          {
-            "selected": false,
-            "text": "kube-system",
-            "value": "kube-system"
-          },
-          {
-            "selected": false,
-            "text": "kubedb",
-            "value": "kubedb"
-          },
-          {
-            "selected": false,
-            "text": "kubeops",
-            "value": "kubeops"
-          },
-          {
-            "selected": false,
-            "text": "monitoring",
-            "value": "monitoring"
-          }
-        ],
+        "options": [],
         "query": {
           "query": "label_values(kube_namespace_created,namespace)",
           "refId": "StandardVariableQuery"
         },
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
@@ -1649,9 +1614,10 @@
         "name": "app",
         "options": [
           {
-            "selected": true,
-            "text": "hazelcast-sample",
-            "value": "hazelcast-sample"
+            "isNone": true,
+            "selected": false,
+            "text": "None",
+            "value": ""
           }
         ],
         "query": {
@@ -1676,7 +1642,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Hazelcast-Database",
+  "title": "KubeDb / Hazelcast / Database",
   "uid": "LrqJZlxHz",
-  "version": 1
+  "version": 3
 }
