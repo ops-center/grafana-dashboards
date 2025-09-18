@@ -1879,7 +1879,7 @@
   "schemaVersion": 27,
   "style": "dark",
   "tags": [
-    "galera",
+    "database",
     "clickhouse"
   ],
   "templating": {
