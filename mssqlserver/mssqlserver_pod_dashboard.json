@@ -16,7 +16,6 @@
   "editable": true,
   "gnetId": 13919,
   "graphTooltip": 0,
-  "id": 28,
   "iteration": 1724934136350,
   "links": [],
   "panels": [
@@ -1973,7 +1972,7 @@
       }
     ]
   },
-  "time": 
+  "time": {
     "from": "now-5m",
     "to": "now"
   },
