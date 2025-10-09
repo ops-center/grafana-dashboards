@@ -1,16 +1,16 @@
 # Grafana Dashboards
 
-There are three dashboards to monitor MariaDB Databases managed by KubeDB.
+There are three dashboards to monitor ClickHouse Databases managed by KubeDB.
 
-- KubeDB / MariaDB / Summary: Shows overall summary of a MariaDB instance.
-- KubeDB / MariaDB / Pod: Shows individual pod-level information.
-- KubeDB / MariaDB / Database: Shows MariaDB internal metrics for an instance.
+- KubeDB / ClickHouse / Summary: Shows overall summary of a ClickHouse instance.
+- KubeDB / ClickHouse / Pod: Shows individual pod-level information.
+- KubeDB / ClickHouse / Database: Shows ClickHouse internal metrics for an instance.
 
 Note: These dashboards are developed in **Grafana version 7.5.5**
 
 ### Dependencies
 
-MariaDB Dashboards are heavily dependent on:
+ClickHouse Dashboards are heavily dependent on:
 
 - [Prometheus Node Exporter](https://github.com/prometheus/node_exporter)
 - [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics)
@@ -21,7 +21,7 @@ MariaDB Dashboards are heavily dependent on:
 
 #### 1. Install Prometheus Stack
 
-Install Prometheus stack if you haven't done it already. You can use [kube-prometheus-stack](https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack) which installs the necessary components required for the MariaDB Grafana dashboards.
+Install Prometheus stack if you haven't done it already. You can use [kube-prometheus-stack](https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack) which installs the necessary components required for the ClickHouse Grafana dashboards.
 
 #### 2. Install Panopticon
 
@@ -42,15 +42,15 @@ helm upgrade -i panopticon oci://ghcr.io/appscode-charts/panopticon \
   --set-file license=/path/to/license-file.txt
 ```
 
-#### 3. Add monitoring configuration in KubeDB managed MariaDB spec
+#### 3. Add monitoring configuration in KubeDB managed ClickHouse spec
 
-To enable monitoring of a KubeDB MariaDB instance, you have to add monitoring configuration in the MariaDB CR spec like below:
+To enable monitoring of a KubeDB ClickHouse instance, you have to add monitoring configuration in the ClickHouse CR spec like below:
 
 ```
 apiVersion: kubedb.com/v1alpha2
-kind: MariaDB
+kind: ClickHouse
 metadata:
-  name: sample-mariadb
+  name: sample-clickhouse
   namespace: demo
 spec:
   ...
@@ -80,34 +80,30 @@ helm upgrade -i kubedb-metrics oci://ghcr.io/appscode-charts/kubedb-metrics \
 
 #### Import Grafana Dashboard
 
-Now, on your Grafana UI, import the json files of dashboards located in the `mariadb` folder of this repository.
+Now, on your Grafana UI, import the json files of dashboards located in the `clickhouse` folder of this repository.
 
 
 1. Select `Import` from the `Plus(+)` icon from the left bar of the Grafana UI
 
-![Import New Dashboard](/mariadb/images/import_dashboard_1.png)
+![Import New Dashboard](/clickhouse/images/import_dashboard_1.png)
 
 2. Upload the json file and hit load button:
 
-![Upload Dashboard JSON](/mariadb/images/import_dashboard_2.png)
+![Upload Dashboard JSON](/clickhouse/images/import_dashboard_2.png)
 
 
-If you followed the instruction properly, you should see the MariaDB Grafana dashboard in your Grafana UI.
+If you followed the instruction properly, you should see the ClickHouse Grafana dashboard in your Grafana UI.
 
 ### Samples
 
-####  KubeDB / MariaDB / Summary
+####  KubeDB / ClickHouse / Summary
 
-![KubeDB / MariaDB / Summary](/mariadb/images/kubedb-mariadb-summary.png)
+![KubeDB / ClickHouse / Summary](/clickhouse/images/clickhouse-summary.png)
 
-#### KubeDB / MariaDB / Database
+#### KubeDB / ClickHouse / Database
 
-![KubeDB / MariaDB / Database](/mariadb/images/kubedb-mariadb-database.png)
+![KubeDB / ClickHouse / Database](/clickhouse/images/clickhouse-database.png)
 
-#### KubeDB / MariaDB / Pod
+#### KubeDB / ClickHouse / Pod
 
-![KubeDB / MariaDB / Pod](/mariadb/images/kubedb-mariadb-pod.png)
-
-#### KubeDB / MariaDB / Galera-Cluster
-
-![KubeDB / MariaDB / Pod](/mariadb/images/kubedb-mariadb-galera.png)
+![KubeDB / ClickHouse / Pod](/clickhouse/images/clickhouse-pod.png)
