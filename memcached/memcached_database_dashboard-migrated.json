@@ -1,0 +1,543 @@
+{
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "AQxf3X-mk",
+    "createdAt": "0001-01-01T00:00:00Z",
+    "updatedAt": "0001-01-01T00:00:00Z",
+    "version": 0,
+    "project": "pp"
+  },
+  "spec": {
+    "display": {
+      "name": "Memcached Overview"
+    },
+    "variables": [
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "hidden": false
+          },
+          "defaultValue": "Prometheus",
+          "allowAllValue": false,
+          "allowMultiple": false,
+          "plugin": {
+            "kind": "DatasourceVariable",
+            "spec": {
+              "datasourcePluginKind": "PrometheusDatasource"
+            }
+          },
+          "name": "datasource"
+        }
+      },
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "hidden": false
+          },
+          "defaultValue": "coreos-prom-memcd-stats",
+          "allowAllValue": false,
+          "allowMultiple": false,
+          "sort": "none",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "job",
+              "matchers": [
+                "memcached_up"
+              ]
+            }
+          },
+          "name": "job"
+        }
+      }
+    ],
+    "panels": {
+      "0_0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Instance State"
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "**Migration from Grafana not supported !**"
+            }
+          }
+        }
+      },
+      "0_1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Up Time"
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "**Migration from Grafana not supported !**"
+            }
+          }
+        }
+      },
+      "0_2": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Connections"
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "**Migration from Grafana not supported !**"
+            }
+          }
+        }
+      },
+      "0_3": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "QPS"
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "**Migration from Grafana not supported !**"
+            }
+          }
+        }
+      },
+      "0_4": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Memory Usage Ratio"
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "**Migration from Grafana not supported !**"
+            }
+          }
+        }
+      },
+      "0_5": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Items"
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "**Migration from Grafana not supported !**"
+            }
+          }
+        }
+      },
+      "1_0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "QPS"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "15s",
+                    "query": "sum(delta(memcached_commands_total{job=\"coreos-prom-memcd-stats\"}[15m]))/15",
+                    "seriesNameFormat": "QPS"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Connections"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "1m",
+                    "query": "memcached_current_connections{job=\"$job\"}",
+                    "seriesNameFormat": "Connections"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_2": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Read/Write"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "1m",
+                    "query": "delta(memcached_read_bytes_total{job=\"$job\"}[1m])",
+                    "seriesNameFormat": "read"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "1m",
+                    "query": "delta(memcached_written_bytes_total{job=\"$job\"}[1m])",
+                    "seriesNameFormat": "write"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Hit Ratio"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "1m",
+                    "query": "sum (delta(memcached_commands_total{job=\"$job\", status=\"hit\"}[1m]))  / sum (delta(memcached_commands_total{job=\"$job\"}[1m])) * 100",
+                    "seriesNameFormat": "Hit Ratio"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Hit Ratio Per Command"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "1m",
+                    "query": "sum (delta(memcached_commands_total{job=\"$job\", status=\"hit\",command=\"get\"}[1m]))  / sum (delta(memcached_commands_total{job=\"$job\",command=\"get\"}[1m])) * 100",
+                    "seriesNameFormat": "get"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "1m",
+                    "query": "sum (delta(memcached_commands_total{job=\"$job\", status=\"hit\",command=\"delete\"}[1m]))  / sum (delta(memcached_commands_total{job=\"$job\",command=\"delete\"}[1m])) * 100",
+                    "seriesNameFormat": "delete"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_2": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Command Total"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "1m",
+                    "query": "sum(delta(memcached_commands_total{job=\"$job\"}[1m])) by (command)",
+                    "seriesNameFormat": "{{ command }}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "3_0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "reclaimed / evicted"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "1m",
+                    "query": "delta(memcached_items_reclaimed_total{job=\"$job\"}[1m])",
+                    "seriesNameFormat": "reclaimed"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "1m",
+                    "query": "delta(memcached_items_evicted_total{job=\"$job\"}[1m])",
+                    "seriesNameFormat": "evicted"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "layouts": [
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "State",
+            "collapse": {
+              "open": true
+            }
+          },
+          "items": [
+            {
+              "x": 0,
+              "y": 1,
+              "width": 4,
+              "height": 5,
+              "content": {
+                "$ref": "#/spec/panels/0_0"
+              }
+            },
+            {
+              "x": 4,
+              "y": 1,
+              "width": 4,
+              "height": 5,
+              "content": {
+                "$ref": "#/spec/panels/0_1"
+              }
+            },
+            {
+              "x": 8,
+              "y": 1,
+              "width": 4,
+              "height": 5,
+              "content": {
+                "$ref": "#/spec/panels/0_2"
+              }
+            },
+            {
+              "x": 12,
+              "y": 1,
+              "width": 4,
+              "height": 5,
+              "content": {
+                "$ref": "#/spec/panels/0_3"
+              }
+            },
+            {
+              "x": 16,
+              "y": 1,
+              "width": 4,
+              "height": 5,
+              "content": {
+                "$ref": "#/spec/panels/0_4"
+              }
+            },
+            {
+              "x": 20,
+              "y": 1,
+              "width": 4,
+              "height": 5,
+              "content": {
+                "$ref": "#/spec/panels/0_5"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Network",
+            "collapse": {
+              "open": true
+            }
+          },
+          "items": [
+            {
+              "x": 0,
+              "y": 7,
+              "width": 12,
+              "height": 9,
+              "content": {
+                "$ref": "#/spec/panels/1_0"
+              }
+            },
+            {
+              "x": 12,
+              "y": 7,
+              "width": 12,
+              "height": 9,
+              "content": {
+                "$ref": "#/spec/panels/1_1"
+              }
+            },
+            {
+              "x": 0,
+              "y": 16,
+              "width": 12,
+              "height": 9,
+              "content": {
+                "$ref": "#/spec/panels/1_2"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Command",
+            "collapse": {
+              "open": false
+            }
+          },
+          "items": [
+            {
+              "x": 0,
+              "y": 8,
+              "width": 12,
+              "height": 9,
+              "content": {
+                "$ref": "#/spec/panels/2_0"
+              }
+            },
+            {
+              "x": 12,
+              "y": 8,
+              "width": 12,
+              "height": 9,
+              "content": {
+                "$ref": "#/spec/panels/2_1"
+              }
+            },
+            {
+              "x": 0,
+              "y": 17,
+              "width": 12,
+              "height": 9,
+              "content": {
+                "$ref": "#/spec/panels/2_2"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Items",
+            "collapse": {
+              "open": false
+            }
+          },
+          "items": [
+            {
+              "x": 0,
+              "y": 9,
+              "width": 12,
+              "height": 9,
+              "content": {
+                "$ref": "#/spec/panels/3_0"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "duration": "1h"
+  }
+}

@@ -1,0 +1,904 @@
+{
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "i_yH4_xSk",
+    "createdAt": "0001-01-01T00:00:00Z",
+    "updatedAt": "0001-01-01T00:00:00Z",
+    "version": 0,
+    "project": "pp"
+  },
+  "spec": {
+    "display": {
+      "name": "KubeDB / Druid / Database"
+    },
+    "variables": [
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "hidden": false
+          },
+          "defaultValue": "Prometheus",
+          "allowAllValue": false,
+          "allowMultiple": false,
+          "plugin": {
+            "kind": "DatasourceVariable",
+            "spec": {
+              "datasourcePluginKind": "PrometheusDatasource"
+            }
+          },
+          "name": "datasource"
+        }
+      },
+      {
+        "kind": "TextVariable",
+        "spec": {
+          "display": {
+            "hidden": false
+          },
+          "value": "druid",
+          "constant": true,
+          "name": "namespace"
+        }
+      },
+      {
+        "kind": "TextVariable",
+        "spec": {
+          "display": {
+            "hidden": false
+          },
+          "value": "druid-sample",
+          "constant": true,
+          "name": "app"
+        }
+      }
+    ],
+    "panels": {
+      "0_0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Druid Status",
+            "description": "Metric indicating the druid service is up."
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "mean",
+              "mappings": [
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "Down"
+                    },
+                    "value": "0"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "UP"
+                    },
+                    "value": "1"
+                  }
+                }
+              ],
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#73bf69",
+                    "value": 0
+                  },
+                  {
+                    "color": "#f2495c",
+                    "value": 0
+                  },
+                  {
+                    "color": "#37872d",
+                    "value": 1
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "min(druid_service_heartbeat{service=\"$app-stats\", namespace=\"$namespace\"})",
+                    "seriesNameFormat": "{{pod}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "0_1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "ZooKeeper Connection",
+            "description": "Indicator of connection status. 1 for connected, 0 for disconnected. Emitted once per monitor period."
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "mean",
+              "mappings": [
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "Disconnected"
+                    },
+                    "value": "0"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "Connected"
+                    },
+                    "value": "1"
+                  }
+                }
+              ],
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#73bf69",
+                    "value": 0
+                  },
+                  {
+                    "color": "#f2495c",
+                    "value": 0
+                  },
+                  {
+                    "color": "#37872d",
+                    "value": 1
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "min(druid_zk_connected{service=\"$app-stats\", namespace=\"$namespace\"})",
+                    "seriesNameFormat": "{{pod}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "0_2": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Total Datasources",
+            "description": "Number of total datasources"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "mean",
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "white",
+                    "value": 0
+                  },
+                  {
+                    "color": "white",
+                    "value": 80
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "floor(count(count_values(\"dataSource\", druid_segment_size{service=\"$app-stats\", namespace=\"$namespace\"})))",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "0_3": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Unloaded Segments",
+            "description": "Number of segments to load."
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "mean",
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "white",
+                    "value": 0
+                  },
+                  {
+                    "color": "white",
+                    "value": 80
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "ceil(sum(druid_segment_loadqueue_count{service=\"$app-stats\", namespace=\"$namespace\"}))",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "0_4": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Sucess Tasks",
+            "description": "Number of task actions that were executed successfully during the emission period."
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "mean",
+              "mappings": [
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": ""
+                    },
+                    "value": ""
+                  }
+                }
+              ],
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "white",
+                    "value": 0
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "count_over_time(druid_task_success_count_created{service=\"$app-stats\", namespace=\"$namespace\"}[$__range])",
+                    "seriesNameFormat": "{{task_status}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "0_5": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Total Segment Size",
+            "description": "Total size of used segments in all the data sources."
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "mean",
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "white",
+                    "value": 0
+                  },
+                  {
+                    "color": "white",
+                    "value": 80
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "sum(druid_segment_size{service=\"$app-stats\", namespace=\"$namespace\"}) / (1024 * 1024)",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "0_6": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Unloaded Segments Size",
+            "description": "Size in bytes of segments to load."
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "mean",
+              "mappings": [
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "test"
+                    },
+                    "value": "#A"
+                  }
+                }
+              ],
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "white",
+                    "value": 0
+                  },
+                  {
+                    "color": "white",
+                    "value": 80
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "sum(druid_segment_loadqueue_size{service=\"$app-stats\", namespace=\"$namespace\"}) / (1024 * 1024)",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "JVM Memory Used",
+            "description": "Used memory"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "avg(increase(druid_jvm_mem_used{service=\"$app-stats\", namespace=\"$namespace\"}[$__range])) by (pod)",
+                    "seriesNameFormat": "{{pod}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "JVM Memory Pool",
+            "description": "Pool used"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "avg(increase(druid_jvm_pool_used{service=\"$app-stats\", namespace=\"$namespace\"}[$__range])) by (pod)",
+                    "seriesNameFormat": "{{pod}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_2": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "JVM Bufferpool Count",
+            "description": "Bufferpool count"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {
+              "legend": {
+                "mode": "list",
+                "position": "bottom",
+                "values": []
+              },
+              "visual": {
+                "areaOpacity": 0,
+                "connectNulls": false,
+                "display": "line",
+                "lineWidth": 1
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "datasource": {
+                      "kind": "PrometheusDatasource",
+                      "name": "prometheusdata"
+                    },
+                    "minStep": "",
+                    "query": "druid_jvm_bufferpool_count{bufferpoolName=\"direct\", service=\"$app-stats\", namespace=\"$namespace\"}",
+                    "seriesNameFormat": "{{pod}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_3": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "JVM GC Cpu Total",
+            "description": "Count of CPU time in Nanoseconds spent on garbage collection."
+          },
+          "plugin": {
+            "kind": "GaugeChart",
+            "spec": {
+              "calculation": "last-number",
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#73bf69",
+                    "value": 0
+                  },
+                  {
+                    "color": "#f2495c",
+                    "value": 2750
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "datasource": {
+                      "kind": "PrometheusDatasource",
+                      "name": "prometheusdata"
+                    },
+                    "minStep": "",
+                    "query": "druid_jvm_gc_cpu_total{service=\"$app-stats\", namespace=\"$namespace\"}",
+                    "seriesNameFormat": "{{pod}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Datasource Size",
+            "description": "Total size of used segments."
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "mean",
+              "format": {
+                "unit": "bytes"
+              },
+              "mappings": [
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "test"
+                    },
+                    "value": "#A"
+                  }
+                }
+              ],
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#1f60c4",
+                    "value": 0
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "sum(druid_segment_size{service=\"$app-stats\", namespace=\"$namespace\"})",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Datasource Size"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "sum(increase(druid_segment_size{service=\"$app-stats\", namespace=\"$namespace\"}[$__range])) by (dataSource)",
+                    "seriesNameFormat": "{{dataSource}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "3_0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Query Time Histogram (Seconds taken to complete a query)"
+          },
+          "plugin": {
+            "kind": "BarChart",
+            "spec": {
+              "calculation": "sum",
+              "format": {
+                "unit": "decimal"
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "datasource": {
+                      "kind": "PrometheusDatasource",
+                      "name": "prometheusdata"
+                    },
+                    "query": "count by(le) (druid_query_time_bucket)",
+                    "seriesNameFormat": "{{le}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "3_1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Druid Query Wait Time Histogram (Seconds waiting for a segment to be scanned)"
+          },
+          "plugin": {
+            "kind": "BarChart",
+            "spec": {
+              "calculation": "sum",
+              "format": {
+                "unit": "decimal"
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "datasource": {
+                      "kind": "PrometheusDatasource",
+                      "name": "prometheusdata"
+                    },
+                    "query": "count by(le) (druid_query_wait_time_bucket)",
+                    "seriesNameFormat": "{{le}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "layouts": [
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Druid Overview",
+            "collapse": {
+              "open": true
+            }
+          },
+          "items": [
+            {
+              "x": 0,
+              "y": 1,
+              "width": 6,
+              "height": 4,
+              "content": {
+                "$ref": "#/spec/panels/0_0"
+              }
+            },
+            {
+              "x": 6,
+              "y": 1,
+              "width": 7,
+              "height": 4,
+              "content": {
+                "$ref": "#/spec/panels/0_1"
+              }
+            },
+            {
+              "x": 13,
+              "y": 1,
+              "width": 6,
+              "height": 4,
+              "content": {
+                "$ref": "#/spec/panels/0_2"
+              }
+            },
+            {
+              "x": 19,
+              "y": 1,
+              "width": 5,
+              "height": 4,
+              "content": {
+                "$ref": "#/spec/panels/0_3"
+              }
+            },
+            {
+              "x": 0,
+              "y": 5,
+              "width": 7,
+              "height": 4,
+              "content": {
+                "$ref": "#/spec/panels/0_4"
+              }
+            },
+            {
+              "x": 7,
+              "y": 5,
+              "width": 9,
+              "height": 4,
+              "content": {
+                "$ref": "#/spec/panels/0_5"
+              }
+            },
+            {
+              "x": 16,
+              "y": 5,
+              "width": 8,
+              "height": 4,
+              "content": {
+                "$ref": "#/spec/panels/0_6"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "JVM Overview",
+            "collapse": {
+              "open": true
+            }
+          },
+          "items": [
+            {
+              "x": 0,
+              "y": 10,
+              "width": 12,
+              "height": 9,
+              "content": {
+                "$ref": "#/spec/panels/1_0"
+              }
+            },
+            {
+              "x": 12,
+              "y": 10,
+              "width": 12,
+              "height": 9,
+              "content": {
+                "$ref": "#/spec/panels/1_1"
+              }
+            },
+            {
+              "x": 0,
+              "y": 19,
+              "width": 12,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/1_2"
+              }
+            },
+            {
+              "x": 12,
+              "y": 19,
+              "width": 12,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/1_3"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Druid Datasource Overview",
+            "collapse": {
+              "open": true
+            }
+          },
+          "items": [
+            {
+              "x": 0,
+              "y": 28,
+              "width": 9,
+              "height": 7,
+              "content": {
+                "$ref": "#/spec/panels/2_0"
+              }
+            },
+            {
+              "x": 9,
+              "y": 28,
+              "width": 15,
+              "height": 7,
+              "content": {
+                "$ref": "#/spec/panels/2_1"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Query Overview",
+            "collapse": {
+              "open": true
+            }
+          },
+          "items": [
+            {
+              "x": 0,
+              "y": 36,
+              "width": 12,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/3_0"
+              }
+            },
+            {
+              "x": 12,
+              "y": 36,
+              "width": 12,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/3_1"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "duration": "1h"
+  }
+}

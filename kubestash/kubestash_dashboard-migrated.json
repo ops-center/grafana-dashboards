@@ -1,0 +1,1738 @@
+{
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "V7u2DqASk",
+    "createdAt": "0001-01-01T00:00:00Z",
+    "updatedAt": "0001-01-01T00:00:00Z",
+    "version": 0,
+    "project": "pp"
+  },
+  "spec": {
+    "display": {
+      "name": "KubeStash / Dashboard"
+    },
+    "variables": [
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "name": "Data Source",
+            "hidden": false
+          },
+          "defaultValue": "Prometheus",
+          "allowAllValue": false,
+          "allowMultiple": false,
+          "plugin": {
+            "kind": "DatasourceVariable",
+            "spec": {
+              "datasourcePluginKind": "PrometheusDatasource"
+            }
+          },
+          "name": "datasource"
+        }
+      },
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "name": "Namespace",
+            "description": "List of namespaces where the backups are running",
+            "hidden": false
+          },
+          "defaultValue": "$__all",
+          "allowAllValue": true,
+          "allowMultiple": false,
+          "customAllValue": ".+",
+          "sort": "alphabetical-asc",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "namespace",
+              "matchers": [
+                "core_kubestash_com_backupconfiguration_created"
+              ]
+            }
+          },
+          "name": "namespace"
+        }
+      },
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "name": "Target Kind",
+            "description": "Kind of the targeted application",
+            "hidden": false
+          },
+          "defaultValue": "$__all",
+          "allowAllValue": true,
+          "allowMultiple": false,
+          "customAllValue": ".+",
+          "sort": "alphabetical-asc",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "target_kind",
+              "matchers": [
+                "core_kubestash_com_backupconfiguration_created{namespace=~\"${namespace}\"}"
+              ]
+            }
+          },
+          "name": "target_kind"
+        }
+      },
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "name": "Target Name",
+            "description": "Name of the targeted application",
+            "hidden": false
+          },
+          "defaultValue": "$__all",
+          "allowAllValue": true,
+          "allowMultiple": false,
+          "customAllValue": ".+",
+          "sort": "alphabetical-asc",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "target_name",
+              "matchers": [
+                "core_kubestash_com_backupconfiguration_created{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\"}"
+              ]
+            }
+          },
+          "name": "target_name"
+        }
+      },
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "name": "Target Namespace",
+            "description": "Namespace of the targeted application",
+            "hidden": false
+          },
+          "defaultValue": "$__all",
+          "allowAllValue": true,
+          "allowMultiple": false,
+          "customAllValue": ".+",
+          "sort": "alphabetical-asc",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "target_namespace",
+              "matchers": [
+                "core_kubestash_com_backupconfiguration_created{namespace=~\"${namespace}\",target_kind=~\"${target_kind}\",target_name=~\"${target_name}\"}"
+              ]
+            }
+          },
+          "name": "target_namespace"
+        }
+      },
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "description": "Kind of the backup invoker object",
+            "hidden": true
+          },
+          "defaultValue": "$__all",
+          "allowAllValue": true,
+          "allowMultiple": false,
+          "sort": "alphabetical-asc",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "backup_invoker_kind",
+              "matchers": [
+                "core_kubestash_com_backupconfiguration_phase{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\",target_namespace=~\"${target_namespace}\"}"
+              ]
+            }
+          },
+          "name": "backup_invoker_kind"
+        }
+      },
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "description": "Name of the respective backup invoker object",
+            "hidden": true
+          },
+          "defaultValue": "$__all",
+          "allowAllValue": true,
+          "allowMultiple": false,
+          "sort": "none",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "backup_invoker_name",
+              "matchers": [
+                "core_kubestash_com_backupconfiguration_phase{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\",target_namespace=~\"${target_namespace}\"}"
+              ]
+            }
+          },
+          "name": "backup_invoker_name"
+        }
+      }
+    ],
+    "panels": {
+      "0_0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "BackupStorage",
+            "description": "List of BackupStorages currently exist in the cluster"
+          },
+          "plugin": {
+            "kind": "Table",
+            "spec": {
+              "columnSettings": [
+                {
+                  "header": "Name",
+                  "name": "invoker_name"
+                },
+                {
+                  "header": "Namespace",
+                  "name": "namespace"
+                },
+                {
+                  "hide": true,
+                  "name": "invoker_kind"
+                },
+                {
+                  "header": "Provider",
+                  "name": "provider (firstNotNull)"
+                },
+                {
+                  "header": "Default",
+                  "name": "default (firstNotNull)"
+                },
+                {
+                  "header": "Deletion Policy",
+                  "name": "deletionPolicy (firstNotNull)"
+                },
+                {
+                  "header": "Phase",
+                  "name": "phase (firstNotNull)"
+                },
+                {
+                  "header": "Size",
+                  "name": "Value #B (firstNotNull)"
+                },
+                {
+                  "name": "Size"
+                },
+                {
+                  "name": "Provider",
+                  "width": 100
+                },
+                {
+                  "name": "Default",
+                  "width": 100
+                },
+                {
+                  "name": "Deletion Policy",
+                  "width": 110
+                },
+                {
+                  "name": "Phase",
+                  "width": 100
+                }
+              ],
+              "transforms": [
+                {
+                  "kind": "MergeSeries",
+                  "spec": {}
+                }
+              ]
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "storage_kubestash_com_backupstorage_info{namespace=~\"${namespace}\"}",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "storage_kubestash_com_backupstorage_size_bytes{namespace=~\"${namespace}\"}",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "0_1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "BackupStorage Sizes",
+            "description": "Graph showing how BackupStorage size grows over time"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "storage_kubestash_com_backupstorage_size_bytes{namespace=~\"${namespace}\"}",
+                    "seriesNameFormat": "{{namespace}}/{{invoker_name}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Total Applications",
+            "description": "Number of applications that has been configured for backup"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "white",
+                    "value": 0
+                  }
+                ]
+              },
+              "valueFontSize": 56
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "count(core_kubestash_com_backupconfiguration_phase{namespace=~\"${namespace}\", phase=~\"Ready\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"})",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Successful Backups",
+            "description": "Total number of successful backup"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "white",
+                    "value": 0
+                  },
+                  {
+                    "color": "#73bf69",
+                    "value": 1
+                  }
+                ]
+              },
+              "valueFontSize": 56
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "count(core_kubestash_com_backupsession_info{namespace=~\"${namespace}\", backup_invoker_kind=~\"${backup_invoker_kind}\", backup_invoker_name=~\"${backup_invoker_name}\", phase=\"Succeeded\"})",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_10": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Recent Snapshots",
+            "description": "List of Snapshots"
+          },
+          "plugin": {
+            "kind": "Table",
+            "spec": {
+              "columnSettings": [
+                {
+                  "hide": true,
+                  "name": "invoker_kind"
+                },
+                {
+                  "header": "Name",
+                  "name": "invoker_name"
+                },
+                {
+                  "header": "Namespace",
+                  "name": "namespace"
+                },
+                {
+                  "header": "Target Kind",
+                  "name": "target_kind"
+                },
+                {
+                  "header": "Target Name",
+                  "name": "target_name"
+                },
+                {
+                  "header": "Target Namespace",
+                  "name": "target_namespace"
+                },
+                {
+                  "header": "Repository",
+                  "name": "repository (firstNotNull)"
+                },
+                {
+                  "header": "Session",
+                  "name": "session (firstNotNull)"
+                },
+                {
+                  "header": "Type",
+                  "name": "snapshot_type (firstNotNull)"
+                },
+                {
+                  "header": "Version",
+                  "name": "version (firstNotNull)"
+                },
+                {
+                  "header": "Phase",
+                  "name": "phase (firstNotNull)"
+                },
+                {
+                  "header": "Total Component",
+                  "name": "Value #B (firstNotNull)"
+                },
+                {
+                  "header": "Size",
+                  "name": "Value #D (firstNotNull)"
+                },
+                {
+                  "header": "Age",
+                  "name": "Value #C (firstNotNull)"
+                },
+                {
+                  "name": "Size",
+                  "width": 100
+                },
+                {
+                  "name": "Age",
+                  "width": 110
+                },
+                {
+                  "name": "Type",
+                  "width": 110
+                },
+                {
+                  "name": "Version",
+                  "width": 80
+                },
+                {
+                  "name": "Phase",
+                  "width": 100
+                },
+                {
+                  "name": "Total Component",
+                  "width": 130
+                },
+                {
+                  "name": "Name",
+                  "width": 362
+                },
+                {
+                  "name": "Namespace",
+                  "width": 95
+                },
+                {
+                  "name": "Target Kind",
+                  "width": 113
+                },
+                {
+                  "name": "Target Name",
+                  "width": 131
+                },
+                {
+                  "name": "Target Namespace",
+                  "width": 138
+                },
+                {
+                  "name": "Session",
+                  "width": 131
+                }
+              ],
+              "transforms": [
+                {
+                  "kind": "MergeSeries",
+                  "spec": {}
+                }
+              ]
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "storage_kubestash_com_snapshot_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"}",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "storage_kubestash_com_snapshot_component_count_total{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"}",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "storage_kubestash_com_snapshot_time_seconds{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"} * 1000",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "storage_kubestash_com_snapshot_size_bytes{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"}",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_2": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Running Backups",
+            "description": "Number of backup sessions that are currently running"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "white",
+                    "value": 0
+                  },
+                  {
+                    "color": "#5794f2",
+                    "value": 1
+                  }
+                ]
+              },
+              "valueFontSize": 56
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "count(core_kubestash_com_backupsession_info{namespace=~\"${namespace}\", backup_invoker_kind=~\"${backup_invoker_kind}\", backup_invoker_name=~\"${backup_invoker_name}\", phase=\"Running\"})",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_3": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Skipped Backups",
+            "description": "Number of backup sessions that have been skipped"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "white",
+                    "value": 0
+                  },
+                  {
+                    "color": "#b877d9",
+                    "value": 1
+                  }
+                ]
+              },
+              "valueFontSize": 56
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "count(core_kubestash_com_backupsession_info{namespace=~\"${namespace}\", backup_invoker_kind=~\"${backup_invoker_kind}\", backup_invoker_name=~\"${backup_invoker_name}\", phase=\"Skipped\"})",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_4": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Failed Backups",
+            "description": "Number of backups that have failed"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "white",
+                    "value": 0
+                  },
+                  {
+                    "color": "#f2495c",
+                    "value": 1
+                  }
+                ]
+              },
+              "valueFontSize": 56
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "count(core_kubestash_com_backupsession_info{namespace=~\"${namespace}\", backup_invoker_kind=~\"${backup_invoker_kind}\", backup_invoker_name=~\"${backup_invoker_name}\", phase=\"Failed\"})",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_5": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Total Backup Size",
+            "description": "Total size of the backed up data"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "format": {
+                "unit": "bytes"
+              },
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#73bf69",
+                    "value": 0
+                  }
+                ]
+              },
+              "valueFontSize": 56
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "sum(storage_kubestash_com_repository_size_bytes{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"})",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_6": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Backup Targets",
+            "description": "A list of backup targets"
+          },
+          "plugin": {
+            "kind": "Table",
+            "spec": {
+              "columnSettings": [
+                {
+                  "header": "Kind",
+                  "name": "target_kind"
+                },
+                {
+                  "header": "Name",
+                  "name": "target_name"
+                },
+                {
+                  "header": "Namespace",
+                  "name": "target_namespace"
+                },
+                {
+                  "header": "Invoker Kind",
+                  "name": "backup_invoker_kind"
+                },
+                {
+                  "header": "Invoker Name",
+                  "name": "backup_invoker_name"
+                },
+                {
+                  "header": "Invoker Namespace",
+                  "name": "namespace"
+                },
+                {
+                  "header": "Schedule",
+                  "name": "schedule"
+                },
+                {
+                  "header": "Session",
+                  "name": "session_name"
+                },
+                {
+                  "header": "Addon",
+                  "name": "addon_name"
+                },
+                {
+                  "hide": true,
+                  "name": "timestamp"
+                },
+                {
+                  "hide": true,
+                  "name": "__name__"
+                },
+                {
+                  "hide": true,
+                  "name": "backupconfiguration"
+                },
+                {
+                  "hide": true,
+                  "name": "container"
+                },
+                {
+                  "hide": true,
+                  "name": "endpoint"
+                },
+                {
+                  "hide": true,
+                  "name": "instance"
+                },
+                {
+                  "hide": true,
+                  "name": "job"
+                },
+                {
+                  "hide": true,
+                  "name": "pod"
+                },
+                {
+                  "hide": true,
+                  "name": "service"
+                },
+                {
+                  "hide": true,
+                  "name": "value"
+                }
+              ]
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "core_kubestash_com_backupconfiguration_sessions{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"}",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_7": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Recent Backups",
+            "description": "List of BackupSessions"
+          },
+          "plugin": {
+            "kind": "Table",
+            "spec": {
+              "columnSettings": [
+                {
+                  "hide": true,
+                  "name": "invoker_kind"
+                },
+                {
+                  "header": "Name",
+                  "name": "invoker_name"
+                },
+                {
+                  "header": "Namespace",
+                  "name": "namespace"
+                },
+                {
+                  "header": "Invoker Kind",
+                  "name": "backup_invoker_kind"
+                },
+                {
+                  "header": "Invoker Name",
+                  "name": "backup_invoker_name"
+                },
+                {
+                  "header": "Session Name",
+                  "name": "session (firstNotNull)"
+                },
+                {
+                  "header": "Phase",
+                  "name": "phase (firstNotNull)"
+                },
+                {
+                  "header": "Duration",
+                  "name": "Value #B (firstNotNull)"
+                },
+                {
+                  "header": "Age",
+                  "name": "Value #C (firstNotNull)"
+                },
+                {
+                  "name": "Duration"
+                },
+                {
+                  "name": "Age"
+                },
+                {
+                  "name": "Session Name"
+                },
+                {
+                  "name": "Invoker Name"
+                }
+              ],
+              "transforms": [
+                {
+                  "kind": "MergeSeries",
+                  "spec": {}
+                }
+              ]
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "core_kubestash_com_backupsession_info{namespace=~\"${namespace}\", backup_invoker_kind=~\"${backup_invoker_kind}\", backup_invoker_name=~\"${backup_invoker_name}\"}",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "core_kubestash_com_backupsession_duration_seconds{namespace=~\"${namespace}\", backup_invoker_kind=~\"${backup_invoker_kind}\", backup_invoker_name=~\"${backup_invoker_name}\"}",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "core_kubestash_com_backupsession_created{namespace=~\"${namespace}\", backup_invoker_kind=~\"${backup_invoker_kind}\", backup_invoker_name=~\"${backup_invoker_name}\"} * 1000",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_8": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Repositories",
+            "description": "List of Repositories"
+          },
+          "plugin": {
+            "kind": "Table",
+            "spec": {
+              "columnSettings": [
+                {
+                  "header": "Name",
+                  "name": "repository"
+                },
+                {
+                  "header": "Namespace",
+                  "name": "namespace"
+                },
+                {
+                  "header": "Target Kind",
+                  "name": "target_kind"
+                },
+                {
+                  "header": "Target Name",
+                  "name": "target_name"
+                },
+                {
+                  "header": "Target Namespace",
+                  "name": "target_namespace"
+                },
+                {
+                  "header": "Path",
+                  "name": "path (firstNotNull)"
+                },
+                {
+                  "header": "Integrity",
+                  "name": "integrity (firstNotNull)"
+                },
+                {
+                  "header": "Phase",
+                  "name": "phase (firstNotNull)"
+                },
+                {
+                  "header": "Size",
+                  "name": "Value #A (firstNotNull)"
+                },
+                {
+                  "header": "Total Snapshot",
+                  "name": "Value #B (firstNotNull)"
+                },
+                {
+                  "name": "Size"
+                },
+                {
+                  "name": "Last Successful Backup"
+                }
+              ],
+              "transforms": [
+                {
+                  "kind": "MergeSeries",
+                  "spec": {}
+                }
+              ]
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "storage_kubestash_com_repository_size_bytes{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"}",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "storage_kubestash_com_repository_snapshot_count_total{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"}",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "storage_kubestash_com_repository_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"}",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "storage_kubestash_com_repository_last_successful_backup{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"} * 1000",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_9": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Repository Sizes",
+            "description": "Graph showing how Repository size grows over time"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "storage_kubestash_com_repository_size_bytes{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"}",
+                    "seriesNameFormat": "{{namespace}}/{{invoker_name}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Total Restore Count",
+            "description": "Number of total restore done within the time-frame"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "white",
+                    "value": 0
+                  }
+                ]
+              },
+              "valueFontSize": 56
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "count(core_kubestash_com_restoresession_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"})",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Successful Restores",
+            "description": "Total number of successful restores"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "white",
+                    "value": 0
+                  },
+                  {
+                    "color": "#73bf69",
+                    "value": 1
+                  }
+                ]
+              },
+              "valueFontSize": 56
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "count(core_kubestash_com_restoresession_phase{namespace=~\"${namespace}\", phase=~\"Succeeded\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"} == 1)",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_2": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Running Restores",
+            "description": "Number of restore sessions that are currently running"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "white",
+                    "value": 0
+                  },
+                  {
+                    "color": "#5794f2",
+                    "value": 1
+                  }
+                ]
+              },
+              "valueFontSize": 53
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "count(core_kubestash_com_restoresession_phase{namespace=~\"${namespace}\", phase=~\"Running\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"} == 1)",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_3": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Pending Restores",
+            "description": "Number of restore sessions that are currently pending to run"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "white",
+                    "value": 0
+                  },
+                  {
+                    "color": "#b877d9",
+                    "value": 1
+                  }
+                ]
+              },
+              "valueFontSize": 56
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "count(core_kubestash_com_restoresession_phase{namespace=~\"${namespace}\", phase=~\"Pending\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"} == 1)",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_4": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Failed Restores",
+            "description": "Number of restore sessions that have failed"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "white",
+                    "value": 0
+                  },
+                  {
+                    "color": "#f2495c",
+                    "value": 1
+                  }
+                ]
+              },
+              "valueFontSize": 56
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "count(core_kubestash_com_restoresession_phase{namespace=~\"${namespace}\", phase=~\"Failed\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"} == 1)",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_5": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Recent Restores",
+            "description": "List of current RestoreSession in the cluster"
+          },
+          "plugin": {
+            "kind": "Table",
+            "spec": {
+              "columnSettings": [
+                {
+                  "header": "",
+                  "hide": true,
+                  "name": "invoker_kind"
+                },
+                {
+                  "header": "Name",
+                  "name": "invoker_name"
+                },
+                {
+                  "header": "Namespace",
+                  "name": "namespace"
+                },
+                {
+                  "header": "Target Kind",
+                  "name": "target_kind"
+                },
+                {
+                  "header": "Target Name",
+                  "name": "target_name"
+                },
+                {
+                  "header": "Target Namespace",
+                  "name": "target_namespace"
+                },
+                {
+                  "header": "Repository",
+                  "name": "repository (firstNotNull)"
+                },
+                {
+                  "header": "Snapshot",
+                  "name": "snapshot (firstNotNull)"
+                },
+                {
+                  "header": "Phase",
+                  "name": "phase (firstNotNull)"
+                },
+                {
+                  "header": "Duration",
+                  "name": "Value #B (firstNotNull)"
+                },
+                {
+                  "header": "Age",
+                  "name": "Value #C (firstNotNull)"
+                },
+                {
+                  "name": "Age"
+                },
+                {
+                  "name": "Duration"
+                }
+              ],
+              "transforms": [
+                {
+                  "kind": "MergeSeries",
+                  "spec": {}
+                }
+              ]
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "core_kubestash_com_restoresession_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"}",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "core_kubestash_com_restoresession_duration_seconds{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"}",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "core_kubestash_com_restoresession_created{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"} * 1000",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "3_0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "CPU Usage",
+            "description": "CPU Usage of KubeStash Operator"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "sum(irate(container_cpu_usage_seconds_total{container=~\"operator\", pod=~\".*kubestash.*\"}[$__rate_interval])) by(container)",
+                    "seriesNameFormat": "{{container}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "3_1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Memory Usage",
+            "description": "Memory Usage of KubeStash Operator"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "sum(container_memory_usage_bytes{container=~\"operator\", pod=~\".*kubestash.*\"})by(container)",
+                    "seriesNameFormat": "{{container}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "layouts": [
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Storage Overview",
+            "collapse": {
+              "open": true
+            }
+          },
+          "items": [
+            {
+              "x": 0,
+              "y": 1,
+              "width": 12,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/0_0"
+              }
+            },
+            {
+              "x": 12,
+              "y": 1,
+              "width": 12,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/0_1"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Backup Overview",
+            "collapse": {
+              "open": true
+            }
+          },
+          "items": [
+            {
+              "x": 0,
+              "y": 10,
+              "width": 4,
+              "height": 3,
+              "content": {
+                "$ref": "#/spec/panels/1_0"
+              }
+            },
+            {
+              "x": 4,
+              "y": 10,
+              "width": 4,
+              "height": 3,
+              "content": {
+                "$ref": "#/spec/panels/1_1"
+              }
+            },
+            {
+              "x": 8,
+              "y": 10,
+              "width": 4,
+              "height": 3,
+              "content": {
+                "$ref": "#/spec/panels/1_2"
+              }
+            },
+            {
+              "x": 12,
+              "y": 10,
+              "width": 4,
+              "height": 3,
+              "content": {
+                "$ref": "#/spec/panels/1_3"
+              }
+            },
+            {
+              "x": 16,
+              "y": 10,
+              "width": 4,
+              "height": 3,
+              "content": {
+                "$ref": "#/spec/panels/1_4"
+              }
+            },
+            {
+              "x": 20,
+              "y": 10,
+              "width": 4,
+              "height": 3,
+              "content": {
+                "$ref": "#/spec/panels/1_5"
+              }
+            },
+            {
+              "x": 0,
+              "y": 13,
+              "width": 24,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/1_6"
+              }
+            },
+            {
+              "x": 0,
+              "y": 21,
+              "width": 24,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/1_7"
+              }
+            },
+            {
+              "x": 0,
+              "y": 29,
+              "width": 24,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/1_8"
+              }
+            },
+            {
+              "x": 0,
+              "y": 37,
+              "width": 24,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/1_9"
+              }
+            },
+            {
+              "x": 0,
+              "y": 45,
+              "width": 24,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/1_10"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Restore Overview",
+            "collapse": {
+              "open": true
+            }
+          },
+          "items": [
+            {
+              "x": 0,
+              "y": 54,
+              "width": 5,
+              "height": 3,
+              "content": {
+                "$ref": "#/spec/panels/2_0"
+              }
+            },
+            {
+              "x": 5,
+              "y": 54,
+              "width": 5,
+              "height": 3,
+              "content": {
+                "$ref": "#/spec/panels/2_1"
+              }
+            },
+            {
+              "x": 10,
+              "y": 54,
+              "width": 5,
+              "height": 3,
+              "content": {
+                "$ref": "#/spec/panels/2_2"
+              }
+            },
+            {
+              "x": 15,
+              "y": 54,
+              "width": 5,
+              "height": 3,
+              "content": {
+                "$ref": "#/spec/panels/2_3"
+              }
+            },
+            {
+              "x": 20,
+              "y": 54,
+              "width": 4,
+              "height": 3,
+              "content": {
+                "$ref": "#/spec/panels/2_4"
+              }
+            },
+            {
+              "x": 0,
+              "y": 57,
+              "width": 24,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/2_5"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "KubeStash Operator",
+            "collapse": {
+              "open": true
+            }
+          },
+          "items": [
+            {
+              "x": 0,
+              "y": 66,
+              "width": 24,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/3_0"
+              }
+            },
+            {
+              "x": 0,
+              "y": 74,
+              "width": 24,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/3_1"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "duration": "1h"
+  }
+}

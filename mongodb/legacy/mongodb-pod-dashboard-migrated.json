@@ -1,0 +1,870 @@
+{
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "8b3a8263-d85e-474e-b4a8-3a9ff6cb219f",
+    "createdAt": "0001-01-01T00:00:00Z",
+    "updatedAt": "0001-01-01T00:00:00Z",
+    "version": 0,
+    "project": "pp"
+  },
+  "spec": {
+    "display": {
+      "name": "KubeDB / MongoDB / Pod"
+    },
+    "variables": [
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "name": "Interval",
+            "hidden": false
+          },
+          "defaultValue": "1m",
+          "allowAllValue": false,
+          "allowMultiple": false,
+          "plugin": {
+            "kind": "StaticListVariable",
+            "spec": {
+              "values": [
+                {
+                  "label": "auto",
+                  "value": "$__auto_interval_interval"
+                },
+                "1s",
+                "5s",
+                "1m",
+                "5m",
+                "1h",
+                "6h",
+                "1d"
+              ]
+            }
+          },
+          "name": "interval"
+        }
+      },
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "name": "Datasource",
+            "hidden": false
+          },
+          "defaultValue": "default",
+          "allowAllValue": false,
+          "allowMultiple": false,
+          "plugin": {
+            "kind": "DatasourceVariable",
+            "spec": {
+              "datasourcePluginKind": "PrometheusDatasource"
+            }
+          },
+          "name": "datasource"
+        }
+      },
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "name": "Namespace",
+            "hidden": false
+          },
+          "defaultValue": "demo",
+          "allowAllValue": false,
+          "allowMultiple": false,
+          "sort": "none",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "namespace",
+              "matchers": [
+                "kube_namespace_labels"
+              ]
+            }
+          },
+          "name": "namespace"
+        }
+      },
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "name": "MongoDB",
+            "hidden": false
+          },
+          "defaultValue": "mg-rs",
+          "allowAllValue": false,
+          "allowMultiple": false,
+          "sort": "none",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "app",
+              "matchers": [
+                "kubedb_com_mongodb_status_phase{namespace=~\"$namespace\"}"
+              ]
+            }
+          },
+          "name": "app"
+        }
+      },
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "name": "Pod",
+            "hidden": false
+          },
+          "defaultValue": "mg-rs-0",
+          "allowAllValue": false,
+          "allowMultiple": false,
+          "sort": "alphabetical-asc",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "pod",
+              "matchers": [
+                "mongodb_up{namespace=~\"$namespace\",service=\"${app}-stats\"}"
+              ]
+            }
+          },
+          "name": "pod"
+        }
+      }
+    ],
+    "panels": {
+      "0_0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Pod"
+          },
+          "plugin": {
+            "kind": "Markdown",
+            "spec": {
+              "text": "<h3 style='color:#e68a00;font-weight:bold;text-align:center'>$pod</h3>"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "$pod",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "0_1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Uptime"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "format": {
+                "unit": "seconds"
+              },
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#73bf69",
+                    "value": 0
+                  },
+                  {
+                    "color": "#f2495c",
+                    "value": 360086400
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "mongodb_instance_uptime_seconds{pod=~\"$pod\"}",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "0_2": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "QPS"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "format": {
+                "unit": "ops/sec"
+              },
+              "sparkline": {},
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#73bf69",
+                    "value": 0
+                  },
+                  {
+                    "color": "#f2495c",
+                    "value": 80
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "sum(rate(mongodb_mongod_op_counters_total{pod=~\"$pod\",type!=\"command\"}[$interval]) or irate(mongodb_mongod_op_counters_total{pod=~\"$pod\",type!=\"command\"}[5m]) or rate(mongodb_op_counters_total{pod=~\"$pod\",type!=\"command\"}[$interval]) or irate(mongodb_op_counters_total{pod=~\"$pod\",type!=\"command\"}[5m]))",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "0_3": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Latency"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "sparkline": {},
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#73bf69",
+                    "value": 0
+                  },
+                  {
+                    "color": "#f2495c",
+                    "value": 80
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "avg by (service_name) (rate(mongodb_mongod_op_latencies_latency_total{pod=~\"$pod\",type=\"command\"}[$interval]) / (rate(mongodb_mongod_op_latencies_ops_total{pod=~\"$pod\",type=\"command\"}[$interval]) > 0) or\nirate(mongodb_mongod_op_latencies_latency_total{pod=~\"$pod\",type=\"command\"}[5m]) / (irate(mongodb_mongod_op_latencies_ops_total{pod=~\"$pod\",type=\"command\"}[5m]) > 0))",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Command Operations",
+            "description": "Shows how many times a command is executed per second on average during the selected interval."
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "rate(mongodb_mongod_op_counters_total{pod=~\"$pod\", type!=\"command\"}[$interval]) or \nirate(mongodb_mongod_op_counters_total{pod=~\"$pod\", type!=\"command\"}[5m]) or \nrate(mongodb_mongos_op_counters_total{pod=~\"$pod\", type!=\"command\"}[$interval]) or \nirate(mongodb_mongos_op_counters_total{pod=~\"$pod\", type!=\"command\"}[5m])",
+                    "seriesNameFormat": "{{type}}"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "rate(mongodb_mongod_op_counters_repl_total{pod=~\"$pod\", type!~\"(command|query|getmore)\"}[$interval]) or \nirate(mongodb_mongod_op_counters_repl_total{pod=~\"$pod\", type!~\"(command|query|getmore)\"}[5m]) or\nrate(mongodb_mongos_op_counters_repl_total{pod=~\"$pod\", type!~\"(command|query|getmore)\"}[$interval]) or \nirate(mongodb_mongos_op_counters_repl_total{pod=~\"$pod\", type!~\"(command|query|getmore)\"}[5m])",
+                    "seriesNameFormat": "repl_{{type}}"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "rate(mongodb_mongod_metrics_ttl_deleted_documents_total{pod=~\"$pod\"}[$interval]) or \nirate(mongodb_mongod_metrics_ttl_deleted_documents_total{pod=~\"$pod\"}[5m]) or\nrate(mongodb_mongos_metrics_ttl_deleted_documents_total{pod=~\"$pod\"}[$interval]) or \nirate(mongodb_mongos_metrics_ttl_deleted_documents_total{pod=~\"$pod\"}[5m])",
+                    "seriesNameFormat": "ttl_delete"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Latency Detail",
+            "description": "Average latency of operations (classified by read, write, or (other) command)"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "avg by (pod,type) (rate(mongodb_mongod_op_latencies_latency_total{pod=~\"$pod\"}[$interval]) / (rate(mongodb_mongod_op_latencies_ops_total{pod=~\"$pod\"}[$interval]) > 0) or irate(mongodb_mongod_op_latencies_latency_total{pod=~\"$pod\"}[5m]) / (irate(mongodb_mongod_op_latencies_ops_total{pod=~\"$pod\"}[5m]) > 0))",
+                    "seriesNameFormat": "{{type}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_10": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Assert Events",
+            "description": "Asserts are not important by themselves, but you can correlate spikes with other graphs."
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "rate(mongodb_asserts_total{pod=~\"$pod\"}[$interval]) or \nirate(mongodb_asserts_total{pod=~\"$pod\"}[5m])",
+                    "seriesNameFormat": "{{type}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_11": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Page Faults",
+            "description": "Page faults indicate that requests are processed from disk either because an index is missing or there is not enough memory for the data set. Consider increasing memory or sharding out."
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "rate(mongodb_extra_info_page_faults_total{pod=~\"$pod\"}[$interval]) or \nirate(mongodb_extra_info_page_faults_total{pod=~\"$pod\"}[5m])",
+                    "seriesNameFormat": "Faults"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_2": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Connections",
+            "description": "Keep in mind the hard limit on the maximum number of connections set by your distribution."
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "mongodb_connections{pod=~\"$pod\", state=\"current\"}",
+                    "seriesNameFormat": "Connections"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_3": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Cursors",
+            "description": "Helps identify why connections are increasing. Shows active cursors compared to cursors being automatically killed after 10 minutes due to an application not closing the connection."
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "mongodb_mongod_metrics_cursor_open{pod=~\"$pod\"} or\nmongodb_mongod_cursors{pod=~\"$pod\"} or\nmongodb_mongos_metrics_cursor_open{pod=~\"$pod\"} or \nmongodb_mongos_cursors{pod=~\"$pod\"}",
+                    "seriesNameFormat": "{{state}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_4": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Document Operations",
+            "description": "When used in combination with 'Command Operations', this graph can help identify write amplification. For example, when one insert or update command actually inserts or updates hundreds, thousands, or even millions of documents."
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "rate(mongodb_mongod_metrics_document_total{pod=~\"$pod\"}[$interval]) or \nirate(mongodb_mongod_metrics_document_total{pod=~\"$pod\"}[5m])",
+                    "seriesNameFormat": "{{state}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_5": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Queued Operations",
+            "description": "Any number of queued operations for long periods of time is an indication of possible issues. Find the cause and fix it before requests get stuck in the queue."
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "mongodb_mongod_global_lock_current_queue{pod=~\"$pod\"}",
+                    "seriesNameFormat": "{{type}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_6": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Query Efficiency"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "sum(rate(mongodb_mongod_metrics_document_total{pod=~\"$pod\", state=\"returned\"}[$interval]))/\nsum(rate(mongodb_mongod_metrics_query_executor_total{pod=~\"$pod\", state=\"scanned_objects\"}[$interval])) \nor\nsum(irate(mongodb_mongod_metrics_document_total{pod=~\"$pod\", state=\"returned\"}[5m]))/\nsum(irate(mongodb_mongod_metrics_query_executor_total{pod=~\"$pod\", state=\"scanned_objects\"}[5m]))",
+                    "seriesNameFormat": "Document"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "(sum(rate(mongodb_mongod_metrics_query_executor_total{pod=~\"$pod\", state=\"scanned\"}[$interval]))/\nsum(rate(mongodb_mongod_metrics_query_executor_total{pod=~\"$pod\", state=\"scanned_objects\"}[$interval])) \nor\nsum(irate(mongodb_mongod_metrics_query_executor_total{pod=~\"$pod\", state=\"scanned\"}[5m]))/\nsum(irate(mongodb_mongod_metrics_query_executor_total{pod=~\"$pod\", state=\"scanned_objects\"}[5m])))",
+                    "seriesNameFormat": "Index"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_7": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Scanned and Moved Objects"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "rate(mongodb_mongod_metrics_query_executor_total{pod=~\"$pod\"}[$interval]) or irate(mongodb_mongod_metrics_query_executor_total{pod=~\"$pod\"}[5m])",
+                    "seriesNameFormat": "{{state}}"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "rate(mongodb_mongod_metrics_record_moves_total{pod=~\"$pod\"}[$interval]) or irate(mongodb_mongod_metrics_record_moves_total{pod=~\"$pod\"}[5m])",
+                    "seriesNameFormat": "moved"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_8": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "getLastError Write Time",
+            "description": "This is useful for write-heavy workloads to understand how long it takes to verify writes and how many concurrent writes are occurring."
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "rate(mongodb_mongod_metrics_get_last_error_wtime_total_milliseconds{pod=~\"$pod\"}[$interval]) or \nirate(mongodb_mongod_metrics_get_last_error_wtime_total_milliseconds{pod=~\"$pod\"}[5m]) or\nrate(mongodb_mongos_metrics_get_last_error_wtime_total_milliseconds{pod=~\"$pod\"}[$interval]) or \nirate(mongodb_mongos_metrics_get_last_error_wtime_total_milliseconds{pod=~\"$pod\"}[5m])",
+                    "seriesNameFormat": "Write Wait Time"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_9": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "getLastError Write Operations",
+            "description": "This is useful for write-heavy workloads to understand how long it takes to verify writes and how many concurrent writes are occurring."
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "rate(mongodb_mongod_metrics_get_last_error_wtime_num_total{pod=~\"$pod\"}[$interval]) or \nirate(mongodb_mongod_metrics_get_last_error_wtime_num_total{pod=~\"$pod\"}[5m]) or\nrate(mongodb_mongos_metrics_get_last_error_wtime_num_total{pod=~\"$pod\"}[$interval]) or \nirate(mongodb_mongos_metrics_get_last_error_wtime_num_total{pod=~\"$pod\"}[5m])",
+                    "seriesNameFormat": "Total"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "rate(mongodb_mongod_metrics_get_last_error_wtimeouts_total{pod=~\"$pod\"}[$interval]) or\nirate(mongodb_mongod_metrics_get_last_error_wtimeouts_total{pod=~\"$pod\"}[5m]) or\nrate(mongodb_mongos_metrics_get_last_error_wtimeouts_total{pod=~\"$pod\"}[$interval]) or\nirate(mongodb_mongos_metrics_get_last_error_wtimeouts_total{pod=~\"$pod\"}[5m])",
+                    "seriesNameFormat": "Timeouts"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "layouts": [
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Overview",
+            "collapse": {
+              "open": true
+            }
+          },
+          "items": [
+            {
+              "x": 0,
+              "y": 1,
+              "width": 6,
+              "height": 3,
+              "content": {
+                "$ref": "#/spec/panels/0_0"
+              }
+            },
+            {
+              "x": 6,
+              "y": 1,
+              "width": 6,
+              "height": 3,
+              "content": {
+                "$ref": "#/spec/panels/0_1"
+              }
+            },
+            {
+              "x": 12,
+              "y": 1,
+              "width": 6,
+              "height": 3,
+              "content": {
+                "$ref": "#/spec/panels/0_2"
+              }
+            },
+            {
+              "x": 18,
+              "y": 1,
+              "width": 6,
+              "height": 3,
+              "content": {
+                "$ref": "#/spec/panels/0_3"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "System",
+            "collapse": {
+              "open": true
+            }
+          },
+          "items": [
+            {
+              "x": 0,
+              "y": 5,
+              "width": 24,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/1_0"
+              }
+            },
+            {
+              "x": 0,
+              "y": 13,
+              "width": 24,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/1_1"
+              }
+            },
+            {
+              "x": 0,
+              "y": 21,
+              "width": 12,
+              "height": 7,
+              "content": {
+                "$ref": "#/spec/panels/1_2"
+              }
+            },
+            {
+              "x": 12,
+              "y": 21,
+              "width": 12,
+              "height": 7,
+              "content": {
+                "$ref": "#/spec/panels/1_3"
+              }
+            },
+            {
+              "x": 0,
+              "y": 28,
+              "width": 12,
+              "height": 7,
+              "content": {
+                "$ref": "#/spec/panels/1_4"
+              }
+            },
+            {
+              "x": 12,
+              "y": 28,
+              "width": 12,
+              "height": 7,
+              "content": {
+                "$ref": "#/spec/panels/1_5"
+              }
+            },
+            {
+              "x": 0,
+              "y": 35,
+              "width": 12,
+              "height": 7,
+              "content": {
+                "$ref": "#/spec/panels/1_6"
+              }
+            },
+            {
+              "x": 12,
+              "y": 35,
+              "width": 12,
+              "height": 7,
+              "content": {
+                "$ref": "#/spec/panels/1_7"
+              }
+            },
+            {
+              "x": 0,
+              "y": 42,
+              "width": 12,
+              "height": 7,
+              "content": {
+                "$ref": "#/spec/panels/1_8"
+              }
+            },
+            {
+              "x": 12,
+              "y": 42,
+              "width": 12,
+              "height": 7,
+              "content": {
+                "$ref": "#/spec/panels/1_9"
+              }
+            },
+            {
+              "x": 0,
+              "y": 49,
+              "width": 12,
+              "height": 7,
+              "content": {
+                "$ref": "#/spec/panels/1_10"
+              }
+            },
+            {
+              "x": 12,
+              "y": 49,
+              "width": 12,
+              "height": 7,
+              "content": {
+                "$ref": "#/spec/panels/1_11"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "duration": "1h"
+  }
+}

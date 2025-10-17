@@ -1,0 +1,802 @@
+{
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "63d10aa2-eca5-45f2-ba86-7f5ea9934014",
+    "createdAt": "0001-01-01T00:00:00Z",
+    "updatedAt": "0001-01-01T00:00:00Z",
+    "version": 0,
+    "project": "pp"
+  },
+  "spec": {
+    "display": {
+      "name": "KubeDB / MongoDB / Database / ReplicaSet"
+    },
+    "variables": [
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "name": "Interval",
+            "hidden": false
+          },
+          "defaultValue": "$__auto_interval_interval",
+          "allowAllValue": false,
+          "allowMultiple": false,
+          "plugin": {
+            "kind": "StaticListVariable",
+            "spec": {
+              "values": [
+                {
+                  "label": "auto",
+                  "value": "$__auto_interval_interval"
+                },
+                "1s",
+                "5s",
+                "1m",
+                "5m",
+                "1h",
+                "6h",
+                "1d"
+              ]
+            }
+          },
+          "name": "interval"
+        }
+      },
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "name": "Datasource",
+            "hidden": false
+          },
+          "defaultValue": "Prometheus",
+          "allowAllValue": false,
+          "allowMultiple": false,
+          "plugin": {
+            "kind": "DatasourceVariable",
+            "spec": {
+              "datasourcePluginKind": "PrometheusDatasource"
+            }
+          },
+          "name": "datasource"
+        }
+      },
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "name": "Namespace",
+            "hidden": false
+          },
+          "defaultValue": "demo",
+          "allowAllValue": false,
+          "allowMultiple": false,
+          "sort": "none",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "namespace",
+              "matchers": [
+                "kube_namespace_labels"
+              ]
+            }
+          },
+          "name": "namespace"
+        }
+      },
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "name": "Replica Set",
+            "hidden": false
+          },
+          "defaultValue": "replicaset",
+          "allowAllValue": false,
+          "allowMultiple": false,
+          "sort": "alphabetical-asc",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "set",
+              "matchers": [
+                "mongodb_mongod_replset_my_state{namespace=~\"$namespace\"}"
+              ]
+            }
+          },
+          "name": "app"
+        }
+      },
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "name": "Pod",
+            "hidden": false
+          },
+          "defaultValue": "mg-rs-0",
+          "allowAllValue": false,
+          "allowMultiple": false,
+          "sort": "alphabetical-asc",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "pod",
+              "matchers": [
+                "mongodb_mongod_replset_my_state{set=\"$app\"}"
+              ]
+            }
+          },
+          "name": "pod"
+        }
+      }
+    ],
+    "panels": {
+      "0_0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "ReplSet State",
+            "description": "Shows the role of the selected member instance (PRIMARY or SECONDARY)"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "format": {
+                "decimalPlaces": 0,
+                "unit": "decimal"
+              },
+              "mappings": [
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "STARTUP"
+                    },
+                    "value": "0"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "PRIMARY"
+                    },
+                    "value": "1"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "REMOVED"
+                    },
+                    "value": "10"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "SECONDARY"
+                    },
+                    "value": "2"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "RECOVERING"
+                    },
+                    "value": "3"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "STARTUP2"
+                    },
+                    "value": "5"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "UNKNOWN"
+                    },
+                    "value": "6"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "ARBITER"
+                    },
+                    "value": "7"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "DOWN"
+                    },
+                    "value": "8"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "ROLLBACK"
+                    },
+                    "value": "9"
+                  }
+                }
+              ],
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#73bf69",
+                    "value": 0
+                  },
+                  {
+                    "color": "#f2495c",
+                    "value": 80
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "5m",
+                    "query": "mongodb_mongod_replset_my_state{pod=~\"$pod\"}",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "0_1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "ReplSet Members",
+            "description": "Shows the number of members in the replica set"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "format": {
+                "decimalPlaces": 0,
+                "unit": "decimal"
+              },
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#73bf69",
+                    "value": 0
+                  },
+                  {
+                    "color": "#f2495c",
+                    "value": 80
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "5m",
+                    "query": "count by (set) (mongodb_mongod_replset_number_of_members{set=~\"$app\"} or mongodb_mongod_replset_my_state{set=~\"$app\"})",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "0_2": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "ReplSet Last Election",
+            "description": "Shows how long ago the last election occurred"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "format": {
+                "decimalPlaces": 1,
+                "unit": "seconds"
+              },
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#73bf69",
+                    "value": 0
+                  },
+                  {
+                    "color": "#f2495c",
+                    "value": 80
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "5m",
+                    "query": "time() - mongodb_mongod_replset_member_election_date{pod=~\"$pod\"}",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "0_3": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "ReplSet Lag",
+            "description": "Shows the current replication lag for the selected member"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "format": {
+                "decimalPlaces": 1,
+                "unit": "seconds"
+              },
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#73bf69",
+                    "value": 0
+                  },
+                  {
+                    "color": "#f2495c",
+                    "value": 80
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "5m",
+                    "query": "(max(mongodb_mongod_replset_member_optime_date{state=\"PRIMARY\", set=\"$app\"}) - min(mongodb_mongod_replset_member_optime_date{state=\"SECONDARY\"} * on (name) group_left mongodb_mongod_replset_my_name{pod=~\"$pod\"})) or vector(0)",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "0_4": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Storage Engine",
+            "description": "Shows the storage engine used on the instance"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "mean",
+              "format": {
+                "decimalPlaces": 0,
+                "unit": "decimal"
+              },
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#73bf69",
+                    "value": 0
+                  },
+                  {
+                    "color": "#f2495c",
+                    "value": 80
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "5m",
+                    "query": "mongodb_mongod_storage_engine{pod=~\"$pod\"}",
+                    "seriesNameFormat": "{{ engine }}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Replication Operations"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "rate(mongodb_mongod_op_counters_repl_total{pod=~\"$pod\", type!~\"(command|getmore|query)\"}[$interval]) or irate(mongodb_mongod_op_counters_repl_total{pod=~\"$pod\", type!~\"(command|getmore|query)\"}[5m])",
+                    "seriesNameFormat": "{{type}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Replication Lag",
+            "description": "Shows the delay between an operation occurring on the primary and that same operation getting applied on the selected member"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "(max(mongodb_mongod_replset_member_optime_date{state=\"PRIMARY\", set=\"$app\"}) - min(mongodb_mongod_replset_member_optime_date{state=\"SECONDARY\"} * on (name) group_left mongodb_mongod_replset_my_name{pod=~\"$pod\"})) or vector(0)",
+                    "seriesNameFormat": "Lag"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Oplog Getmore Time"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "rate(mongodb_mongod_metrics_repl_network_getmores_total_milliseconds{pod=~\"$pod\"}[$interval]) or irate(mongodb_mongod_metrics_repl_network_getmores_total_milliseconds{pod=~\"$pod\"}[5m])",
+                    "seriesNameFormat": "{{instance}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Oplog Buffer Capacity"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "mongodb_mongod_metrics_repl_buffer_size_bytes{pod=~\"$pod\"}",
+                    "seriesNameFormat": "Used"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "mongodb_mongod_metrics_repl_buffer_max_size_bytes{pod=~\"$pod\"}",
+                    "seriesNameFormat": "Max"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_2": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Oplog Operations"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "rate(mongodb_mongod_metrics_repl_preload_docs_num_total{pod=~\"$pod\"}[$interval]) or irate(mongodb_mongod_metrics_repl_preload_docs_num_total{pod=~\"$pod\"}[5m])",
+                    "seriesNameFormat": "Document Preload"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "rate(mongodb_mongod_metrics_repl_preload_indexes_num_total{pod=~\"$pod\"}[$interval]) or irate(mongodb_mongod_metrics_repl_preload_indexes_num_total{pod=~\"$pod\"}[5m])",
+                    "seriesNameFormat": "Index Preload"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "query": "rate(mongodb_mongod_metrics_repl_apply_ops_total{pod=~\"$pod\"}[$interval]) or irate(mongodb_mongod_metrics_repl_apply_ops_total{pod=~\"$pod\"}[5m])",
+                    "seriesNameFormat": "Batch Apply"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_3": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Oplog Buffered Operations"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "$interval",
+                    "query": "mongodb_mongod_metrics_repl_buffer_count{pod=~\"$pod\"}",
+                    "seriesNameFormat": "Current"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "layouts": [
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Overview",
+            "collapse": {
+              "open": true
+            }
+          },
+          "items": [
+            {
+              "x": 0,
+              "y": 1,
+              "width": 6,
+              "height": 3,
+              "content": {
+                "$ref": "#/spec/panels/0_0"
+              }
+            },
+            {
+              "x": 6,
+              "y": 1,
+              "width": 4,
+              "height": 3,
+              "content": {
+                "$ref": "#/spec/panels/0_1"
+              }
+            },
+            {
+              "x": 10,
+              "y": 1,
+              "width": 4,
+              "height": 3,
+              "content": {
+                "$ref": "#/spec/panels/0_2"
+              }
+            },
+            {
+              "x": 14,
+              "y": 1,
+              "width": 4,
+              "height": 3,
+              "content": {
+                "$ref": "#/spec/panels/0_3"
+              }
+            },
+            {
+              "x": 18,
+              "y": 1,
+              "width": 6,
+              "height": 3,
+              "content": {
+                "$ref": "#/spec/panels/0_4"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Replication Info",
+            "collapse": {
+              "open": true
+            }
+          },
+          "items": [
+            {
+              "x": 0,
+              "y": 5,
+              "width": 12,
+              "height": 7,
+              "content": {
+                "$ref": "#/spec/panels/1_0"
+              }
+            },
+            {
+              "x": 12,
+              "y": 5,
+              "width": 12,
+              "height": 7,
+              "content": {
+                "$ref": "#/spec/panels/1_1"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Oplog Info",
+            "collapse": {
+              "open": true
+            }
+          },
+          "items": [
+            {
+              "x": 0,
+              "y": 13,
+              "width": 12,
+              "height": 7,
+              "content": {
+                "$ref": "#/spec/panels/2_0"
+              }
+            },
+            {
+              "x": 12,
+              "y": 13,
+              "width": 12,
+              "height": 7,
+              "content": {
+                "$ref": "#/spec/panels/2_1"
+              }
+            },
+            {
+              "x": 0,
+              "y": 20,
+              "width": 12,
+              "height": 7,
+              "content": {
+                "$ref": "#/spec/panels/2_2"
+              }
+            },
+            {
+              "x": 12,
+              "y": 20,
+              "width": 12,
+              "height": 7,
+              "content": {
+                "$ref": "#/spec/panels/2_3"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "duration": "1h"
+  }
+}

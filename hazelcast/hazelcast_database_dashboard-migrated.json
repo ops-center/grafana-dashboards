@@ -1,0 +1,872 @@
+{
+  "kind": "Dashboard",
+  "metadata": {
+    "name": "LrqJZlxHz",
+    "createdAt": "0001-01-01T00:00:00Z",
+    "updatedAt": "0001-01-01T00:00:00Z",
+    "version": 0,
+    "project": "pp"
+  },
+  "spec": {
+    "display": {
+      "name": "KubeDb / Hazelcast / Database"
+    },
+    "variables": [
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "hidden": false
+          },
+          "defaultValue": "Prometheus",
+          "allowAllValue": false,
+          "allowMultiple": false,
+          "plugin": {
+            "kind": "DatasourceVariable",
+            "spec": {
+              "datasourcePluginKind": "PrometheusDatasource"
+            }
+          },
+          "name": "datasource"
+        }
+      },
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "hidden": false
+          },
+          "defaultValue": "demo",
+          "allowAllValue": false,
+          "allowMultiple": false,
+          "sort": "none",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "namespace",
+              "matchers": [
+                "kube_namespace_created"
+              ]
+            }
+          },
+          "name": "namespace"
+        }
+      },
+      {
+        "kind": "ListVariable",
+        "spec": {
+          "display": {
+            "name": "app",
+            "hidden": false
+          },
+          "defaultValue": "hazelcast-sample",
+          "allowAllValue": false,
+          "allowMultiple": false,
+          "sort": "none",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "app",
+              "matchers": [
+                "kubedb_com_hazelcast_status_phase{namespace=~\"$namespace\"}"
+              ]
+            }
+          },
+          "name": "app"
+        }
+      }
+    ],
+    "panels": {
+      "0_0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Active Members",
+            "description": "Total number of active members"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "format": {
+                "unit": "decimal"
+              },
+              "sparkline": {},
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#73bf69",
+                    "value": 0
+                  },
+                  {
+                    "color": "#f2495c",
+                    "value": 80
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "count(com_hazelcast_Metrics_activeMembers{namespace=~\"$namespace\",service=~\"$app-stats\"})",
+                    "seriesNameFormat": "Member Count"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "0_1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Cluster Uptime(minutes)",
+            "description": "Cluster Uptime in minutes"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "sparkline": {},
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#73bf69",
+                    "value": 0
+                  },
+                  {
+                    "color": "#73bf69",
+                    "value": 80
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "max(com_hazelcast_Metrics_uptime{namespace=~\"$namespace\",service=~\"$app-stats\"})/(1000*60)",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "0_2": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Client Count",
+            "description": "Total number of client"
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "sparkline": {},
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#73bf69",
+                    "value": 0
+                  },
+                  {
+                    "color": "#f2495c",
+                    "value": 80
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "count(com_hazelcast_Metrics_clientCount{namespace=~\"$namespace\",service=\"$app-stats\"})",
+                    "seriesNameFormat": "Client Count"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "0_3": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Partition counts",
+            "description": "Total Number of Partitions"
+          },
+          "plugin": {
+            "kind": "BarChart",
+            "spec": {
+              "calculation": "last-number"
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "com_hazelcast_Metrics_activePartitionCount{namespace=~\"$namespace\",service=~\"$app-stats\"}",
+                    "seriesNameFormat": "{{ pod }}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "System Load",
+            "description": "System Load"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "com_hazelcast_Metrics_systemLoadAverage{namespace=~\"$namespace\",service=~\"$app-stats\"}\n",
+                    "seriesNameFormat": "{{pod}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Heap Usage",
+            "description": "Heap Usage"
+          },
+          "plugin": {
+            "kind": "GaugeChart",
+            "spec": {
+              "calculation": "last-number",
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#73bf69",
+                    "value": 0
+                  },
+                  {
+                    "color": "#f2495c",
+                    "value": 80
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "com_hazelcast_Metrics_usedHeap{namespace=~\"$namespace\",service=~\"$app-stats\"}/(com_hazelcast_Metrics_usedHeap{namespace=~\"$namespace\",service=~\"$app-stats\"}+com_hazelcast_Metrics_freeHeap{namespace=~\"$namespace\",service=~\"$app-stats\"})*100",
+                    "seriesNameFormat": "{{pod}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_2": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Owned Entry Memory Cost"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "com_hazelcast_Metrics_ownedEntryMemoryCost{namespace=~\"$namespace\",service=~\"$app-stats\"}/1000\n",
+                    "seriesNameFormat": "{{pod}} {{tag0}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_3": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Backup Entry Memory Cost",
+            "description": "Backup Entry memory Cost"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "com_hazelcast_Metrics_backupEntryMemoryCost{namespace=~\"$namespace\",service=~\"$app-stats\"}/1000\n",
+                    "seriesNameFormat": "{{pod}} {{tag0}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "1_4": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Heap Cost",
+            "description": "Total Heap Cost"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "com_hazelcast_Metrics_heapCost{namespace=~\"$namespace\",service=~\"$app-stats\"}/1000",
+                    "seriesNameFormat": "{{pod}} {{tag0}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_0": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "GetLatency and GetCount"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {
+              "yAxis": {
+                "format": {
+                  "unit": "decimal"
+                }
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "com_hazelcast_Metrics_totalGetLatency{namespace=~\"$namespace\",service=~\"$app-stats\"}",
+                    "seriesNameFormat": "GetLatency {{pod}} {{tag0}}"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "com_hazelcast_Metrics_getCount{namespace=~\"$namespace\",service=~\"$app-stats\"}",
+                    "seriesNameFormat": "GetCount {{pod}} {{tag0}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_1": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "PutLatency and PutCount",
+            "description": "PutLatency and PutCount"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "com_hazelcast_Metrics_totalPutLatency{namespace=~\"$namespace\",service=~\"$app-stats\"}",
+                    "seriesNameFormat": "Put Latency {{pod}} {{tag0}}"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "com_hazelcast_Metrics_putCount{namespace=~\"$namespace\",service=~\"$app-stats\"}\n",
+                    "seriesNameFormat": "Put Count {{pod}} {{tag0}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_2": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "SetLatency and SetCount"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "com_hazelcast_Metrics_totalSetLatency{namespace=~\"$namespace\",service=~\"$app-stats\"}\n",
+                    "seriesNameFormat": "setLatency {{pod}} {{tag0}}"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "com_hazelcast_Metrics_setCount{namespace=~\"$namespace\",service=~\"$app-stats\"}\n",
+                    "seriesNameFormat": "setCount {{pod}} {{tag0}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_3": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "RemoveLatency and RemoveCount",
+            "description": "RemoveLatency and RemoveCount"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "com_hazelcast_Metrics_totalRemoveLatency{namespace=~\"$namespace\",service=~\"$app-stats\"}",
+                    "seriesNameFormat": "RemoveLatency {{pod}} {{tag0}}"
+                  }
+                }
+              }
+            },
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "com_hazelcast_Metrics_removeCount{namespace=~\"$namespace\",service=~\"$app-stats\"}",
+                    "seriesNameFormat": "RemoveCount {{pod}} {{tag0}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_4": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Entry Counts",
+            "description": "Entry Counts"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "com_hazelcast_Metrics_entryCount{namespace=~\"$namespace\",service=~\"$app-stats\"}",
+                    "seriesNameFormat": "{{pod}} {{tag0}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_5": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Backup Entry Count",
+            "description": "Backup Entry Count"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "com_hazelcast_Metrics_backupEntryCount{namespace=~\"$namespace\",service=~\"$app-stats\"}",
+                    "seriesNameFormat": "{{pod}} {{tag0}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_6": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Locked Entry Count",
+            "description": "Locked Entry Count"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "com_hazelcast_Metrics_lockedEntryCount{namespace=~\"$namespace\",service=~\"$app-stats\"}\n",
+                    "seriesNameFormat": "{{pod}} {{tag0}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "2_7": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Dirty Entry Count",
+            "description": "Dirty Entry Count"
+          },
+          "plugin": {
+            "kind": "TimeSeriesChart",
+            "spec": {}
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "minStep": "",
+                    "query": "com_hazelcast_Metrics_dirtyEntryCount{namespace=~\"$namespace\",service=~\"$app-stats\"}\n",
+                    "seriesNameFormat": "{{pod}} {{tag0}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "layouts": [
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Hazelcast Server",
+            "collapse": {
+              "open": true
+            }
+          },
+          "items": [
+            {
+              "x": 0,
+              "y": 1,
+              "width": 3,
+              "height": 6,
+              "content": {
+                "$ref": "#/spec/panels/0_0"
+              }
+            },
+            {
+              "x": 3,
+              "y": 1,
+              "width": 3,
+              "height": 6,
+              "content": {
+                "$ref": "#/spec/panels/0_1"
+              }
+            },
+            {
+              "x": 6,
+              "y": 1,
+              "width": 3,
+              "height": 6,
+              "content": {
+                "$ref": "#/spec/panels/0_2"
+              }
+            },
+            {
+              "x": 9,
+              "y": 1,
+              "width": 15,
+              "height": 6,
+              "content": {
+                "$ref": "#/spec/panels/0_3"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Hazelcast Memory Usage",
+            "collapse": {
+              "open": true
+            }
+          },
+          "items": [
+            {
+              "x": 0,
+              "y": 8,
+              "width": 12,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/1_0"
+              }
+            },
+            {
+              "x": 12,
+              "y": 8,
+              "width": 12,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/1_1"
+              }
+            },
+            {
+              "x": 0,
+              "y": 16,
+              "width": 12,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/1_2"
+              }
+            },
+            {
+              "x": 12,
+              "y": 16,
+              "width": 12,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/1_3"
+              }
+            },
+            {
+              "x": 0,
+              "y": 24,
+              "width": 24,
+              "height": 7,
+              "content": {
+                "$ref": "#/spec/panels/1_4"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "kind": "Grid",
+        "spec": {
+          "display": {
+            "title": "Hazelcast Operation Latency ",
+            "collapse": {
+              "open": true
+            }
+          },
+          "items": [
+            {
+              "x": 0,
+              "y": 32,
+              "width": 12,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/2_0"
+              }
+            },
+            {
+              "x": 12,
+              "y": 32,
+              "width": 12,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/2_1"
+              }
+            },
+            {
+              "x": 0,
+              "y": 40,
+              "width": 12,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/2_2"
+              }
+            },
+            {
+              "x": 12,
+              "y": 40,
+              "width": 12,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/2_3"
+              }
+            },
+            {
+              "x": 0,
+              "y": 48,
+              "width": 12,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/2_4"
+              }
+            },
+            {
+              "x": 12,
+              "y": 48,
+              "width": 12,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/2_5"
+              }
+            },
+            {
+              "x": 0,
+              "y": 56,
+              "width": 12,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/2_6"
+              }
+            },
+            {
+              "x": 12,
+              "y": 56,
+              "width": 12,
+              "height": 8,
+              "content": {
+                "$ref": "#/spec/panels/2_7"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "duration": "1h"
+  }
+}

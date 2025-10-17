@@ -22,27 +22,22 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 63,
+  "id": 139,
+  "iteration": 1693974813049,
   "links": [],
   "liveNow": true,
   "panels": [
     {
-      "aliasColors": {
-        "CRITICAL": "#ea3d2f",
-        "HIGH": "#f7ad2a",
-        "LOW": "#27b064",
-        "MEDIUM": "#0aafff",
-        "UNKNOWN": "#8f8f8f"
-      },
+      "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
-      "description": "Number of vulnerability occurrences in cluster scope",
+      "description": "Total number of FalcoEvents occurred in node scope",
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
-        "h": 17,
+        "h": 15,
         "w": 12,
         "x": 0,
         "y": 0
@@ -76,9 +71,9 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (job, severity) (scanner_appscode_com_cluster_cve_occurrence_total)",
+          "expr": "sum by (node) (falco_appscode_com_events{node=\"$node\"})",
           "interval": "",
-          "legendFormat": "{{severity}}",
+          "legendFormat": "{{ target_node }}",
           "refId": "A"
         }
       ],
@@ -86,7 +81,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Cluster CVE Occurance Total",
+      "title": "Node FalcoEvents total",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -125,21 +120,20 @@
     },
     {
       "aliasColors": {
-        "CRITICAL": "#ea3d2f",
-        "HIGH": "#f7ad2a",
-        "LOW": "#27b064",
-        "MEDIUM": "#0aafff",
-        "UNKNOWN": "#8f8f8f"
+        " Critical": "orange",
+        " Error": "red",
+        " Notice": "green",
+        " Warning": "purple"
       },
       "bars": false,
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
-      "description": "Number of unique vulnerabilites in cluster scope",
+      "description": "Total number of FalcoEvents occurred in node scope by priority",
       "fill": 0,
       "fillGradient": 0,
       "gridPos": {
-        "h": 17,
+        "h": 15,
         "w": 12,
         "x": 12,
         "y": 0
@@ -173,9 +167,9 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (job, severity) (scanner_appscode_com_cluster_cve_count_total)",
+          "expr": "sum by (priority) (falco_appscode_com_events{node=\"$node\"})",
           "interval": "",
-          "legendFormat": "{{severity}}",
+          "legendFormat": " {{ priority }}",
           "refId": "A"
         }
       ],
@@ -183,7 +177,98 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Cluster CVE Count Total",
+      "title": "Node FalcoEvents by Priority",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${datasource}",
+      "description": "Total number of FalcoEvents occurred in node scope by rule",
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 16,
+        "w": 24,
+        "x": 0,
+        "y": 15
+      },
+      "hiddenSeries": false,
+      "id": 5,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (rule) (falco_appscode_com_events{node=\"$node\"})",
+          "interval": "",
+          "legendFormat": "{{ rule }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Node FalcoEvents by Rule",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -246,6 +331,37 @@
         "regex": "",
         "skipUrlSync": false,
         "type": "datasource"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "isNone": true,
+          "selected": false,
+          "text": "None",
+          "value": ""
+        },
+        "datasource": "${datasource}",
+        "definition": "label_values(kube_node_info, node)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "node",
+        "multi": false,
+        "name": "node",
+        "options": [],
+        "query": {
+          "query": "label_values(kube_node_info, node)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       }
     ]
   },
@@ -255,7 +371,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "ACE / Scanner / Cluster CVEs",
-  "uid": "wqK6M0h4k",
+  "title": "ACE / Falco / Node Events",
+  "uid": "wACsNpzIz",
   "version": 2
 }
