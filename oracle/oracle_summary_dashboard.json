@@ -23,7 +23,7 @@
   "gnetId": 9628,
   "graphTooltip": 0,
   "id": 29,
-  "iteration": 1769508389115,
+  "iteration": 1770014156043,
   "links": [],
   "panels": [
     {
@@ -2557,7 +2557,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(kubelet_volume_stats_used_bytes{} / on(persistentvolumeclaim) group_left(pod) (kubelet_volume_stats_capacity_bytes{} + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-(?:\\\\d+|arbiter-\\\\d+|hidden-\\\\d+|shard\\\\d+-(?:\\\\d+|arbiter-\\\\d+|hidden-\\\\d+)|configsvr-\\\\d+|mongos-\\\\d+)\",namespace=~\"$namespace\"}) )* 100",
+          "expr": "{__name__=~\"oracledb_tablespace.*\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "{{pod}}",
@@ -2919,7 +2919,7 @@
       {
         "allValue": "\".+\"",
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "exporter",
           "value": "exporter"
         },
@@ -3012,5 +3012,5 @@
   "timezone": "",
   "title": "KubeDB / Oracle / Summary",
   "uid": "92M7QvyVk",
-  "version": 2
+  "version": 3
 }
