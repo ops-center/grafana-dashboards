@@ -22,7 +22,8 @@
   "editable": true,
   "gnetId": 9628,
   "graphTooltip": 0,
-  "iteration": 1682776538666,
+  "id": 31,
+  "iteration": 1769751317848,
   "links": [],
   "panels": [
     {
@@ -45,48 +46,23 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "mode": "thresholds"
           },
-          "mappings": [
-            {
-              "options": {
-                "Critical": {
-                  "color": "dark-yellow",
-                  "index": 1
-                },
-                "DataRestoring": {
-                  "color": "dark-red",
-                  "index": 4
-                },
-                "Halted": {
-                  "color": "dark-red",
-                  "index": 5
-                },
-                "NotReady": {
-                  "color": "dark-red",
-                  "index": 2
-                },
-                "Provisioning": {
-                  "color": "text",
-                  "index": 3
-                },
-                "Ready": {
-                  "color": "semi-dark-green",
-                  "index": 0
-                }
-              },
-              "type": "value"
-            }
-          ],
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "text",
+                "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
-          }
+          },
+          "unit": "short"
         },
         "overrides": []
       },
@@ -98,7 +74,7 @@
       },
       "id": 78,
       "options": {
-        "colorMode": "none",
+        "colorMode": "background",
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -124,6 +100,8 @@
           "refId": "A"
         }
       ],
+      "timeFrom": null,
+      "timeShift": null,
       "title": "Database Status",
       "type": "stat"
     },
@@ -134,22 +112,9 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "fixedColor": "text",
-            "mode": "palette-classic"
+            "mode": "thresholds"
           },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "index": 0,
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "noValue": "N/A",
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -178,7 +143,7 @@
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
+        "colorMode": "background",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
@@ -207,6 +172,8 @@
           "refId": "A"
         }
       ],
+      "timeFrom": null,
+      "timeShift": null,
       "title": "Version",
       "type": "stat"
     },
@@ -260,7 +227,7 @@
       },
       "id": 82,
       "options": {
-        "colorMode": "none",
+        "colorMode": "background",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -278,11 +245,11 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_neo4j_info{namespace=\"$namespace\", app=\"$app\"}",
+          "expr": "kubedb_com_neo4j_tls_enable{namespace=\"$namespace\", app=\"$app\"}",
           "format": "time_series",
           "instant": true,
           "interval": "",
-          "legendFormat": "{{requireSSL}}",
+          "legendFormat": "{{issuers_name}}",
           "refId": "A"
         }
       ],
@@ -297,7 +264,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "mode": "continuous-GrYlRd"
           },
           "mappings": [
             {
@@ -326,7 +293,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "text",
+                "color": "green",
                 "value": null
               }
             ]
@@ -342,7 +309,7 @@
       },
       "id": 84,
       "options": {
-        "colorMode": "none",
+        "colorMode": "background",
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
@@ -405,7 +372,7 @@
       },
       "id": 76,
       "options": {
-        "colorMode": "none",
+        "colorMode": "background",
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "horizontal",
@@ -2839,7 +2806,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "default",
           "value": "default"
         },
@@ -2952,7 +2919,7 @@
     ]
   },
   "timezone": "",
-  "title": "KubeDB / Neo4j / Summary",
+  "title": "check",
   "uid": "neo4jSumMaRy",
-  "version": 1
+  "version": 5
 }
