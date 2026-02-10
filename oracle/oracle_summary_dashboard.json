@@ -23,7 +23,7 @@
   "gnetId": 9628,
   "graphTooltip": 0,
   "id": 29,
-  "iteration": 1770014156043,
+  "iteration": 1770628644107,
   "links": [],
   "panels": [
     {
@@ -2473,7 +2473,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubelet_volume_stats_capacity_bytes + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-(?:\\\\d+|arbiter-\\\\d+|hidden-\\\\d+|shard\\\\d+-(?:\\\\d+|arbiter-\\\\d+|hidden-\\\\d+)|configsvr-\\\\d+|mongos-\\\\d+)\",namespace=~\"$namespace\"}",
+          "expr": "kubelet_volume_stats_capacity_bytes{job=\"kubelet\"}\n* on(persistentvolumeclaim, namespace) group_left(pod)\nkube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"^$app.*\", namespace=~\"$namespace\"}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2557,7 +2557,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "{__name__=~\"oracledb_tablespace.*\"}",
+          "expr": "(\n  kubelet_volume_stats_used_bytes{job=\"kubelet\"}\n  * on(persistentvolumeclaim, namespace) group_left(pod)\n  kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"^$app.*\", namespace=~\"$namespace\"}\n)\n/\n(\n  kubelet_volume_stats_capacity_bytes{job=\"kubelet\"}\n  * on(persistentvolumeclaim, namespace) group_left(pod)\n  kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"^$app.*\", namespace=~\"$namespace\"}\n)\n* 100",
           "instant": true,
           "interval": "",
           "legendFormat": "{{pod}}",
@@ -2641,7 +2641,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(kubelet_volume_stats_used_bytes + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app-(?:\\\\d+|arbiter-\\\\d+|hidden-\\\\d+|shard\\\\d+-(?:\\\\d+|arbiter-\\\\d+|hidden-\\\\d+)|configsvr-\\\\d+|mongos-\\\\d+)\",namespace=~\"$namespace\"}) ",
+          "expr": "kubelet_volume_stats_used_bytes{job=\"kubelet\"}\n* on(persistentvolumeclaim, namespace) group_left(pod)\nkube_pod_spec_volumes_persistentvolumeclaims_info{\n  pod=~\"^$app.*\",\n  namespace=~\"$namespace\"\n}",
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}",
@@ -2981,7 +2981,7 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {
@@ -3012,5 +3012,5 @@
   "timezone": "",
   "title": "KubeDB / Oracle / Summary",
   "uid": "92M7QvyVk",
-  "version": 3
+  "version": 4
 }
