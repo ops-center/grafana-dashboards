@@ -22,7 +22,8 @@
   "editable": true,
   "gnetId": 9628,
   "graphTooltip": 0,
-  "iteration": 1723728705422,
+  "id": 31,
+  "iteration": 1770701916658,
   "links": [],
   "panels": [
     {
@@ -212,7 +213,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "When this option is enabled, connections attempted using insecure transport will be rejected.",
+      "description": "Shows TLS mode. Disabled means no TLS. Server means server TLS only. Mutual means client TLS is also enabled.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -220,32 +221,38 @@
           },
           "mappings": [
             {
-              "from": "",
-              "id": 1,
+              "id": 0,
               "text": "Disabled",
-              "to": "",
               "type": 1,
-              "value": "false"
+              "value": "0"
             },
             {
-              "from": "",
-              "id": 2,
-              "text": "Enabled",
-              "to": "",
+              "id": 1,
+              "text": "Server",
               "type": 1,
-              "value": "true"
+              "value": "1"
+            },
+            {
+              "id": 2,
+              "text": "Mutual",
+              "type": 1,
+              "value": "2"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "red",
                 "value": null
               },
               {
-                "color": "red",
-                "value": 80
+                "color": "orange",
+                "value": 1
+              },
+              {
+                "color": "green",
+                "value": 2
               }
             ]
           }
@@ -260,8 +267,8 @@
       },
       "id": 82,
       "options": {
-        "colorMode": "none",
-        "graphMode": "area",
+        "colorMode": "value",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
@@ -272,23 +279,23 @@
           "values": false
         },
         "text": {},
-        "textMode": "name"
+        "textMode": "value"
       },
       "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubedb_com_qdrant_info{namespace=\"$namespace\", app=\"$app\"}",
+          "expr": "max((kubedb_com_qdrant_info{namespace=\"$namespace\", app=\"$app\", tls!=\"\", clientTLS=\"true\"} * 2) or (kubedb_com_qdrant_info{namespace=\"$namespace\", app=\"$app\", tls!=\"\", clientTLS!=\"true\"} * 1) or (kubedb_com_qdrant_info{namespace=\"$namespace\", app=\"$app\", tls=\"\"} * 0) or vector(0))",
           "format": "time_series",
           "instant": true,
           "interval": "",
-          "legendFormat": "{{clientTLS}}",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Require Secure Transport",
+      "title": "TLS Mode",
       "type": "stat"
     },
     {
@@ -2433,7 +2440,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "kubelet_volume_stats_capacity_bytes + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"^$app.*\",namespace=~\"$namespace\"}",
+          "expr": "kubelet_volume_stats_capacity_bytes{job=\"kubelet\"}\n* on(persistentvolumeclaim, namespace) group_left(pod)\nkube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"^$app.*\", namespace=~\"$namespace\"}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -2517,7 +2524,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(kubelet_volume_stats_used_bytes / on(persistentvolumeclaim) group_left(pod) (kubelet_volume_stats_capacity_bytes + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"^$app.*\",namespace=~\"$namespace\"}) )* 100",
+          "expr": "(\n  kubelet_volume_stats_used_bytes{job=\"kubelet\"}\n  * on(persistentvolumeclaim, namespace) group_left(pod)\n  kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"^$app.*\", namespace=~\"$namespace\"}\n)\n/\n(\n  kubelet_volume_stats_capacity_bytes{job=\"kubelet\"}\n  * on(persistentvolumeclaim, namespace) group_left(pod)\n  kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"^$app.*\", namespace=~\"$namespace\"}\n)\n* 100",
           "instant": true,
           "interval": "",
           "legendFormat": "{{pod}}",
@@ -2601,7 +2608,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(kubelet_volume_stats_used_bytes + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"^$app.*\",namespace=~\"$namespace\"}) ",
+          "expr": "kubelet_volume_stats_used_bytes{job=\"kubelet\"}\n* on(persistentvolumeclaim, namespace) group_left(pod)\nkube_pod_spec_volumes_persistentvolumeclaims_info{\n  pod=~\"^$app.*\",\n  namespace=~\"$namespace\"\n}",
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}",
@@ -2862,8 +2869,8 @@
         "allValue": "\".+\"",
         "current": {
           "selected": false,
-          "text": "demo",
-          "value": "demo"
+          "text": "default",
+          "value": "default"
         },
         "datasource": "${datasource}",
         "definition": "label_values(kube_namespace_created,namespace)",
@@ -2893,8 +2900,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "ms-ag-mon",
-          "value": "ms-ag-mon"
+          "text": "qdrant-sample",
+          "value": "qdrant-sample"
         },
         "datasource": "${datasource}",
         "definition": "label_values(kubedb_com_qdrant_status_phase{namespace=~\"$namespace\"},app)",
@@ -2902,7 +2909,7 @@
         "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": "qdrant",
+        "label": "Qdrant",
         "multi": false,
         "name": "app",
         "options": [],
@@ -2954,5 +2961,5 @@
   "timezone": "",
   "title": "KubeDB / Qdrant / Summary",
   "uid": "qDMhbh0Iz",
-  "version": 9
+  "version": 7
 }

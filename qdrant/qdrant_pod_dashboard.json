@@ -16,8 +16,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": 35,
-  "iteration": 1764923849515,
+  "id": 30,
+  "iteration": 1770713442671,
   "links": [],
   "panels": [
     {
@@ -81,7 +81,9 @@
       "pluginVersion": "7.5.5",
       "targets": [
         {
-          "expr": "app_info{job=\"$job\", pod=~\"$pod\"}",
+          "exemplar": true,
+          "expr": "app_info{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
+          "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
         }
@@ -167,7 +169,9 @@
       "pluginVersion": "7.5.5",
       "targets": [
         {
-          "expr": "up{job=\"$job\", pod=~\"$pod\"}",
+          "exemplar": true,
+          "expr": "up{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
+          "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
@@ -224,7 +228,10 @@
       "pluginVersion": "7.5.5",
       "targets": [
         {
-          "expr": "time() - kube_pod_start_time{pod=\"$pod\"}",
+          "exemplar": true,
+          "expr": "time() - kube_pod_start_time{namespace=~\"$namespace\",pod=~\"$pod\"}",
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -318,17 +325,23 @@
       },
       "targets": [
         {
-          "expr": "memory_resident_bytes{job=\"$job\", pod=\"$pod\"}",
+          "exemplar": true,
+          "expr": "memory_resident_bytes{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
+          "interval": "",
           "legendFormat": "Resident",
           "refId": "A"
         },
         {
-          "expr": "memory_allocated_bytes{job=\"$job\", pod=\"$pod\"}",
+          "exemplar": true,
+          "expr": "memory_allocated_bytes{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
+          "interval": "",
           "legendFormat": "Allocated",
           "refId": "B"
         },
         {
-          "expr": "memory_active_bytes{job=\"$job\", pod=\"$pod\"}",
+          "exemplar": true,
+          "expr": "memory_active_bytes{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
+          "interval": "",
           "legendFormat": "Active",
           "refId": "C"
         }
@@ -408,7 +421,9 @@
       },
       "targets": [
         {
-          "expr": "collection_hardware_metric_cpu{job=\"$job\", pod=\"$pod\"}",
+          "exemplar": true,
+          "expr": "collection_hardware_metric_cpu{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
+          "interval": "",
           "legendFormat": "{{id}}",
           "refId": "A"
         }
@@ -474,7 +489,32 @@
           },
           "unit": "reqps"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "{container=\"qdrant\", endpoint=\"/qdrant.Points/Get\", instance=\"10.42.0.27:6333\", job=\"qdrant-sample-stats\", namespace=\"default\", pod=\"qdrant-sample-0\", service=\"qdrant-sample-stats\"}"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "graph": true,
+                  "legend": false,
+                  "tooltip": false
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 8,
@@ -503,8 +543,10 @@
       },
       "targets": [
         {
-          "expr": "rate(grpc_responses_total{job=\"$job\", pod=\"$pod\"}[5m])",
-          "legendFormat": "{{exported_endpoint}}",
+          "exemplar": true,
+          "expr": "rate(grpc_responses_total{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[5m])",
+          "interval": "",
+          "legendFormat": "{{endpoint}}",
           "refId": "A"
         }
       ],
@@ -570,8 +612,10 @@
       },
       "targets": [
         {
-          "expr": "sum by (exported_endpoint) (rate(grpc_responses_total{job=\"$job\", pod=\"$pod\"}[5m]))",
-          "legendFormat": "{{exported_endpoint}}",
+          "exemplar": true,
+          "expr": "sum by (endpoint) (rate(grpc_responses_total{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[5m]))",
+          "interval": "",
+          "legendFormat": "{{endpoint}}",
           "refId": "A"
         }
       ],
@@ -688,23 +732,29 @@
       "pluginVersion": "7.5.5",
       "targets": [
         {
-          "expr": "sum by (exported_endpoint) (rate(grpc_responses_total{job=\"$job\", pod=\"$pod\"}[5m]))",
+          "exemplar": true,
+          "expr": "sum by (endpoint) (rate(grpc_responses_total{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[5m]))",
           "format": "table",
           "instant": true,
+          "interval": "",
           "legendFormat": "",
           "refId": "A"
         },
         {
-          "expr": "sum by (exported_endpoint) (grpc_responses_avg_duration_seconds{job=\"$job\", pod=\"$pod\"})",
+          "exemplar": true,
+          "expr": "sum by (endpoint) (grpc_responses_avg_duration_seconds{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"})",
           "format": "table",
           "instant": true,
+          "interval": "",
           "legendFormat": "",
           "refId": "B"
         },
         {
-          "expr": "sum by (exported_endpoint) (rate(grpc_responses_fail_total{job=\"$job\", pod=\"$pod\"}[5m]))",
+          "exemplar": true,
+          "expr": "sum by (endpoint) (rate(grpc_responses_fail_total{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[5m]))",
           "format": "table",
           "instant": true,
+          "interval": "",
           "legendFormat": "",
           "refId": "C"
         }
@@ -791,8 +841,10 @@
       "pluginVersion": "7.5.5",
       "targets": [
         {
-          "expr": "1 - (sum(rate(grpc_responses_fail_total{job=\"$job\", pod=\"$pod\"}[5m])) / sum(rate(grpc_responses_total{job=\"$job\", pod=\"$pod\"}[5m])))",
+          "exemplar": true,
+          "expr": "1 - (sum(rate(grpc_responses_fail_total{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[5m])) / sum(rate(grpc_responses_total{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[5m])))",
           "instant": false,
+          "interval": "",
           "legendFormat": "gRPC Success Rate",
           "refId": "A"
         }
@@ -849,7 +901,9 @@
       "pluginVersion": "7.5.5",
       "targets": [
         {
-          "expr": "sum(increase(grpc_responses_fail_total{job=\"$job\", pod=\"$pod\"}[1h]))",
+          "exemplar": true,
+          "expr": "sum(increase(grpc_responses_fail_total{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[1h]))",
+          "interval": "",
           "legendFormat": "Failed Requests (1h)",
           "refId": "A"
         }
@@ -930,8 +984,10 @@
       },
       "targets": [
         {
-          "expr": "grpc_responses_avg_duration_seconds{job=\"$job\", pod=\"$pod\"}",
-          "legendFormat": "{{exported_endpoint}}",
+          "exemplar": true,
+          "expr": "grpc_responses_avg_duration_seconds{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
+          "interval": "",
+          "legendFormat": "{{endpoint}}",
           "refId": "A"
         }
       ],
@@ -965,31 +1021,32 @@
         "name": "datasource",
         "options": [],
         "query": "prometheus",
+        "queryValue": "",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "type": "datasource"
       },
       {
-        "allValue": null,
+        "allValue": "\".+\"",
         "current": {
           "selected": false,
-          "text": "qdrant-sample-stats",
-          "value": "qdrant-sample-stats"
+          "text": "default",
+          "value": "default"
         },
         "datasource": "${datasource}",
-        "definition": "label_values(up, job)",
+        "definition": "label_values(kube_namespace_created,namespace)",
         "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": "Job",
+        "label": "Namespace",
         "multi": false,
-        "name": "job",
+        "name": "namespace",
         "options": [],
         "query": {
-          "query": "label_values(up, job)",
-          "refId": "Prometheus-job-Variable-Query"
+          "query": "label_values(kube_namespace_created,namespace)",
+          "refId": "StandardVariableQuery"
         },
         "refresh": 1,
         "regex": "",
@@ -1005,24 +1062,24 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "default",
-          "value": "default"
+          "text": "qdrant-sample",
+          "value": "qdrant-sample"
         },
         "datasource": "${datasource}",
-        "definition": "label_values(up{job=\"$job\"}, namespace)",
+        "definition": "label_values(kubedb_com_qdrant_status_phase{namespace=~\"$namespace\"},app)",
         "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": "Namespace",
+        "label": "Qdrant",
         "multi": false,
-        "name": "namespace",
+        "name": "app",
         "options": [],
         "query": {
-          "query": "label_values(up{job=\"$job\"}, namespace)",
-          "refId": "Prometheus-namespace-Variable-Query"
+          "query": "label_values(kubedb_com_qdrant_status_phase{namespace=~\"$namespace\"},app)",
+          "refId": "StandardVariableQuery"
         },
-        "refresh": 2,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
@@ -1040,7 +1097,7 @@
           "value": "qdrant-sample-0"
         },
         "datasource": "${datasource}",
-        "definition": "label_values(up{job=\"$job\", namespace=~\"$namespace\"}, pod)",
+        "definition": "label_values(up{service=\"$app-stats\", namespace=~\"$namespace\"}, pod)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -1050,10 +1107,10 @@
         "name": "pod",
         "options": [],
         "query": {
-          "query": "label_values(up{job=\"$job\", namespace=~\"$namespace\"}, pod)",
-          "refId": "Prometheus-pod-Variable-Query"
+          "query": "label_values(up{service=\"$app-stats\", namespace=~\"$namespace\"}, pod)",
+          "refId": "StandardVariableQuery"
         },
-        "refresh": 2,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
@@ -1066,8 +1123,8 @@
     ]
   },
   "time": {
-    "from": "2025-12-05T03:51:14.151Z",
-    "to": "2025-12-05T04:27:37.177Z"
+    "from": "now-5m",
+    "to": "now"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -1081,10 +1138,21 @@
       "1h",
       "2h",
       "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
     ]
   },
   "timezone": "",
   "title": "KubeDB / Qdrant / Pod",
   "uid": "qdrant-pod-dashboard",
-  "version": 10
+  "version": 5
 }
