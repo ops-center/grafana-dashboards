@@ -23,7 +23,7 @@
   "gnetId": 9628,
   "graphTooltip": 0,
   "id": 31,
-  "iteration": 1770701916658,
+  "iteration": 1771483802931,
   "links": [],
   "panels": [
     {
@@ -213,7 +213,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "Shows TLS mode. Disabled means no TLS. Server means server TLS only. Mutual means client TLS is also enabled.",
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -228,31 +228,21 @@
             },
             {
               "id": 1,
-              "text": "Server",
+              "text": "Enabled",
               "type": 1,
               "value": "1"
-            },
-            {
-              "id": 2,
-              "text": "Mutual",
-              "type": 1,
-              "value": "2"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "red",
+                "color": "rgb(255, 255, 255)",
                 "value": null
               },
               {
-                "color": "orange",
+                "color": "rgb(255, 255, 255)",
                 "value": 1
-              },
-              {
-                "color": "green",
-                "value": 2
               }
             ]
           }
@@ -269,8 +259,8 @@
       "options": {
         "colorMode": "value",
         "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
+        "justifyMode": "center",
+        "orientation": "vertical",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -279,18 +269,34 @@
           "values": false
         },
         "text": {},
-        "textMode": "value"
+        "textMode": "value_and_name"
       },
       "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
-          "expr": "max((kubedb_com_qdrant_info{namespace=\"$namespace\", app=\"$app\", tls!=\"\", clientTLS=\"true\"} * 2) or (kubedb_com_qdrant_info{namespace=\"$namespace\", app=\"$app\", tls!=\"\", clientTLS!=\"true\"} * 1) or (kubedb_com_qdrant_info{namespace=\"$namespace\", app=\"$app\", tls=\"\"} * 0) or vector(0))",
+          "expr": "max(\n  (\n    kubedb_com_qdrant_info{\n      namespace=\"$namespace\",\n      app=\"$app\",\n      tls!=\"\"\n    } * 1\n  )\n  or vector(0)\n)\n",
           "format": "time_series",
           "instant": true,
           "interval": "",
-          "legendFormat": "",
-          "refId": "A"
+          "legendFormat": "TLS",
+          "refId": "TLS"
+        },
+        {
+          "exemplar": true,
+          "expr": "max(\n  (\n    kubedb_com_qdrant_info{\n      namespace=\"$namespace\",\n      app=\"$app\",\n      verify_https_client_certificate=\"true\"\n    } * 1\n  )\n  or vector(0)\n)\n",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Client",
+          "refId": "Client"
+        },
+        {
+          "exemplar": true,
+          "expr": "max(\n  (\n    kubedb_com_qdrant_info{\n      namespace=\"$namespace\",\n      app=\"$app\",\n      p2p_tls!=\"\"\n    } * 1\n  )\n  or vector(0)\n)\n",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "P2P",
+          "refId": "P2P"
         }
       ],
       "timeFrom": null,
@@ -1047,6 +1053,18 @@
               },
               {
                 "id": "custom.align",
+                "value": null
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "CPU Limits"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
                 "value": null
               }
             ]
@@ -2961,5 +2979,5 @@
   "timezone": "",
   "title": "KubeDB / Qdrant / Summary",
   "uid": "qDMhbh0Iz",
-  "version": 7
+  "version": 10
 }

@@ -1,10 +1,10 @@
 # Grafana Dashboards
 
-There are three dashboards to monitor Microsoft SQL Server Databases managed by KubeDB.
+There are three dashboards to monitor Qdrant Databases managed by KubeDB.
 
-- KubeDB / Qdrant / Summary: Shows overall summary of Microsoft SQL Server instance.
+- KubeDB / Qdrant / Summary: Shows overall summary of Qdrant instance.
 - KubeDB / Qdrant / Pod: Shows individual pod-level information.
-- KubeDB / Qdrant / Database: Shows Microsoft SQL Server internal metrics for an instance.
+- KubeDB / Qdrant / Database: Shows Qdrant internal metrics for an instance.
 
 Note: These dashboards are developed in **Grafana version 7.5.5**
 
@@ -58,6 +58,8 @@ spec:
   monitor:
     agent: prometheus.io/operator
     prometheus:
+      exporter:
+        port: 6333
       serviceMonitor:
         labels:
           release: <helm-release-name-of-kube-prometheus-stack>

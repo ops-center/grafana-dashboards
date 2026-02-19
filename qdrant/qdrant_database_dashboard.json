@@ -23,7 +23,7 @@
   "gnetId": null,
   "graphTooltip": 1,
   "id": 29,
-  "iteration": 1770715612445,
+  "iteration": 1771477663147,
   "links": [],
   "panels": [
     {
@@ -688,7 +688,7 @@
       },
       "id": 33,
       "panels": [],
-      "title": "gRPC Requests Summary",
+      "title": "REST Requests Summary",
       "type": "row"
     },
     {
@@ -750,14 +750,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(sum(rate(grpc_responses_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m])) - sum(rate(grpc_responses_fail_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m]))) / sum(rate(grpc_responses_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m]))",
+          "expr": "(sum(rate(rest_responses_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m])) - sum(rate(rest_responses_fail_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m]))) / sum(rate(rest_responses_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m]))",
           "instant": true,
           "interval": "",
           "legendFormat": "Success Rate",
           "refId": "A"
         }
       ],
-      "title": "gRPC Success Rate",
+      "title": "REST Success Rate",
       "type": "gauge"
     },
     {
@@ -777,6 +777,104 @@
         "w": 12,
         "x": 12,
         "y": 37
+      },
+      "hiddenSeries": false,
+      "id": 18,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sideWidth": 200,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "avg by (endpoint) (\n  rest_responses_avg_duration_seconds{\n    namespace=~\"$namespace\",\n    pod=~\"$app.*\"\n  }\n)",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{endpoint}} ",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "REST Avg Response Duration",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${datasource}",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 47
       },
       "hiddenSeries": false,
       "id": 27,
@@ -810,7 +908,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (endpoint) (\n  rate(grpc_responses_total{namespace=~\"$namespace\", pod=~\"$app.*\"}[5m])\n)\n",
+          "expr": "sum by (endpoint) (\n  rate(rest_responses_total{namespace=~\"$namespace\", pod=~\"$app.*\"}[5m])\n)",
           "interval": "",
           "legendFormat": "{{endpoint}}",
           "refId": "A"
@@ -820,7 +918,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "gRPC Request Rate by Endpoint",
+      "title": "REST Request Rate by Endpoint",
       "tooltip": {
         "shared": true,
         "sort": 2,
@@ -858,6 +956,89 @@
       }
     },
     {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 57
+      },
+      "id": 204,
+      "panels": [],
+      "title": "gRPC Requests Summary",
+      "type": "row"
+    },
+    {
+      "datasource": "${datasource}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 0.95
+              },
+              {
+                "color": "yellow",
+                "value": 0.98
+              },
+              {
+                "color": "green",
+                "value": 0.99
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 58
+      },
+      "id": 200,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "(sum(rate(grpc_responses_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m])) - sum(rate(grpc_responses_fail_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m]))) / sum(rate(grpc_responses_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m]))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "Success Rate",
+          "refId": "A"
+        }
+      ],
+      "title": "gRPC Success Rate",
+      "type": "gauge"
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -872,11 +1053,11 @@
       "gridPos": {
         "h": 10,
         "w": 12,
-        "x": 0,
-        "y": 47
+        "x": 12,
+        "y": 58
       },
       "hiddenSeries": false,
-      "id": 18,
+      "id": 202,
       "legend": {
         "avg": false,
         "current": false,
@@ -939,6 +1120,103 @@
           "logBase": 1,
           "max": null,
           "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${datasource}",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 68
+      },
+      "hiddenSeries": false,
+      "id": 201,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": 200,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.5.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum by (endpoint) (\n  rate(grpc_responses_total{namespace=~\"$namespace\", pod=~\"$app.*\"}[5m])\n)\n",
+          "interval": "",
+          "legendFormat": "{{endpoint}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "gRPC Request Rate by Endpoint",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "reqps",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
           "show": true
         },
         {
@@ -1022,8 +1300,8 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "qdrant-sample",
-          "value": "qdrant-sample"
+          "text": "qdrant-no-tls",
+          "value": "qdrant-no-tls"
         },
         "datasource": "${datasource}",
         "definition": "label_values(app_info{namespace=~\"$namespace\"},job)",
@@ -1059,5 +1337,5 @@
   "timezone": "",
   "title": "KubeDB / Qdrant / Database",
   "uid": "qdrant-database-dashboard",
-  "version": 15
+  "version": 17
 }
