@@ -20,10 +20,6 @@
   },
   "description": "The dashboard is designed for KubeDB managed Qdrant",
   "editable": true,
-  "gnetId": 9628,
-  "graphTooltip": 0,
-  "id": 31,
-  "iteration": 1771489827711,
   "links": [],
   "panels": [
     {
@@ -113,7 +109,6 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -195,7 +190,6 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -271,7 +265,6 @@
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -369,7 +362,6 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -432,7 +424,6 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -491,7 +482,6 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -549,7 +539,6 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -609,7 +598,6 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -668,7 +656,6 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -728,7 +715,6 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -793,7 +779,6 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1083,7 +1068,6 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -1208,7 +1192,6 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1559,7 +1542,6 @@
           }
         ]
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -1716,7 +1698,6 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1813,7 +1794,6 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1922,7 +1902,6 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2024,7 +2003,6 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2325,7 +2303,6 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -2458,7 +2435,6 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -2542,7 +2518,6 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -2626,7 +2601,6 @@
           "mode": "single"
         }
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -2692,7 +2666,6 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2794,7 +2767,6 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2858,8 +2830,6 @@
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 27,
-  "style": "dark",
   "tags": [
     "db",
     "stats",
@@ -2982,6 +2952,5 @@
       "30d"
     ]
   },
-  "timezone": "",
   "title": "KubeDB / Qdrant / Summary"
 }

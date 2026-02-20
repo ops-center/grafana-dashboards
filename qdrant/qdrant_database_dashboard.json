@@ -20,13 +20,9 @@
   },
   "description": "Enhanced Qdrant Database Monitoring Dashboard",
   "editable": true,
-  "gnetId": null,
-  "graphTooltip": 1,
-  "id": 29,
-  "iteration": 1771560656434,
   "links": [],
   "panels": [
-      {
+    {
       "collapsed": false,
       "datasource": null,
       "gridPos": {
@@ -117,7 +113,6 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -230,7 +225,6 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -334,7 +328,6 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -416,7 +409,6 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -525,7 +517,6 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -623,7 +614,6 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
       "pointradius": 0,
       "points": false,
       "renderer": "flot",
@@ -751,7 +741,6 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -804,7 +793,6 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -904,7 +892,6 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1032,7 +1019,6 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -1085,7 +1071,6 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1185,7 +1170,6 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1245,8 +1229,6 @@
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 27,
-  "style": "dark",
   "tags": [
     "qdrant",
     "kubedb",
@@ -1344,6 +1326,5 @@
     "to": "now"
   },
   "timepicker": {},
-  "timezone": "",
   "title": "KubeDB / Qdrant / Database"
 }

@@ -14,10 +14,6 @@
   },
   "description": "Qdrant Database Monitoring Dashboard",
   "editable": true,
-  "gnetId": null,
-  "graphTooltip": 1,
-  "id": 30,
-  "iteration": 1771560788541,
   "links": [],
   "panels": [
     {
@@ -78,7 +74,6 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -167,7 +162,6 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -227,7 +221,6 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -707,7 +700,6 @@
           }
         ]
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -817,7 +809,6 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -878,7 +869,6 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -1242,7 +1232,6 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -1352,7 +1341,6 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -1413,7 +1401,6 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -1513,8 +1500,6 @@
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 27,
-  "style": "dark",
   "tags": [
     "qdrant",
     "kubedb",
@@ -1668,6 +1653,5 @@
       "30d"
     ]
   },
-  "timezone": "",
   "title": "KubeDB / Qdrant / Pod"
 }
