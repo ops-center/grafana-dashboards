@@ -89,6 +89,7 @@
         }
       ],
       "title": "Pod Name",
+      "description": "Displays the name of the selected Qdrant pod",
       "type": "stat"
     },
     {
@@ -177,6 +178,7 @@
         }
       ],
       "title": "Status",
+      "description": "Shows the current operational status of the pod (Up/Down)",
       "type": "stat"
     },
     {
@@ -236,6 +238,7 @@
         }
       ],
       "title": "Uptime",
+      "description": "Displays how long the pod has been running since it was started",
       "type": "stat"
     },
     {
@@ -347,6 +350,7 @@
         }
       ],
       "title": "Memory Usage",
+      "description": "Shows memory consumption metrics including Resident, Allocated, and Active memory",
       "type": "timeseries"
     },
     {
@@ -429,6 +433,7 @@
         }
       ],
       "title": "CPU Usage by Collection",
+      "description": "Displays CPU usage per collection for the selected pod",
       "type": "timeseries"
     },
     {
@@ -522,6 +527,7 @@
         }
       ],
       "title": "REST Request Rate by Endpoint",
+      "description": "Shows the rate of REST API requests per endpoint",
       "type": "timeseries"
     },
     {
@@ -591,6 +597,7 @@
         }
       ],
       "title": "REST Request Distribution by Endpoint",
+      "description": "Displays the distribution of REST requests across different endpoints",
       "type": "piechart"
     },
     {
@@ -731,6 +738,7 @@
         }
       ],
       "title": "REST Endpoint Performance Summary",
+      "description": "Table showing REST endpoint performance metrics including rate, average duration, and failures",
       "transformations": [
         {
           "id": "merge",
@@ -821,6 +829,7 @@
         }
       ],
       "title": "REST Success Rate",
+      "description": "Shows the success rate of REST API requests as a percentage",
       "type": "gauge"
     },
     {
@@ -880,6 +889,7 @@
         }
       ],
       "title": "REST Total Failed Requests (1h)",
+      "description": "Displays the total number of failed REST requests in the last hour",
       "type": "stat"
     },
     {
@@ -963,6 +973,7 @@
         }
       ],
       "title": "REST Avg Response Duration",
+      "description": "Shows the average response time for REST API endpoints",
       "type": "timeseries"
     },
     {
@@ -1056,6 +1067,7 @@
         }
       ],
       "title": "gRPC Request Rate by Endpoint",
+      "description": "Shows the rate of gRPC API requests per endpoint",
       "type": "timeseries"
     },
     {
@@ -1125,6 +1137,7 @@
         }
       ],
       "title": "gRPC Request Distribution by Endpoint",
+      "description": "Displays the distribution of gRPC requests across different endpoints",
       "type": "piechart"
     },
     {
@@ -1260,6 +1273,7 @@
         }
       ],
       "title": "gRPC Endpoint Performance Summary",
+      "description": "Table showing gRPC endpoint performance metrics including rate, average duration, and failures",
       "transformations": [
         {
           "id": "merge",
@@ -1350,6 +1364,7 @@
         }
       ],
       "title": "gRPC Success Rate",
+      "description": "Shows the success rate of gRPC API requests as a percentage",
       "type": "gauge"
     },
     {
@@ -1409,6 +1424,7 @@
         }
       ],
       "title": "gRPC Total Failed Requests (1h)",
+      "description": "Displays the total number of failed gRPC requests in the last hour",
       "type": "stat"
     },
     {
@@ -1492,6 +1508,7 @@
         }
       ],
       "title": "gRPC Avg Response Duration",
+      "description": "Shows the average response time for gRPC API endpoints",
       "type": "timeseries"
     }
   ],

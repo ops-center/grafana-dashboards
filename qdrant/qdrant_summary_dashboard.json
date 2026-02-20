@@ -1268,6 +1268,7 @@
     },
     {
       "datasource": "${datasource}",
+      "description": "Memory quota information in details",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1887,6 +1888,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
+      "description": "IOPS (Input/Output Operations Per Second) by Qdrant pods",
       "fieldConfig": {
         "defaults": {
           "unit": "short"
@@ -1988,6 +1990,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
+      "description": "Disk throughput (read and write) by Qdrant pods",
       "fieldConfig": {
         "defaults": {
           "unit": "Bps"
@@ -2085,6 +2088,7 @@
     },
     {
       "datasource": "${datasource}",
+      "description": "Current storage I/O operations by Qdrant pods",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2656,6 +2660,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
+      "description": "Network receive bandwidth by Qdrant pods",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
@@ -2755,6 +2760,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
+      "description": "Network transmit bandwidth by Qdrant pods",
       "fieldConfig": {
         "defaults": {
           "unit": "Bps"
