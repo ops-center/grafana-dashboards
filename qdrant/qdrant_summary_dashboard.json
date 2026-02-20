@@ -23,7 +23,7 @@
   "gnetId": 9628,
   "graphTooltip": 0,
   "id": 31,
-  "iteration": 1771483802931,
+  "iteration": 1771489827711,
   "links": [],
   "panels": [
     {
@@ -42,7 +42,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "Represent database status",
+      "description": "Represents database status",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -131,7 +131,7 @@
     {
       "cacheTimeout": null,
       "datasource": "Prometheus",
-      "description": "Qdrant CR Name",
+      "description": "Qdrant Version",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -213,7 +213,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "",
+      "description": "Qdrant TLS Modes",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2948,7 +2948,7 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -2977,7 +2977,5 @@
     ]
   },
   "timezone": "",
-  "title": "KubeDB / Qdrant / Summary",
-  "uid": "qDMhbh0Iz",
-  "version": 10
+  "title": "KubeDB / Qdrant / Summary"
 }

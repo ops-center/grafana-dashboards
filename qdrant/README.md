@@ -108,8 +108,10 @@ If you followed the instruction properly, you should see the Qdrant Grafana dash
 
 ![KubeDB / Qdrant / Pod](/qdrant/images/qdrant-pod-1.png)
 ![KubeDB / Qdrant / Pod](/qdrant/images/qdrant-pod-2.png)
+![KubeDB / Qdrant / Pod](/qdrant/images/qdrant-pod-3.png)
 
 ####  KubeDB / Qdrant / Database
 
 ![KubeDB / Qdrant / Database](/qdrant/images/qdrant-database-1.png)
 ![KubeDB / Qdrant / Database](/qdrant/images/qdrant-database-2.png)
+![KubeDB / Qdrant / Database](/qdrant/images/qdrant-database-3.png)

@@ -23,10 +23,10 @@
   "gnetId": null,
   "graphTooltip": 1,
   "id": 29,
-  "iteration": 1771477663147,
+  "iteration": 1771560656434,
   "links": [],
   "panels": [
-    {
+      {
       "collapsed": false,
       "datasource": null,
       "gridPos": {
@@ -42,6 +42,7 @@
     },
     {
       "datasource": "${datasource}",
+      "description": "Shows whether Qdrant is running in standalone or distributed cluster mode",
       "fieldConfig": {
         "defaults": {
           "mappings": [
@@ -131,6 +132,7 @@
     },
     {
       "datasource": "${datasource}",
+      "description": "Displays the operational status (UP/DOWN) of each Qdrant pod in the database",
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -260,6 +262,7 @@
     },
     {
       "datasource": "${datasource}",
+      "description": "Shows how long each Qdrant pod has been running since its last start",
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -379,6 +382,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
+      "description": "Memory usage breakdown showing resident, allocated, and active memory for Qdrant pods",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
@@ -693,6 +697,7 @@
     },
     {
       "datasource": "${datasource}",
+      "description": "Shows the percentage of successful REST API requests over the total requests",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -750,7 +755,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(sum(rate(rest_responses_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m])) - sum(rate(rest_responses_fail_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m]))) / sum(rate(rest_responses_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m]))",
+          "expr": "1 -\n(\n  sum(rate(rest_responses_fail_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m]))\n  /\n  sum(rate(rest_responses_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m]))\n)",
           "instant": true,
           "interval": "",
           "legendFormat": "Success Rate",
@@ -766,6 +771,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
+      "description": "Average response time for REST API requests by endpoint",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
@@ -864,6 +870,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
+      "description": "Request rate for REST API endpoints showing requests per second by endpoint",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
@@ -971,6 +978,7 @@
     },
     {
       "datasource": "${datasource}",
+      "description": "Shows the percentage of successful gRPC API requests over the total requests",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1028,7 +1036,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(sum(rate(grpc_responses_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m])) - sum(rate(grpc_responses_fail_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m]))) / sum(rate(grpc_responses_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m]))",
+          "expr": "1 -\n(\n  sum(rate(grpc_responses_fail_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m]))\n  /\n  sum(rate(grpc_responses_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m]))\n)",
           "instant": true,
           "interval": "",
           "legendFormat": "Success Rate",
@@ -1044,6 +1052,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
+      "description": "Average response time for gRPC API requests by endpoint",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
@@ -1142,6 +1151,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
+      "description": "Request rate for gRPC API endpoints showing requests per second by endpoint",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
@@ -1234,7 +1244,7 @@
       }
     }
   ],
-  "refresh": "30s",
+  "refresh": "5s",
   "schemaVersion": 27,
   "style": "dark",
   "tags": [
@@ -1299,9 +1309,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "qdrant-no-tls",
-          "value": "qdrant-no-tls"
+          "selected": true,
+          "text": "qdrant-sample",
+          "value": "qdrant-sample"
         },
         "datasource": "${datasource}",
         "definition": "label_values(app_info{namespace=~\"$namespace\"},job)",
@@ -1335,7 +1345,5 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "KubeDB / Qdrant / Database",
-  "uid": "qdrant-database-dashboard",
-  "version": 17
+  "title": "KubeDB / Qdrant / Database"
 }
