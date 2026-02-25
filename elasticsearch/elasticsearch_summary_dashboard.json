@@ -2983,7 +2983,7 @@
       }
     }
   ],
-  "refresh": "30s",
+  "refresh": "10s",
   "schemaVersion": 27,
   "style": "dark",
   "tags": [],
