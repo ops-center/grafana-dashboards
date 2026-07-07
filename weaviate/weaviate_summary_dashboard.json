@@ -23,7 +23,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 31,
-  "iteration": 1783414792902,
+  "iteration": 1783415327118,
   "links": [],
   "panels": [
     {
@@ -130,8 +130,8 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
-      "description": "Qdrant Version",
+      "datasource": null,
+      "description": "Weaviate Version",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -202,7 +202,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "Qdrant TLS Modes",
+      "description": "Weaviate TLS Modes",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -367,7 +367,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "Total node count of Qdrant cluster",
+      "description": "Total node count of Weaviate cluster",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -429,7 +429,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "Initial Requested CPU amount by Qdrant Instance",
+      "description": "Initial Requested CPU amount by Weaviate Instance",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -488,7 +488,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "CPU Limit in core by Qdrant instance",
+      "description": "CPU Limit in core by Weaviate instance",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -546,7 +546,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "Initial Requested Memory amount by Qdrant Instance",
+      "description": "Initial Requested Memory amount by Weaviate Instance",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -606,7 +606,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "KubeDB Qdrant Total Memory Limit",
+      "description": "KubeDB Weaviate Total Memory Limit",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -665,7 +665,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "Total storage request by Qdrant nodes",
+      "description": "Total storage request by Weaviate nodes",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -743,7 +743,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
-      "description": "CPU Usage by Qdrant pods",
+      "description": "CPU Usage by Weaviate pods",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
@@ -1156,7 +1156,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
-      "description": "Memory Usage by Qdrant pods",
+      "description": "Memory Usage by Weaviate pods",
       "fieldConfig": {
         "defaults": {
           "unit": "bytes"
@@ -1664,7 +1664,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
-      "description": "Disk usage by Qdrant pods",
+      "description": "Disk usage by Weaviate pods",
       "fieldConfig": {
         "defaults": {
           "unit": "bytes"
@@ -1869,7 +1869,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
-      "description": "IOPS (Input/Output Operations Per Second) by Qdrant pods",
+      "description": "IOPS (Input/Output Operations Per Second) by Weaviate pods",
       "fieldConfig": {
         "defaults": {
           "unit": "short"
@@ -1971,7 +1971,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
-      "description": "Disk throughput (read and write) by Qdrant pods",
+      "description": "Disk throughput (read and write) by Weaviate pods",
       "fieldConfig": {
         "defaults": {
           "unit": "Bps"
@@ -2069,7 +2069,7 @@
     },
     {
       "datasource": "${datasource}",
-      "description": "Current storage I/O operations by Qdrant pods",
+      "description": "Current storage I/O operations by Weaviate pods",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2640,7 +2640,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
-      "description": "Network receive bandwidth by Qdrant pods",
+      "description": "Network receive bandwidth by Weaviate pods",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
@@ -2740,7 +2740,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "${datasource}",
-      "description": "Network transmit bandwidth by Qdrant pods",
+      "description": "Network transmit bandwidth by Weaviate pods",
       "fieldConfig": {
         "defaults": {
           "unit": "Bps"
@@ -2969,5 +2969,5 @@
   "timezone": "",
   "title": "KubeDB / Weaviate / Summary",
   "uid": "Jste6jfDz",
-  "version": 5
+  "version": 6
 }
