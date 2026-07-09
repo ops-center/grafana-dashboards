@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 29,
-  "iteration": 1783414702905,
+  "iteration": 1783509009779,
   "links": [],
   "panels": [
     {
@@ -2500,7 +2500,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 10,
             "gradientMode": "none",
             "hideFrom": {
               "graph": false,
@@ -2513,8 +2513,8 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
-            "spanNulls": false
+            "showPoints": "never",
+            "spanNulls": true
           },
           "mappings": [],
           "thresholds": {
@@ -2542,6 +2542,7 @@
       },
       "id": 37,
       "options": {
+        "graph": {},
         "legend": {
           "calcs": [],
           "displayMode": "list",
@@ -2562,6 +2563,8 @@
           "refId": "A"
         }
       ],
+      "timeFrom": null,
+      "timeShift": null,
       "title": "Vector Tombstones",
       "type": "timeseries"
     }
@@ -2698,5 +2701,5 @@
   "timezone": "",
   "title": "KubeDB / Weaviate / Pod",
   "uid": "kubedb-weaviate-pod",
-  "version": 5
+  "version": 6
 }

@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 30,
-  "iteration": 1783414761160,
+  "iteration": 1783509027617,
   "links": [],
   "panels": [
     {
@@ -976,7 +976,9 @@
       "pluginVersion": "7.5.5",
       "targets": [
         {
+          "exemplar": true,
           "expr": "sum by (query_type) (concurrent_queries_count{namespace=\"$namespace\",service=~\"$app-stats\"})",
+          "interval": "",
           "legendFormat": "{{query_type}}",
           "refId": "A"
         }
@@ -1055,7 +1057,9 @@
       "pluginVersion": "7.5.5",
       "targets": [
         {
+          "exemplar": true,
           "expr": "topk(10, sum by (class_name) (rate(batch_objects_processed_total{namespace=\"$namespace\",service=~\"$app-stats\"}[5m])))",
+          "interval": "",
           "legendFormat": "{{class_name}}",
           "refId": "A"
         }
@@ -1610,28 +1614,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "graph": false,
-              "legend": false,
-              "tooltip": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false
+            "mode": "thresholds"
           },
           "mappings": [],
           "thresholds": {
@@ -1659,17 +1642,17 @@
       },
       "id": 26,
       "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
         },
-        "tooltip": {
-          "mode": "multi"
-        },
-        "tooltipOptions": {
-          "mode": "single"
-        }
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
       },
       "pluginVersion": "7.5.5",
       "targets": [
@@ -1685,10 +1668,10 @@
         }
       ],
       "title": "Replication Completion Vs Failure",
-      "type": "timeseries"
+      "type": "gauge"
     },
     {
-      "datasource": "${datasource}",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1699,7 +1682,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 10,
             "gradientMode": "none",
             "hideFrom": {
               "graph": false,
@@ -1712,8 +1695,8 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
-            "spanNulls": false
+            "showPoints": "never",
+            "spanNulls": true
           },
           "mappings": [],
           "thresholds": {
@@ -1741,6 +1724,7 @@
       },
       "id": 27,
       "options": {
+        "graph": {},
         "legend": {
           "calcs": [],
           "displayMode": "list",
@@ -1776,7 +1760,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 10,
             "gradientMode": "none",
             "hideFrom": {
               "graph": false,
@@ -1789,8 +1773,8 @@
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
-            "spanNulls": false
+            "showPoints": "never",
+            "spanNulls": true
           },
           "mappings": [],
           "thresholds": {
@@ -1818,13 +1802,11 @@
       },
       "id": 28,
       "options": {
+        "graph": {},
         "legend": {
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "multi"
         },
         "tooltipOptions": {
           "mode": "single"
@@ -1838,6 +1820,8 @@
           "refId": "A"
         }
       ],
+      "timeFrom": null,
+      "timeShift": null,
       "title": "FSM Apply Index",
       "type": "timeseries"
     },
@@ -2482,5 +2466,5 @@
   "timezone": "",
   "title": "KubeDB / Weaviate / Database",
   "uid": "kubedb-weaviate-database",
-  "version": 5
+  "version": 6
 }
