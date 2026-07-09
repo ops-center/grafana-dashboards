@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 30,
-  "iteration": 1783509027617,
+  "iteration": 1783596898238,
   "links": [],
   "panels": [
     {
@@ -194,7 +194,9 @@
       "pluginVersion": "7.5.5",
       "targets": [
         {
+          "exemplar": true,
           "expr": "sum(weaviate_schema_collections{namespace=\"$namespace\",service=~\"$app-stats\"})",
+          "interval": "",
           "legendFormat": "collections",
           "refId": "A"
         }
@@ -408,7 +410,9 @@
       "pluginVersion": "7.5.5",
       "targets": [
         {
-          "expr": "((sum(rate(weaviate_http_request_duration_seconds_count{namespace=\"$namespace\",service=~\"$app-stats\",status_code=~\"4..|5..\"}[5m])) or sum(rate(http_request_duration_seconds_count{namespace=\"$namespace\",service=~\"$app-stats\",status_code=~\"4..|5..\"}[5m]))) / clamp_min((sum(rate(weaviate_http_request_duration_seconds_count{namespace=\"$namespace\",service=~\"$app-stats\"}[5m])) or sum(rate(http_request_duration_seconds_count{namespace=\"$namespace\",service=~\"$app-stats\"}[5m]))), 1))",
+          "exemplar": true,
+          "expr": "((sum(rate(weaviate_http_request_duration_seconds_count{namespace=\"$namespace\",service=~\"$app-stats\",status_code=~\"4..|5..\"}[5m])) or sum(rate(http_request_duration_seconds_count{namespace=\"$namespace\",service=~\"$app-stats\",status_code=~\"4..|5..\"}[5m]))) / clamp_min((sum(rate(weaviate_http_request_duration_seconds_count{namespace=\"$namespace\",service=~\"$app-stats\"}[5m])) or sum(rate(http_request_duration_seconds_count{namespace=\"$namespace\",service=~\"$app-stats\"}[5m]))), 1)) or vector(0)",
+          "interval": "",
           "legendFormat": "http error ratio",
           "refId": "A"
         }
@@ -2466,5 +2470,5 @@
   "timezone": "",
   "title": "KubeDB / Weaviate / Database",
   "uid": "kubedb-weaviate-database",
-  "version": 6
+  "version": 7
 }

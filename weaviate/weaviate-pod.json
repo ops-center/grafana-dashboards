@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 29,
-  "iteration": 1783509009779,
+  "iteration": 1783597047762,
   "links": [],
   "panels": [
     {
@@ -616,7 +616,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum by (status_code) (rate(weaviate_http_request_duration_seconds_count{namespace=\"$namespace\",service=~\"$app-stats\",pod=\"$pod\",status_code=~\"4..|5..\"}[5m])) or sum by (status_code) (rate(http_request_duration_seconds_count{namespace=\"$namespace\",service=~\"$app-stats\",pod=\"$pod\",status_code=~\"4..|5..\"}[5m]))",
+          "expr": "sum by (status_code) (rate(weaviate_http_request_duration_seconds_count{namespace=\"$namespace\",service=~\"$app-stats\",pod=\"$pod\",status_code=~\"4..|5..\"}[5m])) or sum by (status_code) (rate(http_request_duration_seconds_count{namespace=\"$namespace\",service=~\"$app-stats\",pod=\"$pod\",status_code=~\"4..|5..\"}[5m])) or vector(0)",
           "interval": "",
           "legendFormat": "{{status_code}}",
           "refId": "A"
@@ -1181,7 +1181,7 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 8,
+        "w": 12,
         "x": 0,
         "y": 32
       },
@@ -1257,93 +1257,14 @@
               }
             ]
           },
-          "unit": "s"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 32
-      },
-      "id": 20,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "multi"
-        },
-        "tooltipOptions": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "7.5.5",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "sum(rate(container_cpu_cfs_throttled_seconds_total{image!=\"\",container!=\"POD\",namespace=\"$namespace\",pod=\"$pod\"}[5m]))",
-          "interval": "",
-          "legendFormat": "throttled",
-          "refId": "A"
-        }
-      ],
-      "title": "CPU Throttling",
-      "type": "timeseries"
-    },
-    {
-      "datasource": "${datasource}",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "graph": false,
-              "legend": false,
-              "tooltip": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
           "unit": "bytes"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 8,
-        "w": 8,
-        "x": 16,
+        "w": 12,
+        "x": 12,
         "y": 32
       },
       "id": 21,
@@ -2701,5 +2622,5 @@
   "timezone": "",
   "title": "KubeDB / Weaviate / Pod",
   "uid": "kubedb-weaviate-pod",
-  "version": 6
+  "version": 18
 }
