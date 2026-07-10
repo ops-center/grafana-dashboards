@@ -18,7 +18,7 @@
       }
     ]
   },
-  "description": "The dashboard is designed for KubeDB managed Qdrant",
+  "description": "The dashboard is designed for KubeDB managed Weaviate",
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
@@ -2844,7 +2844,7 @@
     "db",
     "stats",
     "kubedb",
-    "qdrant"
+    "weaviate"
   ],
   "templating": {
     "list": [

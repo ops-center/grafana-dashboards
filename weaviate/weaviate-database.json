@@ -17,7 +17,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 30,
-  "iteration": 1783596898238,
+  "iteration": 1783677111587,
   "links": [],
   "panels": [
     {
@@ -195,7 +195,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(weaviate_schema_collections{namespace=\"$namespace\",service=~\"$app-stats\"})",
+          "expr": "max(weaviate_schema_collections{namespace=\"$namespace\",service=~\"$app-stats\"})",
           "interval": "",
           "legendFormat": "collections",
           "refId": "A"
@@ -216,12 +216,12 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "red",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "green",
-                "value": 1
+                "color": "red",
+                "value": 80
               }
             ]
           },
@@ -238,7 +238,7 @@
       "id": 5,
       "options": {
         "colorMode": "value",
-        "graphMode": "none",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
@@ -254,11 +254,15 @@
       "pluginVersion": "7.5.5",
       "targets": [
         {
-          "expr": "sum(weaviate_schema_shards{namespace=\"$namespace\",service=~\"$app-stats\",status=\"READY\"}) or sum(weaviate_index_shards_total{namespace=\"$namespace\",service=~\"$app-stats\",status=\"READY\"})",
+          "exemplar": true,
+          "expr": "max(weaviate_schema_shards{namespace=\"$namespace\",service=~\"$app-stats\"})",
+          "interval": "",
           "legendFormat": "ready shards",
           "refId": "A"
         }
       ],
+      "timeFrom": null,
+      "timeShift": null,
       "title": "Ready Shards",
       "type": "stat"
     },
@@ -657,7 +661,9 @@
       "pluginVersion": "7.5.5",
       "targets": [
         {
+          "exemplar": true,
           "expr": "sum by (route) (weaviate_http_requests_inflight{namespace=\"$namespace\",service=~\"$app-stats\"}) or sum by (route) (http_requests_inflight{namespace=\"$namespace\",service=~\"$app-stats\"})",
+          "interval": "",
           "legendFormat": "{{route}}",
           "refId": "A"
         }
@@ -888,7 +894,9 @@
       "pluginVersion": "7.5.5",
       "targets": [
         {
+          "exemplar": true,
           "expr": "sum by (grpc_service, method) (weaviate_grpc_server_requests_inflight{namespace=\"$namespace\",service=~\"$app-stats\"}) or sum by (grpc_service, method) (grpc_server_requests_inflight{namespace=\"$namespace\",service=~\"$app-stats\"})",
+          "interval": "",
           "legendFormat": "{{grpc_service}}/{{method}}",
           "refId": "A"
         }
@@ -2470,5 +2478,5 @@
   "timezone": "",
   "title": "KubeDB / Weaviate / Database",
   "uid": "kubedb-weaviate-database",
-  "version": 7
+  "version": 9
 }
