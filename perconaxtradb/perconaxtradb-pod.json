@@ -2149,7 +2149,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mysql_global_variables_innodb_buffer_pool_size{namespace=\"$namespace\",service=\"$app\",pod=\"$pod\"}",
+          "expr": "mysql_global_variables_innodb_buffer_pool_size{namespace=~\"$namespace\",service=~\"$app\",pod=~\"$pod\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "InnoDB Buffer Pool Size - {{pod}}",
@@ -2157,7 +2157,7 @@
         },
         {
           "exemplar": true,
-          "expr": "mysql_global_variables_innodb_log_buffer_size{namespace=\"$namespace\",service=\"$app\",pod=\"$pod\"}",
+          "expr": "mysql_global_variables_innodb_log_buffer_size{namespace=~\"$namespace\",service=~\"$app\",pod=~\"$pod\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "InnoDB Log Buffer Size - {{pod}}",
@@ -2165,7 +2165,7 @@
         },
         {
           "exemplar": true,
-          "expr": "mysql_global_status_innodb_mem_dictionary{namespace=\"$namespace\",service=\"$app\",pod=\"$pod\"}",
+          "expr": "mysql_global_status_innodb_mem_dictionary{namespace=~\"$namespace\",service=~\"$app\",pod=~\"$pod\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "InnoDB Dictionary Size - {{pod}}",
@@ -2173,7 +2173,7 @@
         },
         {
           "exemplar": false,
-          "expr": "mysql_global_variables_key_buffer_size{namespace=\"$namespace\",service=\"$app\",pod=\"$pod\"}",
+          "expr": "mysql_global_variables_key_buffer_size{namespace=~\"$namespace\",service=~\"$app\",pod=~\"$pod\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Key Buffer Size - {{pod}}",
@@ -2181,7 +2181,7 @@
         },
         {
           "exemplar": true,
-          "expr": "mysql_global_variables_query_cache_size{namespace=\"$namespace\",service=\"$app\",pod=\"$pod\"}",
+          "expr": "mysql_global_variables_query_cache_size{namespace=~\"$namespace\",service=~\"$app\",pod=~\"$pod\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Query Cache Size - {{pod}}",
@@ -2189,7 +2189,7 @@
         },
         {
           "exemplar": true,
-          "expr": "mysql_global_status_innodb_mem_adaptive_hash{namespace=\"$namespace\",service=\"$app\",pod=\"$pod\"}",
+          "expr": "mysql_global_status_innodb_mem_adaptive_hash{namespace=~\"$namespace\",service=~\"$app\",pod=~\"$pod\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Adaptive Hash Index Size - {{pod}}",
