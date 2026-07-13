@@ -420,7 +420,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", container!=\"\", image!=\"\"}[5m])) by (pod)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=~\"$pod\", container!=\"\", image!=\"\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "{{container}}",
           "refId": "A"
@@ -517,7 +517,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", container!=\"\", image!=\"\"}) by (pod)",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=~\"$pod\", container!=\"\", image!=\"\"}) by (pod)",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -615,7 +615,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(process_open_fds{pod=\"$pod\", namespace=\"$namespace\"}) by (pod)",
+          "expr": "sum(process_open_fds{pod=~\"$pod\", namespace=\"$namespace\"}) by (pod)",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -2149,7 +2149,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "mysql_global_variables_innodb_buffer_pool_size{namespace=\"$namespace\",service=\"$app\",pod=\"$pod\"}",
+          "expr": "mysql_global_variables_innodb_buffer_pool_size{namespace=~\"$namespace\",service=~\"$app\",pod=~\"$pod\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "InnoDB Buffer Pool Size - {{pod}}",
@@ -2157,7 +2157,7 @@
         },
         {
           "exemplar": true,
-          "expr": "mysql_global_variables_innodb_log_buffer_size{namespace=\"$namespace\",service=\"$app\",pod=\"$pod\"}",
+          "expr": "mysql_global_variables_innodb_log_buffer_size{namespace=~\"$namespace\",service=~\"$app\",pod=~\"$pod\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "InnoDB Log Buffer Size - {{pod}}",
@@ -2165,7 +2165,7 @@
         },
         {
           "exemplar": true,
-          "expr": "mysql_global_status_innodb_mem_dictionary{namespace=\"$namespace\",service=\"$app\",pod=\"$pod\"}",
+          "expr": "mysql_global_status_innodb_mem_dictionary{namespace=~\"$namespace\",service=~\"$app\",pod=~\"$pod\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "InnoDB Dictionary Size - {{pod}}",
@@ -2173,7 +2173,7 @@
         },
         {
           "exemplar": false,
-          "expr": "mysql_global_variables_key_buffer_size{namespace=\"$namespace\",service=\"$app\",pod=\"$pod\"}",
+          "expr": "mysql_global_variables_key_buffer_size{namespace=~\"$namespace\",service=~\"$app\",pod=~\"$pod\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Key Buffer Size - {{pod}}",
@@ -2181,7 +2181,7 @@
         },
         {
           "exemplar": true,
-          "expr": "mysql_global_variables_query_cache_size{namespace=\"$namespace\",service=\"$app\",pod=\"$pod\"}",
+          "expr": "mysql_global_variables_query_cache_size{namespace=~\"$namespace\",service=~\"$app\",pod=~\"$pod\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Query Cache Size - {{pod}}",
@@ -2189,7 +2189,7 @@
         },
         {
           "exemplar": true,
-          "expr": "mysql_global_status_innodb_mem_adaptive_hash{namespace=\"$namespace\",service=\"$app\",pod=\"$pod\"}",
+          "expr": "mysql_global_status_innodb_mem_adaptive_hash{namespace=~\"$namespace\",service=~\"$app\",pod=~\"$pod\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Adaptive Hash Index Size - {{pod}}",
