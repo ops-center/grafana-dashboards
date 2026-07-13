@@ -420,7 +420,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", container!=\"\", image!=\"\"}[5m])) by (pod)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=~\"$pod\", container!=\"\", image!=\"\"}[5m])) by (pod)",
           "interval": "",
           "legendFormat": "{{container}}",
           "refId": "A"
@@ -517,7 +517,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", container!=\"\", image!=\"\"}) by (pod)",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=~\"$pod\", container!=\"\", image!=\"\"}) by (pod)",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -615,7 +615,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(process_open_fds{pod=\"$pod\", namespace=\"$namespace\"}) by (pod)",
+          "expr": "sum(process_open_fds{pod=~\"$pod\", namespace=\"$namespace\"}) by (pod)",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"

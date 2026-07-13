@@ -1559,7 +1559,7 @@
                       "name": "global-ds-proxy"
                     },
                     "minStep": "",
-                    "query": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", container!=\"\", image!=\"\"}[5m])) by (pod)",
+                    "query": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=~\"$pod\", container!=\"\", image!=\"\"}[5m])) by (pod)",
                     "seriesNameFormat": "{{container}}"
                   }
                 }
@@ -1596,7 +1596,7 @@
                       "name": "global-ds-proxy"
                     },
                     "minStep": "",
-                    "query": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", container!=\"\", image!=\"\"}) by (pod)",
+                    "query": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=~\"$pod\", container!=\"\", image!=\"\"}) by (pod)",
                     "seriesNameFormat": "{{pod}}"
                   }
                 }
@@ -1634,7 +1634,7 @@
                       "name": "global-ds-proxy"
                     },
                     "minStep": "",
-                    "query": "sum(process_open_fds{pod=\"$pod\", namespace=\"$namespace\"}) by (pod)",
+                    "query": "sum(process_open_fds{pod=~\"$pod\", namespace=\"$namespace\"}) by (pod)",
                     "seriesNameFormat": "{{pod}}"
                   }
                 }
