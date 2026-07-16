@@ -753,7 +753,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "label_replace({__name__=~\"neo4j_database_${database}_transaction_(committed|rollbacks)_total\", namespace=~\"$namespace\",job=~\"$app-stats\"}, \"label\", \"$1\", \"__name__\", \"neo4j_transaction_(.+)\")",
+          "expr": "label_replace({__name__=~\"neo4j_database_${database}_transaction_(committed|rollbacks)_total\", namespace=~\"$namespace\",job=~\"$app-stats\"}, \"label\", \"$1\", \"__name__\", \".*transaction_(committed|rollbacks)_total\")",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -1507,7 +1507,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "label_replace({__name__=~\"neo4j_database_${database}_check_point_(events|total_time)_total\", namespace=~\"$namespace\",job=~\"$app-stats\"}, \"label\", \"$1\", \"__name__\", \"neo4j_(.*)\")",
+          "expr": "label_replace({__name__=~\"neo4j_database_${database}_check_point_(events|total_time)_total\", namespace=~\"$namespace\",job=~\"$app-stats\"}, \"label\", \"$1\", \"__name__\", \".*check_point_(events|total_time)_total\")",
           "format": "time_series",
           "hide": false,
           "interval": "",

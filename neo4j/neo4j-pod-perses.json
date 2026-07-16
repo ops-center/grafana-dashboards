@@ -269,7 +269,7 @@
                       "name": "global-ds-proxy"
                     },
                     "minStep": "",
-                    "query": "label_replace({__name__=~\"neo4j_database_${database}_transaction_(committed|rollbacks)_total\", pod=~\"$pod\",namespace=~\"$namespace\"}, \"label\", \"$1\", \"__name__\", \"neo4j_transaction_(.+)\")",
+                    "query": "label_replace({__name__=~\"neo4j_database_${database}_transaction_(committed|rollbacks)_total\", pod=~\"$pod\",namespace=~\"$namespace\"}, \"label\", \"$1\", \"__name__\", \".*transaction_(committed|rollbacks)_total\")",
                     "seriesNameFormat": "{{label}} {{instance}}"
                   }
                 }
@@ -713,7 +713,7 @@
                       "name": "global-ds-proxy"
                     },
                     "minStep": "",
-                    "query": "label_replace({__name__=~\"neo4j_database_${database}_check_point_(events|total_time)_total\", pod=~\"$pod\",namespace=~\"$namespace\"}, \"label\", \"$1\", \"__name__\", \"neo4j_(.*)\")",
+                    "query": "label_replace({__name__=~\"neo4j_database_${database}_check_point_(events|total_time)_total\", pod=~\"$pod\",namespace=~\"$namespace\"}, \"label\", \"$1\", \"__name__\", \".*check_point_(events|total_time)_total\")",
                     "seriesNameFormat": "{{label}} {{instance}}"
                   }
                 }
