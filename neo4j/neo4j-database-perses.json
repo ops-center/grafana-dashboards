@@ -962,7 +962,13 @@
           },
           "plugin": {
             "kind": "TimeSeriesChart",
-            "spec": {}
+            "spec": {
+              "yAxis": {
+                "format": {
+                  "unit": "bytes"
+                }
+              }
+            }
           },
           "queries": [
             {
@@ -976,7 +982,7 @@
                       "name": "global-ds-proxy"
                     },
                     "minStep": "",
-                    "query": "sum(container_memory_working_set_bytes{namespace=~\"$namespace\",pod=~\"$app-.*\"}) / 1024 / 1024",
+                    "query": "sum(container_memory_working_set_bytes{namespace=~\"$namespace\",pod=~\"$app-.*\"})",
                     "seriesNameFormat": "used memory"
                   }
                 }
