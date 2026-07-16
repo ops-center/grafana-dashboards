@@ -697,13 +697,147 @@
       "type": "stat"
     },
     {
+      "datasource": "${datasource}",
+      "description": "TLS mode per Neo4j channel. On when the channel uses TLS/mTLS with a configured issuer; Off otherwise.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "displayMode": "auto",
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "State"
+            },
+            "properties": [
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "type": "value",
+                    "options": {
+                      "0": {
+                        "text": "Off",
+                        "color": "red",
+                        "index": 0
+                      },
+                      "1": {
+                        "text": "On",
+                        "color": "green",
+                        "index": 1
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Channel"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 160
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 7
+      },
+      "id": 153,
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "displayName": "Channel",
+            "desc": false
+          }
+        ]
+      },
+      "pluginVersion": "7.5.5",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "label_replace({__name__=~\"kubedb_com_neo4j_tls_(bolt|http|cluster|backup)_mode\", namespace=\"$namespace\", app=\"$app\"}, \"channel\", \"$1\", \"__name__\", \"kubedb_com_neo4j_tls_(.+)_mode\")",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "TLS Channels",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "__name__": true,
+              "app": true,
+              "app_namespace": true,
+              "namespace": true,
+              "container": true,
+              "endpoint": true,
+              "instance": true,
+              "job": true,
+              "neo4j": true,
+              "pod": true,
+              "service": true,
+              "prometheus": true
+            },
+            "indexByName": {
+              "channel": 0,
+              "mode": 1,
+              "Value": 2
+            },
+            "renameByName": {
+              "channel": "Channel",
+              "mode": "Mode",
+              "Value": "State"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
       "collapsed": false,
       "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 7
+        "y": 13
       },
       "id": 138,
       "panels": [],
@@ -767,7 +901,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 14
       },
       "id": 98,
       "options": {
@@ -1010,7 +1144,7 @@
         "h": 6,
         "w": 24,
         "x": 0,
-        "y": 15
+        "y": 21
       },
       "id": 122,
       "links": [],
@@ -1097,7 +1231,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 21
+        "y": 27
       },
       "id": 140,
       "panels": [],
@@ -1161,7 +1295,7 @@
         "h": 6,
         "w": 24,
         "x": 0,
-        "y": 22
+        "y": 28
       },
       "id": 100,
       "options": {
@@ -1471,7 +1605,7 @@
         "h": 6,
         "w": 24,
         "x": 0,
-        "y": 28
+        "y": 34
       },
       "id": 124,
       "links": [],
@@ -1595,7 +1729,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 40
       },
       "id": 142,
       "panels": [],
@@ -1659,7 +1793,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 35
+        "y": 41
       },
       "id": 112,
       "options": {
@@ -1747,7 +1881,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 35
+        "y": 41
       },
       "id": 108,
       "options": {
@@ -1846,7 +1980,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 44
+        "y": 50
       },
       "id": 126,
       "options": {
@@ -1938,7 +2072,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 44
+        "y": 50
       },
       "id": 128,
       "options": {
@@ -2204,7 +2338,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 51
+        "y": 57
       },
       "id": 130,
       "links": [],
@@ -2300,7 +2434,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 58
+        "y": 64
       },
       "id": 152,
       "panels": [],
@@ -2338,7 +2472,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 59
+        "y": 65
       },
       "id": 148,
       "options": {
@@ -2412,7 +2546,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 59
+        "y": 65
       },
       "id": 146,
       "options": {
@@ -2495,7 +2629,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 65
+        "y": 71
       },
       "id": 150,
       "options": {
@@ -2533,7 +2667,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 73
+        "y": 79
       },
       "id": 144,
       "panels": [],
@@ -2597,7 +2731,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 74
+        "y": 80
       },
       "id": 132,
       "options": {
@@ -2689,7 +2823,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 74
+        "y": 80
       },
       "id": 134,
       "options": {
