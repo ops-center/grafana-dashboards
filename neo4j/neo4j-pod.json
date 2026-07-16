@@ -448,7 +448,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -514,7 +514,7 @@
       "type": "stat"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Instant rate",
       "fieldConfig": {
         "defaults": {
@@ -573,7 +573,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "This is in reality the change in neo4j ids.\nIf the transaction is rolled-back nodes will not be created but will increase this gauge.\n\nMaximum speed is set to 30k nodes/sec\nEmpirically we saw this is the maximum handled by the production machine",
       "fieldConfig": {
         "defaults": {
@@ -632,7 +632,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Instant rate",
       "fieldConfig": {
         "defaults": {
@@ -691,7 +691,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Per-second average rate of increase of Committed Transactions",
       "fieldConfig": {
         "defaults": {
@@ -781,7 +781,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "All transaction metrics",
       "fieldConfig": {
         "defaults": {
@@ -861,7 +861,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Per-second average rate of increase of Committed Transactions",
       "fieldConfig": {
         "defaults": {
@@ -940,7 +940,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Per-second average rate of increase of Committed Transactions",
       "fieldConfig": {
         "defaults": {
@@ -1019,7 +1019,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1119,7 +1119,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Active Transactions - Read and Write - \nand Peak concurrent",
       "fieldConfig": {
         "defaults": {
@@ -1232,7 +1232,7 @@
       "type": "row"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1311,7 +1311,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1390,7 +1390,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "The ratio of hits to the total number of lookups in the page cache",
       "fieldConfig": {
         "defaults": {
@@ -1456,7 +1456,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Per-second Neo4j Page Cache Hits",
       "fieldConfig": {
         "defaults": {
@@ -1535,7 +1535,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "The total number of page hits happened in the page cache",
       "fieldConfig": {
         "defaults": {
@@ -1614,7 +1614,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Neo4j Checkpoints. \nCheckpointing is the process of flushing all pending page updates from the page cache to the store files",
       "fieldConfig": {
         "defaults": {
@@ -1694,7 +1694,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1787,7 +1787,7 @@
       "type": "row"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Messages received - Messages started",
       "fieldConfig": {
         "defaults": {
@@ -1901,7 +1901,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1995,7 +1995,7 @@
       "type": "row"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Heap memory (eden space, old generation, survivor space)\nNon-heap memory (metaspace, compressed class space, code cache)",
       "fieldConfig": {
         "defaults": {
@@ -2075,7 +2075,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2154,7 +2154,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2242,7 +2242,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Time and counters",
       "fieldConfig": {
         "defaults": {
@@ -2356,7 +2356,7 @@
       "type": "row"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {

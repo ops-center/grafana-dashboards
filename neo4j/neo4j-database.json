@@ -414,7 +414,7 @@
     },
     {
       "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -496,7 +496,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Per-second average rate of increase of Committed Transactions",
       "fieldConfig": {
         "defaults": {
@@ -597,7 +597,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Per-second average rate of increase of Committed Transactions",
       "fieldConfig": {
         "defaults": {
@@ -687,7 +687,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "All transaction metrics",
       "fieldConfig": {
         "defaults": {
@@ -767,7 +767,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Per-second average rate of increase of Committed Transactions",
       "fieldConfig": {
         "defaults": {
@@ -846,7 +846,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -946,7 +946,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Active Transactions - Read and Write - \nand Peak concurrent",
       "fieldConfig": {
         "defaults": {
@@ -1059,7 +1059,7 @@
       "type": "row"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1138,7 +1138,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1217,7 +1217,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "The ratio of hits to the total number of lookups in the page cache",
       "fieldConfig": {
         "defaults": {
@@ -1283,7 +1283,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Per-second Neo4j Page Cache Hits",
       "fieldConfig": {
         "defaults": {
@@ -1362,7 +1362,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "The total number of page hits happened in the page cache",
       "fieldConfig": {
         "defaults": {
@@ -1441,7 +1441,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Neo4j Checkpoints. \nCheckpointing is the process of flushing all pending page updates from the page cache to the store files",
       "fieldConfig": {
         "defaults": {
@@ -1521,7 +1521,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1614,7 +1614,7 @@
       "type": "row"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Messages received - Messages started",
       "fieldConfig": {
         "defaults": {
@@ -1728,7 +1728,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1822,7 +1822,7 @@
       "type": "row"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Heap memory (eden space, old generation, survivor space)\nNon-heap memory (metaspace, compressed class space, code cache)",
       "fieldConfig": {
         "defaults": {
@@ -1902,7 +1902,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1981,7 +1981,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2070,7 +2070,7 @@
       "pluginVersion": "7.5.5"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Time and counters",
       "fieldConfig": {
         "defaults": {
@@ -2184,7 +2184,7 @@
       "type": "row"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
