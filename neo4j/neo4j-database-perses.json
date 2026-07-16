@@ -314,7 +314,7 @@
                       "name": "global-ds-proxy"
                     },
                     "minStep": "",
-                    "query": "neo4j_database_neo4j_transaction_active_read{namespace=~\"$namespace\",job=~\"$app-stats\"}",
+                    "query": "neo4j_database_${database}_transaction_active_read{namespace=~\"$namespace\",job=~\"$app-stats\"}",
                     "seriesNameFormat": "Active read {{instance}}"
                   }
                 }
@@ -331,7 +331,7 @@
                       "name": "global-ds-proxy"
                     },
                     "minStep": "",
-                    "query": "neo4j_database_neo4j_transaction_active_write{namespace=~\"$namespace\",job=~\"$app-stats\"}",
+                    "query": "neo4j_database_${database}_transaction_active_write{namespace=~\"$namespace\",job=~\"$app-stats\"}",
                     "seriesNameFormat": "Active write {{instance}}"
                   }
                 }
@@ -348,7 +348,7 @@
                       "name": "global-ds-proxy"
                     },
                     "minStep": "",
-                    "query": "neo4j_database_neo4j_transaction_peak_concurrent_total{namespace=~\"$namespace\",job=~\"$app-stats\"}",
+                    "query": "neo4j_database_${database}_transaction_peak_concurrent_total{namespace=~\"$namespace\",job=~\"$app-stats\"}",
                     "seriesNameFormat": "Peak concurrent {{instance}}"
                   }
                 }
@@ -923,43 +923,11 @@
           ]
         }
       },
-      "25": {
-        "kind": "Panel",
-        "spec": {
-          "display": {
-            "name": "Cyper wait time",
-            "description": "The total number of seconds waited between query replans"
-          },
-          "plugin": {
-            "kind": "TimeSeriesChart",
-            "spec": {}
-          },
-          "queries": [
-            {
-              "kind": "TimeSeriesQuery",
-              "spec": {
-                "plugin": {
-                  "kind": "PrometheusTimeSeriesQuery",
-                  "spec": {
-                    "datasource": {
-                      "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
-                    },
-                    "minStep": "",
-                    "query": "neo4j_database_${database}_cypher_replan_wait_time{namespace=~\"$namespace\",job=~\"$app-stats\"}",
-                    "seriesNameFormat": "{{__name__}} {{instance}}"
-                  }
-                }
-              }
-            }
-          ]
-        }
-      },
       "26": {
         "kind": "Panel",
         "spec": {
           "display": {
-            "name": "Cyper replan events"
+            "name": "Cypher replan events"
           },
           "plugin": {
             "kind": "TimeSeriesChart",
@@ -1525,16 +1493,7 @@
             {
               "x": 0,
               "y": 82,
-              "width": 11,
-              "height": 9,
-              "content": {
-                "$ref": "#/spec/panels/25"
-              }
-            },
-            {
-              "x": 11,
-              "y": 82,
-              "width": 13,
+              "width": 24,
               "height": 8,
               "content": {
                 "$ref": "#/spec/panels/26"
