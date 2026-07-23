@@ -1976,6 +1976,6 @@
   "timepicker": {},
   "timezone": "",
   "title": "KubeDB / ClickHouse / Database",
-  "uid": "clickhouseDatabase",
+  "uid": "kubedb-clickhouse-database",
   "version": 1
 }

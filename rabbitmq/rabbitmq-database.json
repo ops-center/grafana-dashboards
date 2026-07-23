@@ -18017,6 +18017,6 @@
   "timepicker": {},
   "timezone": "",
   "title": "KubeDB / RabbitMQ / Database",
-  "uid": "ohrdrabbitmq",
+  "uid": "kubedb-rabbitmq-database",
   "version": 4
 }

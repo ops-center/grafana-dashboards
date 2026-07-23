@@ -1685,7 +1685,7 @@
   },
   "timezone": "",
   "title": "KubeDB / Postgres / Pod",
-  "uid": "IgXOThN7ztest",
+  "uid": "kubedb-postgres-pod",
   "version": 2
 }
 
