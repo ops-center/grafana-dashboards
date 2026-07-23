@@ -7084,6 +7084,6 @@
     },
     "timezone": "utc",
     "title": "KubeDB / Solr / Pod",
-    "uid": "0dBMIuN7m",
+    "uid": "kubedb-solr-pod",
     "version": 21
   }

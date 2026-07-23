@@ -2953,6 +2953,6 @@
   },
   "timezone": "",
   "title": "KubeDB / Kafka / Summary",
-  "uid": "kafkaSumMaRy",
+  "uid": "kubedb-kafka-summary",
   "version": 3
 }

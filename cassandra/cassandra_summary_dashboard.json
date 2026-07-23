@@ -2953,6 +2953,6 @@
   },
   "timezone": "",
   "title": "KubeDB / Cassandra / Summary",
-  "uid": "cassandraSummary",
+  "uid": "kubedb-cassandra-summary",
   "version": 7
 }

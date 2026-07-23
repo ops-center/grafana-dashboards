@@ -2957,6 +2957,6 @@
   },
   "timezone": "",
   "title": "KubeDB / ClickHouse / Summary",
-  "uid": "clickhouseSummary",
+  "uid": "kubedb-clickhouse-summary",
   "version": 2
 }

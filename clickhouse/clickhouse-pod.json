@@ -1866,6 +1866,6 @@
   "timepicker": {},
   "timezone": "",
   "title": "KubeDB / ClickHouse / Pod",
-  "uid": "clickhousePodSummary",
+  "uid": "kubedb-clickhouse-pod",
   "version": 3
 }
