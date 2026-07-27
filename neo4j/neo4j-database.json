@@ -2423,6 +2423,6 @@
   "timepicker": {},
   "timezone": "",
   "title": "KubeDB / Neo4j / Database",
-  "uid": "neo4jDataBase",
+  "uid": "kubedb-neo4j-database",
   "version": 29
 }
