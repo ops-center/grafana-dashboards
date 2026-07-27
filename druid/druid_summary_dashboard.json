@@ -2953,6 +2953,6 @@
   },
   "timezone": "",
   "title": "KubeDB / Druid / Summary",
-  "uid": "druidSummary",
+  "uid": "kubedb-druid-summary",
   "version": 7
 }

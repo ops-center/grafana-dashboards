@@ -2953,6 +2953,6 @@
   },
   "timezone": "",
   "title": "KubeDB / HanaDB / Summary",
-  "uid": "hanadb-summary",
+  "uid": "kubedb-hanadb-summary",
   "version": 11
 }

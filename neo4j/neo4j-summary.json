@@ -2909,6 +2909,6 @@
   },
   "timezone": "",
   "title": "KubeDB / Neo4j / Summary",
-  "uid": "neo4jSumMaRy",
+  "uid": "kubedb-neo4j-summary",
   "version": 5
 }

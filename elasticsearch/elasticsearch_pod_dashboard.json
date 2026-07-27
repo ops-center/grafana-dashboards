@@ -2299,6 +2299,6 @@
   },
   "timezone": "utc",
   "title": "KubeDB / Elasticsearch / Pod",
-  "uid": "sjfsldk",
+  "uid": "kubedb-elasticsearch-pod",
   "version": 3
 }

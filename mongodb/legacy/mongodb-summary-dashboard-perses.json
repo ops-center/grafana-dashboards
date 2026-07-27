@@ -1,7 +1,7 @@
 {
   "kind": "Dashboard",
   "metadata": {
-    "name": "5ed3c475-b6c3-46e6-aeba-88921918bf7c",
+    "name": "kubedb-mongodb-summary-legacy",
     "createdAt": "0001-01-01T00:00:00Z",
     "updatedAt": "0001-01-01T00:00:00Z",
     "version": 0,

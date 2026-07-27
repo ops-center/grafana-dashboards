@@ -1087,6 +1087,6 @@
   },
   "timezone": "utc",
   "title": "KubeDB / RedisSentinel / Pod",
-  "uid": "fF-N4cH7k",
+  "uid": "kubedb-redissentinel-pod",
   "version": 1
 }
