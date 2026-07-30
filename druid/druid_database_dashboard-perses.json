@@ -31,24 +31,48 @@
         }
       },
       {
-        "kind": "TextVariable",
+        "kind": "ListVariable",
         "spec": {
           "display": {
+            "name": "Namespace",
             "hidden": false
           },
-          "value": "druid",
-          "constant": true,
+          "defaultValue": "druid",
+          "allowAllValue": false,
+          "allowMultiple": false,
+          "sort": "none",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "namespace",
+              "matchers": [
+                "kube_namespace_status_phase{phase=\"Active\"}"
+              ]
+            }
+          },
           "name": "namespace"
         }
       },
       {
-        "kind": "TextVariable",
+        "kind": "ListVariable",
         "spec": {
           "display": {
+            "name": "Druid",
             "hidden": false
           },
-          "value": "druid-sample",
-          "constant": true,
+          "defaultValue": "druid-sample",
+          "allowAllValue": false,
+          "allowMultiple": false,
+          "sort": "none",
+          "plugin": {
+            "kind": "PrometheusLabelValuesVariable",
+            "spec": {
+              "labelName": "app",
+              "matchers": [
+                "kubedb_com_druid_status_phase{namespace=~\"$namespace\"}"
+              ]
+            }
+          },
           "name": "app"
         }
       }

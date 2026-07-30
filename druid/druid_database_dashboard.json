@@ -16,7 +16,8 @@
   "editable": true,
   "gnetId": 12155,
   "graphTooltip": 0,
-  "iteration": 1712331830278,
+  "id": 36,
+  "iteration": 1784636410277,
   "links": [],
   "panels": [
     {
@@ -97,7 +98,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.0.7",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -172,7 +173,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.0.7",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -231,7 +232,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.7",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -291,7 +292,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.0.7",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -355,7 +356,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.7",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -415,7 +416,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.7",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -485,7 +486,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.7",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -525,6 +526,10 @@
       "dashes": false,
       "datasource": "${datasource}",
       "description": "Used memory",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -551,7 +556,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.0.7",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -617,6 +622,10 @@
       "dashes": false,
       "datasource": "${datasource}",
       "description": "Pool used",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -643,7 +652,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.0.7",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -729,14 +738,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
+            "spanNulls": false
           },
           "mappings": [],
           "thresholds": {
@@ -771,14 +773,14 @@
         },
         "tooltip": {
           "mode": "single"
+        },
+        "tooltipOptions": {
+          "mode": "single"
         }
       },
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheusdata"
-          },
+          "datasource": "${datasource}",
           "editorMode": "builder",
           "exemplar": true,
           "expr": "druid_jvm_bufferpool_count{bufferpoolName=\"direct\", service=\"$app-stats\", namespace=\"$namespace\"}",
@@ -837,13 +839,10 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.0.7",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheusdata"
-          },
+          "datasource": "${datasource}",
           "editorMode": "builder",
           "exemplar": true,
           "expr": "druid_jvm_gc_cpu_total{service=\"$app-stats\", namespace=\"$namespace\"}",
@@ -924,7 +923,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.7",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "exemplar": true,
@@ -946,6 +945,10 @@
       "dashes": false,
       "datasource": "${datasource}",
       "description": "",
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -972,7 +975,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.0.7",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1049,7 +1052,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1091,13 +1094,10 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.0.7",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheusdata"
-          },
+          "datasource": "${datasource}",
           "editorMode": "builder",
           "expr": "count by(le) (druid_query_time_bucket)",
           "format": "heatmap",
@@ -1110,7 +1110,7 @@
       "type": "bargauge"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1152,13 +1152,10 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.0.7",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheusdata"
-          },
+          "datasource": "${datasource}",
           "editorMode": "builder",
           "exemplar": false,
           "expr": "count by(le) (druid_query_wait_time_bucket)",
@@ -1198,14 +1195,14 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 30,
+  "schemaVersion": 27,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "Prometheus",
           "value": "Prometheus"
         },
@@ -1226,44 +1223,64 @@
       },
       {
         "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "alert-druid",
+          "value": "alert-druid"
+        },
         "datasource": "${datasource}",
         "definition": "label_values(kube_namespace_status_phase{phase=\"Active\"},namespace)",
         "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": "",
+        "label": "Namespace",
         "multi": false,
         "name": "namespace",
-        "query": "druid",
+        "options": [],
+        "query": {
+          "query": "label_values(kube_namespace_status_phase{phase=\"Active\"},namespace)",
+          "refId": "StandardVariableQuery"
+        },
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
+        "tags": [],
         "tagsQuery": "",
-        "type": "constant",
+        "type": "query",
         "useTags": false
       },
       {
         "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "druid-grafana-demo",
+          "value": "druid-grafana-demo"
+        },
         "datasource": "${datasource}",
         "definition": "label_values(kubedb_com_druid_created{druid=~\".+\",namespace=~\"$namespace\"},app)",
         "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
+        "label": "App",
         "multi": false,
         "name": "app",
-        "query": "druid-sample",
+        "options": [],
+        "query": {
+          "query": "label_values(kubedb_com_druid_created{druid=~\".+\",namespace=~\"$namespace\"},app)",
+          "refId": "StandardVariableQuery"
+        },
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
-        "sort": 1,
+        "sort": 0,
         "tagValuesQuery": "",
+        "tags": [],
         "tagsQuery": "",
-        "type": "constant",
+        "type": "query",
         "useTags": false
       }
     ]
@@ -1287,6 +1304,6 @@
   },
   "timezone": "",
   "title": "KubeDB / Druid / Database",
-  "uid": "kubedb-druid-database",
-  "version": 2
+  "uid": "sc_65lYvz",
+  "version": 6
 }
