@@ -10406,7 +10406,7 @@
           "value": "kubedb"
         },
         "datasource": null,
-        "definition": "label_values(kube_pod_info, namespace)",
+        "definition": "label_values(kube_namespace_status_phase{phase=\"Active\"},namespace)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -10416,7 +10416,7 @@
         "name": "namespace",
         "options": [],
         "query": {
-          "query": "label_values(kube_pod_info, namespace)",
+          "query": "label_values(kube_namespace_status_phase{phase=\"Active\"},namespace)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,

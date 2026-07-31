@@ -49,7 +49,7 @@
             "spec": {
               "labelName": "namespace",
               "matchers": [
-                "stash_appscode_com_backupconfiguration_info"
+                "kube_namespace_status_phase{phase=\"Active\"}"
               ]
             }
           },

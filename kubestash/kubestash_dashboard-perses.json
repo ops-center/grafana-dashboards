@@ -49,7 +49,7 @@
             "spec": {
               "labelName": "namespace",
               "matchers": [
-                "core_kubestash_com_backupconfiguration_created"
+                "kube_namespace_status_phase{phase=\"Active\"}"
               ]
             }
           },

@@ -2641,7 +2641,7 @@
           "value": "$__all"
         },
         "datasource": "${datasource}",
-        "definition": "label_values(core_kubestash_com_backupconfiguration_created,namespace)",
+        "definition": "label_values(kube_namespace_status_phase{phase=\"Active\"},namespace)",
         "description": "List of namespaces where the backups are running",
         "error": null,
         "hide": 0,
@@ -2651,7 +2651,7 @@
         "name": "namespace",
         "options": [],
         "query": {
-          "query": "label_values(core_kubestash_com_backupconfiguration_created,namespace)",
+          "query": "label_values(kube_namespace_status_phase{phase=\"Active\"},namespace)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,

@@ -2724,7 +2724,7 @@
           "value": "$__all"
         },
         "datasource": "${datasource}",
-        "definition": "label_values(stash_appscode_com_backupconfiguration_info,namespace)",
+        "definition": "label_values(kube_namespace_status_phase{phase=\"Active\"},namespace)",
         "description": "List of namespaces where the backups are running",
         "error": null,
         "hide": 0,
@@ -2733,7 +2733,7 @@
         "multi": false,
         "name": "namespace",
         "options": [],
-        "query": "label_values(stash_appscode_com_backupconfiguration_info,namespace)",
+        "query": "label_values(kube_namespace_status_phase{phase=\"Active\"},namespace)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
