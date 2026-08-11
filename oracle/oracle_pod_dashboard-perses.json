@@ -157,7 +157,7 @@
               "format": {
                 "unit": "decimal"
               },
-              "metricLabel": "pod}} ",
+              "metricLabel": "pod",
               "thresholds": {
                 "steps": [
                   {
@@ -181,7 +181,7 @@
                     },
                     "minStep": "",
                     "query": "up{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
-                    "seriesNameFormat": "{{pod}} "
+                    "seriesNameFormat": "{{pod}}"
                   }
                 }
               }

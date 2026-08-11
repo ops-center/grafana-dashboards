@@ -132,13 +132,12 @@
           "plugin": {
             "kind": "StatChart",
             "spec": {
-              "calculation": "mean",
+              "calculation": "last-number",
               "colorMode": "none",
               "format": {
                 "unit": "decimal"
               },
-              "metricLabel": " version ",
-              "sparkline": {},
+              "metricLabel": "version",
               "thresholds": {
                 "steps": [
                   {
@@ -167,7 +166,7 @@
                     },
                     "minStep": "",
                     "query": "kubedb_com_mysql_info{namespace=\"$namespace\", app=\"$app\"}",
-                    "seriesNameFormat": "{{ version }}"
+                    "seriesNameFormat": "{{version}}"
                   }
                 }
               }
@@ -306,11 +305,25 @@
                   "name": "value #5"
                 },
                 {
-                  "format": {
-                    "unit": "decimal"
-                  },
                   "header": "Pod",
-                  "name": "pod"
+                  "name": "pod #1",
+                  "align": "left"
+                },
+                {
+                  "name": "pod #2",
+                  "hide": true
+                },
+                {
+                  "name": "pod #3",
+                  "hide": true
+                },
+                {
+                  "name": "pod #4",
+                  "hide": true
+                },
+                {
+                  "name": "pod #5",
+                  "hide": true
                 }
               ]
             }
@@ -344,7 +357,7 @@
                       "name": "global-ds-proxy"
                     },
                     "minStep": "",
-                    "query": "sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{namespace=\"$namespace\", pod=~\"$app-\\\\d+$\"}) by (pod)",
+                    "query": "sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=~\"$app-\\\\d+$\", resource=\"cpu\"}) by (pod)",
                     "seriesNameFormat": ""
                   }
                 }
@@ -361,7 +374,7 @@
                       "name": "global-ds-proxy"
                     },
                     "minStep": "",
-                    "query": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$app-\\\\d+$\"}) by (pod) / sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{namespace=\"$namespace\", pod=~\"$app-\\\\d+$\"}) by (pod)",
+                    "query": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$app-\\\\d+$\"}) by (pod) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=~\"$app-\\\\d+$\", resource=\"cpu\"}) by (pod)",
                     "seriesNameFormat": ""
                   }
                 }
@@ -378,7 +391,7 @@
                       "name": "global-ds-proxy"
                     },
                     "minStep": "",
-                    "query": "sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$app-\\\\d+$\"}) by (pod)",
+                    "query": "sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$app-\\\\d+$\", resource=\"cpu\"}) by (pod)",
                     "seriesNameFormat": ""
                   }
                 }
@@ -395,7 +408,7 @@
                       "name": "global-ds-proxy"
                     },
                     "minStep": "",
-                    "query": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$app-\\\\d+$\"}) by (pod) / sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$app-\\\\d+$\"}) by (pod)",
+                    "query": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$app-\\\\d+$\"}) by (pod) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$app-\\\\d+$\", resource=\"cpu\"}) by (pod)",
                     "seriesNameFormat": ""
                   }
                 }
@@ -513,11 +526,37 @@
                   "name": "value #8"
                 },
                 {
-                  "format": {
-                    "unit": "decimal"
-                  },
                   "header": "Pod",
-                  "name": "pod"
+                  "name": "pod #1",
+                  "align": "left"
+                },
+                {
+                  "name": "pod #2",
+                  "hide": true
+                },
+                {
+                  "name": "pod #3",
+                  "hide": true
+                },
+                {
+                  "name": "pod #4",
+                  "hide": true
+                },
+                {
+                  "name": "pod #5",
+                  "hide": true
+                },
+                {
+                  "name": "pod #6",
+                  "hide": true
+                },
+                {
+                  "name": "pod #7",
+                  "hide": true
+                },
+                {
+                  "name": "pod #8",
+                  "hide": true
                 }
               ]
             }
@@ -551,7 +590,7 @@
                       "name": "global-ds-proxy"
                     },
                     "minStep": "",
-                    "query": "sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_requests{namespace=\"$namespace\",pod=~\"$app-\\\\d+$\"}) by (pod)",
+                    "query": "sum(kube_pod_container_resource_requests{namespace=\"$namespace\",pod=~\"$app-\\\\d+$\", resource=\"memory\"}) by (pod)",
                     "seriesNameFormat": ""
                   }
                 }
@@ -568,7 +607,7 @@
                       "name": "global-ds-proxy"
                     },
                     "minStep": "",
-                    "query": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$app-\\\\d+$\",container!=\"\", image!=\"\"}) by (pod) / sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_requests{namespace=\"$namespace\",pod=~\"$app-\\\\d+$\"}) by (pod)",
+                    "query": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$app-\\\\d+$\",container!=\"\", image!=\"\"}) by (pod) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\",pod=~\"$app-\\\\d+$\", resource=\"memory\"}) by (pod)",
                     "seriesNameFormat": ""
                   }
                 }
@@ -585,7 +624,7 @@
                       "name": "global-ds-proxy"
                     },
                     "minStep": "",
-                    "query": "sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_limits{namespace=\"$namespace\",pod=~\"$app-\\\\d+$\"}) by (pod)",
+                    "query": "sum(kube_pod_container_resource_limits{namespace=\"$namespace\",pod=~\"$app-\\\\d+$\", resource=\"memory\"}) by (pod)",
                     "seriesNameFormat": ""
                   }
                 }
@@ -602,7 +641,7 @@
                       "name": "global-ds-proxy"
                     },
                     "minStep": "",
-                    "query": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$app-\\\\d+$\",container!=\"\", image!=\"\"}) by (pod) / sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$app-\\\\d+$\"}) by (pod)",
+                    "query": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$app-\\\\d+$\",container!=\"\", image!=\"\"}) by (pod) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$app-\\\\d+$\", resource=\"memory\"}) by (pod)",
                     "seriesNameFormat": ""
                   }
                 }
@@ -886,11 +925,29 @@
                   "name": "value #6"
                 },
                 {
-                  "format": {
-                    "unit": "decimal"
-                  },
                   "header": "Pod",
-                  "name": "pod"
+                  "name": "pod #1",
+                  "align": "left"
+                },
+                {
+                  "name": "pod #2",
+                  "hide": true
+                },
+                {
+                  "name": "pod #3",
+                  "hide": true
+                },
+                {
+                  "name": "pod #4",
+                  "hide": true
+                },
+                {
+                  "name": "pod #5",
+                  "hide": true
+                },
+                {
+                  "name": "pod #6",
+                  "hide": true
                 }
               ]
             }
@@ -1011,13 +1068,12 @@
           "plugin": {
             "kind": "StatChart",
             "spec": {
-              "calculation": "mean",
+              "calculation": "last-number",
               "colorMode": "none",
               "format": {
                 "unit": "decimal"
               },
-              "metricLabel": " useAddressType ",
-              "sparkline": {},
+              "metricLabel": "useAddressType",
               "thresholds": {
                 "steps": [
                   {
@@ -1046,7 +1102,7 @@
                     },
                     "minStep": "",
                     "query": "kubedb_com_mysql_info{namespace=\"$namespace\", app=\"$app\"}",
-                    "seriesNameFormat": "{{ useAddressType }}"
+                    "seriesNameFormat": "{{useAddressType}}"
                   }
                 }
               }
@@ -1260,7 +1316,6 @@
             "spec": {
               "calculation": "last-number",
               "colorMode": "none",
-              "sparkline": {},
               "thresholds": {
                 "steps": [
                   {
@@ -1272,7 +1327,8 @@
                     "value": 80
                   }
                 ]
-              }
+              },
+              "metricLabel": "requireSSL"
             }
           },
           "queries": [
@@ -1308,7 +1364,6 @@
             "spec": {
               "calculation": "last-number",
               "colorMode": "none",
-              "sparkline": {},
               "thresholds": {
                 "steps": [
                   {
@@ -1316,7 +1371,50 @@
                     "value": 0
                   }
                 ]
-              }
+              },
+              "metricLabel": "deletionPolicy",
+              "mappings": [
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "value": "WipeOut",
+                    "result": {
+                      "color": "#c4162a",
+                      "value": "WipeOut"
+                    }
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "value": "Delete",
+                    "result": {
+                      "color": "#f2cc0c",
+                      "value": "Delete"
+                    }
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "value": "Halt",
+                    "result": {
+                      "color": "#5794f2",
+                      "value": "Halt"
+                    }
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "value": "DoNotTerminate",
+                    "result": {
+                      "color": "#73bf69",
+                      "value": "DoNotTerminate"
+                    }
+                  }
+                }
+              ]
             }
           },
           "queries": [

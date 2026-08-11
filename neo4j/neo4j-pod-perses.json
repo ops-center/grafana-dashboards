@@ -157,9 +157,31 @@
               "calculation": "last-number",
               "colorMode": "background_solid",
               "format": {
-                "decimalPlaces": 1,
+                "decimalPlaces": 0,
                 "unit": "decimal"
               },
+              "mappings": [
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "value": "0",
+                    "result": {
+                      "color": "#f2cc0c",
+                      "value": "Down"
+                    }
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "value": "1",
+                    "result": {
+                      "color": "rgba(50, 172, 45, 0.97)",
+                      "value": "Running"
+                    }
+                  }
+                }
+              ],
               "thresholds": {
                 "steps": [
                   {

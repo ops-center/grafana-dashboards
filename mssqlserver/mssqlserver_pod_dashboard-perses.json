@@ -157,7 +157,7 @@
               "format": {
                 "unit": "decimal"
               },
-              "metricLabel": "pod}} ",
+              "metricLabel": "pod",
               "thresholds": {
                 "steps": [
                   {
@@ -181,7 +181,7 @@
                     },
                     "minStep": "",
                     "query": "mssql_hostname{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
-                    "seriesNameFormat": "{{pod}} "
+                    "seriesNameFormat": "{{pod}}"
                   }
                 }
               }

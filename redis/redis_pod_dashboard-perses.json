@@ -454,7 +454,8 @@
                   }
                 ]
               },
-              "valueFontSize": 25
+              "valueFontSize": 25,
+              "metricLabel": "master_host"
             }
           },
           "queries": [
