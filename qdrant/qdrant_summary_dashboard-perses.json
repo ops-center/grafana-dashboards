@@ -5,6 +5,12 @@
     "createdAt": "0001-01-01T00:00:00Z",
     "updatedAt": "0001-01-01T00:00:00Z",
     "version": 0,
+    "tags": [
+      "db",
+      "kubedb",
+      "qdrant",
+      "stats"
+    ],
     "project": "pp"
   },
   "spec": {
@@ -1308,6 +1314,48 @@
             "spec": {
               "calculation": "last-number",
               "colorMode": "none",
+              "mappings": [
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "color": "#fade2a",
+                      "value": "Delete"
+                    },
+                    "value": "Delete"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "color": "#73bf69",
+                      "value": "DoNotTerminate"
+                    },
+                    "value": "DoNotTerminate"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "color": "#5794f2",
+                      "value": "Halt"
+                    },
+                    "value": "Halt"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "color": "#c4162a",
+                      "value": "WipeOut"
+                    },
+                    "value": "WipeOut"
+                  }
+                }
+              ],
               "thresholds": {
                 "steps": [
                   {
@@ -1316,49 +1364,7 @@
                   }
                 ]
               },
-              "metricLabel": "deletionPolicy",
-              "mappings": [
-                {
-                  "kind": "Value",
-                  "spec": {
-                    "value": "WipeOut",
-                    "result": {
-                      "color": "#c4162a",
-                      "value": "WipeOut"
-                    }
-                  }
-                },
-                {
-                  "kind": "Value",
-                  "spec": {
-                    "value": "Delete",
-                    "result": {
-                      "color": "#f2cc0c",
-                      "value": "Delete"
-                    }
-                  }
-                },
-                {
-                  "kind": "Value",
-                  "spec": {
-                    "value": "Halt",
-                    "result": {
-                      "color": "#5794f2",
-                      "value": "Halt"
-                    }
-                  }
-                },
-                {
-                  "kind": "Value",
-                  "spec": {
-                    "value": "DoNotTerminate",
-                    "result": {
-                      "color": "#73bf69",
-                      "value": "DoNotTerminate"
-                    }
-                  }
-                }
-              ]
+              "metricLabel": "deletionPolicy"
             }
           },
           "queries": [

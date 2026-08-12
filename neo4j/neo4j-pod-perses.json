@@ -157,28 +157,27 @@
               "calculation": "last-number",
               "colorMode": "background_solid",
               "format": {
-                "decimalPlaces": 0,
+                "decimalPlaces": 1,
                 "unit": "decimal"
               },
               "mappings": [
                 {
                   "kind": "Value",
                   "spec": {
-                    "value": "0",
                     "result": {
-                      "color": "#f2cc0c",
+                      "color": "#fade2a",
                       "value": "Down"
-                    }
+                    },
+                    "value": "0"
                   }
                 },
                 {
                   "kind": "Value",
                   "spec": {
-                    "value": "1",
                     "result": {
-                      "color": "rgba(50, 172, 45, 0.97)",
                       "value": "Running"
-                    }
+                    },
+                    "value": "1"
                   }
                 }
               ],
@@ -272,6 +271,21 @@
           "plugin": {
             "kind": "TimeSeriesChart",
             "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
               "yAxis": {
                 "format": {
                   "unit": "decimal"
@@ -309,7 +323,28 @@
           },
           "plugin": {
             "kind": "TimeSeriesChart",
-            "spec": {}
+            "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
+              "yAxis": {
+                "format": {
+                  "unit": "decimal"
+                }
+              }
+            }
           },
           "queries": [
             {
@@ -342,6 +377,21 @@
           "plugin": {
             "kind": "TimeSeriesChart",
             "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
               "yAxis": {
                 "format": {
                   "unit": "decimal"
@@ -378,7 +428,28 @@
           },
           "plugin": {
             "kind": "TimeSeriesChart",
-            "spec": {}
+            "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
+              "yAxis": {
+                "format": {
+                  "unit": "decimal"
+                }
+              }
+            }
           },
           "queries": [
             {
@@ -392,7 +463,7 @@
                       "name": "global-ds-proxy"
                     },
                     "minStep": "",
-                    "query": "neo4j_database_${database}_transaction_committed_total{pod=~\"$pod\",namespace=~\"$namespace\"}",
+                    "query": "neo4j_database_${database}_transaction_committed_total{pod =~\"$pod\",namespace=~\"$namespace\"}",
                     "seriesNameFormat": "Total Committed Tr.s {{instance}}"
                   }
                 }
@@ -445,6 +516,21 @@
           "plugin": {
             "kind": "TimeSeriesChart",
             "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
               "yAxis": {
                 "format": {
                   "unit": "decimal"
@@ -515,7 +601,28 @@
           },
           "plugin": {
             "kind": "TimeSeriesChart",
-            "spec": {}
+            "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
+              "yAxis": {
+                "format": {
+                  "unit": "decimal"
+                }
+              }
+            }
           },
           "queries": [
             {
@@ -546,7 +653,28 @@
           },
           "plugin": {
             "kind": "TimeSeriesChart",
-            "spec": {}
+            "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
+              "yAxis": {
+                "format": {
+                  "unit": "decimal"
+                }
+              }
+            }
           },
           "queries": [
             {
@@ -577,8 +705,30 @@
             "description": "The ratio of hits to the total number of lookups in the page cache"
           },
           "plugin": {
-            "kind": "TimeSeriesChart",
-            "spec": {}
+            "kind": "GaugeChart",
+            "spec": {
+              "calculation": "last-number",
+              "format": {
+                "unit": "percent-decimal"
+              },
+              "max": 1,
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#f2495c",
+                    "value": 0
+                  },
+                  {
+                    "color": "#fade2a",
+                    "value": 0.8
+                  },
+                  {
+                    "color": "#73bf69",
+                    "value": 0.95
+                  }
+                ]
+              }
+            }
           },
           "queries": [
             {
@@ -610,7 +760,28 @@
           },
           "plugin": {
             "kind": "TimeSeriesChart",
-            "spec": {}
+            "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
+              "yAxis": {
+                "format": {
+                  "unit": "decimal"
+                }
+              }
+            }
           },
           "queries": [
             {
@@ -642,7 +813,28 @@
           },
           "plugin": {
             "kind": "TimeSeriesChart",
-            "spec": {}
+            "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
+              "yAxis": {
+                "format": {
+                  "unit": "decimal"
+                }
+              }
+            }
           },
           "queries": [
             {
@@ -721,7 +913,28 @@
           },
           "plugin": {
             "kind": "TimeSeriesChart",
-            "spec": {}
+            "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
+              "yAxis": {
+                "format": {
+                  "unit": "decimal"
+                }
+              }
+            }
           },
           "queries": [
             {
@@ -752,7 +965,28 @@
           },
           "plugin": {
             "kind": "TimeSeriesChart",
-            "spec": {}
+            "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
+              "yAxis": {
+                "format": {
+                  "unit": "seconds"
+                }
+              }
+            }
           },
           "queries": [
             {
@@ -784,7 +1018,28 @@
           },
           "plugin": {
             "kind": "TimeSeriesChart",
-            "spec": {}
+            "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
+              "yAxis": {
+                "format": {
+                  "unit": "decimal"
+                }
+              }
+            }
           },
           "queries": [
             {
@@ -866,7 +1121,28 @@
           },
           "plugin": {
             "kind": "TimeSeriesChart",
-            "spec": {}
+            "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
+              "yAxis": {
+                "format": {
+                  "unit": "decimal"
+                }
+              }
+            }
           },
           "queries": [
             {
@@ -899,9 +1175,24 @@
           "plugin": {
             "kind": "TimeSeriesChart",
             "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
               "yAxis": {
                 "format": {
-                  "unit": "decbytes"
+                  "unit": "bytes"
                 }
               }
             }
@@ -935,7 +1226,28 @@
           },
           "plugin": {
             "kind": "TimeSeriesChart",
-            "spec": {}
+            "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
+              "yAxis": {
+                "format": {
+                  "unit": "decimal"
+                }
+              }
+            }
           },
           "queries": [
             {
@@ -966,7 +1278,28 @@
           },
           "plugin": {
             "kind": "TimeSeriesChart",
-            "spec": {}
+            "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
+              "yAxis": {
+                "format": {
+                  "unit": "bytes"
+                }
+              }
+            }
           },
           "queries": [
             {
@@ -1015,7 +1348,28 @@
           },
           "plugin": {
             "kind": "TimeSeriesChart",
-            "spec": {}
+            "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
+              "yAxis": {
+                "format": {
+                  "unit": "milliseconds"
+                }
+              }
+            }
           },
           "queries": [
             {
@@ -1072,7 +1426,7 @@
           ]
         }
       },
-      "29": {
+      "28": {
         "kind": "Panel",
         "spec": {
           "display": {
@@ -1080,7 +1434,28 @@
           },
           "plugin": {
             "kind": "TimeSeriesChart",
-            "spec": {}
+            "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
+              "yAxis": {
+                "format": {
+                  "unit": "decimal"
+                }
+              }
+            }
           },
           "queries": [
             {
@@ -1112,6 +1487,21 @@
           "plugin": {
             "kind": "TimeSeriesChart",
             "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
               "yAxis": {
                 "format": {
                   "unit": "bytes"
@@ -1149,7 +1539,28 @@
           },
           "plugin": {
             "kind": "TimeSeriesChart",
-            "spec": {}
+            "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
+              "yAxis": {
+                "format": {
+                  "unit": "percent"
+                }
+              }
+            }
           },
           "queries": [
             {
@@ -1227,11 +1638,43 @@
             "description": "Instant rate"
           },
           "plugin": {
-            "kind": "Markdown",
+            "kind": "StatChart",
             "spec": {
-              "text": "**Migration from Grafana not supported !**"
+              "calculation": "last-number",
+              "colorMode": "value",
+              "format": {
+                "unit": "ops/sec"
+              },
+              "sparkline": {},
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#73bf69",
+                    "value": 0
+                  }
+                ]
+              }
             }
-          }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "datasource": {
+                      "kind": "PrometheusDatasource",
+                      "name": "global-ds-proxy"
+                    },
+                    "minStep": "",
+                    "query": "irate(neo4j_database_${database}_transaction_committed_total{pod=~\"$pod\",namespace=~\"$namespace\"}[$__interval])",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
         }
       },
       "7": {
@@ -1242,11 +1685,43 @@
             "description": "This is in reality the change in neo4j ids.\nIf the transaction is rolled-back nodes will not be created but will increase this gauge.\n\nMaximum speed is set to 30k nodes/sec\nEmpirically we saw this is the maximum handled by the production machine"
           },
           "plugin": {
-            "kind": "Markdown",
+            "kind": "StatChart",
             "spec": {
-              "text": "**Migration from Grafana not supported !**"
+              "calculation": "last-number",
+              "colorMode": "value",
+              "format": {
+                "unit": "decimal"
+              },
+              "sparkline": {},
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#73bf69",
+                    "value": 0
+                  }
+                ]
+              }
             }
-          }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "datasource": {
+                      "kind": "PrometheusDatasource",
+                      "name": "global-ds-proxy"
+                    },
+                    "minStep": "",
+                    "query": "irate(neo4j_database_${database}_ids_in_use_property{pod=~\"$pod\",namespace=~\"$namespace\"}[$__interval])",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
         }
       },
       "8": {
@@ -1257,11 +1732,43 @@
             "description": "Instant rate"
           },
           "plugin": {
-            "kind": "Markdown",
+            "kind": "StatChart",
             "spec": {
-              "text": "**Migration from Grafana not supported !**"
+              "calculation": "last-number",
+              "colorMode": "value",
+              "format": {
+                "unit": "ops/sec"
+              },
+              "sparkline": {},
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#73bf69",
+                    "value": 0
+                  }
+                ]
+              }
             }
-          }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "datasource": {
+                      "kind": "PrometheusDatasource",
+                      "name": "global-ds-proxy"
+                    },
+                    "minStep": "",
+                    "query": "irate(neo4j_database_${database}_transaction_rollbacks_total{pod=~\"$pod\",namespace=~\"$namespace\"}[$__interval])",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
         }
       },
       "9": {
@@ -1273,7 +1780,28 @@
           },
           "plugin": {
             "kind": "TimeSeriesChart",
-            "spec": {}
+            "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
+              "yAxis": {
+                "format": {
+                  "unit": "decimal"
+                }
+              }
+            }
           },
           "queries": [
             {
@@ -1353,7 +1881,7 @@
               "x": 0,
               "y": 6,
               "width": 12,
-              "height": 11,
+              "height": 8,
               "content": {
                 "$ref": "#/spec/panels/3"
               }
@@ -1362,78 +1890,78 @@
               "x": 12,
               "y": 6,
               "width": 12,
-              "height": 11,
+              "height": 8,
               "content": {
                 "$ref": "#/spec/panels/4"
               }
             },
             {
               "x": 0,
-              "y": 18,
-              "width": 4,
+              "y": 15,
+              "width": 6,
               "height": 4,
               "content": {
                 "$ref": "#/spec/panels/5"
               }
             },
             {
-              "x": 4,
-              "y": 18,
-              "width": 4,
+              "x": 6,
+              "y": 15,
+              "width": 6,
               "height": 4,
               "content": {
                 "$ref": "#/spec/panels/6"
               }
             },
             {
-              "x": 8,
-              "y": 18,
-              "width": 3,
+              "x": 12,
+              "y": 15,
+              "width": 6,
               "height": 4,
               "content": {
                 "$ref": "#/spec/panels/7"
               }
             },
             {
-              "x": 11,
-              "y": 18,
-              "width": 3,
+              "x": 18,
+              "y": 15,
+              "width": 6,
               "height": 4,
               "content": {
                 "$ref": "#/spec/panels/8"
               }
             },
             {
-              "x": 14,
-              "y": 18,
-              "width": 10,
-              "height": 5,
+              "x": 0,
+              "y": 19,
+              "width": 12,
+              "height": 8,
               "content": {
                 "$ref": "#/spec/panels/9"
               }
             },
             {
-              "x": 0,
-              "y": 22,
-              "width": 7,
+              "x": 12,
+              "y": 19,
+              "width": 12,
               "height": 8,
               "content": {
                 "$ref": "#/spec/panels/10"
               }
             },
             {
-              "x": 7,
-              "y": 23,
-              "width": 8,
+              "x": 0,
+              "y": 27,
+              "width": 12,
               "height": 8,
               "content": {
                 "$ref": "#/spec/panels/11"
               }
             },
             {
-              "x": 15,
-              "y": 23,
-              "width": 8,
+              "x": 12,
+              "y": 27,
+              "width": 12,
               "height": 8,
               "content": {
                 "$ref": "#/spec/panels/12"
@@ -1441,89 +1969,89 @@
             },
             {
               "x": 0,
-              "y": 31,
-              "width": 9,
-              "height": 6,
+              "y": 35,
+              "width": 12,
+              "height": 8,
               "content": {
                 "$ref": "#/spec/panels/13"
               }
             },
             {
-              "x": 9,
-              "y": 31,
-              "width": 15,
-              "height": 5,
+              "x": 12,
+              "y": 35,
+              "width": 12,
+              "height": 8,
               "content": {
                 "$ref": "#/spec/panels/14"
               }
             },
             {
               "x": 0,
-              "y": 38,
-              "width": 7,
-              "height": 7,
+              "y": 44,
+              "width": 6,
+              "height": 8,
               "content": {
                 "$ref": "#/spec/panels/15"
               }
             },
             {
-              "x": 7,
-              "y": 38,
-              "width": 8,
-              "height": 6,
+              "x": 6,
+              "y": 44,
+              "width": 6,
+              "height": 8,
               "content": {
                 "$ref": "#/spec/panels/16"
               }
             },
             {
-              "x": 15,
-              "y": 38,
-              "width": 9,
-              "height": 7,
+              "x": 12,
+              "y": 44,
+              "width": 6,
+              "height": 8,
               "content": {
                 "$ref": "#/spec/panels/17"
               }
             },
             {
-              "x": 0,
-              "y": 45,
+              "x": 18,
+              "y": 44,
               "width": 6,
-              "height": 7,
+              "height": 8,
               "content": {
                 "$ref": "#/spec/panels/18"
               }
             },
             {
-              "x": 6,
-              "y": 45,
-              "width": 6,
-              "height": 6,
+              "x": 0,
+              "y": 52,
+              "width": 8,
+              "height": 8,
               "content": {
                 "$ref": "#/spec/panels/19"
               }
             },
             {
-              "x": 12,
-              "y": 45,
-              "width": 6,
-              "height": 6,
+              "x": 8,
+              "y": 52,
+              "width": 8,
+              "height": 8,
               "content": {
                 "$ref": "#/spec/panels/20"
               }
             },
             {
-              "x": 18,
-              "y": 45,
-              "width": 6,
-              "height": 6,
+              "x": 16,
+              "y": 52,
+              "width": 8,
+              "height": 8,
               "content": {
                 "$ref": "#/spec/panels/21"
               }
             },
             {
-              "x": 1,
-              "y": 53,
-              "width": 10,
+              "x": 0,
+              "y": 61,
+              "width": 12,
               "height": 9,
               "content": {
                 "$ref": "#/spec/panels/22"
@@ -1531,8 +2059,8 @@
             },
             {
               "x": 12,
-              "y": 53,
-              "width": 11,
+              "y": 61,
+              "width": 12,
               "height": 9,
               "content": {
                 "$ref": "#/spec/panels/23"
@@ -1540,47 +2068,47 @@
             },
             {
               "x": 0,
-              "y": 63,
-              "width": 13,
-              "height": 9,
+              "y": 71,
+              "width": 12,
+              "height": 8,
               "content": {
                 "$ref": "#/spec/panels/24"
               }
             },
             {
-              "x": 14,
-              "y": 63,
-              "width": 8,
-              "height": 9,
+              "x": 12,
+              "y": 71,
+              "width": 12,
+              "height": 8,
               "content": {
                 "$ref": "#/spec/panels/25"
               }
             },
             {
               "x": 0,
-              "y": 72,
-              "width": 11,
-              "height": 9,
+              "y": 79,
+              "width": 12,
+              "height": 8,
               "content": {
                 "$ref": "#/spec/panels/26"
               }
             },
             {
-              "x": 13,
-              "y": 72,
-              "width": 8,
-              "height": 9,
+              "x": 12,
+              "y": 79,
+              "width": 12,
+              "height": 8,
               "content": {
                 "$ref": "#/spec/panels/27"
               }
             },
             {
               "x": 0,
-              "y": 82,
+              "y": 88,
               "width": 24,
               "height": 8,
               "content": {
-                "$ref": "#/spec/panels/29"
+                "$ref": "#/spec/panels/28"
               }
             }
           ]

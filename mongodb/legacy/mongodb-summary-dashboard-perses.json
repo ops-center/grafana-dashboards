@@ -5,6 +5,12 @@
     "createdAt": "0001-01-01T00:00:00Z",
     "updatedAt": "0001-01-01T00:00:00Z",
     "version": 0,
+    "tags": [
+      "db",
+      "kubedb",
+      "mongodb",
+      "stats"
+    ],
     "project": "pp"
   },
   "spec": {
@@ -260,11 +266,25 @@
                   "name": "value #5"
                 },
                 {
-                  "format": {
-                    "unit": "decimal"
-                  },
                   "header": "Pod",
-                  "name": "pod"
+                  "name": "pod #1",
+                  "align": "left"
+                },
+                {
+                  "name": "pod #2",
+                  "hide": true
+                },
+                {
+                  "name": "pod #3",
+                  "hide": true
+                },
+                {
+                  "name": "pod #4",
+                  "hide": true
+                },
+                {
+                  "name": "pod #5",
+                  "hide": true
                 }
               ]
             }
@@ -467,11 +487,37 @@
                   "name": "value #8"
                 },
                 {
-                  "format": {
-                    "unit": "decimal"
-                  },
                   "header": "Pod",
-                  "name": "pod"
+                  "name": "pod #1",
+                  "align": "left"
+                },
+                {
+                  "name": "pod #2",
+                  "hide": true
+                },
+                {
+                  "name": "pod #3",
+                  "hide": true
+                },
+                {
+                  "name": "pod #4",
+                  "hide": true
+                },
+                {
+                  "name": "pod #5",
+                  "hide": true
+                },
+                {
+                  "name": "pod #6",
+                  "hide": true
+                },
+                {
+                  "name": "pod #7",
+                  "hide": true
+                },
+                {
+                  "name": "pod #8",
+                  "hide": true
                 }
               ]
             }
@@ -886,11 +932,29 @@
                   "name": "value #6"
                 },
                 {
-                  "format": {
-                    "unit": "decimal"
-                  },
                   "header": "Pod",
-                  "name": "pod"
+                  "name": "pod #1",
+                  "align": "left"
+                },
+                {
+                  "name": "pod #2",
+                  "hide": true
+                },
+                {
+                  "name": "pod #3",
+                  "hide": true
+                },
+                {
+                  "name": "pod #4",
+                  "hide": true
+                },
+                {
+                  "name": "pod #5",
+                  "hide": true
+                },
+                {
+                  "name": "pod #6",
+                  "hide": true
                 }
               ]
             }
@@ -1247,13 +1311,12 @@
           "plugin": {
             "kind": "StatChart",
             "spec": {
-              "calculation": "mean",
+              "calculation": "last-number",
               "colorMode": "none",
               "format": {
                 "unit": "decimal"
               },
               "metricLabel": "version",
-              "sparkline": {},
               "thresholds": {
                 "steps": [
                   {
@@ -1439,7 +1502,48 @@
             "spec": {
               "calculation": "last-number",
               "colorMode": "none",
-              "sparkline": {},
+              "mappings": [
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "color": "#fade2a",
+                      "value": "Delete"
+                    },
+                    "value": "Delete"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "color": "#73bf69",
+                      "value": "DoNotTerminate"
+                    },
+                    "value": "DoNotTerminate"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "color": "#5794f2",
+                      "value": "Halt"
+                    },
+                    "value": "Halt"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "color": "#c4162a",
+                      "value": "WipeOut"
+                    },
+                    "value": "WipeOut"
+                  }
+                }
+              ],
               "thresholds": {
                 "steps": [
                   {
@@ -1447,7 +1551,8 @@
                     "value": 0
                   }
                 ]
-              }
+              },
+              "metricLabel": "terminationPolicy"
             }
           },
           "queries": [

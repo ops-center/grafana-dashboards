@@ -5,6 +5,12 @@
     "createdAt": "0001-01-01T00:00:00Z",
     "updatedAt": "0001-01-01T00:00:00Z",
     "version": 0,
+    "tags": [
+      "db",
+      "kubedb",
+      "neo4j",
+      "stats"
+    ],
     "project": "pp"
   },
   "spec": {
@@ -186,12 +192,72 @@
         "kind": "Panel",
         "spec": {
           "display": {
+            "name": "TLS Channels",
+            "description": "TLS mode per Neo4j channel. On when the channel uses TLS/mTLS with a configured issuer; Off otherwise."
+          },
+          "plugin": {
+            "kind": "Table",
+            "spec": {
+              "columnSettings": [
+                {
+                  "name": "Channel",
+                  "width": 160
+                }
+              ]
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "datasource": {
+                      "kind": "PrometheusDatasource",
+                      "name": "global-ds-proxy"
+                    },
+                    "minStep": "",
+                    "query": "label_replace({__name__=~\"kubedb_com_neo4j_tls_(bolt|http|cluster|backup)_mode\", namespace=\"$namespace\", app=\"$app\"}, \"channel\", \"$1\", \"__name__\", \"kubedb_com_neo4j_tls_(.+)_mode\")",
+                    "seriesNameFormat": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "11": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
             "name": "CPU Usage",
             "description": "CPU Usage by NEO4J pods"
           },
           "plugin": {
             "kind": "TimeSeriesChart",
-            "spec": {}
+            "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
+              "yAxis": {
+                "format": {
+                  "unit": "decimal"
+                }
+              }
+            }
           },
           "queries": [
             {
@@ -214,7 +280,7 @@
           ]
         }
       },
-      "11": {
+      "12": {
         "kind": "Panel",
         "spec": {
           "display": {
@@ -378,7 +444,7 @@
           ]
         }
       },
-      "12": {
+      "13": {
         "kind": "Panel",
         "spec": {
           "display": {
@@ -388,6 +454,21 @@
           "plugin": {
             "kind": "TimeSeriesChart",
             "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
               "yAxis": {
                 "format": {
                   "unit": "bytes"
@@ -416,7 +497,7 @@
           ]
         }
       },
-      "13": {
+      "14": {
         "kind": "Panel",
         "spec": {
           "display": {
@@ -662,7 +743,7 @@
           ]
         }
       },
-      "14": {
+      "15": {
         "kind": "Panel",
         "spec": {
           "display": {
@@ -672,6 +753,21 @@
           "plugin": {
             "kind": "TimeSeriesChart",
             "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
               "yAxis": {
                 "format": {
                   "unit": "bytes"
@@ -700,7 +796,7 @@
           ]
         }
       },
-      "15": {
+      "16": {
         "kind": "Panel",
         "spec": {
           "display": {
@@ -710,6 +806,21 @@
           "plugin": {
             "kind": "TimeSeriesChart",
             "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
               "yAxis": {
                 "format": {
                   "unit": "decimal"
@@ -755,7 +866,7 @@
           ]
         }
       },
-      "16": {
+      "17": {
         "kind": "Panel",
         "spec": {
           "display": {
@@ -764,6 +875,21 @@
           "plugin": {
             "kind": "TimeSeriesChart",
             "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
               "yAxis": {
                 "format": {
                   "unit": "decimal"
@@ -792,7 +918,7 @@
           ]
         }
       },
-      "17": {
+      "18": {
         "kind": "Panel",
         "spec": {
           "display": {
@@ -801,6 +927,21 @@
           "plugin": {
             "kind": "TimeSeriesChart",
             "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
               "yAxis": {
                 "format": {
                   "unit": "bytes/sec"
@@ -829,7 +970,7 @@
           ]
         }
       },
-      "18": {
+      "19": {
         "kind": "Panel",
         "spec": {
           "display": {
@@ -1019,7 +1160,75 @@
           ]
         }
       },
-      "19": {
+      "2": {
+        "kind": "Panel",
+        "spec": {
+          "display": {
+            "name": "Require Secure Transport",
+            "description": "When this option is enabled, connections attempted using insecure transport will be rejected."
+          },
+          "plugin": {
+            "kind": "StatChart",
+            "spec": {
+              "calculation": "last-number",
+              "colorMode": "background_solid",
+              "mappings": [
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "True"
+                    },
+                    "value": "1"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "False"
+                    },
+                    "value": "0"
+                  }
+                }
+              ],
+              "sparkline": {},
+              "thresholds": {
+                "steps": [
+                  {
+                    "color": "#73bf69",
+                    "value": 0
+                  },
+                  {
+                    "color": "#f2495c",
+                    "value": 80
+                  }
+                ]
+              }
+            }
+          },
+          "queries": [
+            {
+              "kind": "TimeSeriesQuery",
+              "spec": {
+                "plugin": {
+                  "kind": "PrometheusTimeSeriesQuery",
+                  "spec": {
+                    "datasource": {
+                      "kind": "PrometheusDatasource",
+                      "name": "global-ds-proxy"
+                    },
+                    "minStep": "",
+                    "query": "kubedb_com_neo4j_tls_enabled{namespace=\"$namespace\", app=\"$app\"}",
+                    "seriesNameFormat": "{{issuers_name}}"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "20": {
         "kind": "Panel",
         "spec": {
           "display": {
@@ -1053,76 +1262,7 @@
           ]
         }
       },
-      "2": {
-        "kind": "Panel",
-        "spec": {
-          "display": {
-            "name": "Require Secure Transport",
-            "description": "When this option is enabled, connections attempted using insecure transport will be rejected."
-          },
-          "plugin": {
-            "kind": "StatChart",
-            "spec": {
-              "calculation": "last-number",
-              "colorMode": "background_solid",
-              "mappings": [
-                {
-                  "kind": "Value",
-                  "spec": {
-                    "value": "0",
-                    "result": {
-                      "color": "#f2495c",
-                      "value": "False"
-                    }
-                  }
-                },
-                {
-                  "kind": "Value",
-                  "spec": {
-                    "value": "1",
-                    "result": {
-                      "color": "#73bf69",
-                      "value": "True"
-                    }
-                  }
-                }
-              ],
-              "thresholds": {
-                "steps": [
-                  {
-                    "color": "#73bf69",
-                    "value": 0
-                  },
-                  {
-                    "color": "#f2495c",
-                    "value": 80
-                  }
-                ]
-              }
-            }
-          },
-          "queries": [
-            {
-              "kind": "TimeSeriesQuery",
-              "spec": {
-                "plugin": {
-                  "kind": "PrometheusTimeSeriesQuery",
-                  "spec": {
-                    "datasource": {
-                      "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
-                    },
-                    "minStep": "",
-                    "query": "kubedb_com_neo4j_tls_enabled{namespace=\"$namespace\", app=\"$app\"}",
-                    "seriesNameFormat": ""
-                  }
-                }
-              }
-            }
-          ]
-        }
-      },
-      "20": {
+      "21": {
         "kind": "Panel",
         "spec": {
           "display": {
@@ -1159,7 +1299,7 @@
           ]
         }
       },
-      "21": {
+      "22": {
         "kind": "Panel",
         "spec": {
           "display": {
@@ -1214,7 +1354,7 @@
           ]
         }
       },
-      "22": {
+      "23": {
         "kind": "Panel",
         "spec": {
           "display": {
@@ -1222,7 +1362,28 @@
           },
           "plugin": {
             "kind": "TimeSeriesChart",
-            "spec": {}
+            "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
+              "yAxis": {
+                "format": {
+                  "unit": "bytes/sec"
+                }
+              }
+            }
           },
           "queries": [
             {
@@ -1245,7 +1406,7 @@
           ]
         }
       },
-      "23": {
+      "24": {
         "kind": "Panel",
         "spec": {
           "display": {
@@ -1254,6 +1415,21 @@
           "plugin": {
             "kind": "TimeSeriesChart",
             "spec": {
+              "legend": {
+                "mode": "table",
+                "position": "bottom",
+                "values": [
+                  "last-number",
+                  "max",
+                  "mean"
+                ]
+              },
+              "visual": {
+                "areaOpacity": 0.1,
+                "connectNulls": true,
+                "display": "line",
+                "lineWidth": 1
+              },
               "yAxis": {
                 "format": {
                   "unit": "bytes/sec"
@@ -1298,45 +1474,44 @@
                 {
                   "kind": "Value",
                   "spec": {
-                    "value": "WipeOut",
                     "result": {
-                      "color": "#c4162a",
-                      "value": "WipeOut"
-                    }
-                  }
-                },
-                {
-                  "kind": "Value",
-                  "spec": {
-                    "value": "Delete",
-                    "result": {
-                      "color": "#f2cc0c",
+                      "color": "#fade2a",
                       "value": "Delete"
-                    }
+                    },
+                    "value": "Delete"
                   }
                 },
                 {
                   "kind": "Value",
                   "spec": {
-                    "value": "Halt",
-                    "result": {
-                      "color": "#5794f2",
-                      "value": "Halt"
-                    }
-                  }
-                },
-                {
-                  "kind": "Value",
-                  "spec": {
-                    "value": "DoNotTerminate",
                     "result": {
                       "color": "#73bf69",
                       "value": "DoNotTerminate"
-                    }
+                    },
+                    "value": "DoNotTerminate"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "color": "#5794f2",
+                      "value": "Halt"
+                    },
+                    "value": "Halt"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "color": "#c4162a",
+                      "value": "WipeOut"
+                    },
+                    "value": "WipeOut"
                   }
                 }
               ],
-              "metricLabel": "deletionPolicy",
               "thresholds": {
                 "steps": [
                   {
@@ -1344,7 +1519,8 @@
                     "value": 0
                   }
                 ]
-              }
+              },
+              "metricLabel": "deletionPolicy"
             }
           },
           "queries": [
@@ -1643,108 +1819,6 @@
             }
           ]
         }
-      },
-      "24": {
-        "kind": "Panel",
-        "spec": {
-          "display": {
-            "name": "TLS Channels",
-            "description": "TLS mode per Neo4j channel (State 1 = TLS/mTLS on, 0 = off)."
-          },
-          "plugin": {
-            "kind": "Table",
-            "spec": {
-              "columnSettings": [
-                {
-                  "name": "timestamp",
-                  "hide": true
-                },
-                {
-                  "name": "__name__",
-                  "hide": true
-                },
-                {
-                  "name": "app",
-                  "hide": true
-                },
-                {
-                  "name": "app_namespace",
-                  "hide": true
-                },
-                {
-                  "name": "namespace",
-                  "hide": true
-                },
-                {
-                  "name": "container",
-                  "hide": true
-                },
-                {
-                  "name": "endpoint",
-                  "hide": true
-                },
-                {
-                  "name": "instance",
-                  "hide": true
-                },
-                {
-                  "name": "job",
-                  "hide": true
-                },
-                {
-                  "name": "neo4j",
-                  "hide": true
-                },
-                {
-                  "name": "pod",
-                  "hide": true
-                },
-                {
-                  "name": "service",
-                  "hide": true
-                },
-                {
-                  "name": "prometheus",
-                  "hide": true
-                },
-                {
-                  "name": "channel",
-                  "header": "Channel",
-                  "align": "left"
-                },
-                {
-                  "name": "mode",
-                  "header": "Mode",
-                  "align": "center"
-                },
-                {
-                  "name": "value",
-                  "header": "State (1=On)",
-                  "align": "center"
-                }
-              ]
-            }
-          },
-          "queries": [
-            {
-              "kind": "TimeSeriesQuery",
-              "spec": {
-                "plugin": {
-                  "kind": "PrometheusTimeSeriesQuery",
-                  "spec": {
-                    "datasource": {
-                      "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
-                    },
-                    "minStep": "",
-                    "query": "label_replace({__name__=~\"kubedb_com_neo4j_tls_(bolt|http|cluster|backup)_mode\", namespace=\"$namespace\", app=\"$app\"}, \"channel\", \"$1\", \"__name__\", \"kubedb_com_neo4j_tls_(.+)_mode\")",
-                    "seriesNameFormat": ""
-                  }
-                }
-              }
-            }
-          ]
-        }
       }
     },
     "layouts": [
@@ -1847,11 +1921,11 @@
             },
             {
               "x": 0,
-              "y": 8,
+              "y": 7,
               "width": 12,
               "height": 6,
               "content": {
-                "$ref": "#/spec/panels/24"
+                "$ref": "#/spec/panels/10"
               }
             },
             {
@@ -1860,7 +1934,7 @@
               "width": 24,
               "height": 7,
               "content": {
-                "$ref": "#/spec/panels/10"
+                "$ref": "#/spec/panels/11"
               }
             },
             {
@@ -1869,7 +1943,7 @@
               "width": 24,
               "height": 6,
               "content": {
-                "$ref": "#/spec/panels/11"
+                "$ref": "#/spec/panels/12"
               }
             },
             {
@@ -1878,7 +1952,7 @@
               "width": 24,
               "height": 6,
               "content": {
-                "$ref": "#/spec/panels/12"
+                "$ref": "#/spec/panels/13"
               }
             },
             {
@@ -1887,20 +1961,11 @@
               "width": 24,
               "height": 6,
               "content": {
-                "$ref": "#/spec/panels/13"
-              }
-            },
-            {
-              "x": 0,
-              "y": 41,
-              "width": 12,
-              "height": 9,
-              "content": {
                 "$ref": "#/spec/panels/14"
               }
             },
             {
-              "x": 12,
+              "x": 0,
               "y": 41,
               "width": 12,
               "height": 9,
@@ -1909,16 +1974,16 @@
               }
             },
             {
-              "x": 0,
-              "y": 50,
+              "x": 12,
+              "y": 41,
               "width": 12,
-              "height": 7,
+              "height": 9,
               "content": {
                 "$ref": "#/spec/panels/16"
               }
             },
             {
-              "x": 12,
+              "x": 0,
               "y": 50,
               "width": 12,
               "height": 7,
@@ -1927,9 +1992,9 @@
               }
             },
             {
-              "x": 0,
-              "y": 57,
-              "width": 24,
+              "x": 12,
+              "y": 50,
+              "width": 12,
               "height": 7,
               "content": {
                 "$ref": "#/spec/panels/18"
@@ -1937,15 +2002,15 @@
             },
             {
               "x": 0,
-              "y": 65,
-              "width": 12,
-              "height": 6,
+              "y": 57,
+              "width": 24,
+              "height": 7,
               "content": {
                 "$ref": "#/spec/panels/19"
               }
             },
             {
-              "x": 12,
+              "x": 0,
               "y": 65,
               "width": 12,
               "height": 6,
@@ -1954,12 +2019,21 @@
               }
             },
             {
+              "x": 12,
+              "y": 65,
+              "width": 12,
+              "height": 6,
+              "content": {
+                "$ref": "#/spec/panels/21"
+              }
+            },
+            {
               "x": 0,
               "y": 71,
               "width": 24,
               "height": 8,
               "content": {
-                "$ref": "#/spec/panels/21"
+                "$ref": "#/spec/panels/22"
               }
             },
             {
@@ -1968,7 +2042,7 @@
               "width": 12,
               "height": 7,
               "content": {
-                "$ref": "#/spec/panels/22"
+                "$ref": "#/spec/panels/23"
               }
             },
             {
@@ -1977,7 +2051,7 @@
               "width": 12,
               "height": 7,
               "content": {
-                "$ref": "#/spec/panels/23"
+                "$ref": "#/spec/panels/24"
               }
             }
           ]

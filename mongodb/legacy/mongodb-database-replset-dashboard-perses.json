@@ -5,6 +5,9 @@
     "createdAt": "0001-01-01T00:00:00Z",
     "updatedAt": "0001-01-01T00:00:00Z",
     "version": 0,
+    "tags": [
+      "mongodb"
+    ],
     "project": "pp"
   },
   "spec": {
@@ -19,17 +22,13 @@
             "name": "Interval",
             "hidden": false
           },
-          "defaultValue": "$__auto_interval_interval",
+          "defaultValue": "1m",
           "allowAllValue": false,
           "allowMultiple": false,
           "plugin": {
             "kind": "StaticListVariable",
             "spec": {
               "values": [
-                {
-                  "label": "auto",
-                  "value": "$__auto_interval_interval"
-                },
                 "1s",
                 "5s",
                 "1m",
@@ -149,6 +148,98 @@
                 "decimalPlaces": 0,
                 "unit": "decimal"
               },
+              "mappings": [
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "STARTUP"
+                    },
+                    "value": "0"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "PRIMARY"
+                    },
+                    "value": "1"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "REMOVED"
+                    },
+                    "value": "10"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "SECONDARY"
+                    },
+                    "value": "2"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "RECOVERING"
+                    },
+                    "value": "3"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "STARTUP2"
+                    },
+                    "value": "5"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "UNKNOWN"
+                    },
+                    "value": "6"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "ARBITER"
+                    },
+                    "value": "7"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "DOWN"
+                    },
+                    "value": "8"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "ROLLBACK"
+                    },
+                    "value": "9"
+                  }
+                }
+              ],
               "thresholds": {
                 "steps": [
                   {
@@ -378,13 +469,13 @@
           "plugin": {
             "kind": "StatChart",
             "spec": {
-              "calculation": "mean",
+              "calculation": "last-number",
               "colorMode": "none",
               "format": {
                 "decimalPlaces": 0,
                 "unit": "decimal"
               },
-              "metricLabel": " engine ",
+              "metricLabel": "engine",
               "thresholds": {
                 "steps": [
                   {
@@ -412,7 +503,7 @@
                     },
                     "minStep": "5m",
                     "query": "mongodb_mongod_storage_engine{pod=~\"$pod\"}",
-                    "seriesNameFormat": "{{ engine }}"
+                    "seriesNameFormat": "{{engine}}"
                   }
                 }
               }
