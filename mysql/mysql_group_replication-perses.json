@@ -101,7 +101,8 @@
                     "value": 2
                   }
                 ]
-              }
+              },
+              "metricLabel": "member_host"
             }
           },
           "queries": [
@@ -147,7 +148,8 @@
                     "value": 80
                   }
                 ]
-              }
+              },
+              "metricLabel": "member_host"
             }
           },
           "queries": [

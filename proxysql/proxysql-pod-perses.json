@@ -118,7 +118,7 @@
               "format": {
                 "unit": "decimal"
               },
-              "metricLabel": "pod}} ",
+              "metricLabel": "pod",
               "thresholds": {
                 "steps": [
                   {
@@ -142,7 +142,7 @@
                     },
                     "minStep": "",
                     "query": "proxysql_uptime_seconds_total{namespace=~\"$namespace\",service=~\"$app\",pod=~\"$pod\"}",
-                    "seriesNameFormat": "{{pod}} "
+                    "seriesNameFormat": "{{pod}}"
                   }
                 }
               }

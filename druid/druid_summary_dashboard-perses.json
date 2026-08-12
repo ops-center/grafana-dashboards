@@ -133,13 +133,12 @@
           "plugin": {
             "kind": "StatChart",
             "spec": {
-              "calculation": "mean",
+              "calculation": "last-number",
               "colorMode": "none",
               "format": {
                 "unit": "decimal"
               },
-              "metricLabel": " version ",
-              "sparkline": {},
+              "metricLabel": "version",
               "thresholds": {
                 "steps": [
                   {
@@ -168,7 +167,7 @@
                     },
                     "minStep": "",
                     "query": "kubedb_com_druid_info{namespace=\"$namespace\", app=\"$app\"}",
-                    "seriesNameFormat": "{{ version }}"
+                    "seriesNameFormat": "{{version}}"
                   }
                 }
               }
@@ -260,11 +259,25 @@
                   "name": "value #5"
                 },
                 {
-                  "format": {
-                    "unit": "decimal"
-                  },
                   "header": "Pod",
-                  "name": "pod"
+                  "name": "pod #1",
+                  "align": "left"
+                },
+                {
+                  "name": "pod #2",
+                  "hide": true
+                },
+                {
+                  "name": "pod #3",
+                  "hide": true
+                },
+                {
+                  "name": "pod #4",
+                  "hide": true
+                },
+                {
+                  "name": "pod #5",
+                  "hide": true
                 }
               ]
             }
@@ -467,11 +480,37 @@
                   "name": "value #8"
                 },
                 {
-                  "format": {
-                    "unit": "decimal"
-                  },
                   "header": "Pod",
-                  "name": "pod"
+                  "name": "pod #1",
+                  "align": "left"
+                },
+                {
+                  "name": "pod #2",
+                  "hide": true
+                },
+                {
+                  "name": "pod #3",
+                  "hide": true
+                },
+                {
+                  "name": "pod #4",
+                  "hide": true
+                },
+                {
+                  "name": "pod #5",
+                  "hide": true
+                },
+                {
+                  "name": "pod #6",
+                  "hide": true
+                },
+                {
+                  "name": "pod #7",
+                  "hide": true
+                },
+                {
+                  "name": "pod #8",
+                  "hide": true
                 }
               ]
             }
@@ -840,11 +879,29 @@
                   "name": "value #6"
                 },
                 {
-                  "format": {
-                    "unit": "decimal"
-                  },
                   "header": "Pod",
-                  "name": "pod"
+                  "name": "pod #1",
+                  "align": "left"
+                },
+                {
+                  "name": "pod #2",
+                  "hide": true
+                },
+                {
+                  "name": "pod #3",
+                  "hide": true
+                },
+                {
+                  "name": "pod #4",
+                  "hide": true
+                },
+                {
+                  "name": "pod #5",
+                  "hide": true
+                },
+                {
+                  "name": "pod #6",
+                  "hide": true
                 }
               ]
             }
@@ -1001,7 +1058,6 @@
             "spec": {
               "calculation": "last-number",
               "colorMode": "none",
-              "sparkline": {},
               "thresholds": {
                 "steps": [
                   {
@@ -1013,7 +1069,8 @@
                     "value": 80
                   }
                 ]
-              }
+              },
+              "metricLabel": "requireSSL"
             }
           },
           "queries": [
@@ -1209,7 +1266,6 @@
             "spec": {
               "calculation": "last-number",
               "colorMode": "none",
-              "sparkline": {},
               "thresholds": {
                 "steps": [
                   {
@@ -1217,7 +1273,50 @@
                     "value": 0
                   }
                 ]
-              }
+              },
+              "metricLabel": "deletionPolicy",
+              "mappings": [
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "value": "WipeOut",
+                    "result": {
+                      "color": "#c4162a",
+                      "value": "WipeOut"
+                    }
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "value": "Delete",
+                    "result": {
+                      "color": "#f2cc0c",
+                      "value": "Delete"
+                    }
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "value": "Halt",
+                    "result": {
+                      "color": "#5794f2",
+                      "value": "Halt"
+                    }
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "value": "DoNotTerminate",
+                    "result": {
+                      "color": "#73bf69",
+                      "value": "DoNotTerminate"
+                    }
+                  }
+                }
+              ]
             }
           },
           "queries": [

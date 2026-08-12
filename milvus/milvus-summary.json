@@ -1040,7 +1040,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{namespace=\"$namespace\", pod=~\"$app.*\"}) by (pod)",
+          "expr": "sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=~\"$app.*\", resource=\"cpu\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1051,7 +1051,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$app.*\"}) by (pod) / sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests{namespace=\"$namespace\", pod=~\"$app.*\"}) by (pod)",
+          "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$app.*\"}) by (pod) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=~\"$app.*\", resource=\"cpu\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1062,7 +1062,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$app.*\"}) by (pod)",
+          "expr": "sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$app.*\", resource=\"cpu\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1073,7 +1073,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$app.*\"}) by (pod) / sum(cluster:namespace:pod_cpu:active:kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$app.*\"}) by (pod)",
+          "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$app.*\"}) by (pod) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$app.*\", resource=\"cpu\"}) by (pod)",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -1510,7 +1510,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_requests{namespace=\"$namespace\",pod=~\"$app.*\",container!=\"\", image!=\"\"}) by (pod)",
+          "expr": "sum(kube_pod_container_resource_requests{namespace=\"$namespace\",pod=~\"$app.*\",container!=\"\", image!=\"\", resource=\"memory\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1521,7 +1521,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$app.*\",container!=\"\", image!=\"\"}) by (pod) / sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_requests{namespace=\"$namespace\",pod=~\"$app.*\",container!=\"\", image!=\"\"}) by (pod)",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$app.*\",container!=\"\", image!=\"\"}) by (pod) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\",pod=~\"$app.*\",container!=\"\", image!=\"\", resource=\"memory\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1532,7 +1532,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_limits{namespace=\"$namespace\",pod=~\"$app.*\",container!=\"\", image!=\"\"}) by (pod)",
+          "expr": "sum(kube_pod_container_resource_limits{namespace=\"$namespace\",pod=~\"$app.*\",container!=\"\", image!=\"\", resource=\"memory\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1543,7 +1543,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$app.*\",container!=\"\", image!=\"\"}) by (pod) / sum(cluster:namespace:pod_memory:active:kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$app.*\"}) by (pod)",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$app.*\",container!=\"\", image!=\"\"}) by (pod) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$app.*\", resource=\"memory\"}) by (pod)",
           "format": "table",
           "instant": true,
           "interval": "",
