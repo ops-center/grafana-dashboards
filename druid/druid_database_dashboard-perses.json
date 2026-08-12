@@ -37,7 +37,7 @@
             "name": "Namespace",
             "hidden": false
           },
-          "defaultValue": "druid",
+          "defaultValue": "alert-druid",
           "allowAllValue": false,
           "allowMultiple": false,
           "sort": "none",
@@ -57,10 +57,10 @@
         "kind": "ListVariable",
         "spec": {
           "display": {
-            "name": "Druid",
+            "name": "App",
             "hidden": false
           },
-          "defaultValue": "druid-sample",
+          "defaultValue": "druid-grafana-demo",
           "allowAllValue": false,
           "allowMultiple": false,
           "sort": "none",
@@ -69,7 +69,7 @@
             "spec": {
               "labelName": "app",
               "matchers": [
-                "kubedb_com_druid_status_phase{namespace=~\"$namespace\"}"
+                "kubedb_com_druid_created{druid=~\".+\",namespace=~\"$namespace\"}"
               ]
             }
           },
@@ -214,7 +214,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "prometheusdata"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "druid_jvm_gc_cpu_total{service=\"$app-stats\", namespace=\"$namespace\"}",
@@ -327,7 +327,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "prometheusdata"
+                      "name": "global-ds-proxy"
                     },
                     "query": "count by(le) (druid_query_time_bucket)",
                     "seriesNameFormat": "{{le}}"
@@ -362,7 +362,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "prometheusdata"
+                      "name": "global-ds-proxy"
                     },
                     "query": "count by(le) (druid_query_wait_time_bucket)",
                     "seriesNameFormat": "{{le}}"
@@ -699,7 +699,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "prometheusdata"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "druid_jvm_bufferpool_count{bufferpoolName=\"direct\", service=\"$app-stats\", namespace=\"$namespace\"}",

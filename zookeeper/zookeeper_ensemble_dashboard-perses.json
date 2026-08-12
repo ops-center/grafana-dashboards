@@ -482,7 +482,7 @@
           "plugin": {
             "kind": "StatChart",
             "spec": {
-              "calculation": "mean",
+              "calculation": "last-number",
               "colorMode": "background_solid",
               "format": {
                 "unit": "milliseconds"

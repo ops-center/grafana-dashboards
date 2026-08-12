@@ -164,21 +164,21 @@
                 {
                   "kind": "Value",
                   "spec": {
-                    "value": "0",
                     "result": {
                       "color": "#ffffff",
                       "value": "Primary"
-                    }
+                    },
+                    "value": "0"
                   }
                 },
                 {
                   "kind": "Value",
                   "spec": {
-                    "value": "1",
                     "result": {
                       "color": "#ffffff",
                       "value": "Standby"
-                    }
+                    },
+                    "value": "1"
                   }
                 }
               ],

@@ -117,6 +117,27 @@
                 "decimalPlaces": 1,
                 "unit": "decimal"
               },
+              "mappings": [
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "color": "#fade2a",
+                      "value": "Down"
+                    },
+                    "value": "0"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "Running"
+                    },
+                    "value": "1"
+                  }
+                }
+              ],
               "thresholds": {
                 "steps": [
                   {

@@ -204,6 +204,27 @@
                 "decimalPlaces": 1,
                 "unit": "decimal"
               },
+              "mappings": [
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "color": "#fade2a",
+                      "value": "Down"
+                    },
+                    "value": "0"
+                  }
+                },
+                {
+                  "kind": "Value",
+                  "spec": {
+                    "result": {
+                      "value": "Running"
+                    },
+                    "value": "1"
+                  }
+                }
+              ],
               "thresholds": {
                 "steps": [
                   {
@@ -250,38 +271,38 @@
                 "decimalPlaces": 0,
                 "unit": "decimal"
               },
-              "metricLabel": "role",
               "mappings": [
                 {
                   "kind": "Value",
                   "spec": {
-                    "value": "master",
                     "result": {
                       "color": "#5794f2",
                       "value": "master"
-                    }
+                    },
+                    "value": "master"
                   }
                 },
                 {
                   "kind": "Value",
                   "spec": {
-                    "value": "slave",
                     "result": {
                       "color": "#8ab8ff",
                       "value": "slave"
-                    }
+                    },
+                    "value": "slave"
                   }
                 },
                 {
                   "kind": "Misc",
                   "spec": {
-                    "value": "null",
                     "result": {
                       "value": "N/A"
-                    }
+                    },
+                    "value": "null"
                   }
                 }
               ],
+              "metricLabel": "role",
               "thresholds": {
                 "steps": [
                   {
