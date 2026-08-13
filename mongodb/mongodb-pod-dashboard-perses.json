@@ -156,7 +156,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "$pod",
@@ -205,7 +205,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "$interval",
                     "query": "mongodb_members_uptime{member_idx=~\"$pod.*\",pod=~\"$pod\"}",
@@ -236,7 +236,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "$interval",
                     "query": "sum(rate(mongodb_ss_metrics_document{pod=~\"$pod\", doc_op_type=\"returned\"}[$interval]))/\nsum(rate(mongodb_ss_metrics_queryExecutor_scannedObjects{pod=~\"$pod\"}[$interval])) ",
@@ -267,7 +267,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "$interval",
                     "query": "rate(mongodb_ss_metrics_queryExecutor_scannedObjects{pod=~\"$pod\"}[$interval]) or irate(mongodb_ss_metrics_queryExecutor_scannedObjects{pod=~\"$pod\"}[5m])",
@@ -284,7 +284,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "$interval",
                     "query": "rate(mongodb_ss_metrics_record_moves{pod=~\"$pod\"}[$interval]) or irate(mongodb_ss_metrics_record_moves{pod=~\"$pod\"}[5m])",
@@ -316,7 +316,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "$interval",
                     "query": "rate(mongodb_ss_metrics_getLastError_wtime_totalMillis{pod=~\"$pod\"}[$interval])",
@@ -348,7 +348,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "$interval",
                     "query": "rate(mongodb_ss_metrics_getLastError_wtime_num{pod=~\"$pod\"}[$interval]) or \nirate(mongodb_ss_metrics_getLastError_wtime_num{pod=~\"$pod\"}[5m])",
@@ -365,7 +365,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "$interval",
                     "query": "rate(mongodb_ss_metrics_getLastError_wtimeouts{pod=~\"$pod\"}[$interval]) or \nirate(mongodb_ss_metrics_getLastError_wtimeouts{pod=~\"$pod\"}[5m])",
@@ -397,7 +397,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "$interval",
                     "query": "rate(mongodb_ss_asserts{pod=~\"$pod\"}[$interval]) or \nirate(mongodb_ss_asserts{pod=~\"$pod\"}[5m])",
@@ -429,7 +429,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "$interval",
                     "query": "rate(mongodb_ss_extra_info_page_faults{pod=~\"$pod\"}[$interval]) or \nirate(mongodb_ss_extra_info_page_faults{pod=~\"$pod\"}[5m])",
@@ -479,7 +479,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "$interval",
                     "query": "sum(rate(mongodb_ss_opcounters{pod=~\"$pod\",type!=\"command\"}[$interval]) or irate(mongodb_ss_opcounters{pod=~\"$pod\",type!=\"command\"}[5m]))",
@@ -526,7 +526,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "$interval",
                     "query": "avg by (service) (rate(mongodb_ss_opLatencies_latency{service=~\"${app}-stats\"}[$interval]) / (rate(mongodb_ss_opLatencies_ops{service=~\"${app}-stats\"}[$interval]) > 0) or irate(mongodb_ss_opLatencies_latency{service=~\"${app}-stats\"}[5m]) / (irate(mongodb_ss_opLatencies_ops{service=~\"${app}-stats\"}[5m]) > 0))\n",
@@ -558,7 +558,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "$interval",
                     "query": "rate(mongodb_ss_opcounters{pod=~\"$pod\", legacy_op_type!=\"command\"}[$interval])",
@@ -575,7 +575,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "$interval",
                     "query": "rate(mongodb_ss_opcountersRepl{pod=~\"$pod\", legacy_op_type!~\"(command|query|getmore)\"}[$interval])",
@@ -592,7 +592,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "$interval",
                     "query": "rate(mongodb_ss_metrics_ttl_deletedDocuments{pod=~\"$pod\"}[$interval])",
@@ -624,7 +624,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "$interval",
                     "query": "avg by (service,op_type) (rate(mongodb_ss_opLatencies_latency{service=~\"${app}-stats\"}[$interval]) / (rate(mongodb_ss_opLatencies_ops{service=~\"${app}-stats\"}[$interval]) > 0) or irate(mongodb_ss_opLatencies_latency{service=~\"${app}-stats\"}[5m]) / (irate(mongodb_ss_opLatencies_ops{service=~\"${app}-stats\"}[5m]) > 0))",
@@ -656,7 +656,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "$interval",
                     "query": "mongodb_ss_connections{pod=~\"$pod\", conn_type=\"current\"}",
@@ -688,7 +688,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "$interval",
                     "query": "mongodb_ss_metrics_cursor_open{pod=~\"$pod\"}",
@@ -720,7 +720,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "$interval",
                     "query": "rate(mongodb_ss_metrics_document{pod=~\"$pod\"}[$interval])",
@@ -752,7 +752,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "$interval",
                     "query": "mongodb_ss_globalLock_currentQueue{pod=~\"$pod\"}",

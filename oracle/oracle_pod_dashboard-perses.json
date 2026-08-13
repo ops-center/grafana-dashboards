@@ -177,7 +177,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "up{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
@@ -244,7 +244,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "up{pod=~\"$pod\"}",
@@ -322,7 +322,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "oracledb_pod_role_role_status{pod=~\"$pod\"}",
@@ -371,7 +371,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "max(max_over_time(oracledb_uptime_uptime_seconds{pod=~\"$pod\"}[$__interval]))",
@@ -455,7 +455,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "(oracledb_local_time_local_time_seconds{job=~\"$Job\", pod=\"$pod\"}*1000)",
@@ -472,7 +472,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "oracledb_os_memory_total_memory_total_bytes{job=~\"$Job\", pod=\"$pod\"}",
@@ -489,7 +489,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "mssql_os_memory{state=\"used\",job=~\"$Job\", pod=\"$pod\"}-0",
@@ -506,7 +506,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "mssql_os_page_file{state=\"available\",job=~\"$Job\", pod=\"$pod\"}-0",
@@ -523,7 +523,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "mssql_os_page_file{state=\"used\",job=~\"$Job\", pod=\"$pod\"}-0",
@@ -615,7 +615,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(oracledb_buffer_cache_physical_reads_total{job=~\"$Job\", pod=\"$pod\"}[5m]) - 0",
@@ -632,7 +632,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(oracledb_batch_requests_batch_requests_total{job=~\"$Job\", pod=\"$pod\"}[5m]) - 0",
@@ -649,7 +649,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "oracledb_buffer_cache_hit_ratio_cache_hit_ratio{job=~\"$Job\", pod=\"$pod\"}-0",
@@ -666,7 +666,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(oracledb_deadlocks_deadlocks_total{job=~\"$Job\", pod=\"$pod\"}[5m]) - 0",
@@ -683,7 +683,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(oracledb_user_errors_user_errors_total{job=~\"$Job\", pod=\"$pod\"}[5m]) - 0",
@@ -700,7 +700,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "mssql_kill_connection_errors{job=~\"$Job\", pod=\"$pod\"}-0",
@@ -717,7 +717,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(oracledb_database_state_database_open_mode{job=~\"$Job\", pod=\"$pod\"})",
@@ -753,7 +753,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "oracledb_connections_sessions_current{pod=\"$pod\"}",
@@ -784,7 +784,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "oracledb_log_growth_archived_logs_bytes{pod=\"$pod\"}",
@@ -815,7 +815,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "oracledb_wait_time_system_io{pod=\"$pod\"}",
@@ -846,7 +846,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "oracledb_wait_time_user_io{pod=\"$pod\"}",

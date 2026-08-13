@@ -20,7 +20,7 @@
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -277,7 +277,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -727,7 +727,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,

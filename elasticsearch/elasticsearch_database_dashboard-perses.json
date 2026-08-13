@@ -126,7 +126,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "scalar(avg(elasticsearch_cluster_health_status{color=\"green\",namespace=~\"$namespace\",cluster=~\"$app\"})) + scalar(avg(elasticsearch_cluster_health_status{color=\"yellow\",namespace=~\"$namespace\",cluster=~\"$app\"})) * 2 + scalar(avg(elasticsearch_cluster_health_status{color=\"red\",namespace=~\"$namespace\",cluster=~\"$app\"})) * 3",
@@ -176,7 +176,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(max by (cluster) (elasticsearch_cluster_health_number_of_nodes{namespace=~\"$namespace\",cluster=~\"$app\"}))",
@@ -207,7 +207,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "max by (cluster,name) (elasticsearch_indices_docs{namespace=~\"$namespace\",cluster=~\"$app\"})",
@@ -238,7 +238,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "elasticsearch_indices_store_size_bytes{namespace=~\"$namespace\",cluster=~\"$app\"}",
@@ -269,7 +269,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(elasticsearch_indices_indexing_index_total{namespace=~\"$namespace\",cluster=~\"$app\"}[1h])",
@@ -300,7 +300,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(elasticsearch_indices_search_fetch_total{namespace=\"$namespace\",cluster=~\"$app\"}[1h])",
@@ -337,7 +337,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "elasticsearch_os_mem_used_bytes{namespace=~\"$namespace\",cluster=~\"$app\"}",
@@ -374,7 +374,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "elasticsearch_os_mem_free_bytes{namespace=~\"$namespace\",cluster=~\"$app\"}",
@@ -405,7 +405,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "elasticsearch_os_cpu_percent{namespace=~\"$namespace\",cluster=~\"$app\"}",
@@ -436,7 +436,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "avg_over_time(elasticsearch_jvm_memory_used_bytes{area=\"heap\",namespace=~\"$namespace\",cluster=~\"$app\"}[15m]) / elasticsearch_jvm_memory_max_bytes{area=\"heap\",namespace=~\"$namespace\",cluster=~\"$app\"}",
@@ -467,7 +467,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(elasticsearch_transport_rx_packets_total{namespace=~\"$namespace\",cluster=~\"$app\"}[5m])",
@@ -484,7 +484,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(elasticsearch_transport_tx_packets_total{namespace=~\"$namespace\",cluster=~\"$app\"}[5m]) * -1",
@@ -515,7 +515,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "irate(elasticsearch_jvm_gc_collection_seconds_sum{namespace=~\"$namespace\",cluster=~\"$app\"}[1m])",
@@ -565,7 +565,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(max by (cluster) (elasticsearch_cluster_health_number_of_data_nodes{namespace=~\"$namespace\",cluster=~\"$app\"}))",
@@ -619,7 +619,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(max by (cluster) (elasticsearch_cluster_health_number_of_pending_tasks{namespace=~\"$namespace\",cluster=~\"$app\"}))",
@@ -669,7 +669,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(max by (cluster) (elasticsearch_cluster_health_active_shards{namespace=~\"$namespace\",cluster=~\"$app\"}))",
@@ -719,7 +719,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(max by (cluster) (elasticsearch_cluster_health_active_primary_shards{namespace=~\"$namespace\",cluster=~\"$app\"}))",
@@ -773,7 +773,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(max by (cluster) (elasticsearch_cluster_health_initializing_shards{namespace=~\"$namespace\",cluster=~\"$app\"}))",
@@ -827,7 +827,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(max by (cluster) (elasticsearch_cluster_health_relocating_shards{namespace=~\"$namespace\",cluster=~\"$app\"}))",
@@ -881,7 +881,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(max by (cluster) (elasticsearch_cluster_health_unassigned_shards{namespace=~\"$namespace\",cluster=~\"$app\"}))",
@@ -935,7 +935,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(max by (cluster) (elasticsearch_cluster_health_delayed_unassigned_shards{namespace=~\"$namespace\",cluster=~\"$app\"}))",

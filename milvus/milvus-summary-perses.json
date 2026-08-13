@@ -126,7 +126,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "kubedb_com_milvus_status_phase{namespace=\"$namespace\", app=\"$app\"} == 1\n",
@@ -178,7 +178,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "kubedb_com_milvus_info{namespace=\"$namespace\", app=\"$app\"}",
@@ -210,7 +210,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\",pod=~\"$app.*\"}) by (pod)",
@@ -306,7 +306,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$app.*\"}) by (pod)",
@@ -323,7 +323,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=~\"$app.*\", resource=\"cpu\"}) by (pod)",
@@ -340,7 +340,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$app.*\"}) by (pod) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=~\"$app.*\", resource=\"cpu\"}) by (pod)",
@@ -357,7 +357,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$app.*\", resource=\"cpu\"}) by (pod)",
@@ -374,7 +374,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace=\"$namespace\", pod=~\"$app.*\"}) by (pod) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$app.*\", resource=\"cpu\"}) by (pod)",
@@ -412,7 +412,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(node_namespace_pod_container:container_memory_working_set_bytes{namespace=\"$namespace\", pod=~\"$app.*\",container!=\"\"}) by (pod)",
@@ -539,7 +539,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$app.*\",container!=\"\", image!=\"\"}) by (pod)",
@@ -556,7 +556,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(kube_pod_container_resource_requests{namespace=\"$namespace\",pod=~\"$app.*\",container!=\"\", image!=\"\", resource=\"memory\"}) by (pod)",
@@ -573,7 +573,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$app.*\",container!=\"\", image!=\"\"}) by (pod) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\",pod=~\"$app.*\",container!=\"\", image!=\"\", resource=\"memory\"}) by (pod)",
@@ -590,7 +590,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(kube_pod_container_resource_limits{namespace=\"$namespace\",pod=~\"$app.*\",container!=\"\", image!=\"\", resource=\"memory\"}) by (pod)",
@@ -607,7 +607,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(container_memory_working_set_bytes{namespace=\"$namespace\",pod=~\"$app.*\",container!=\"\", image!=\"\"}) by (pod) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=~\"$app.*\", resource=\"memory\"}) by (pod)",
@@ -624,7 +624,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(container_memory_rss{namespace=\"$namespace\",pod=~\"$app.*$\",container!=\"\"}) by (pod)",
@@ -641,7 +641,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(container_memory_cache{namespace=\"$namespace\",pod=~\"$app.*\",container!=\"\"}) by (pod)",
@@ -658,7 +658,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(container_memory_swap{namespace=\"$namespace\",pod=~\"$app.*\",container!=\"\"}) by (pod)",
@@ -696,7 +696,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "avg(container_blkio_device_usage_total{namespace=\"$namespace\", pod=~\"$app.*\"}) by (pod)",
@@ -734,7 +734,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(rate(container_fs_writes_total{namespace=\"$namespace\", pod=~\"$app.*\"}[5m]))by(pod)",
@@ -751,7 +751,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(rate(container_fs_reads_total{namespace=\"$namespace\", pod=~\"$app.*\"}[5m]))by(pod)",
@@ -788,7 +788,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "ceil(sum by(pod) (rate(container_fs_reads_total{container!=\"\", namespace=~\"$namespace\", pod=~\"$app.*\"}[5m]) + rate(container_fs_writes_total{container!=\"\" ,namespace=~\"$namespace\", pod=~\"$app.*\"}[5m])))",
@@ -825,7 +825,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by(pod) (rate(container_fs_reads_bytes_total{container!=\"\", namespace=~\"$namespace\", pod=~\"$app.*\"}[5m]) + rate(container_fs_writes_bytes_total{container!=\"\" ,namespace=~\"$namespace\", pod=~\"$app.*\"}[5m]))",
@@ -930,7 +930,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by(pod) (rate(container_fs_reads_total{container!=\"\", pod=~\"$app.*\",namespace=~\"$namespace\"}[5m]))",
@@ -947,7 +947,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(container_fs_writes_total{pod=~\"$app.*\",namespace=\"$namespace\"}) by (pod)",
@@ -964,7 +964,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by(pod) (rate(container_fs_reads_total{container!=\"\", pod=~\"$app.*\",namespace=~\"$namespace\"}[5m])) + sum(container_fs_writes_total{pod=~\"$app.*\",namespace=\"$namespace\"}) by (pod)",
@@ -981,7 +981,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by(pod) (rate(container_fs_reads_bytes_total{pod=~\"$app.*\",namespace=~\"$namespace\"}[5m]))",
@@ -998,7 +998,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(container_fs_writes_bytes_total{namespace=\"$namespace\", pod=~\"$app.*\"}) by (pod)",
@@ -1015,7 +1015,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by(pod) (rate(container_fs_reads_bytes_total{pod=~\"$app.*\",namespace=~\"$namespace\"}[5m])) + sum(container_fs_writes_bytes_total{namespace=\"$namespace\", pod=~\"$app.*\"}) by (pod)",
@@ -1049,7 +1049,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "kubelet_volume_stats_capacity_bytes + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app.*\",namespace=~\"$namespace\"}",
@@ -1117,7 +1117,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "kubedb_com_milvus_tls_enable{namespace=\"$namespace\", app=\"$app\"}",
@@ -1154,7 +1154,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"milvus-cluster.*\",namespace=\"kubedb\"}) by (pod)",
@@ -1209,7 +1209,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "(kubelet_volume_stats_used_bytes + on(persistentvolumeclaim) group_left(pod) kube_pod_spec_volumes_persistentvolumeclaims_info{pod=~\"$app.*\",namespace=~\"$namespace\"}) ",
@@ -1240,7 +1240,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(irate(container_network_receive_bytes_total{namespace=~\"$namespace\", pod=~\"$app.*\"}[$__rate_interval])) by (pod)",
@@ -1277,7 +1277,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(irate(container_network_transmit_bytes_total{namespace=~\"$namespace\", pod=~\"$app.*\"}[$__rate_interval])) by (pod)",
@@ -1363,7 +1363,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "kubedb_com_milvus_info{namespace=\"$namespace\", app=\"$app\"}",
@@ -1410,7 +1410,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "kubedb_com_milvus_replicas{namespace=\"$namespace\",app=\"$app\"}",
@@ -1454,7 +1454,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "kubedb_com_milvus_resource_request_cpu{namespace=\"$namespace\", app=\"$app\"}",
@@ -1498,7 +1498,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "kubedb_com_milvus_resource_limit_cpu{namespace=\"$namespace\", app=\"$app\"}",
@@ -1545,7 +1545,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "kubedb_com_milvus_resource_request_memory{namespace=\"$namespace\", app=\"$app\"}",
@@ -1592,7 +1592,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "kubedb_com_milvus_resource_limit_memory{namespace=\"$namespace\", app=\"$app\"}",
@@ -1639,7 +1639,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "kubedb_com_milvus_resource_request_storage{namespace=\"$namespace\", app=\"$app\"}",

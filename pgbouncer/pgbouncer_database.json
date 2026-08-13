@@ -46,7 +46,7 @@
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -232,7 +232,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -411,7 +411,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -505,7 +505,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -600,7 +600,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Average Query Time in microseconds within stat period",
       "fieldConfig": {
         "defaults": {
@@ -662,7 +662,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Amount of Seconds for Timeout of an Query",
       "fieldConfig": {
         "defaults": {
@@ -790,7 +790,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,

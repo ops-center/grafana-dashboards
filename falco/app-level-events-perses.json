@@ -155,7 +155,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by (job) (falco_appscode_com_events * on(pod) group_left k8s_appscode_com_pod_ancestor{group=\"$group\",kind=\"$kind\",namespace=\"$ns\",app=\"$name\"})",
@@ -198,7 +198,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by (priority) (falco_appscode_com_events * on(pod) group_left k8s_appscode_com_pod_ancestor{group=\"$group\",kind=\"$kind\",namespace=\"$ns\",app=\"$name\"})",
@@ -241,7 +241,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by (pod) (falco_appscode_com_events * on(pod) group_left k8s_appscode_com_pod_ancestor{group=\"$group\",kind=\"$kind\",namespace=\"$ns\",app=\"$name\"})",
@@ -284,7 +284,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by (rule) (falco_appscode_com_events * on(pod) group_left k8s_appscode_com_pod_ancestor{group=\"$group\",kind=\"$kind\",namespace=\"$ns\",app=\"$name\"})",
@@ -327,7 +327,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by (node) (falco_appscode_com_events * on(pod) group_left k8s_appscode_com_pod_ancestor{group=\"$group\",kind=\"$kind\",namespace=\"$ns\",app=\"$name\"})",

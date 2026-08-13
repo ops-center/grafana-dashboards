@@ -78,7 +78,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by (job) (policy_appscode_com_cluster_violation_occurrence_total)",
@@ -110,7 +110,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by (constraint) (policy_appscode_com_cluster_violation_occurrence_by_constraint_type{constraint=\"$constraint\"})",

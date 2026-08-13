@@ -237,7 +237,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "count(stash_appscode_com_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"})",
@@ -286,7 +286,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "count(stash_appscode_com_backupsession_info{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\", phase=\"Succeeded\"})",
@@ -377,7 +377,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "stash_repository_integrity{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
@@ -394,7 +394,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "stash_repository_snapshot_count{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
@@ -411,7 +411,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "stash_repository_size_bytes{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
@@ -428,7 +428,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "stash_backup_last_success_time_seconds{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"} * 1000",
@@ -478,7 +478,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "stash_repository_size_bytes{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
@@ -526,7 +526,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "count(stash_appscode_com_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\"})",
@@ -574,7 +574,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "count(stash_appscode_com_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\", phase=\"Succeeded\"})",
@@ -622,7 +622,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "count(stash_appscode_com_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\", phase=\"Running\"})",
@@ -670,7 +670,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "count(stash_appscode_com_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\"}) - count(stash_appscode_com_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\", phase=~\"Succeeded|Failed|Running\"})",
@@ -718,7 +718,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "count(stash_appscode_com_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\", phase=\"Failed\"})",
@@ -797,7 +797,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "stash_appscode_com_restoresession_info{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\"}",
@@ -814,7 +814,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "stash_restore_session_duration_seconds{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\"}",
@@ -831,7 +831,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "stash_appscode_com_restoresession_created{namespace=~\"${namespace}\", invoker_kind=~\"${restore_invoker_kind}\", invoker_name=~\"${restore_invoker_name}\"} * 1000",
@@ -876,7 +876,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(rate(container_cpu_usage_seconds_total{namespace=~\"${namespace}\", container!=\"\", pod=~\"stash-restore-.*\",image!=\"\"}[$__rate_interval])) by(pod)",
@@ -893,7 +893,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(container_cpu_usage_seconds_total{namespace=~\"${namespace}\",container=\"stash-init\"}[$__rate_interval])",
@@ -945,7 +945,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(container_memory_usage_bytes{namespace=~\"${namespace}\", container!=\"\",pod=~\"stash-restore-.*\",image!=\"\"})by(pod) > 0",
@@ -962,7 +962,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(container_memory_usage_bytes{namespace=~\"${namespace}\", container=\"stash-init\",image!=\"\"})by(pod) > 0",
@@ -1010,7 +1010,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "count(stash_appscode_com_backupsession_info{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\",phase=\"Running\"})",
@@ -1053,7 +1053,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(irate(container_cpu_usage_seconds_total{container=~\"operator|pushgateway\", pod=~\".*stash-enterprise.*\"}[$__rate_interval])) by(container)",
@@ -1103,7 +1103,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(container_memory_usage_bytes{container=~\"operator|pushgateway\", pod=~\".*stash-enterprise.*\"})by(container)",
@@ -1151,7 +1151,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "count(stash_appscode_com_backupsession_info{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\", phase=\"Skipped\"})",
@@ -1199,7 +1199,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "count(stash_appscode_com_backupsession_info{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\", phase=\"Failed\"})",
@@ -1246,7 +1246,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(stash_repository_size_bytes{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\",})",
@@ -1362,7 +1362,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "stash_appscode_com_backupconfiguration_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\"}",
@@ -1379,7 +1379,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "stash_appscode_com_backupconfiguration_conditions{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\", condition=\"CronJobCreated\", status=\"True\"}",
@@ -1396,7 +1396,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "stash_backup_last_success_time_seconds{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"} * 1000",
@@ -1440,7 +1440,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(rate(container_cpu_usage_seconds_total{namespace=~\"${namespace}\", container!=\"\", pod=~\"stash-backup-.*\",image!=\"\"}[$__rate_interval])) by(pod)",
@@ -1457,7 +1457,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(container_cpu_usage_seconds_total{namespace=~\"${namespace}\", container=\"stash\",image!=\"\"}[$__rate_interval])",
@@ -1509,7 +1509,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(container_memory_usage_bytes{namespace!=\"\", container!=\"\",pod=~\"stash-backup-.*\",image!=\"\"})by(pod) > 0",
@@ -1526,7 +1526,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(container_memory_usage_bytes{namespace!=\"\", container=\"stash\",image!=\"\"})by(pod) > 0",
@@ -1594,7 +1594,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "stash_appscode_com_backupsession_info{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
@@ -1611,7 +1611,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "stash_backup_session_duration_seconds{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"}",
@@ -1628,7 +1628,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "stash_appscode_com_backupsession_created{namespace=~\"${namespace}\", invoker_kind=~\"${backup_invoker_kind}\", invoker_name=~\"${backup_invoker_name}\"} * 1000",

@@ -138,7 +138,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "druid_service_heartbeat{job=\"$app-stats\", namespace=\"$namespace\", pod=\"$pod\", namespace=\"$namespace\"}",
@@ -189,7 +189,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "druid_zk_connected{job=\"$app-stats\", pod=\"$pod\", namespace=\"$namespace\"}",
@@ -221,7 +221,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "avg(increase(druid_jvm_mem_used{job=\"$app-stats\", pod=\"$pod\", namespace=\"$namespace\"}[$__range])) by (pod)",
@@ -253,7 +253,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "avg(increase(druid_jvm_pool_used{job=\"$app-stats\", pod=\"$pod\", namespace=\"$namespace\"}[$__range])) by (pod)",
@@ -389,7 +389,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "druid_jvm_mem_init{job=\"$app-stats\", pod=\"$pod\", memKind=\"nonheap\", namespace=\"$namespace\"}/ (1024 * 1024)",
@@ -436,7 +436,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "druid_jvm_mem_init{job=\"$app-stats\", pod=\"$pod\", memKind=\"heap\", namespace=\"$namespace\"}/ (1024 * 1024)",
@@ -483,7 +483,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "druid_jvm_mem_max{job=\"$app-stats\", pod=\"$pod\", memKind=\"heap\", namespace=\"$namespace\"}/ (1024 * 1024)",

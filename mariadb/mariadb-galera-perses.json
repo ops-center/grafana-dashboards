@@ -114,7 +114,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "avg by(wsrep_cluster_name)(mysql_galera_variables_info{namespace=~\"$namespace\",service=~\"$app+-stats\"})",
@@ -160,7 +160,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "avg by(pod)(mysql_galera_variables_info{namespace=~\"$namespace\",service=~\"$app+-stats\"})",
@@ -191,7 +191,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "avg_over_time(mysql_galera_evs_repl_latency_avg_seconds{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
@@ -222,7 +222,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(mysql_galera_evs_repl_latency_stdev{namespace=~\"$namespace\",service=~\"$app+-stats\"}[1m])",
@@ -253,7 +253,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(mysql_galera_evs_repl_latency_sample_size{namespace=~\"$namespace\",service=~\"$app+-stats\"}[1m])",

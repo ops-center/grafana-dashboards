@@ -123,7 +123,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "max(cluster_enabled{namespace=~\"$namespace\", job=~\"$app.*\"})",
@@ -157,7 +157,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "up{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
@@ -189,7 +189,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "avg by (endpoint) (\n  grpc_responses_avg_duration_seconds{\n    namespace=~\"$namespace\",\n    pod=~\"$app.*\"\n  }\n)\n",
@@ -221,7 +221,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by (endpoint) (\n  rate(grpc_responses_total{namespace=~\"$namespace\", pod=~\"$app.*\"}[5m])\n)\n",
@@ -255,7 +255,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "time() - kube_pod_start_time{namespace=~\"$namespace\",pod=~\"$app.*\"}",
@@ -287,7 +287,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "memory_resident_bytes{namespace=~\"$namespace\",pod=~\"$app.*\"}",
@@ -304,7 +304,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "memory_allocated_bytes{namespace=~\"$namespace\",pod=~\"$app.*\"}",
@@ -321,7 +321,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "memory_active_bytes{namespace=~\"$namespace\",pod=~\"$app.*\"}",
@@ -353,7 +353,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(sum by(namespace,pod,container)(irate(container_cpu_usage_seconds_total{image!=\"\",job=\"kubelet\",metrics_path=\"/metrics/cadvisor\",namespace=\"$namespace\", pod=~\"$app-aggregator-\\\\d+$|$app-leaf-\\\\d+$|$app-\\\\d+$\"}[5m]))* on (namespace, pod) group_left (node) topk by (namespace, pod) (1, max by (namespace, pod, node) (kube_pod_info{node!=\"\",namespace=\"$namespace\", pod=~\"$app-aggregator-\\\\d+$|$app-leaf-\\\\d+$|$app-\\\\d+$\"}))) by (pod)",
@@ -391,7 +391,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(\n  cluster_pending_operations_total{\n    namespace=~\"$namespace\",\n    service=~\"$app+-stats\"\n  }\n)\n",
@@ -449,7 +449,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "1 -\n(\n  sum(rate(rest_responses_fail_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m]))\n  /\n  sum(rate(rest_responses_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m]))\n)",
@@ -481,7 +481,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "avg by (endpoint) (\n  rest_responses_avg_duration_seconds{\n    namespace=~\"$namespace\",\n    pod=~\"$app.*\"\n  }\n)",
@@ -513,7 +513,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by (endpoint) (\n  rate(rest_responses_total{namespace=~\"$namespace\", pod=~\"$app.*\"}[5m])\n)",
@@ -571,7 +571,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "1 -\n(\n  sum(rate(grpc_responses_fail_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m]))\n  /\n  sum(rate(grpc_responses_total{namespace=~\"$namespace\",pod=~\"$app.*\"}[5m]))\n)",

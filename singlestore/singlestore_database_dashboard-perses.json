@@ -103,7 +103,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "memsql_up{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
@@ -136,7 +136,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "memsql_status_uptime{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
@@ -167,7 +167,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(memsql_status_queries{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
@@ -198,7 +198,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "memsql_status_max_used_connections{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
@@ -215,7 +215,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "memsql_variable_max_connections{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
@@ -246,7 +246,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "memsql_variable_load_data_read_size{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
@@ -263,7 +263,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "memsql_variable_load_data_write_size{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
@@ -294,7 +294,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(memsql_status_bytes_received{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
@@ -311,7 +311,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(memsql_status_bytes_sent{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
@@ -348,7 +348,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "memsql_status_alloc_databases_list_entry{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
@@ -395,7 +395,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "memsql_variable_default_partitions_per_leaf{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
@@ -442,7 +442,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "memsql_distributed_partitions_total{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
@@ -492,7 +492,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "memsql_distributed_partitions_offline{namespace=~\"$namespace\",service=~\"$app+-stats\"}",

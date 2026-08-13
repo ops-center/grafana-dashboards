@@ -229,7 +229,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "storage_kubestash_com_backupstorage_info{namespace=~\"${namespace}\"}",
@@ -246,7 +246,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "storage_kubestash_com_backupstorage_size_bytes{namespace=~\"${namespace}\"}",
                     "seriesNameFormat": ""
@@ -277,7 +277,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "storage_kubestash_com_backupstorage_size_bytes{namespace=~\"${namespace}\"}",
@@ -332,7 +332,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "storage_kubestash_com_repository_size_bytes{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"}",
@@ -349,7 +349,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "storage_kubestash_com_repository_snapshot_count_total{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"}",
@@ -366,7 +366,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "storage_kubestash_com_repository_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"}",
@@ -383,7 +383,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "storage_kubestash_com_repository_last_successful_backup{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"} * 1000",
@@ -415,7 +415,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "storage_kubestash_com_repository_size_bytes{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"}",
@@ -512,7 +512,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "storage_kubestash_com_snapshot_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"}",
@@ -529,7 +529,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "storage_kubestash_com_snapshot_component_count_total{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"}",
@@ -546,7 +546,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "storage_kubestash_com_snapshot_time_seconds{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"} * 1000",
@@ -563,7 +563,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "storage_kubestash_com_snapshot_size_bytes{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"}",
@@ -607,7 +607,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "count(core_kubestash_com_restoresession_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"})",
@@ -655,7 +655,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "count(core_kubestash_com_restoresession_phase{namespace=~\"${namespace}\", phase=~\"Succeeded\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"} == 1)",
@@ -703,7 +703,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "count(core_kubestash_com_restoresession_phase{namespace=~\"${namespace}\", phase=~\"Running\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"} == 1)",
@@ -751,7 +751,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "count(core_kubestash_com_restoresession_phase{namespace=~\"${namespace}\", phase=~\"Pending\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"} == 1)",
@@ -799,7 +799,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "count(core_kubestash_com_restoresession_phase{namespace=~\"${namespace}\", phase=~\"Failed\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"} == 1)",
@@ -843,7 +843,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "core_kubestash_com_restoresession_info{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"}",
@@ -860,7 +860,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "core_kubestash_com_restoresession_duration_seconds{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"}",
@@ -877,7 +877,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "core_kubestash_com_restoresession_created{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"} * 1000",
@@ -909,7 +909,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(irate(container_cpu_usage_seconds_total{container=~\"operator\", pod=~\".*kubestash.*\"}[$__rate_interval])) by(container)",
@@ -953,7 +953,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "count(core_kubestash_com_backupconfiguration_phase{namespace=~\"${namespace}\", phase=~\"Ready\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"})",
@@ -985,7 +985,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(container_memory_usage_bytes{container=~\"operator\", pod=~\".*kubestash.*\"})by(container)",
@@ -1033,7 +1033,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "count(core_kubestash_com_backupsession_info{namespace=~\"${namespace}\", backup_invoker_kind=~\"${backup_invoker_kind}\", backup_invoker_name=~\"${backup_invoker_name}\", phase=\"Succeeded\"})",
@@ -1081,7 +1081,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "count(core_kubestash_com_backupsession_info{namespace=~\"${namespace}\", backup_invoker_kind=~\"${backup_invoker_kind}\", backup_invoker_name=~\"${backup_invoker_name}\", phase=\"Running\"})",
@@ -1129,7 +1129,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "count(core_kubestash_com_backupsession_info{namespace=~\"${namespace}\", backup_invoker_kind=~\"${backup_invoker_kind}\", backup_invoker_name=~\"${backup_invoker_name}\", phase=\"Skipped\"})",
@@ -1177,7 +1177,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "count(core_kubestash_com_backupsession_info{namespace=~\"${namespace}\", backup_invoker_kind=~\"${backup_invoker_kind}\", backup_invoker_name=~\"${backup_invoker_name}\", phase=\"Failed\"})",
@@ -1224,7 +1224,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(storage_kubestash_com_repository_size_bytes{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"})",
@@ -1258,7 +1258,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "core_kubestash_com_backupconfiguration_sessions{namespace=~\"${namespace}\", target_kind=~\"${target_kind}\", target_name=~\"${target_name}\", target_namespace=~\"${target_namespace}\"}",
@@ -1302,7 +1302,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "core_kubestash_com_backupsession_info{namespace=~\"${namespace}\", backup_invoker_kind=~\"${backup_invoker_kind}\", backup_invoker_name=~\"${backup_invoker_name}\"}",
@@ -1319,7 +1319,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "core_kubestash_com_backupsession_duration_seconds{namespace=~\"${namespace}\", backup_invoker_kind=~\"${backup_invoker_kind}\", backup_invoker_name=~\"${backup_invoker_name}\"}",
@@ -1336,7 +1336,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "core_kubestash_com_backupsession_created{namespace=~\"${namespace}\", backup_invoker_kind=~\"${backup_invoker_kind}\", backup_invoker_name=~\"${backup_invoker_name}\"} * 1000",

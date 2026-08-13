@@ -28,7 +28,7 @@
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -45,7 +45,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "per-second increasing rate of searching vectors.",
       "fieldConfig": {
         "defaults": {},
@@ -141,7 +141,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "per-second increasing rate of inserting vectors.",
       "fieldConfig": {
         "defaults": {},
@@ -237,7 +237,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The 99th percentile and average latency of search request over the last 2 minutes.",
       "fieldConfig": {
         "defaults": {},
@@ -341,7 +341,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The 99th percentile and average latency of search request for a specified collection over the last 2 minutes.",
       "fieldConfig": {
         "defaults": {},
@@ -445,7 +445,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The 99th percentile and average latency of mutation request over the last 2 minutes.",
       "fieldConfig": {
         "defaults": {},
@@ -550,7 +550,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The 99th percentile and average latency of mutation request for a specified collection over the last 2 minutes.",
       "fieldConfig": {
         "defaults": {},
@@ -659,7 +659,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The 99th percentile and average latency of wait search result over the last 2 minutes.",
       "fieldConfig": {
         "defaults": {},
@@ -767,7 +767,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The 99th percentile and average latency of reduce search result over the last 2 minutes.",
       "fieldConfig": {
         "defaults": {},
@@ -876,7 +876,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The 99th percentile and average latency of decode search result over the last 2 minutes.",
       "fieldConfig": {
         "defaults": {},
@@ -980,7 +980,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The 99th percentile and average latency of update cache over the last 2 minutes.",
       "fieldConfig": {
         "defaults": {},
@@ -1089,7 +1089,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "per-second increasing rate of success requests.",
       "fieldConfig": {
         "defaults": {},
@@ -1185,7 +1185,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Average cache hits per minute of cache operations.",
       "fieldConfig": {
         "defaults": {},
@@ -1278,7 +1278,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The 99th percentile and average latency of apply timestamp over the last 2 minutes.",
       "fieldConfig": {
         "defaults": {},
@@ -1387,7 +1387,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "per-second increasing rate of bytes received  in proxy",
       "fieldConfig": {
         "defaults": {},
@@ -1484,7 +1484,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The 99th percentile of latency for applying PK over the last 2 minutes.",
       "fieldConfig": {
         "defaults": {},
@@ -1593,7 +1593,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The 99th percentile and average latency of request over the last 2 minutes.",
       "fieldConfig": {
         "defaults": {},
@@ -1693,7 +1693,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "per-second increasing rate of faild requests.",
       "fieldConfig": {
         "defaults": {},
@@ -1785,7 +1785,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "per-second increasing rate of bytes sent back to the client by the Proxy in response to a Search or Query request.",
       "fieldConfig": {
         "defaults": {},
@@ -1874,7 +1874,7 @@
     },
     {
       "collapsed": true,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1888,7 +1888,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "Number of proxy nodes which has register with etcd",
           "fieldConfig": {
             "defaults": {},
@@ -1985,7 +1985,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "RootCoord stores pre-assigned timestamps in the metastore",
           "fieldConfig": {
             "defaults": {},
@@ -2082,7 +2082,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "The 99th percentile and average latency for rootcoord to finish synchronizing timestamp messages to all pchanels.",
           "fieldConfig": {
             "defaults": {},
@@ -2191,7 +2191,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "The 99th percentile and average latency of DDL request over the last 2 minutes.",
           "fieldConfig": {
             "defaults": {},
@@ -2299,7 +2299,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "The number of DML channels",
           "fieldConfig": {
             "defaults": {},
@@ -2396,7 +2396,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "per-second increasing rate of DDL request",
           "fieldConfig": {
             "defaults": {},
@@ -2492,7 +2492,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "RoootCoord current latest timestamp",
           "fieldConfig": {
             "defaults": {},
@@ -2589,7 +2589,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "The number of Msgstream objects.",
           "fieldConfig": {
             "defaults": {},
@@ -2686,7 +2686,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "per-second increasing rate of IDs assigned by RootCoord",
           "fieldConfig": {
             "defaults": {},
@@ -2782,7 +2782,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "The number of partitions.",
           "fieldConfig": {
             "defaults": {},
@@ -2879,7 +2879,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "The number of credential",
           "fieldConfig": {
             "defaults": {},
@@ -2976,7 +2976,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "The number of collections.",
           "fieldConfig": {
             "defaults": {},
@@ -3074,7 +3074,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -3091,7 +3091,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Total number of loaded collections.",
       "fieldConfig": {
         "defaults": {},
@@ -3188,7 +3188,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The 99th percentile and average latency of load request over the last 2 minutes.",
       "fieldConfig": {
         "defaults": {},
@@ -3297,7 +3297,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "per-second increasing rate of load requests.",
       "fieldConfig": {
         "defaults": {},
@@ -3393,7 +3393,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "per-second increasing rate of relaase requests.",
       "fieldConfig": {
         "defaults": {},
@@ -3489,7 +3489,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Total number pf loading task.",
       "fieldConfig": {
         "defaults": {},
@@ -3586,7 +3586,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The 99th percentile and average latency of release request over the last 2 minutes.",
       "fieldConfig": {
         "defaults": {},
@@ -3694,7 +3694,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of Query nodes which has register with etcd.",
       "fieldConfig": {
         "defaults": {},
@@ -3791,7 +3791,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The 99th percentile and average latency of task request over the last 2 minutes.",
       "fieldConfig": {
         "defaults": {},
@@ -3896,7 +3896,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -3913,7 +3913,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Total number of the loaded collections in QueryNode.",
       "fieldConfig": {
         "defaults": {},
@@ -4011,7 +4011,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Total number of dml virtual channels for QueryNode watch",
       "fieldConfig": {
         "defaults": {},
@@ -4108,7 +4108,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Total number of the loaded segment in QueryNode.",
       "fieldConfig": {
         "defaults": {},
@@ -4206,7 +4206,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Average, maximum and minimum values of the  timestamps for time tick behind.",
       "fieldConfig": {
         "defaults": {},
@@ -4328,7 +4328,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "per-second increasing rate of searching requests.",
       "fieldConfig": {
         "defaults": {},
@@ -4424,7 +4424,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "per-second increasing rate of consuming message",
       "fieldConfig": {
         "defaults": {},
@@ -4533,7 +4533,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Total number of the queryable entities  in QueryNode.",
       "fieldConfig": {
         "defaults": {},
@@ -4631,7 +4631,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The 99th percentile and average latency of search segment over the last 2 minutes.",
       "fieldConfig": {
         "defaults": {},
@@ -4739,7 +4739,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The 99th percentile and average latency of search and query request over the last 2 minutes.",
       "fieldConfig": {
         "defaults": {},
@@ -4847,7 +4847,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The 99th percentile and average latency of search or query in queue over the last 2 minutes.",
       "fieldConfig": {
         "defaults": {},
@@ -4955,7 +4955,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The 99th percentile and average latency of load segment over the last 2 minutes.",
       "fieldConfig": {
         "defaults": {},
@@ -5063,7 +5063,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The 99th percentile and average latency of search at the segcore step over the last 2 minutes.",
       "fieldConfig": {
         "defaults": {},
@@ -5171,7 +5171,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The 99th percentile and average latency of search or query reduce over the last 2 minutes.",
       "fieldConfig": {
         "defaults": {},
@@ -5279,7 +5279,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The length of the task queue of read requests to be executed",
       "fieldConfig": {
         "defaults": {},
@@ -5376,7 +5376,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Total number of flowgraph",
       "fieldConfig": {
         "defaults": {},
@@ -5473,7 +5473,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The length of the task queue for unsolved read requests",
       "fieldConfig": {
         "defaults": {},
@@ -5570,7 +5570,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The number of original tasks contained in the merged search task",
       "fieldConfig": {
         "defaults": {},
@@ -5678,7 +5678,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of read requests currently being executed in parallel",
       "fieldConfig": {
         "defaults": {},
@@ -5775,7 +5775,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of queries for the merged search requests",
       "fieldConfig": {
         "defaults": {},
@@ -5883,7 +5883,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Top_K for search requests",
       "fieldConfig": {
         "defaults": {},
@@ -5991,7 +5991,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of queries for search requests",
       "fieldConfig": {
         "defaults": {},
@@ -6099,7 +6099,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Top_K for the merged search requests.",
       "fieldConfig": {
         "defaults": {},
@@ -6204,7 +6204,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -6221,7 +6221,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of data nodes which has register with etcd.",
       "fieldConfig": {
         "defaults": {},
@@ -6318,7 +6318,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of segments with different states in the Meta of DataCoord",
       "fieldConfig": {
         "defaults": {},
@@ -6415,7 +6415,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The number of rows of valid data accumulated in DataCoord that flushed.",
       "fieldConfig": {
         "defaults": {},
@@ -6512,7 +6512,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "binlog size of all collections/segments, unit byte",
       "fieldConfig": {
         "defaults": {},
@@ -6609,7 +6609,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Compacted segment size distribution buckets",
       "fieldConfig": {
         "defaults": {},
@@ -6714,7 +6714,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Sum of Level-0 segment sizes",
       "fieldConfig": {
         "defaults": {},
@@ -6819,7 +6819,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of ongoing DataCoord tasks",
       "fieldConfig": {
         "defaults": {},
@@ -6916,7 +6916,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "DataCoord total index request count",
       "fieldConfig": {
         "defaults": {},
@@ -7013,7 +7013,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "DataCoord total index node number.",
       "fieldConfig": {
         "defaults": {},
@@ -7110,7 +7110,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "DataCoord total collection number.",
       "fieldConfig": {
         "defaults": {},
@@ -7207,7 +7207,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Latest checkpoint timestamp per channel",
       "fieldConfig": {
         "defaults": {},
@@ -7301,7 +7301,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -7318,7 +7318,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "DataNode total flushed rows count",
       "fieldConfig": {
         "defaults": {},
@@ -7415,7 +7415,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "DataNode total consumed bytes count",
       "fieldConfig": {
         "defaults": {},
@@ -7512,7 +7512,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Average, maximum and minimum values of the  timestamps for time tick lag behind now.",
       "fieldConfig": {
         "defaults": {},
@@ -7634,7 +7634,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "per-second increasing rate of flush operete.",
       "fieldConfig": {
         "defaults": {},
@@ -7730,7 +7730,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "per-second increasing rate of consuming message",
       "fieldConfig": {
         "defaults": {},
@@ -7826,7 +7826,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "per-second increasing rate of consuming message",
       "fieldConfig": {
         "defaults": {},
@@ -7922,7 +7922,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Volume of data processed by DataNode",
       "fieldConfig": {
         "defaults": {},
@@ -8018,7 +8018,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "per-second increasing rate of auto flush operate.",
       "fieldConfig": {
         "defaults": {},
@@ -8114,7 +8114,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "per-second increasing rate of messages consumed for insert and delete operation.",
       "fieldConfig": {
         "defaults": {},
@@ -8210,7 +8210,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "DataNode foreground flush buffer size",
       "fieldConfig": {
         "defaults": {},
@@ -8309,7 +8309,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The 99th percentile and average latency of writte the data in buffer to storage  over the last 2 minutes.",
       "fieldConfig": {
         "defaults": {},
@@ -8417,7 +8417,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "per-second increasing rate of each message that has been flushed.",
       "fieldConfig": {
         "defaults": {},
@@ -8513,7 +8513,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "per-second count of write data.",
       "fieldConfig": {
         "defaults": {},
@@ -8606,7 +8606,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -8623,7 +8623,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Total cpu usage of all milvus components.",
       "fieldConfig": {
         "defaults": {},
@@ -8720,7 +8720,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {},
         "overrides": []
@@ -8812,7 +8812,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of goroutines that currently exist.",
       "fieldConfig": {
         "defaults": {},
@@ -8906,7 +8906,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "process cpu usage",
       "fieldConfig": {
         "defaults": {},
@@ -8996,7 +8996,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Process memory of milvus pod.",
       "fieldConfig": {
         "defaults": {},
@@ -9088,7 +9088,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of goroutines that currently exist.",
       "fieldConfig": {
         "defaults": {},
@@ -9178,7 +9178,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of bytes allocated and still in use.",
       "fieldConfig": {
         "defaults": {},
@@ -9269,7 +9269,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "GC Max duration seconds.",
       "fieldConfig": {
         "defaults": {},
@@ -9358,7 +9358,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of OS threads created.",
       "fieldConfig": {
         "defaults": {},
@@ -9449,7 +9449,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Next GC Bytes.",
       "fieldConfig": {
         "defaults": {},
@@ -9540,7 +9540,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of process opened fds.",
       "fieldConfig": {
         "defaults": {},
@@ -9631,7 +9631,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of allocated heap objects.",
       "fieldConfig": {
         "defaults": {},
@@ -9722,7 +9722,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Rate of memory frees.",
       "fieldConfig": {
         "defaults": {},
@@ -9813,7 +9813,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Rate of go memory mallocs.",
       "fieldConfig": {
         "defaults": {},
@@ -9904,7 +9904,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of heap bytes waiting to be used.",
       "fieldConfig": {
         "defaults": {},
@@ -9995,7 +9995,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Rate of bytes allocated, even if freed.",
       "fieldConfig": {
         "defaults": {},
@@ -10092,7 +10092,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of heap bytes released to OS.",
       "fieldConfig": {
         "defaults": {},
@@ -10183,7 +10183,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of heap bytes that be used.",
       "fieldConfig": {
         "defaults": {},
@@ -10278,7 +10278,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of container threads created.",
       "fieldConfig": {
         "defaults": {},
@@ -10405,7 +10405,7 @@
           "text": "kubedb",
           "value": "kubedb"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(kube_namespace_status_phase{phase=\"Active\"},namespace)",
         "description": null,
         "error": null,
@@ -10448,7 +10448,7 @@
             "10.42.0.171:9091"
           ]
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values({namespace=\"$namespace\"}, instance)",
         "description": null,
         "error": null,
@@ -10483,7 +10483,7 @@
             "health_check_test"
           ]
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(milvus_proxy_req_count{namespace=\"$namespace\"},collection_name)",
         "description": null,
         "error": null,
@@ -10518,7 +10518,7 @@
             "$__all"
           ]
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(kube_pod_info{namespace=\"$namespace\",created_by_kind=\"PetSet\",},pod)",
         "description": null,
         "error": null,
@@ -10553,7 +10553,7 @@
             "milvus-cluster-stats"
           ]
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values({namespace=\"$namespace\"}, job)",
         "description": null,
         "error": null,
@@ -10614,7 +10614,7 @@
             "$__all"
           ]
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values({namespace=\"$namespace\"},node_id)",
         "description": null,
         "error": null,
@@ -10716,7 +10716,7 @@
           "text": "GetCollectionID",
           "value": "GetCollectionID"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values({namespace=\"$namespace\"},cache_name)",
         "description": null,
         "error": null,
@@ -10782,7 +10782,7 @@
             "milvus"
           ]
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values({namespace=\"$namespace\"},container)",
         "description": null,
         "error": null,

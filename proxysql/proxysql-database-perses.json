@@ -100,7 +100,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "proxysql_uptime_seconds_total{namespace=~\"$namespace\",service=~\"$app\"}",
@@ -133,7 +133,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "proxysql_uptime_seconds_total{namespace=~\"$namespace\",service=~\"$app\"}",
@@ -164,7 +164,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_generated_error_packets_total{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -195,7 +195,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_backend_lagging_during_query_total{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -226,7 +226,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_backend_offline_during_query_total{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -257,7 +257,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_query_cache_count_get_total{namespace=~\"$namespace\",service=\"$app\"}[5m]) ",
@@ -288,7 +288,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_query_cache_count_set_total{namespace=~\"$namespace\",service=\"$app\"}[5m]) ",
@@ -319,7 +319,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_query_cache_bytes_total{namespace=~\"$namespace\",service=\"$app\"}[5m]) ",
@@ -350,7 +350,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_query_cache_memory_bytes{namespace=~\"$namespace\",service=\"$app\"}[5m]) ",
@@ -381,7 +381,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_query_cache_entries_total{namespace=~\"$namespace\",service=\"$app\"}[5m]) ",
@@ -412,7 +412,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_query_cache_purged_total{namespace=~\"$namespace\",service=\"$app\"}[5m]) ",
@@ -443,7 +443,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_mysql_unexpected_frontend_com_quit_total{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -474,7 +474,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(rate(proxysql_connpool_conns{status=\"free\",namespace=~\"$namespace\",service=~\"$app\"}[1m]) ) by(pod)",
@@ -491,7 +491,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(rate(proxysql_connpool_conns{status=\"used\",namespace=~\"$namespace\",service=~\"$app\"}[1m]) ) by(pod)",
@@ -522,7 +522,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_mysql_unexpected_frontend_packets_total{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -553,7 +553,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_automatic_detected_sql_injection_total{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -584,7 +584,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(rate(proxysql_cluster_pulled_total{namespace=~\"$namespace\",service=\"$app\",module_name=~\"mysql_variables|admin_variables|proxysql_servers|mysql_servers\"}[1m])) by(module_name,status)",
@@ -615,7 +615,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(rate(proxysql_cluster_syn_conflict_total{namespace=~\"$namespace\",service=\"$app\",module_name=~\"mysql_variables|admin_variables|proxysql_servers|mysql_servers\"}[1m])) by(module_name)",
@@ -646,7 +646,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(rate(proxysql_server_connections_total{namespace=~\"$namespace\",service=\"$app\"}[1m])) by(status)",
@@ -677,7 +677,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(rate(proxysql_client_connections_total{namespace=~\"$namespace\",service=\"$app\"}[1m])) by(status)",
@@ -708,7 +708,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_server_connections_connected{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -739,7 +739,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_client_connections_connected{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -770,7 +770,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "proxysql_connpool_conns_latency_us{namespace=~\"$namespace\",service=\"$app\",hostgroup=\"3\"}",
@@ -801,7 +801,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "proxysql_connpool_conns_latency_us{namespace=~\"$namespace\",service=\"$app\",hostgroup=\"2\"}",
@@ -832,7 +832,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_queries_frontends_bytes_total{traffic_flow=\"received\",namespace=~\"$namespace\",service=~\"$app\"}[5m])",
@@ -849,7 +849,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_queries_frontends_bytes_total{traffic_flow=\"sent\",namespace=~\"$namespace\",service=~\"$app\"}[5m])",
@@ -886,7 +886,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "proxysql_connpool_conns_status{namespace=~\"$namespace\",service=\"$app\",hostgroup=\"3\"}",
@@ -923,7 +923,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "proxysql_connpool_conns_status{namespace=~\"$namespace\",service=\"$app\",hostgroup=\"2\"}",
@@ -960,7 +960,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(proxysql_connpool_conns{namespace=~\"$namespace\",service=\"$app\",hostgroup=\"3\"}) by(status,pod)",
@@ -997,7 +997,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(proxysql_connpool_conns{namespace=~\"$namespace\",service=\"$app\",hostgroup=\"2\"}) by(status,pod)",
@@ -1034,7 +1034,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "proxysql_active_transactions{namespace=~\"$namespace\",service=\"$app\"}",
@@ -1071,7 +1071,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "proxysql_client_connections_non_idle{namespace=~\"$namespace\",service=\"$app\"}",
@@ -1108,7 +1108,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "proxysql_mysql_thread_workers{namespace=~\"$namespace\",service=\"$app\"}",
@@ -1145,7 +1145,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_mysql_session_internal_bytes{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -1182,7 +1182,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_connpool_memory_bytes{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -1219,7 +1219,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(rate(proxysql_connpool_data_bytes_total{namespace=~\"$namespace\",service=\"$app\"}[1m])) by(hostgroup,traffic_flow)",
@@ -1250,7 +1250,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_slow_queries_total{namespace=~\"$namespace\",service=~\"$app\"}[1m])",
@@ -1287,7 +1287,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(rate(proxysql_connpool_conns_total{namespace=~\"$namespace\",service=\"$app\"}[1m])) by(hostgroup)",
@@ -1324,7 +1324,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(rate(proxysql_connpool_conns_queries_total{namespace=~\"$namespace\",service=\"$app\"}[1m])) by(hostgroup)",
@@ -1355,7 +1355,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_myhgm_myconnpool_get_total{namespace=~\"$namespace\",service=\"$app\"}[5m])",
@@ -1386,7 +1386,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_myhgm_myconnpool_get_ok_total{namespace=~\"$namespace\",service=\"$app\"}[5m])",
@@ -1417,7 +1417,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_myhgm_myconnpool_get_ping_total{namespace=~\"$namespace\",service=\"$app\"}[5m])",
@@ -1448,7 +1448,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_myhgm_myconnpool_push_total{namespace=~\"$namespace\",service=\"$app\"}[5m])",
@@ -1479,7 +1479,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_myhgm_myconnpool_reset_total{namespace=~\"$namespace\",service=\"$app\"}[5m])",
@@ -1510,7 +1510,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_myhgm_myconnpool_destroy_total{namespace=~\"$namespace\",service=\"$app\"}[5m])",
@@ -1541,7 +1541,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_myhgm_auto_increment_multiplex_total{namespace=~\"$namespace\",service=\"$app\"}[5m])",
@@ -1572,7 +1572,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_access_denied_wrong_password_total{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -1603,7 +1603,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_server_connections_total{namespace=~\"$namespace\",service=~\"$app\",status=\"aborted\"}[5m])",
@@ -1620,7 +1620,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_server_connections_total{namespace=~\"$namespace\",service=~\"$app\",status=\"aborted\"}[5m])",
@@ -1651,7 +1651,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_access_denied_max_connections_total{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -1682,7 +1682,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_access_denied_max_user_connections_total{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -1713,7 +1713,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_stack_memory_mysql_threads_bytes{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -1744,7 +1744,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_stack_memory_admin_threads_bytes{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -1775,7 +1775,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_stack_memory_cluster_threads{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -1806,7 +1806,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_stmt_client_active{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -1837,7 +1837,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_stmt_client_active_unique{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -1868,7 +1868,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_stmt_server_active{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -1899,7 +1899,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_stmt_server_active_unique{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -1930,7 +1930,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_stmt_max_stmt_id{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -1961,7 +1961,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_questions_total{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -1992,7 +1992,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_stmt_cached{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -2023,7 +2023,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(rate(proxysql_com_backend_stmt_total{namespace=~\"$namespace\",service=\"$app\"}[1m])) by(op)",
@@ -2054,7 +2054,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(rate(proxysql_com_frontend_stmt_total{namespace=~\"$namespace\",service=\"$app\"}[1m])) by(op)",
@@ -2085,7 +2085,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_mysql_firewall_users_table_bytes{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -2116,7 +2116,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_mysql_firewall_users_config_bytes{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -2147,7 +2147,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_mysql_firewall_rules_table_bytes{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -2178,7 +2178,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_mysql_firewall_rules_config_bytes{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -2215,7 +2215,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_mysql_monitor_connect_check_total{namespace=~\"$namespace\",service=\"$app\",status=\"ok\"}[5m])",
@@ -2252,7 +2252,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_mysql_monitor_connect_check_total{namespace=~\"$namespace\",service=\"$app\",status=\"err\"}[5m])",
@@ -2289,7 +2289,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_mysql_monitor_read_only_check_total{namespace=~\"$namespace\",service=\"$app\",status=\"ok\"}[5m])",
@@ -2320,7 +2320,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_slow_queries_total{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -2357,7 +2357,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_mysql_monitor_read_only_check_total{namespace=~\"$namespace\",service=\"$app\",status=\"err\"}[5m])",
@@ -2394,7 +2394,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_mysql_monitor_replication_lag_check_total{namespace=~\"$namespace\",service=\"$app\",status=\"ok\"}[5m])",
@@ -2431,7 +2431,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_mysql_monitor_replication_lag_check_total{namespace=~\"$namespace\",service=\"$app\",status=\"err\"}[5m])",
@@ -2468,7 +2468,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_mysql_monitor_ping_check_total{namespace=~\"$namespace\",service=\"$app\",status=\"err\"}[5m])",
@@ -2505,7 +2505,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_mysql_monitor_ping_check_total{namespace=~\"$namespace\",service=\"$app\",status=\"ok\"}[5m])",
@@ -2536,7 +2536,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_gtid_session_collected_total{namespace=~\"$namespace\",service=\"$app\"}[1m])",
@@ -2567,7 +2567,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(proxysql_gtid_consistent_queries_total{namespace=~\"$namespace\",service=\"$app\"}[1m])",

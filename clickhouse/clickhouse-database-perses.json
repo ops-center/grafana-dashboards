@@ -105,7 +105,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "up{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
@@ -138,7 +138,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "ClickHouseAsyncMetrics_Uptime{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
@@ -169,7 +169,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(ClickHouseProfileEvents_OpenedFileCacheMisses{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
@@ -217,7 +217,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "max(ClickHouseAsyncMetrics_MaxPartCountForPartition{namespace=~\"$namespace\",service=~\"$app+-stats\"})\n",
@@ -265,7 +265,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(\n  rate(ClickHouseProfileEvents_FailedSelectQuery{namespace=~\"$namespace\", service=~\"$app+-stats\"}[$__rate_interval])\n)\n/\nsum(\n  rate(ClickHouseProfileEvents_SelectQuery{namespace=~\"$namespace\", service=~\"$app+-stats\"}[$__rate_interval])\n) * 100\n\n",
@@ -317,7 +317,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "(\n  sum(rate(ClickHouseProfileEvents_FailedInsertQuery{namespace=~\"$namespace\", service=~\"$app+-stats\"}[1h]))\n  +\n  sum(rate(ClickHouseProfileEvents_FailedAsyncInsertQuery{namespace=~\"$namespace\", service=~\"$app+-stats\"}[1h]))\n)\n/\n(\n  sum(rate(ClickHouseProfileEvents_InsertQuery{namespace=~\"$namespace\", service=~\"$app+-stats\"}[1h]))\n  +\n  sum(rate(ClickHouseProfileEvents_AsyncInsertQuery{namespace=~\"$namespace\", service=~\"$app+-stats\"}[1h]))\n) * 100\n\n\n\n\n\n\n\n\n",
@@ -369,7 +369,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(\n  increase(ClickHouseProfileEvents_LogError{namespace=~\"$namespace\", service=~\"$app+-stats\"}[1h])\n)\n\n\n\n\n\n\n",
@@ -420,7 +420,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(\n  rate(ClickHouseProfileEvents_Query{namespace=~\"$namespace\", service=~\"$app+-stats\"}[1h])\n)\n",
@@ -471,7 +471,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(\n  irate(ClickHouseProfileEvents_QueryMemoryLimitExceeded{namespace=~\"$namespace\", service=~\"$app+-stats\"}[1h])\n)\n\n",
@@ -522,7 +522,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(\n  rate(ClickHouseProfileEvents_FailedQuery{namespace=~\"$namespace\", service=~\"$app+-stats\"}[1h])\n)\n\n",
@@ -573,7 +573,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(\n  rate(ClickHouseProfileEvents_SelectQuery{namespace=~\"$namespace\", service=~\"$app+-stats\"}[1h])\n)\n\n",
@@ -624,7 +624,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(\n  rate(ClickHouseProfileEvents_FailedSelectQuery{namespace=~\"$namespace\", service=~\"$app+-stats\"}[1h])\n)\n\n\n",
@@ -675,7 +675,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "count(ClickHouseAsyncMetrics_Uptime{namespace=~\"$namespace\",service=~\"$app+-stats\"} > 0)",
@@ -726,7 +726,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(\n  rate(ClickHouseProfileEvents_InsertQuery{namespace=~\"$namespace\", service=~\"$app+-stats\"}[1h])\n)\n\n\n",
@@ -777,7 +777,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(\n  rate(ClickHouseProfileEvents_AsyncInsertQuery{namespace=~\"$namespace\", service=~\"$app+-stats\"}[1h])\n)\n\n\n",
@@ -828,7 +828,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(\n  rate(ClickHouseProfileEvents_FailedAsyncInsertQuery{namespace=~\"$namespace\", service=~\"$app+-stats\"}[1h])\n)\n\n\n\n",
@@ -877,7 +877,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "up{namespace=~\"$namespace\",job=~\"$app+-stats\"} == 1",
@@ -924,7 +924,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(\n  rate(ClickHouseMetrics_Query{namespace=~\"$namespace\", service=~\"$app+-stats\"}[5m])\n)\n",
@@ -971,7 +971,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(ClickHouseMetrics_TCPConnection{namespace=~\"$namespace\",service=~\"$app+-stats\"})\n",
@@ -1002,7 +1002,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(ClickHouseMetrics_Read{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
@@ -1019,7 +1019,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(ClickHouseMetrics_Write{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
@@ -1050,7 +1050,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(ClickHouseMetrics_NetworkReceive{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
@@ -1067,7 +1067,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(ClickHouseMetrics_NetworkSend{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
@@ -1098,7 +1098,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "1h",
                     "query": "topk(5, avg by (pod, query_type) (\n  increase(ClickHouseProfileEvents_Query{namespace=~\"$namespace\",service=~\"$app+-stats\"}[1h]) > 0\n))",
@@ -1129,7 +1129,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(ClickHouseProfileEvents_OpenedFileCacheHits{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",

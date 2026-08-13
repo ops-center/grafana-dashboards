@@ -75,7 +75,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by(namespace) (falco_appscode_com_events{namespace=\"$ns\"})",
@@ -107,7 +107,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by(priority, namespace) (falco_appscode_com_events{namespace=\"$ns\"})",
@@ -139,7 +139,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by(rule, namespace) (falco_appscode_com_events{namespace=\"$ns\"})",

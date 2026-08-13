@@ -161,7 +161,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": " avg (up{namespace=~\"demo\", pod=~\"$app-.+$\"})",
@@ -210,7 +210,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "hour ((ignite_uptime{namespace=\"demo\",pod=~\"$app-.+$\"}))",
@@ -722,7 +722,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "avg (cluster_TotalBaselineNodes)",
@@ -1104,7 +1104,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "100 - ((sys_memory_heap_max - sys_memory_heap_used)*100 / sys_memory_heap_max)",

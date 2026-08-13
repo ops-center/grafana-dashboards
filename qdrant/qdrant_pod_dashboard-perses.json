@@ -140,7 +140,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "app_info{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
@@ -214,7 +214,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "up{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
@@ -267,7 +267,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by (endpoint) (rest_responses_avg_duration_seconds{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"})",
@@ -320,7 +320,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(grpc_responses_total{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[5m])",
@@ -360,7 +360,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by (endpoint) (rate(grpc_responses_total{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[5m]))",
@@ -407,7 +407,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by (endpoint) (rate(grpc_responses_total{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[5m]))",
@@ -424,7 +424,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by (endpoint) (grpc_responses_avg_duration_seconds{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"})",
@@ -441,7 +441,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by (endpoint) (rate(grpc_responses_fail_total{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[5m]))",
@@ -500,7 +500,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "1 - (sum(rate(grpc_responses_fail_total{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[5m])) / sum(rate(grpc_responses_total{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[5m])))",
@@ -548,7 +548,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(increase(grpc_responses_fail_total{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[1h]))",
@@ -601,7 +601,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "grpc_responses_avg_duration_seconds{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
@@ -648,7 +648,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "time() - kube_pod_start_time{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -701,7 +701,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "memory_resident_bytes{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
@@ -718,7 +718,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "memory_allocated_bytes{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
@@ -735,7 +735,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "memory_active_bytes{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
@@ -782,7 +782,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "collection_hardware_metric_cpu{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
@@ -835,7 +835,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(rest_responses_total{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[5m])",
@@ -875,7 +875,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by (endpoint) (\n  rate(\n    rest_responses_total{\n      namespace=~\"$namespace\",\n      service=~\"$app+-stats\",\n      pod=~\"$pod\"\n    }[5m]\n  )\n)\n",
@@ -922,7 +922,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by (endpoint) (rate(rest_responses_total{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[5m]))",
@@ -939,7 +939,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by (endpoint) (rest_responses_avg_duration_seconds{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"})",
@@ -956,7 +956,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum by (endpoint) (rate(rest_responses_fail_total{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[5m]))",
@@ -1015,7 +1015,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "1 - (sum(rate(rest_responses_fail_total{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[5m])) / sum(rate(rest_responses_total{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[5m])))",
@@ -1063,7 +1063,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(increase(rest_responses_fail_total{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}[1h]))",

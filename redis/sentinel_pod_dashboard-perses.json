@@ -159,7 +159,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "redis_up{pod=~\"$pod\"}",
@@ -209,7 +209,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "redis_connected_clients{pod=~\"$pod\"}",
@@ -240,7 +240,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(redis_commands_processed_total{pod=~\"$pod\"}[1m])",
@@ -289,7 +289,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "max(max_over_time(redis_uptime_in_seconds{pod=~\"$pod\"}[$__interval]))",
@@ -337,7 +337,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "go_goroutines{pod=\"$pod\"}",
@@ -368,7 +368,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(redis_net_input_bytes_total{pod=~\"$pod\"}[5m])",
@@ -385,7 +385,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(redis_net_output_bytes_total{pod=~\"$pod\"}[5m])",
@@ -416,7 +416,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "redis_connected_clients{pod=~\"$pod\"}",
@@ -448,7 +448,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "avg(rate(process_cpu_seconds_total{pod=\"$pod\", namespace=\"$namespace\"}[5m]) * 1000)",
@@ -480,7 +480,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "avg(rate(process_resident_memory_bytes{pod=\"$pod\", namespace=\"$namespace\"}[5m]))",
@@ -497,7 +497,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "avg(rate(process_virtual_memory_bytes{pod=\"$pod\", namespace=\"$namespace\"}[5m]))",

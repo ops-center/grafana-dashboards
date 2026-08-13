@@ -163,7 +163,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(irate(pg_stat_database_xact_commit{datname=~\"$datname\", pod=\"$pod\", namespace=\"$namespace\"}[5m])) + \nsum(irate(pg_stat_database_xact_rollback{datname=~\"$datname\", pod=\"$pod\", namespace=\"$namespace\"}[5m]))",
@@ -194,7 +194,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "irate(pg_stat_database_xact_commit{pod=\"$pod\", namespace=\"$namespace\", datname=~\"$datname\"}[5m])",
@@ -211,7 +211,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "irate(pg_stat_database_xact_rollback{pod=\"$pod\", namespace=\"$namespace\", datname=~\"$datname\"}[5m])",
@@ -242,7 +242,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "irate(pg_stat_bgwriter_buffers_backend{pod=\"$pod\", namespace=\"$namespace\"}[5m])",
@@ -259,7 +259,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "irate(pg_stat_bgwriter_buffers_alloc{pod=\"$pod\", namespace=\"$namespace\"}[5m])",
@@ -276,7 +276,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "irate(pg_stat_bgwriter_buffers_backend_fsync{pod=\"$pod\", namespace=\"$namespace\"}[5m])",
@@ -293,7 +293,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "irate(pg_stat_bgwriter_buffers_checkpoint{pod=\"$pod\", namespace=\"$namespace\"}[5m])",
@@ -310,7 +310,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "irate(pg_stat_bgwriter_buffers_clean{pod=\"$pod\", namespace=\"$namespace\"}[5m])",
@@ -341,7 +341,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "irate(pg_stat_database_conflicts{pod=\"$pod\", namespace=\"$namespace\", datname=~\"$datname\"}[5m])",
@@ -358,7 +358,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "irate(pg_stat_database_deadlocks{pod=\"$pod\", namespace=\"$namespace\", datname=~\"$datname\"}[5m])",
@@ -389,7 +389,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "pg_stat_database_blks_hit{pod=\"$pod\", namespace=\"$namespace\", datname=~\"$datname\"} / (pg_stat_database_blks_read{pod=\"$pod\", namespace=\"$namespace\", datname=~\"$datname\"} + pg_stat_database_blks_hit{pod=\"$pod\", namespace=\"$namespace\", datname=~\"$datname\"})",
@@ -421,7 +421,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "irate(pg_stat_database_temp_bytes{pod=\"$pod\", namespace=\"$namespace\", datname=~\"$datname\"}[5m])",
@@ -452,7 +452,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "irate(pg_stat_bgwriter_checkpoint_write_time{pod=\"$pod\", namespace=\"$namespace\"}[5m])",
@@ -469,7 +469,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "irate(pg_stat_bgwriter_checkpoint_sync_time{pod=\"$pod\", namespace=\"$namespace\"}[5m])",
@@ -518,7 +518,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(irate(pg_stat_database_tup_fetched{datname=~\"$datname\", pod=\"$pod\", namespace=\"$namespace\"}[5m]))",
@@ -535,7 +535,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(irate(pg_stat_database_tup_returned{datname=~\"$datname\", pod=\"$pod\", namespace=\"$namespace\"}[5m]))",
@@ -552,7 +552,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(irate(pg_stat_database_tup_inserted{datname=~\"$datname\", pod=\"$pod\", namespace=\"$namespace\"}[5m]))",
@@ -569,7 +569,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(irate(pg_stat_database_tup_updated{datname=~\"$datname\", pod=\"$pod\", namespace=\"$namespace\"}[5m]))",
@@ -586,7 +586,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "sum(irate(pg_stat_database_tup_deleted{datname=~\"$datname\", pod=\"$pod\", namespace=\"$namespace\"}[5m]))",
@@ -617,7 +617,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "pg_stat_database_tup_updated{datname=~\"$datname\", pod=\"$pod\", namespace=\"$namespace\"} != 0",
@@ -648,7 +648,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "pg_stat_activity_count{datname=~\"$datname\", pod=\"$pod\", namespace=\"$namespace\"} !=0",
@@ -679,7 +679,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "pg_stat_database_tup_inserted{datname=~\"$datname\", pod=\"$pod\", namespace=\"$namespace\"} != 0",
@@ -710,7 +710,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "pg_locks_count{datname=~\"$datname\", pod=\"$pod\", namespace=\"$namespace\"} != 0",
@@ -741,7 +741,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "pg_stat_database_tup_fetched{datname=~\"$datname\",pod=\"$pod\", namespace=\"$namespace\"} != 0",
@@ -772,7 +772,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "pg_stat_activity_count{datname=~\"$datname\", pod=\"$pod\", namespace=\"$namespace\", state=~\"idle|idle in transaction|idle in transaction (aborted)\"}",
@@ -803,7 +803,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "pg_stat_database_tup_deleted{datname=~\"$datname\", pod=\"$pod\", namespace=\"$namespace\"} != 0",
@@ -834,7 +834,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "pg_stat_database_tup_returned{datname=~\"$datname\",pod=\"$pod\", namespace=\"$namespace\"} != 0",

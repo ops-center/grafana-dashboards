@@ -27,7 +27,7 @@
     "panels": [
       {
         "collapsed": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "gridPos": {
           "h": 1,
           "w": 24,
@@ -245,7 +245,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "description": "Imp[lies distributed query time in 95ms.",
         "fieldConfig": {
           "defaults": {
@@ -347,7 +347,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "description": "Implies distributed query time per core in 99ms.",
         "fieldConfig": {
           "defaults": {
@@ -449,7 +449,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "description": "Distributed QPS per core in 5min rate",
         "fieldConfig": {
           "defaults": {
@@ -551,7 +551,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "description": "Distributed QPS per core in 1 min rate",
         "fieldConfig": {
           "defaults": {
@@ -653,7 +653,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "description": "Distributed query time per core in 75ms",
         "fieldConfig": {
           "defaults": {
@@ -755,7 +755,7 @@
         "bars": false,
         "dashLength": 10,
         "dashes": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "description": "Implies query errors per core in 1 min rate.",
         "fieldConfig": {
           "defaults": {},
@@ -853,7 +853,7 @@
       },
       {
         "collapsed": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "gridPos": {
           "h": 1,
           "w": 24,
@@ -1178,7 +1178,7 @@
       },
       {
         "collapsed": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "gridPos": {
           "h": 1,
           "w": 24,
@@ -2108,7 +2108,7 @@
       },
       {
         "collapsed": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "gridPos": {
           "h": 1,
           "w": 24,
@@ -2630,7 +2630,7 @@
       },
       {
         "collapsed": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "gridPos": {
           "h": 1,
           "w": 24,
@@ -3991,7 +3991,7 @@
       },
       {
         "collapsed": false,
-        "datasource": null,
+        "datasource": "${datasource}",
         "gridPos": {
           "h": 1,
           "w": 24,
@@ -6787,7 +6787,7 @@
               "$__all"
             ]
           },
-          "datasource": null,
+          "datasource": "${datasource}",
           "definition": "label_values(solr_ping{namespace=\"$namespace\",service=~\"$app-stats\",zk_host=~\"$zk_host\",pod=~\".+\"},pod)",
           "description": null,
           "error": null,
@@ -7027,7 +7027,7 @@
             "text": "zoo-0.zoo-pods.demo.svc.cluster.local:2181,zoo-1.zoo-pods.demo.svc.cluster.local:2181,zoo-2.zoo-pods.demo.svc.cluster.local:2181",
             "value": "zoo-0.zoo-pods.demo.svc.cluster.local:2181,zoo-1.zoo-pods.demo.svc.cluster.local:2181,zoo-2.zoo-pods.demo.svc.cluster.local:2181"
           },
-          "datasource": null,
+          "datasource": "${datasource}",
           "definition": "label_values(solr_ping{namespace=~\"$namespace\",service=~\"$app-stats\",zk_host=~\".+\"},zk_host)",
           "description": null,
           "error": null,

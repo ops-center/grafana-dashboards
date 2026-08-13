@@ -155,7 +155,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "up{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -216,7 +216,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "leader_uptime{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -247,7 +247,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "write_per_namespace_sum{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} write_per_namespace:{{key}}"
@@ -277,7 +277,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "jvm_memory_pool_bytes_used{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} pool:{{pool}}"
@@ -307,7 +307,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "read_per_namespace_sum{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} read_per_namespace:{{key}}"
@@ -337,7 +337,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "approximate_data_size{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} approximate_data_size"
@@ -367,7 +367,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "packets_received{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} packets_received"
@@ -397,7 +397,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "packets_sent{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} packets_sent"
@@ -427,7 +427,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "response_packet_cache_misses{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} response_packet_cache_misses"
@@ -443,7 +443,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "response_packet_cache_hits{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} response_packet_cache_hits"
@@ -459,7 +459,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "response_packet_get_children_cache_misses{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} response_packet_get_children_cache_misses"
@@ -475,7 +475,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "response_packet_get_children_cache_hits{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} response_packet_get_children_cache_hits"
@@ -505,7 +505,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "unrecoverable_error_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} unrecoverable_error_count"
@@ -535,7 +535,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "digest_mismatches_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} digest_mismatches_count"
@@ -565,7 +565,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "startup_snap_load_time",
                     "seriesNameFormat": "{{instance}} startup_snap_load_time-{{quantile}}"
@@ -581,7 +581,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "startup_snap_load_time_count",
                     "seriesNameFormat": "{{instance}} startup_snap_load_time_count"
@@ -597,7 +597,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "startup_snap_load_time_sum{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} startup_snap_load_time"
@@ -627,7 +627,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "startup_txns_loaded",
                     "seriesNameFormat": "{{instance}} startup_txns_loaded-{{quantile}}"
@@ -643,7 +643,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "startup_txns_loaded_count",
                     "seriesNameFormat": "{{instance}} startup_txns_loaded_count"
@@ -659,7 +659,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "startup_txns_loaded_sum{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} startup_txns_loaded"
@@ -707,7 +707,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "uptime{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -738,7 +738,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "dbinittime",
                     "seriesNameFormat": "{{instance}} dbinittime-{{quantile}}"
@@ -754,7 +754,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "dbinittime_count",
                     "seriesNameFormat": "{{instance}} dbinittime_count"
@@ -770,7 +770,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "dbinittime_sum{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} db_init_time"
@@ -822,7 +822,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "max(quorum_size{namespace=~\"$namespace\",pod=~\"$pod\"})",
                     "seriesNameFormat": "quorum_size"
@@ -871,7 +871,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "leader_uptime{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -920,7 +920,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "leader_uptime{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} leader_uptime"
@@ -952,7 +952,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "max(learners{namespace=~\"$namespace\",pod=~\"$pod\"})",
                     "seriesNameFormat": "learners"
@@ -968,7 +968,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "max(synced_non_voting_followers{namespace=~\"$namespace\",pod=~\"$pod\"})",
                     "seriesNameFormat": "synced_non_voting_followers"
@@ -984,7 +984,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "max(synced_observers{namespace=~\"$namespace\",pod=~\"$pod\"})",
                     "seriesNameFormat": "synced_observers"
@@ -1014,7 +1014,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "commit_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} commit_count"
@@ -1044,7 +1044,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "snap_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} snap_count"
@@ -1074,7 +1074,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "diff_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} diff_count"
@@ -1104,7 +1104,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "looking_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} looking_count"
@@ -1134,7 +1134,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "proposal_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} proposal_count"
@@ -1183,7 +1183,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "snap_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -1214,7 +1214,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "last_proposal_size{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} last_proposal_size"
@@ -1230,7 +1230,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "max_proposal_size{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} max_proposal_size"
@@ -1246,7 +1246,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "min_proposal_size{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} min_proposal_size"
@@ -1276,7 +1276,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(follower_sync_time_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[1m])",
                     "seriesNameFormat": "{{instance}} follower_sync_time"
@@ -1306,7 +1306,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "learner_handler_qp_size_sum{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} learner_handler_qp_size_sum sid:{{key}}"
@@ -1336,7 +1336,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "quit_leading_due_to_disloyal_voter{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} quit_leading_due_to_disloyal_voter"
@@ -1366,7 +1366,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(om_commit_process_time_ms_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} om_commit_process_time"
@@ -1382,7 +1382,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(om_proposal_process_time_ms_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} om_proposal_process_time"
@@ -1412,7 +1412,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "watch_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} watch_count"
@@ -1442,7 +1442,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "node_changed_watch_count_sum{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} node_changed_watch_count"
@@ -1472,7 +1472,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "node_children_watch_count_sum{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} node_children_watch_count"
@@ -1502,7 +1502,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "node_deleted_watch_count_sum{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} node_deleted_watch_count"
@@ -1532,7 +1532,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "node_created_watch_count_sum{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} node_created_watch_count"
@@ -1581,7 +1581,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "commit_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -1612,7 +1612,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "revalidate_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} revalidate_count"
@@ -1642,7 +1642,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "stale_sessions_expired{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} stale_sessions_expired"
@@ -1672,7 +1672,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "dead_watchers_cleared{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} dead_watchers_cleared"
@@ -1688,7 +1688,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "dead_watchers_queued{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} dead_watchers_queued"
@@ -1704,7 +1704,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(dead_watchers_cleaner_latency_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} dead_watchers_cleaner_latency"
@@ -1734,7 +1734,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "add_dead_watcher_stall_time{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} add_dead_watcher_stall_time"
@@ -1764,7 +1764,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "outstanding_requests{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} outstanding_requests"
@@ -1794,7 +1794,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "last_client_response_size{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} last_client_response_size"
@@ -1810,7 +1810,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "min_client_response_size{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} min_client_response_size"
@@ -1826,7 +1826,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "max_client_response_size{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} max_client_response_size"
@@ -1856,7 +1856,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "bytes_received_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} bytes_received_count"
@@ -1886,7 +1886,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "connection_request_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} connection_request_count"
@@ -1916,7 +1916,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "num_alive_connections{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} num_alive_connections"
@@ -1946,7 +1946,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "connection_rejected{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} connection_rejected"
@@ -1995,7 +1995,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "looking_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -2026,7 +2026,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "connection_drop_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} connection_drop_count"
@@ -2056,7 +2056,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "connection_drop_probability{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} connection_drop_probability"
@@ -2086,7 +2086,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "sessionless_connections_expired{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} sessionless_connections_expired"
@@ -2116,7 +2116,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(connection_token_deficit_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} connection_token_deficit"
@@ -2164,7 +2164,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "open_file_descriptor_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}}"
@@ -2194,7 +2194,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "fsynctime{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} fsynctime"
@@ -2210,7 +2210,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "fsynctime_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -2227,7 +2227,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "fsynctime_sum{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} fsynctime_sum(ms)"
@@ -2243,7 +2243,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "fsynctime_sum * 1000 /fsynctime_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} fsynctime_avg(\u03bcs)"
@@ -2259,7 +2259,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "irate(fsynctime_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[1m])",
                     "seriesNameFormat": "{{instance}} fsynctime_rate"
@@ -2289,7 +2289,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(snapshottime_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} snapshot_time_rate"
@@ -2305,7 +2305,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "snapshottime_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} snapshottime_count"
@@ -2321,7 +2321,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "snapshottime_sum / snapshottime_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} snapshottime_avg(ms)"
@@ -2351,7 +2351,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(prep_process_time_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} prep_process_time"
@@ -2381,7 +2381,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(prep_processor_queue_time_ms_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} prep_processor_queue_time_ms"
@@ -2411,7 +2411,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(prep_processor_queue_size_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} prep_processor_queue_size"
@@ -2441,7 +2441,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "znode_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -2458,7 +2458,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "ephemerals_count{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -2489,7 +2489,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "prep_processor_request_queued{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} prep_processor_request_queued"
@@ -2519,7 +2519,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "outstanding_changes_queued{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} outstanding_changes_queued"
@@ -2535,7 +2535,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "outstanding_changes_removed{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} outstanding_changes_removed"
@@ -2565,7 +2565,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(close_session_prep_time_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} close_session_prep_time"
@@ -2595,7 +2595,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(sync_process_time_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} sync_process_time"
@@ -2625,7 +2625,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(sync_processor_queue_flush_time_ms_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} sync_processor_queue_flush_time"
@@ -2655,7 +2655,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(sync_processor_queue_size_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} sync_processor_queue_size"
@@ -2685,7 +2685,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "sync_processor_request_queued{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} sync_processor_request_queued"
@@ -2715,7 +2715,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(sync_processor_batch_size_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} sync_processor_batch_size"
@@ -2745,7 +2745,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(commit_process_time_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} commit_process_time"
@@ -2761,7 +2761,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(read_commitproc_time_ms_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} read_commitproc_time"
@@ -2777,7 +2777,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(write_commitproc_time_ms_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} write_commitproc_time"
@@ -2807,7 +2807,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(write_commit_proc_req_queued_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} write_commit_proc_req_queued"
@@ -2823,7 +2823,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(read_commit_proc_req_queued_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} read_commit_proc_req_queued"
@@ -2839,7 +2839,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(commit_commit_proc_req_queued_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} commit_commit_proc_req_queued"
@@ -2869,7 +2869,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(znode_count{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
@@ -2886,7 +2886,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "rate(ephemerals_count{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
@@ -2917,7 +2917,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(requests_in_session_queue_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} requests_in_session_queue"
@@ -2947,7 +2947,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(read_commit_proc_issued_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} read_commit_proc_issued"
@@ -2963,7 +2963,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(write_commit_proc_issued_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} write_commit_proc_issued"
@@ -2993,7 +2993,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(concurrent_request_processing_in_commit_processor_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} concurrent_request_processing_in_commit_processor"
@@ -3023,7 +3023,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(time_waiting_empty_pool_in_commit_processor_read_ms_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} time_waiting_empty_pool_in_commit_processor_read"
@@ -3053,7 +3053,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(pending_session_queue_size_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} pending_session_queue_size"
@@ -3083,7 +3083,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(local_write_committed_time_ms_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} local_write_committed_time_ms"
@@ -3113,7 +3113,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(server_write_committed_time_ms_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} server_write_committed_time"
@@ -3143,7 +3143,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(write_batch_time_in_commit_processor_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} write_batch_time_in_commit_processor"
@@ -3173,7 +3173,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(reads_after_write_in_session_queue_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} reads_after_write_in_session_queue"
@@ -3203,7 +3203,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(session_queues_drained_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} session_queues_drained"
@@ -3238,7 +3238,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "global_sessions{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}}"
@@ -3268,7 +3268,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(reads_issued_from_session_queue_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} reads_issued_from_session_queue"
@@ -3298,7 +3298,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "request_commit_queued{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} request_commit_queued"
@@ -3328,7 +3328,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(write_final_proc_time_ms_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} write_final_proc_time_ms"
@@ -3358,7 +3358,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(read_final_proc_time_ms_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} read_final_proc_time_ms"
@@ -3388,7 +3388,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(readlatency_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} readlatency"
@@ -3418,7 +3418,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(updatelatency_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} updatelatency"
@@ -3448,7 +3448,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "max_latency{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} max_latency"
@@ -3464,7 +3464,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "minStep": "",
                     "query": "min_latency{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -3481,7 +3481,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "avg_latency{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} avg_latency"
@@ -3511,7 +3511,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(proposal_latency_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} proposal_latency"
@@ -3541,7 +3541,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(quorum_ack_latency_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} quorum_ack_latency"
@@ -3571,7 +3571,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "proposal_ack_creation_latency{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} proposal_ack_creation_latency-{{quantile}}"
@@ -3606,7 +3606,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "local_sessions{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}}"
@@ -3636,7 +3636,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(propagation_latency_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} propagation_latency"
@@ -3666,7 +3666,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(commit_propagation_latency_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} commit_propagation_latency"
@@ -3696,7 +3696,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "tls_handshake_exceeded{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} tls_handshake_exceeded"
@@ -3712,7 +3712,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "outstanding_tls_handshake{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} outstanding_tls_handshake"
@@ -3742,7 +3742,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "ensemble_auth_fail{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} ensemble_auth_fail"
@@ -3758,7 +3758,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "ensemble_auth_success{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} ensemble_auth_success"
@@ -3774,7 +3774,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "ensemble_auth_skip{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} ensemble_auth_skip"
@@ -3822,7 +3822,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "max(jvm_classes_loaded{namespace=~\"$namespace\",pod=~\"$pod\"})",
                     "seriesNameFormat": ""
@@ -3870,7 +3870,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "max(jvm_threads_current{namespace=~\"$namespace\",pod=~\"$pod\"})",
                     "seriesNameFormat": ""
@@ -3918,7 +3918,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "max(jvm_threads_deadlocked{namespace=~\"$namespace\",pod=~\"$pod\"})",
                     "seriesNameFormat": ""
@@ -3948,7 +3948,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(jvm_pause_time_ms_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} jvm_pause_time_ms"
@@ -3978,7 +3978,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "rate(jvm_gc_collection_seconds_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
                     "seriesNameFormat": "{{instance}} gc:{{gc}}"
@@ -4008,7 +4008,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "global-ds-proxy"
+                      "name": "$datasource"
                     },
                     "query": "jvm_threads_state{namespace=~\"$namespace\",pod=~\"$pod\"}",
                     "seriesNameFormat": "{{instance}} state:{{state}}"
