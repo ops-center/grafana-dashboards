@@ -30,7 +30,7 @@
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -295,7 +295,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -308,7 +308,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -387,7 +387,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "The average number of network operations (reads or writes) on all connections per second.",
       "fieldConfig": {
         "defaults": {
@@ -468,7 +468,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -481,7 +481,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1310,7 +1310,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1876,7 +1876,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2510,7 +2510,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2998,7 +2998,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -3722,7 +3722,7 @@
           "text": "demo",
           "value": "demo"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(kube_namespace_status_phase{phase=\"Active\"},namespace)",
         "description": null,
         "error": null,
@@ -3753,7 +3753,7 @@
           "text": "connect-cluster",
           "value": "connect-cluster"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(kafka_kubedb_com_connectcluster_status_phase{namespace=~\"$namespace\"},app)",
         "description": null,
         "error": null,
@@ -3788,7 +3788,7 @@
             "$__all"
           ]
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(kafka_connect_app_info{namespace=~\"$namespace\",pod=~\"$app.+$\"},pod)",
         "description": null,
         "error": null,
@@ -3823,7 +3823,7 @@
             "$__all"
           ]
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(kafka_connect_connector_status{namespace=~\"$namespace\",pod=~\"$pod\"},connector)",
         "description": null,
         "error": null,

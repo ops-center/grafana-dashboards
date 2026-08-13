@@ -28,7 +28,7 @@
   "panels": [
     {
       "collapsed": true,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1096,7 +1096,7 @@
     },
     {
       "collapsed": true,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1106,7 +1106,7 @@
       "id": 31,
       "panels": [
         {
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "Maximum number of parts per partition over the specified period of time.",
           "fieldConfig": {
             "defaults": {
@@ -1166,7 +1166,7 @@
           "type": "stat"
         },
         {
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "Percentage of the failed SELECTs over the specified period of time.",
           "fieldConfig": {
             "defaults": {
@@ -1226,7 +1226,7 @@
           "type": "stat"
         },
         {
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "Percentage of the failed INSERTs over the specified period of time (both synchronous and asynchronous).",
           "fieldConfig": {
             "defaults": {
@@ -1289,7 +1289,7 @@
           "type": "stat"
         },
         {
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "Number of log message with ERROR (and higher) severity over the specified period of time.asynchronous).",
           "fieldConfig": {
             "defaults": {
@@ -1357,7 +1357,7 @@
     },
     {
       "collapsed": true,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1367,7 +1367,7 @@
       "id": 33,
       "panels": [
         {
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "Shows the total queries per second executed by all ClickHouse pods",
           "fieldConfig": {
             "defaults": {
@@ -1430,7 +1430,7 @@
           "type": "stat"
         },
         {
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "Number of times when memory limit exceeded for query.",
           "fieldConfig": {
             "defaults": {
@@ -1493,7 +1493,7 @@
           "type": "stat"
         },
         {
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "Number of failed queries.",
           "fieldConfig": {
             "defaults": {
@@ -1556,7 +1556,7 @@
           "type": "stat"
         },
         {
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "Same as Queries, but only for SELECT queries.",
           "fieldConfig": {
             "defaults": {
@@ -1619,7 +1619,7 @@
           "type": "stat"
         },
         {
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "Same as Failed Queries, but only for SELECT queries.",
           "fieldConfig": {
             "defaults": {
@@ -1682,7 +1682,7 @@
           "type": "stat"
         },
         {
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "Same as Queries, but only for INSERT queries. Only accounts for synchronous inserts.",
           "fieldConfig": {
             "defaults": {
@@ -1745,7 +1745,7 @@
           "type": "stat"
         },
         {
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "Same as Queries, but only for INSERT queries. Only accounts for asynchronous inserts.",
           "fieldConfig": {
             "defaults": {
@@ -1808,7 +1808,7 @@
           "type": "stat"
         },
         {
-          "datasource": null,
+          "datasource": "${datasource}",
           "description": "Same as Failed Queries, but only for INSERT queries. Only accounts for asynchronous inserts.",
           "fieldConfig": {
             "defaults": {

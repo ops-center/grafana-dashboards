@@ -29,7 +29,7 @@
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -42,7 +42,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -116,7 +116,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -182,7 +182,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -256,7 +256,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -327,7 +327,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Active baseline nodes count",
       "fieldConfig": {
         "defaults": {
@@ -414,7 +414,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -484,7 +484,7 @@
       "type": "gauge"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -561,7 +561,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -574,7 +574,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -665,7 +665,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -759,7 +759,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -865,7 +865,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -878,7 +878,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -943,7 +943,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1008,7 +1008,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -1072,7 +1072,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "< 70% is good",
       "fieldConfig": {
         "defaults": {
@@ -1141,7 +1141,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "< 70% is good",
       "fieldConfig": {
         "defaults": {
@@ -1212,7 +1212,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "< 70% is good",
       "fieldConfig": {
         "defaults": {
@@ -1282,7 +1282,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1295,7 +1295,7 @@
       "type": "row"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "> 0 means that rebalance is in progress",
       "fieldConfig": {
         "defaults": {
@@ -1382,7 +1382,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "> 0 means that rebalance is in progress",
       "fieldConfig": {
         "defaults": {
@@ -1469,7 +1469,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "> 0 means that rebalance is in progress",
       "fieldConfig": {
         "defaults": {
@@ -1556,7 +1556,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "> 0 means that rebalance is in progress",
       "fieldConfig": {
         "defaults": {
@@ -1643,7 +1643,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "> 0 means that rebalance is in progress",
       "fieldConfig": {
         "defaults": {
@@ -1711,7 +1711,7 @@
       "type": "gauge"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "> 0 means that rebalance is in progress",
       "fieldConfig": {
         "defaults": {
@@ -1801,7 +1801,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "> 0 means that rebalance is in progress",
       "fieldConfig": {
         "defaults": {
@@ -1870,7 +1870,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "decimals": 0,
@@ -1974,7 +1974,7 @@
           "text": "ignite-quickstart-stats",
           "value": "ignite-quickstart-stats"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(up, job)",
         "description": null,
         "error": null,
@@ -2005,7 +2005,7 @@
           "text": "PUBLIC",
           "value": "PUBLIC"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "",
         "description": null,
         "error": null,
@@ -2043,7 +2043,7 @@
           "text": "ignite-quickstart-0",
           "value": "ignite-quickstart-0"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "",
         "description": null,
         "error": null,

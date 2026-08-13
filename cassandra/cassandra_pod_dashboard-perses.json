@@ -407,7 +407,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "${DS_PROMETHEUS}"
+                      "name": "global-ds-proxy"
                     },
                     "query": "label_replace(cassandra_stats{cluster=\"$cluster\",datacenter=~\".*\",pod=~\"$pod\",instance=~\".+\",name=~\"org:apache:cassandra:metrics:compaction:pendingtasks:value\"},\"short_instance\", \"$1\", \"instance\", \"(.*):.*\")",
                     "seriesNameFormat": "{{short_instance}}_P"

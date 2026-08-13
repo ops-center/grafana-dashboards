@@ -20,7 +20,7 @@
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -194,7 +194,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -798,7 +798,7 @@
           "text": "druid-sample",
           "value": "druid-sample"
         },
-        "datasource": null,
+        "datasource": "${datasource}",
         "definition": "label_values(kubedb_com_druid_status_phase{namespace=~\"$namespace\"},app)",
         "description": null,
         "error": null,

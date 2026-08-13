@@ -292,7 +292,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "KubeDB Database Resource deletionPolicy",
       "fieldConfig": {
         "defaults": {

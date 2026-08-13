@@ -21,7 +21,7 @@
   "panels": [
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -552,7 +552,7 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -569,7 +569,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "decimals": null,
       "fieldConfig": {
         "defaults": {},
@@ -671,7 +671,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "decimals": null,
       "fieldConfig": {
         "defaults": {},
@@ -772,7 +772,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${datasource}",
       "decimals": null,
       "fieldConfig": {
         "defaults": {},
@@ -878,7 +878,7 @@
     },
     {
       "collapsed": true,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -892,7 +892,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "${datasource}",
           "decimals": 2,
           "fill": 1,
           "gridPos": {
@@ -982,7 +982,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "${datasource}",
           "decimals": 2,
           "fill": 1,
           "gridPos": {
@@ -1080,7 +1080,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "${datasource}",
           "decimals": null,
           "fill": 1,
           "gridPos": {
@@ -1171,7 +1171,7 @@
     },
     {
       "collapsed": true,
-      "datasource": null,
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1185,7 +1185,7 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": null,
+          "datasource": "${datasource}",
           "decimals": null,
           "fill": 1,
           "gridPos": {
