@@ -273,7 +273,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "${datasource}"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rabbitmq_build_info * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}",

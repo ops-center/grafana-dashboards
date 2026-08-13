@@ -257,7 +257,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "io_dataregion_default_OffheapUsedSize{namespace=\"demo\", pod=~\"$app-.+$\"} / 1024 / 1024 / 1024 ",
@@ -274,7 +274,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "io_dataregion_default_OffHeapSize{namespace=\"demo\", pod=~\"$app-.+$\"} / 1024 / 1024 / 1024",
@@ -316,7 +316,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "io_dataregion_default_OffHeapSize / 1024 / 1024 / 1024",
@@ -358,7 +358,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "io_dataregion_default_OffHeapSize / 1024 / 1024 / 1024",
@@ -400,7 +400,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "io_dataregion_default_OffheapUsedSize / 1024 / 1024 / 1024",
@@ -447,7 +447,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "io_dataregion_default_MaxSize / 1024 / 1024 / 1024\n",
@@ -497,7 +497,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "io_dataregion_default_PagesRead\n",
@@ -547,7 +547,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "io_dataregion_default_PagesWritten\n",
@@ -590,7 +590,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "cache_${cacheName}_CacheHits",
@@ -633,7 +633,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "cache_${cacheName}_CacheHits",
@@ -676,7 +676,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "cache_${cacheName}_CachePuts",
@@ -765,7 +765,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "cache_${cacheName}_CacheMisses",
@@ -811,7 +811,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "cache_${cacheName}_CacheSize",
@@ -855,7 +855,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "(cache_${cacheName}_CacheHits) / clamp_min((cache_${cacheName}_CacheHits) + (cache_${cacheName}_CacheMisses), 1)",
@@ -902,7 +902,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "cacheGroups_ignite_sys_cache_LocalNodeMovingPartitionsCount ",
@@ -952,7 +952,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "cacheGroups_ignite_sys_cache_LocalNodeOwningPartitionsCount",
@@ -1003,7 +1003,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "2s",
                     "query": "up{job=\"${job}\"}",
@@ -1051,7 +1051,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": " avg (up{namespace=\"demo\", pod=~\"$app-.+$\"})",
@@ -1157,7 +1157,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sys_CpuLoad * 100",
@@ -1206,7 +1206,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "threadPools_GridRebalanceExecutor_ActiveCount",
@@ -1260,7 +1260,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "avg (sys_CpuLoad{namespace=\"demo\", pod=~\"$app-.+$\"}) * 100",
@@ -1315,7 +1315,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "e105d3fd-a91b-462e-b2e9-891dc66b8d78"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sys_memory_heap_used{namespace=\"demo\", pod=~\"$app-.+$\"}",
