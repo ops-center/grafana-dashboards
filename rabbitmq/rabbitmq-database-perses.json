@@ -116,7 +116,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rabbitmq_queues * on(instance, job) group_left(rabbitmq_cluster) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"})",
                     "seriesNameFormat": ""
@@ -161,7 +161,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rabbitmq_global_publishers * on(instance, job) group_left(rabbitmq_cluster) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"})",
                     "seriesNameFormat": ""
@@ -327,7 +327,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "(rabbitmq_resident_memory_limit_bytes * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) -\n(rabbitmq_process_resident_memory_bytes * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"})",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -380,7 +380,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "rabbitmq_disk_space_available_bytes * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -432,7 +432,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "(rabbitmq_process_max_fds * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) -\n(rabbitmq_process_open_fds * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"})",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -484,7 +484,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "(rabbitmq_process_max_tcp_sockets * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) -\n(rabbitmq_process_open_tcp_sockets * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"})",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -538,7 +538,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rabbitmq_queue_messages_ready * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -592,7 +592,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rabbitmq_queue_messages_unacked * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -646,7 +646,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_global_messages_received_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -700,7 +700,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_global_messages_confirmed_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -754,7 +754,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_global_messages_routed_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -799,7 +799,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum(rabbitmq_connections * on(instance, job) group_left(rabbitmq_cluster) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"})",
@@ -854,7 +854,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_global_messages_received_confirm_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"} - \nrate(rabbitmq_global_messages_confirmed_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}\n) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -914,7 +914,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_global_messages_unroutable_dropped_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -974,7 +974,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_global_messages_unroutable_returned_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -1028,7 +1028,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(\n  (rate(rabbitmq_global_messages_delivered_consume_auto_ack_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) +\n  (rate(rabbitmq_global_messages_delivered_consume_manual_ack_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"})\n) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -1081,7 +1081,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_global_messages_redelivered_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -1135,7 +1135,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_global_messages_delivered_consume_manual_ack_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -1189,7 +1189,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_global_messages_delivered_consume_auto_ack_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -1243,7 +1243,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_global_messages_acknowledged_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -1303,7 +1303,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_global_messages_delivered_get_auto_ack_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -1363,7 +1363,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_global_messages_get_empty_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -1416,7 +1416,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum(rabbitmq_queue_messages_ready * on(instance, job) group_left(rabbitmq_cluster) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"})",
@@ -1477,7 +1477,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_global_messages_delivered_get_manual_ack_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -1530,7 +1530,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rabbitmq_queues * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}",
@@ -1584,7 +1584,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_queues_declared_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -1637,7 +1637,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_queues_created_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -1690,7 +1690,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_queues_deleted_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -1743,7 +1743,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_raft_log_commit_index[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -1810,7 +1810,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(\n  (rabbitmq_raft_log_last_written_index * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) -\n  (rabbitmq_raft_log_commit_index * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"})\n) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -1863,7 +1863,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_raft_term_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -1917,7 +1917,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(\n  (rabbitmq_raft_log_last_written_index * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) - \n  (rabbitmq_raft_log_snapshot_index * on(instance) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"})\n) by(queue, rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}} {{queue}}"
@@ -1966,7 +1966,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum(rate(rabbitmq_global_messages_received_total[60s]) * on(instance, job) group_left(rabbitmq_cluster) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"})",
@@ -2020,7 +2020,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "rabbitmq_channels * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -2073,7 +2073,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_channels_opened_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -2126,7 +2126,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_channels_closed_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -2179,7 +2179,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "rabbitmq_connections * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -2232,7 +2232,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum(rate(rabbitmq_connections_opened_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
@@ -2286,7 +2286,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_connections_closed_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -2331,7 +2331,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rabbitmq_build_info * on(instance, job) group_left(rabbitmq_cluster) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"})",
                     "seriesNameFormat": ""
@@ -2376,7 +2376,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rabbitmq_consumers * on(instance, job) group_left(rabbitmq_cluster) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"})",
                     "seriesNameFormat": ""
@@ -2421,7 +2421,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rabbitmq_channels * on(instance, job) group_left(rabbitmq_cluster) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"})",
                     "seriesNameFormat": ""
@@ -2474,7 +2474,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rabbitmq_queue_messages_unacked * on(instance, job) group_left(rabbitmq_cluster) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"})",
                     "seriesNameFormat": ""
@@ -2523,7 +2523,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_global_messages_redelivered_total[60s]) * on(instance, job) group_left(rabbitmq_cluster) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) +\nsum(rate(rabbitmq_global_messages_delivered_consume_auto_ack_total[60s]) * on(instance, job) group_left(rabbitmq_cluster) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) +\nsum(rate(rabbitmq_global_messages_delivered_consume_manual_ack_total[60s]) * on(instance, job) group_left(rabbitmq_cluster) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) +\nsum(rate(rabbitmq_global_messages_delivered_get_auto_ack_total[60s]) * on(instance, job) group_left(rabbitmq_cluster) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"}) +\nsum(rate(rabbitmq_global_messages_delivered_get_manual_ack_total[60s]) * on(instance, job) group_left(rabbitmq_cluster) rabbitmq_identity_info{rabbitmq_cluster=\"$app\", namespace=\"$namespace\"})",
                     "seriesNameFormat": ""

@@ -164,7 +164,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "max by (core) (count(count by (node_name) (solr_collections_replica_state{namespace=~\"$namespace\",service=~\"$app-stats\"})) < solr_collections_live_nodes{namespace=~\"$namespace\",service=~\"$app-stats\"} or solr_collections_live_nodes{namespace=~\"$namespace\",service=~\"$app-stats\"})",
@@ -211,7 +211,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "max by (core) (count(count by (node_name) (solr_collections_replica_state{namespace=~\"$namespace\",service=~\"$app-stats\"})) < solr_collections_live_nodes{namespace=~\"$namespace\",service=~\"$app-stats\"} or solr_collections_live_nodes{namespace=~\"$namespace\",service=~\"$app-stats\"})",
@@ -258,7 +258,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "max by (zk_host) (solr_zookeeper_ensemble_size{namespace=~\"$namespace\",service=~\"$app-stats\"})",
@@ -290,7 +290,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "1 - max by (core, state) (solr_collections_replica_state{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\",})",
@@ -322,7 +322,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (collection) (solr_metrics_core_query_1minRate{namespace=~\"$namespace\",service=~\"$app-stats\"})",
@@ -354,7 +354,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (collection) (solr_metrics_core_query_1minRate{namespace=~\"$namespace\",service=~\"$app-stats\"})",
@@ -386,7 +386,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "solr_metrics_jvm_buffers{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}",
@@ -418,7 +418,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "solr_metrics_jvm_buffers_bytes{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}",
@@ -450,7 +450,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "increase(solr_metrics_jvm_gc_total{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}[1m])",
@@ -482,7 +482,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "increase(solr_metrics_jvm_gc_seconds_total{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}[1m])",
@@ -514,7 +514,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "solr_metrics_jvm_memory_heap_bytes{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}",
@@ -546,7 +546,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "solr_metrics_jvm_memory_non_heap_bytes{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}",
@@ -578,7 +578,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "max by (core,replica, shard, collection) (solr_collections_shard_leader{namespace=~\"$namespace\",service=~\"$app-stats\"})",
@@ -610,7 +610,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "solr_metrics_jvm_memory_pools_bytes{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}",
@@ -642,7 +642,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "solr_metrics_jvm_memory_bytes{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}",
@@ -674,7 +674,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "solr_metrics_jvm_threads{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}",
@@ -706,7 +706,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "solr_metrics_node_requests_total{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}",
@@ -738,7 +738,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "increase(solr_metrics_node_time_seconds_total{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}[1m])",
@@ -770,7 +770,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "increase(solr_metrics_node_client_errors_total{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}[1m])",
@@ -802,7 +802,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "increase(solr_metrics_node_server_errors_total{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}[1m])",
@@ -834,7 +834,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "increase(solr_metrics_node_errors_total{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}[1m])",
@@ -866,7 +866,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "increase(solr_metrics_node_timeouts_total{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}[1m])",
@@ -898,7 +898,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "solr_metrics_node_cores{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}",
@@ -945,7 +945,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "count(count by (collection)  (solr_collections_replica_state{namespace=~\"$namespace\",service=~\"$app-stats\"}))",
@@ -977,7 +977,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "solr_metrics_node_core_root_fs_bytes{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}",
@@ -1009,7 +1009,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "solr_metrics_node_thread_pool_completed_total{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}",
@@ -1041,7 +1041,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "solr_metrics_node_thread_pool_submitted_total{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}",
@@ -1073,7 +1073,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "solr_metrics_node_thread_pool_running{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}",
@@ -1105,7 +1105,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "solr_metrics_node_connections{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}",
@@ -1137,7 +1137,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (base_url) (max by (core) (solr_collections_shard_leader{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}))",
@@ -1184,7 +1184,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "count(max by (core) (solr_collections_replica_state{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\"}))",
@@ -1231,7 +1231,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "count(max by (core) (solr_collections_replica_state{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\",state=\"active\"})) OR on() vector(0)",
@@ -1278,7 +1278,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "count(max by (core) (solr_collections_replica_state{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\",state=\"down\"})) OR on() vector(0)",
@@ -1325,7 +1325,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "count(max by (core) (solr_collections_replica_state{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\",state=\"recovering\"})) OR on() vector(0)",
@@ -1372,7 +1372,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "count(max by (core) (solr_collections_replica_state{namespace=~\"$namespace\",service=~\"$app-stats\",base_url=~\"$base_url\",state=\"recovery_failed\"})) OR on() vector(0)",
@@ -1419,7 +1419,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "(count(max by (host) (solr_zookeeper_nodestatus{namespace=~\"$namespace\",service=~\"$app-stats\"}) == 1))",

@@ -167,7 +167,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "(sum by (pod) (pgbouncer_databases_disabled{hostname=~\"$backend_nodes\",namespace=~\"$namespace\",pod=~\"$pod\"}))/2",
@@ -215,7 +215,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "(sum by (pod) (pgbouncer_databases_paused{hostname=~\"$backend_nodes\",namespace=~\"$namespace\",pod=~\"$pod\"}))/2",
@@ -258,7 +258,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (pod) (pgbouncer_stats_xact_count_total{hostname=~\"$backend_nodes\",namespace=~\"$namespace\",pod=~\"$pod\"})",
@@ -301,7 +301,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "(sum by (pod) (pgbouncer_databases_current_connections{namespace=~\"$namespace\",pod=~\"$pod\"}))/(sum by (pod) (pgbouncer_databases_max_connections{namespace=~\"$namespace\",pod=~\"$pod\"}))",
@@ -344,7 +344,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "(sum by (pod) (pgbouncer_databases_current_connections{namespace=~\"$namespace\",pod=~\"$pod\"}))-(sum by (pod) (pgbouncer_databases_current_connections{namespace=~\"$namespace\",pod=~\"$pod\", name=\"pgbouncer\"}))",
@@ -361,7 +361,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "pgbouncer_databases_current_connections{namespace=~\"$namespace\",pod=~\"$pod\", name=\"pgbouncer\"}",
@@ -404,7 +404,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "pgbouncer_config_log_pooler_errors{hostname=~\"$backend_nodes\",namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -447,7 +447,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (pod) (pgbouncer_stats_query_count_total{namespace=~\"$namespace\",pod=~\"$pod\"})",
@@ -495,7 +495,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (pod) (pgbouncer_stats_avg_query_time_microseconds{namespace=~\"$namespace\",pod=~\"$pod\"})",
@@ -543,7 +543,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "pgbouncer_config_query_wait_timeout_seconds{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -591,7 +591,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum(irate(pgbouncer_stats_query_time_microseconds_total{namespace=~\"$namespace\",pod=~\"$pod\"}[5m]))",
@@ -640,7 +640,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (pod) (pgbouncer_stats_avg_xact_count{hostname=~\"$backend_nodes\",namespace=~\"$namespace\",pod=~\"$pod\"})",

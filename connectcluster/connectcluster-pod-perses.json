@@ -168,7 +168,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kube_pod_status_phase{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -215,7 +215,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "time() - process_start_time_seconds{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -555,7 +555,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "jvm_threads_current{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -572,7 +572,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": " jvm_threads_daemon{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -589,7 +589,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": " jvm_threads_peak{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -606,7 +606,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": " jvm_threads_deadlocked{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -649,7 +649,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "jvm_memory_bytes_used{namespace=~\"$namespace\",pod=~\"$pod\",area=\"nonheap\"} / 1024 / 1024",
@@ -692,7 +692,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "jvm_memory_bytes_used{namespace=~\"$namespace\",pod=~\"$pod\",area=\"heap\"} / 1024 / 1024",
@@ -742,7 +742,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "jvm_memory_pool_bytes_used{namespace=~\"$namespace\",pod=~\"$pod\"} / 1024 / 1024",
@@ -786,7 +786,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum(kafka_connect_connector_status{namespace=~\"$namespace\", pod=~\"$pod\"})",
@@ -829,7 +829,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "increase(jvm_gc_collection_seconds_count{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
@@ -872,7 +872,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "increase(jvm_gc_collection_seconds_sum{namespace=~\"$namespace\",pod=~\"$pod\"}[5m])",
@@ -1341,7 +1341,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum(kafka_connect_worker_connector_total_task_count{namespace=~\"$namespace\", pod=~\"$pod\"})",
@@ -1875,7 +1875,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kafka_connect_network_io_total{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -1923,7 +1923,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kafka_connect_connect_metrics_network_io_rate{namespace=\"$namespace\",pod=~\"$pod\"}",

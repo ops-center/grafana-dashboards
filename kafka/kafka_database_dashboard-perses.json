@@ -113,7 +113,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kubedb_com_kafka_status_phase{namespace=\"$namespace\", app=\"$app\"} == 1",
@@ -160,7 +160,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "time() - process_start_time_seconds{namespace=~\"$namespace\",pod=~\"$app-.+$\"}",
@@ -193,7 +193,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kafka_cluster_partition_underreplicated{namespace=\"$namespace\", pod=~\"$app-.+$\"}",
@@ -227,7 +227,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kafka_server_raft_metrics_number_unknown_voter_connections{namespace=~\"$namespace\",pod=~\"$app.+$\"}",
@@ -261,7 +261,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kafka_server_raft_metrics_high_watermark{namespace=~\"$namespace\",pod=~\"$app.+$\"}",
@@ -433,7 +433,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kafka_server_kafkaserver_linux_disk_read_bytes{namespace=~\"$namespace\",pod=~\"$app.+$\"} / 1024 /1024",
@@ -465,7 +465,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kafka_server_kafkaserver_linux_disk_write_bytes{namespace=~\"$namespace\",pod=~\"$app.+$\"} / 1024 /1024",
@@ -503,7 +503,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kafka_server_brokertopicmetrics_messagesin_total{namespace=\"$namespace\", pod=~\"$app-.+$\", topic!~\"\"}",
@@ -547,7 +547,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kafka_server_raft_metrics_current_leader{namespace=~\"$namespace\",pod=~\"$app.+$\"}",
@@ -585,7 +585,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kafka_server_brokertopicmetrics_totalproducerequests_total{namespace=\"$namespace\", pod=~\"$app-.+$\"} != 0",
@@ -617,7 +617,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kafka_server_raft_metrics_commit_latency_avg{namespace=~\"$namespace\",pod=~\"$app.+$\"}",
@@ -649,7 +649,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kafka_server_raft_metrics_current_epoch{namespace=~\"$namespace\",pod=~\"$app.+$\"}",
@@ -681,7 +681,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum(rate(kafka_server_brokertopicmetrics_bytesin_total{pod=~\"$app-.+$\",namespace=~\"$namespace\",topic!~\"\"}[5m])) by (topic)",
@@ -698,7 +698,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum(rate(kafka_server_brokertopicmetrics_bytesout_total{pod=~\"$app-.+$\",namespace=~\"$namespace\",topic!~\"\"}[5m])) by (topic)",
@@ -736,7 +736,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kafka_server_kafkarequesthandlerpool_requesthandleravgidle_percent{namespace=\"$namespace\",pod=~\"$app-.+$\"}",
@@ -788,7 +788,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kafka_server_brokertopicmetrics_bytesin_total{namespace=\"$namespace\",pod=~\"$app-.+$\"}",
@@ -867,7 +867,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kafka_controller_kafkacontroller_activecontrollercount{namespace=~\"$namespace\",pod=~\"$app.+$\"} == 1 ",
@@ -915,7 +915,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "label_join(jvm_info{namespace=\"$namespace\", pod=~\"$app-.+$\"}, \"jdk\", \", \", \"vendor\", \"runtime\", \"version\")",
@@ -1088,7 +1088,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kafka_cluster_partition_replicascount{namespace=\"$namespace\", pod=~\"$app-.+$\"}",

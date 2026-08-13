@@ -161,7 +161,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_host_memory_physical_total_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} / 1024",
                     "seriesNameFormat": "Total Physical Memory"
@@ -177,7 +177,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_host_memory_physical_free_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} / 1024",
                     "seriesNameFormat": "Free Physical Memory"
@@ -193,7 +193,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_host_memory_resident_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} / 1024",
                     "seriesNameFormat": "Resident Memory "
@@ -209,7 +209,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_host_memory_alloc_limit_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} / 1024",
                     "seriesNameFormat": "Allocation Limit"
@@ -225,7 +225,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_host_memory_pool_size_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} / 1024",
                     "seriesNameFormat": "Pool Size"
@@ -241,7 +241,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "hanadb_host_memory_used_total_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} / 1024",
@@ -258,7 +258,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_host_memory_shared_alloc_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} / 1024",
                     "seriesNameFormat": "Shared Memory"
@@ -274,7 +274,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "hanadb_host_memory_swap_used_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} / 1024",
@@ -291,7 +291,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "hanadb_host_memory_code_size_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} / 1024",
@@ -308,7 +308,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "hanadb_host_memory_shared_alloc_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} / 1024",
@@ -325,7 +325,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "hanadb_column_tables_used_memory_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} / 1024",
@@ -380,7 +380,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum(hanadb_host_memory_used_total_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"}) / sum(hanadb_host_memory_alloc_limit_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"}) * 100",
@@ -411,7 +411,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_memory_service_total_used_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"}",
                     "seriesNameFormat": "{{service}}"
@@ -477,7 +477,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sort(hanadb_sql_service_executions_count{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0)",
                     "seriesNameFormat": ""
@@ -493,7 +493,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_sql_service_elapsed_time_ms{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0",
                     "seriesNameFormat": ""
@@ -509,7 +509,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_sql_service_elap_per_exec_avg_ms{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0"
                   }
@@ -524,7 +524,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_sql_service_lock_per_exec_ms{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0"
                   }
@@ -539,7 +539,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_sql_service_max_ela_time_ms{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0",
                     "seriesNameFormat": ""
@@ -593,7 +593,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sort(hanadb_sql_top_time_consumers_mu{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0)",
@@ -610,7 +610,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_sql_top_time_consumers_count{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0",
                     "seriesNameFormat": ""
@@ -656,7 +656,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sort(sum(hanadb_schema_used_memory_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"}) by (schema_name))",
@@ -711,7 +711,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sort(hanadb_sql_top_mem_consumers_byte{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0)",
                     "seriesNameFormat": ""
@@ -727,7 +727,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sort(hanadb_sql_top_mem_consumers_count{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0)",
                     "seriesNameFormat": ""
@@ -789,7 +789,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sort(hanadb_table_cs_top_mem_total_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"}) + 0",
                     "seriesNameFormat": ""
@@ -805,7 +805,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_table_cs_top_mem_estimated_max_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0",
                     "seriesNameFormat": ""
@@ -821,7 +821,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_table_cs_top_mem_disk_size_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0",
                     "seriesNameFormat": ""
@@ -837,7 +837,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_table_cs_top_mem_record_count{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0"
                   }
@@ -890,7 +890,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_disk_data_files_used_size_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0",
                     "seriesNameFormat": ""
@@ -906,7 +906,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_disk_data_files_total_size_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0",
                     "seriesNameFormat": ""
@@ -922,7 +922,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "(hanadb_disk_data_files_used_size_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} / hanadb_disk_data_files_total_size_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"}) * 100"
                   }
@@ -1003,7 +1003,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_sr_replication_status{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0",
                     "seriesNameFormat": ""
@@ -1019,7 +1019,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_sr_secondary_active_status{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0",
                     "seriesNameFormat": ""
@@ -1035,7 +1035,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_sr_secondary_reconnect_count{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0"
                   }
@@ -1050,7 +1050,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_sr_secondary_failover_count{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0",
                     "seriesNameFormat": ""
@@ -1080,7 +1080,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "hanadb_sr_ship_delay_seconds{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"}",
@@ -1111,7 +1111,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "hanadb_sr_async_used_shipping_buffer_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"}",
@@ -1143,7 +1143,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (pod) (rate(container_cpu_usage_seconds_total{pod=~\"$node_name\",container!=\"\",container!=\"POD\",image!=\"\"}[5m])) * 100",
@@ -1235,7 +1235,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_sr_takeover_replication_status{src_host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0",
                     "seriesNameFormat": ""
@@ -1251,7 +1251,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_sr_takeover_duration_time_seconds{src_host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0",
                     "seriesNameFormat": ""
@@ -1267,7 +1267,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "hanadb_sr_takeover_log_position_bigint{src_host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0",
@@ -1284,7 +1284,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "hanadb_sr_takeover_shipped_log_position_bigint{src_host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} + 0"
                   }
@@ -1313,7 +1313,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (pod) (rate(container_network_receive_bytes_total{pod=~\"$node_name\"}[5m])) / 1024",
@@ -1344,7 +1344,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum by (pod) (rate(container_network_transmit_bytes_total{pod=~\"$node_name\"}[5m])) / 1024",
                     "seriesNameFormat": "{{pod}}"
@@ -1374,7 +1374,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum by (pod) (rate(container_network_receive_errors_total{pod=~\"$node_name\"}[5m]))",
                     "seriesNameFormat": "{{pod}} - Rx errors"
@@ -1390,7 +1390,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum by (pod) (rate(container_network_transmit_errors_total{pod=~\"$node_name\"}[5m]))",
                     "seriesNameFormat": "{{pod}} - Tx errors"
@@ -1420,7 +1420,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (pod) (rate(container_network_receive_packets_total{pod=~\"$node_name\"}[5m]))",
@@ -1451,7 +1451,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (pod) (rate(container_network_transmit_packets_total{pod=~\"$node_name\"}[5m]))",
@@ -1482,7 +1482,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "hanadb_network_collisions_per_seconds{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"}",
@@ -1514,7 +1514,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum by (pod) (rate(container_fs_reads_bytes_total{pod=~\"$node_name\",container!=\"\",container!=\"POD\"}[5m])) / 1024",
                     "seriesNameFormat": "{{pod}} read"
@@ -1530,7 +1530,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum by (pod) (rate(container_fs_writes_bytes_total{pod=~\"$node_name\",container!=\"\",container!=\"POD\"}[5m])) / 1024",
                     "seriesNameFormat": "{{pod}} write"
@@ -1561,7 +1561,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "(((sum by (host_ip) (label_replace(rate(node_disk_read_time_seconds_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\")) + sum by (host_ip) (label_replace(rate(node_disk_write_time_seconds_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\"))) / clamp_min((sum by (host_ip) (label_replace(rate(node_disk_reads_completed_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\")) + sum by (host_ip) (label_replace(rate(node_disk_writes_completed_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\"))), 0.001)) * 1000) * on (host_ip) group_left(pod) max by (host_ip, pod) (kube_pod_info{pod=~\"$node_name\"})",
                     "seriesNameFormat": "{{pod}}"
@@ -1591,7 +1591,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "((sum by (host_ip) (label_replace(rate(node_disk_io_time_seconds_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\")) / clamp_min((sum by (host_ip) (label_replace(rate(node_disk_reads_completed_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\")) + sum by (host_ip) (label_replace(rate(node_disk_writes_completed_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\"))), 0.001)) * 1000) * on (host_ip) group_left(pod) max by (host_ip, pod) (kube_pod_info{pod=~\"$node_name\"})",
                     "seriesNameFormat": "{{pod}}"
@@ -1644,7 +1644,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "avg(sum by (pod) (rate(container_cpu_usage_seconds_total{pod=~\"$node_name\",container!=\"\",container!=\"POD\",image!=\"\"}[5m]))) * 100",
@@ -1675,7 +1675,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum by (pod) (rate(container_fs_reads_total{pod=~\"$node_name\",container!=\"\",container!=\"POD\"}[5m]))",
                     "seriesNameFormat": "{{pod}} read"
@@ -1691,7 +1691,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum by (pod) (rate(container_fs_writes_total{pod=~\"$node_name\",container!=\"\",container!=\"POD\"}[5m]))",
                     "seriesNameFormat": "{{pod}} write"
@@ -1722,7 +1722,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "(sum by (host_ip) (label_replace(node_disk_io_now{device!~\"loop.*|ram.*|fd.*\"}, \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\"))) * on (host_ip) group_left(pod) max by (host_ip, pod) (kube_pod_info{pod=~\"$node_name\"})",
                     "seriesNameFormat": "{{pod}}"
@@ -1752,7 +1752,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "((sum by (host_ip) (label_replace(rate(node_disk_io_time_weighted_seconds_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\")) / clamp_min((sum by (host_ip) (label_replace(rate(node_disk_reads_completed_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\")) + sum by (host_ip) (label_replace(rate(node_disk_writes_completed_total{device!~\"loop.*|ram.*|fd.*\"}[5m]), \"host_ip\", \"$1\", \"instance\", \"([^:]+):.*\"))), 0.001)) * 1000) * on (host_ip) group_left(pod) max by (host_ip, pod) (kube_pod_info{pod=~\"$node_name\"})",
                     "seriesNameFormat": "{{pod}}"
@@ -1799,7 +1799,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "count(hanadb_alerts_current_rating{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"}) or vector(0)",
@@ -1830,7 +1830,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "hanadb_connections_total_count{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"}",
@@ -1862,7 +1862,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "(hanadb_disk_used_size_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} / hanadb_disk_total_device_size_mb)",
@@ -1926,7 +1926,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "hanadb_disk_used_size_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\",usage_type!=\"ROOTKEY_BACKUP\"} + 0",
@@ -1943,7 +1943,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "hanadb_disk_total_size_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\",usage_type!=\"ROOTKEY_BACKUP\"} + 0",
@@ -1960,7 +1960,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "(hanadb_disk_used_size_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\",usage_type!=\"ROOTKEY_BACKUP\"} / hanadb_disk_total_size_mb) * 100",
@@ -1977,7 +1977,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "hanadb_disk_total_used_size_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\",usage_type!=\"ROOTKEY_BACKUP\"} + 0",
@@ -1994,7 +1994,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "(hanadb_disk_total_used_size_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\",usage_type!=\"ROOTKEY_BACKUP\"} / hanadb_disk_total_size_mb) * 100",
@@ -2011,7 +2011,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "hanadb_disk_total_device_size_mb{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\",usage_type!=\"ROOTKEY_BACKUP\"}",
@@ -2042,7 +2042,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "count(hanadb_alerts_current_rating{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} == 1) or vector(0)",
@@ -2059,7 +2059,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "count(hanadb_alerts_current_rating{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} == 2) or vector(0)",
@@ -2076,7 +2076,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "count(hanadb_alerts_current_rating{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} == 3) or vector(0)",
@@ -2093,7 +2093,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "count(hanadb_alerts_current_rating{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} == 4) or vector(0)",
@@ -2110,7 +2110,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "count(hanadb_alerts_current_rating{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"} == 5) or vector(0)",
@@ -2165,7 +2165,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sort_desc(hanadb_alerts_current_rating{host=~\"$node_name\",sid=~\"$sid\",insnr=~\"$instance_number\",database_name=~\"$database_name\"}) ",

@@ -145,7 +145,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "pgpool2_up{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -195,7 +195,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "time() - kube_pod_start_time{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -243,7 +243,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "pgpool2_scrapes_total{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -281,7 +281,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum(rate(container_cpu_usage_seconds_total{namespace=~\"$namespace\", pod=~\"$pod\", container!=\"\", image!=\"\"}[5m])) by (pod)",
@@ -319,7 +319,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum(container_memory_working_set_bytes{namespace=~\"$namespace\", pod=~\"$pod\", container!=\"\", image!=\"\"}) by (pod)",
@@ -370,7 +370,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "pgpool2_backend_total{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -421,7 +421,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (pod) (pgpool2_backend_by_process_total{namespace=~\"$namespace\",pod=~\"$pod\"})",
@@ -469,7 +469,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "pgpool2_backend_used{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -507,7 +507,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "pgpool2_backend_used_ratio{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -558,7 +558,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "pgpool2_last_scrape_error{namespace=~\"$namespace\",pod=~\"$pod\"}",
@@ -596,7 +596,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "pgpool2_last_scrape_duration_seconds{namespace=~\"$namespace\",pod=~\"$pod\"}",

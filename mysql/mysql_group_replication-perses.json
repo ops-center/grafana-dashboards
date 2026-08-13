@@ -114,7 +114,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "avg by(member_host)(mysql_perf_schema_replication_group_member_info{namespace=~\"$namespace\",service=~\"$app+-stats\"})",
@@ -161,7 +161,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "avg by(member_host)(mysql_perf_schema_replication_group_member_info{namespace=~\"$namespace\",service=~\"$app+-stats\", member_role=\"PRIMARY\"})",
@@ -192,7 +192,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "avg by (pod)(rate(mysql_perf_schema_transactions_local_proposed_total{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])) ",
@@ -223,7 +223,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "avg by (pod)(rate(mysql_perf_schema_transactions_remote_in_applier_queue{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])) ",
@@ -254,7 +254,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "avg by (pod)(rate(mysql_perf_schema_transactions_local_rollback_total{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])) ",
@@ -285,7 +285,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "avg by (pod)(rate(mysql_perf_schema_transactions_in_queue{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m]) or rate(mysql_perf_schema_5_transactions_in_queue{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])) ",
@@ -316,7 +316,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "avg by (pod)(rate(mysql_perf_schema_conflicts_detected_total{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m]) or rate(mysql_perf_schema_5_conflicts_detected_total{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])) ",
@@ -347,7 +347,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "max by (pod)(max_over_time(mysql_perf_schema_replication_group_worker_lag_in_seconds{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m]))",
@@ -378,7 +378,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "max by (pod)(max_over_time(mysql_perf_schema_replication_group_worker_transport_time_seconds{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])) < 20000000",
@@ -409,7 +409,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "max by (pod)(max_over_time(mysql_perf_schema_replication_group_worker_apply_time_seconds{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])) < 20000000",
@@ -440,7 +440,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "max by (pod)(max_over_time(mysql_perf_schema_replication_group_worker_apply_time_seconds{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])) < 20000000",
@@ -471,7 +471,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "max by (pod)(max_over_time(mysql_perf_schema_replication_group_worker_time_RL_seconds{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])) < 20000000",
@@ -502,7 +502,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "avg by (pod)(rate(mysql_perf_schema_transactions_checked_total{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m]) or rate(mysql_perf_schema_5_transactions_checked_total{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])) ",
@@ -533,7 +533,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "avg by (pod)(rate(mysql_perf_schema_transactions_rows_validating_total{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m]) or rate(mysql_perf_schema_5_transactions_rows_validating_total{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])) ",
@@ -564,7 +564,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "avg by (pod)(rate(mysql_perf_schema_transactions_remote_applied_total{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])) ",

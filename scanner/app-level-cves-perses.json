@@ -144,7 +144,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by(severity) (scanner_appscode_com_image_cve_occurrence_total * on(image) group_left scanner_appscode_com_image_lineage{group=\"$group\",kind=\"$kind\",namespace=\"$ns\",name=\"$name\"})",
@@ -176,7 +176,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by(severity) (scanner_appscode_com_image_cve_count_total * on(image) group_left scanner_appscode_com_image_lineage{group=\"$group\",kind=\"$kind\",namespace=\"$ns\",name=\"$name\"})",

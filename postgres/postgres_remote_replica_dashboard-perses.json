@@ -117,7 +117,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "min(pg_coordinator_remote_replica_streaming{namespace=\"$namespace\", pod=~\"${app}-.*\"})"
                   }
@@ -165,7 +165,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "min(pg_coordinator_remote_replica_source_reachable{namespace=\"$namespace\", pod=~\"${app}-.*\"})"
                   }
@@ -217,7 +217,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "max(pg_coordinator_remote_replica_lag_bytes{namespace=\"$namespace\", pod=~\"${app}-.*\"})"
                   }
@@ -269,7 +269,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "time() - min(pg_coordinator_remote_replica_last_lag_check_timestamp_seconds{namespace=\"$namespace\", pod=~\"${app}-.*\"})"
                   }
@@ -321,7 +321,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(increase(pg_coordinator_remote_replica_recovery_total{namespace=\"$namespace\", pod=~\"${app}-.*\"}[24h])) or vector(0)"
                   }
@@ -351,7 +351,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "pg_coordinator_remote_replica_lag_bytes{namespace=\"$namespace\", pod=~\"${app}-.*\"}",
                     "seriesNameFormat": "{{pod}}"
@@ -382,7 +382,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "pg_replication_lag_seconds{namespace=\"$namespace\", pod=~\"${app}-.*\"}",
                     "seriesNameFormat": "{{pod}}"
@@ -413,7 +413,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum by (action,result) (increase(pg_coordinator_remote_replica_recovery_total{namespace=\"$namespace\", pod=~\"${app}-.*\"}[1h]))",
                     "seriesNameFormat": "{{action}}/{{result}}"
@@ -444,7 +444,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "pg_replication_is_replica{namespace=\"$namespace\", pod=~\"${app}-.*\"}",
                     "seriesNameFormat": "{{pod}}"
@@ -475,7 +475,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum by (pod) (pg_stat_activity_count{namespace=\"$namespace\", pod=~\"${app}-.*\"})",
                     "seriesNameFormat": "{{pod}}"

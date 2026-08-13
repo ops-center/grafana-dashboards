@@ -121,7 +121,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "count(com_hazelcast_Metrics_activeMembers{namespace=~\"$namespace\",service=~\"$app-stats\"})",
@@ -169,7 +169,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "max(com_hazelcast_Metrics_uptime{namespace=~\"$namespace\",service=~\"$app-stats\"})/(1000*60)",
@@ -201,7 +201,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "com_hazelcast_Metrics_totalPutLatency{namespace=~\"$namespace\",service=~\"$app-stats\"}",
@@ -218,7 +218,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "com_hazelcast_Metrics_putCount{namespace=~\"$namespace\",service=~\"$app-stats\"}\n",
@@ -249,7 +249,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "com_hazelcast_Metrics_totalSetLatency{namespace=~\"$namespace\",service=~\"$app-stats\"}\n",
@@ -266,7 +266,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "com_hazelcast_Metrics_setCount{namespace=~\"$namespace\",service=~\"$app-stats\"}\n",
@@ -298,7 +298,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "com_hazelcast_Metrics_totalRemoveLatency{namespace=~\"$namespace\",service=~\"$app-stats\"}",
@@ -315,7 +315,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "com_hazelcast_Metrics_removeCount{namespace=~\"$namespace\",service=~\"$app-stats\"}",
@@ -347,7 +347,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "com_hazelcast_Metrics_entryCount{namespace=~\"$namespace\",service=~\"$app-stats\"}",
@@ -379,7 +379,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "com_hazelcast_Metrics_backupEntryCount{namespace=~\"$namespace\",service=~\"$app-stats\"}",
@@ -411,7 +411,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "com_hazelcast_Metrics_lockedEntryCount{namespace=~\"$namespace\",service=~\"$app-stats\"}\n",
@@ -443,7 +443,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "com_hazelcast_Metrics_dirtyEntryCount{namespace=~\"$namespace\",service=~\"$app-stats\"}\n",
@@ -491,7 +491,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "count(com_hazelcast_Metrics_clientCount{namespace=~\"$namespace\",service=\"$app-stats\"})",
@@ -525,7 +525,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "com_hazelcast_Metrics_activePartitionCount{namespace=~\"$namespace\",service=~\"$app-stats\"}",
@@ -557,7 +557,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "com_hazelcast_Metrics_systemLoadAverage{namespace=~\"$namespace\",service=~\"$app-stats\"}\n",
@@ -603,7 +603,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "com_hazelcast_Metrics_usedHeap{namespace=~\"$namespace\",service=~\"$app-stats\"}/(com_hazelcast_Metrics_usedHeap{namespace=~\"$namespace\",service=~\"$app-stats\"}+com_hazelcast_Metrics_freeHeap{namespace=~\"$namespace\",service=~\"$app-stats\"})*100",
@@ -634,7 +634,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "com_hazelcast_Metrics_ownedEntryMemoryCost{namespace=~\"$namespace\",service=~\"$app-stats\"}/1000\n",
@@ -666,7 +666,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "com_hazelcast_Metrics_backupEntryMemoryCost{namespace=~\"$namespace\",service=~\"$app-stats\"}/1000\n",
@@ -698,7 +698,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "com_hazelcast_Metrics_heapCost{namespace=~\"$namespace\",service=~\"$app-stats\"}/1000",
@@ -735,7 +735,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "com_hazelcast_Metrics_totalGetLatency{namespace=~\"$namespace\",service=~\"$app-stats\"}",
@@ -752,7 +752,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "com_hazelcast_Metrics_getCount{namespace=~\"$namespace\",service=~\"$app-stats\"}",

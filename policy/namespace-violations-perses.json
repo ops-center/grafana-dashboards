@@ -101,7 +101,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "policy_appscode_com_namespace_violation_occurrence_total{namespace=\"$ns\"}",
@@ -133,7 +133,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "policy_appscode_com_namespace_violation_occurrence_by_constraint_type{namespace=\"$ns\",constraint=\"$constraint\"}",

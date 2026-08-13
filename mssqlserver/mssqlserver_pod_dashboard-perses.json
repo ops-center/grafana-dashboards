@@ -177,7 +177,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mssql_hostname{namespace=~\"$namespace\",service=~\"$app+-stats\",pod=~\"$pod\"}",
@@ -244,7 +244,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "up{pod=~\"$pod\", target=\"mssql_database\"}",
@@ -275,7 +275,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mssql_io_stall_seconds{db=\"$database\", pod=\"$pod\"}",
@@ -306,7 +306,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mssql_io_stall_seconds{db=\"$database\", pod=\"$pod\"}",
@@ -337,7 +337,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mssql_io_stall_seconds{db=\"$database\", pod=\"$pod\"}",
@@ -415,7 +415,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mssql_pod_role{pod=~\"$pod\"}",
@@ -464,7 +464,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "max(max_over_time(mssql_uptime_seconds{pod=~\"$pod\"}[$__interval]))",
@@ -548,7 +548,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "(mssql_local_time_seconds{job=~\"$Job\", pod=\"$pod\"}*1000)",
@@ -565,7 +565,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mssql_os_memory{state=\"available\",job=~\"$Job\", pod=\"$pod\"}-0",
@@ -582,7 +582,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mssql_os_memory{state=\"used\",job=~\"$Job\", pod=\"$pod\"}-0",
@@ -599,7 +599,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mssql_os_page_file{state=\"available\",job=~\"$Job\", pod=\"$pod\"}-0",
@@ -616,7 +616,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mssql_os_page_file{state=\"used\",job=~\"$Job\", pod=\"$pod\"}-0",
@@ -708,7 +708,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mssql_page_fault_count{job=~\"$Job\", pod=\"$pod\"}-0",
@@ -725,7 +725,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mssql_batch_requests{job=~\"$Job\", pod=\"$pod\"}-0",
@@ -742,7 +742,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mssql_page_life_expectancy_seconds{job=~\"$Job\", pod=\"$pod\"}-0",
@@ -759,7 +759,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mssql_deadlocks{job=~\"$Job\", pod=\"$pod\"}-0",
@@ -776,7 +776,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mssql_user_errors{job=~\"$Job\", pod=\"$pod\"}-0",
@@ -793,7 +793,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mssql_kill_connection_errors{job=~\"$Job\", pod=\"$pod\"}-0",
@@ -810,7 +810,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum(mssql_database_state{job=~\"$Job\", pod=\"$pod\"})",
@@ -846,7 +846,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mssql_connections{pod=\"$pod\"}",
@@ -877,7 +877,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mssql_log_growths{pod=\"$pod\"}",
@@ -908,7 +908,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mssql_io_stall_total_seconds{pod=\"$pod\"}",
@@ -939,7 +939,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mssql_io_stall_seconds{db=\"$database\", pod=\"$pod\"}",

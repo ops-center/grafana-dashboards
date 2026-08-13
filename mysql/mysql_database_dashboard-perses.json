@@ -104,7 +104,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mysql_up{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
@@ -137,7 +137,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mysql_global_status_uptime{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
@@ -168,7 +168,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rate(mysql_global_status_aborted_connects{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
@@ -185,7 +185,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rate(mysql_global_status_aborted_clients{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
@@ -216,7 +216,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rate(mysql_global_status_queries{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
@@ -247,7 +247,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mysql_global_status_max_used_connections{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
@@ -264,7 +264,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mysql_global_variables_max_connections{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
@@ -295,7 +295,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rate(mysql_global_status_innodb_data_reads{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
@@ -312,7 +312,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rate(mysql_global_status_innodb_data_writes{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
@@ -343,7 +343,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rate(mysql_global_status_bytes_received{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
@@ -360,7 +360,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rate(mysql_global_status_bytes_sent{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m])",
@@ -391,7 +391,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "topk(3, rate(mysql_global_status_commands_total{namespace=~\"$namespace\",service=~\"$app+-stats\"}[5m]))",
@@ -422,7 +422,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rate(mysql_global_status_opened_files{namespace=~\"$namespace\",service=~\"$app+-stats\"}[1m])",
@@ -453,7 +453,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mysql_global_status_open_files{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
@@ -470,7 +470,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mysql_global_variables_open_files_limit{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
@@ -487,7 +487,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "mysql_global_status_innodb_num_open_files{namespace=~\"$namespace\",service=~\"$app+-stats\"}",
@@ -518,7 +518,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rate(mysql_global_status_slow_queries{namespace=~\"$namespace\",service=~\"$app+-stats\"}[1m])",

@@ -162,7 +162,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kube_pod_status_phase{pod=~\"$pod\",phase=~\"Running\"}",
@@ -211,7 +211,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "max(max_over_time(rabbitmq_erlang_uptime_seconds{pod=~\"$pod\"}[$__interval]))",
@@ -266,7 +266,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "query": "sum(rate(rabbitmq_global_messages_received_total[60s]) * on(instance, job) group_left(rabbitmq_cluster, rabbitmq_node) rabbitmq_identity_info{pod=\"$pod\", namespace=\"$namespace\"}) by(rabbitmq_node)",
                     "seriesNameFormat": "{{rabbitmq_node}}"
@@ -296,7 +296,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rabbitmq_disk_space_available_bytes{pod=~\"$pod\"} / 1024 / 1024",
@@ -313,7 +313,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rabbitmq_process_resident_memory_bytes{pod=~\"$pod\"} / 1024 / 1024",
@@ -344,7 +344,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum(container_memory_working_set_bytes{pod=\"$pod\"}) / 1024 / 1024",
@@ -376,7 +376,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum(rate(container_cpu_usage_seconds_total{pod=~\"$pod\"}[5m])) / count(node_cpu_seconds_total{mode=\"system\"}) * 100",
@@ -423,7 +423,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rabbitmq_unreachable_cluster_peers_count{pod=~\"$pod\"}",
@@ -466,7 +466,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rabbitmq_queue_messages_persistent{pod=~\"$pod\"}",
@@ -513,7 +513,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rabbitmq_queue_messages_ram{pod=~\"$pod\"}",
@@ -560,7 +560,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rabbitmq_connections{pod=~\"$pod\"}",
@@ -591,7 +591,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rabbitmq_queue_messages_ram_bytes{pod=~\"$pod\"}",
@@ -628,7 +628,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rabbitmq_queue_messages_persistent{pod=~\"$pod\"}",
@@ -665,7 +665,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rate(rabbitmq_erlang_gc_runs_total{pod=~\"$pod\"}[5m])",
@@ -696,7 +696,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rate(rabbitmq_erlang_gc_reclaimed_bytes_total{pod=~\"$pod\"}[5m])",

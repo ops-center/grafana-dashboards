@@ -200,7 +200,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kube_pod_status_phase{pod=~\"$pod\",phase=~\"Running\",namespace=~\"$namespace\"}",
@@ -249,7 +249,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "time() - max(max_over_time(container_start_time_seconds{pod=~\"$pod\",namespace=~\"$namespace\"}[$__interval]))",
@@ -302,7 +302,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "label_replace({__name__=~\"neo4j_database_${database}_transaction_(committed|rollbacks)_total\", pod=~\"$pod\",namespace=~\"$namespace\"}, \"label\", \"$1\", \"__name__\", \".*transaction_(committed|rollbacks)_total\")",
@@ -355,7 +355,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rate(neo4j_database_${database}_transaction_committed_read_total{pod=~\"$pod\",namespace=~\"$namespace\"}[$__interval])",
@@ -408,7 +408,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rate(neo4j_database_${database}_transaction_committed_write_total{pod=~\"$pod\",namespace=~\"$namespace\"}[$__interval])",
@@ -460,7 +460,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "neo4j_database_${database}_transaction_committed_total{pod =~\"$pod\",namespace=~\"$namespace\"}",
@@ -477,7 +477,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "neo4j_database_${database}_transaction_committed_read_total{pod=~\"$pod\",namespace=~\"$namespace\"}",
@@ -494,7 +494,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "neo4j_database_${database}_transaction_committed_write_total{pod=~\"$pod\",namespace=~\"$namespace\"}",
@@ -547,7 +547,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "neo4j_database_${database}_transaction_active_read{pod=~\"$pod\",namespace=~\"$namespace\"}",
@@ -564,7 +564,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "neo4j_database_${database}_transaction_active_write{pod=~\"$pod\",namespace=~\"$namespace\"}",
@@ -581,7 +581,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "neo4j_database_${database}_transaction_peak_concurrent_total{pod=~\"$pod\",namespace=~\"$namespace\"}",
@@ -633,7 +633,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "neo4j_dbms_page_cache_page_faults_total{pod=~\"$pod\",namespace=~\"$namespace\"}",
@@ -685,7 +685,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rate(neo4j_dbms_page_cache_page_faults_total{pod=~\"$pod\",namespace=~\"$namespace\"}[$__interval])",
@@ -739,7 +739,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "neo4j_dbms_page_cache_hit_ratio{pod=~\"$pod\",namespace=~\"$namespace\"}",
@@ -792,7 +792,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rate(neo4j_dbms_page_cache_hits_total{pod=~\"$pod\",namespace=~\"$namespace\"}[$__interval])",
@@ -845,7 +845,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "neo4j_dbms_page_cache_hits_total{pod=~\"$pod\",namespace=~\"$namespace\"}",
@@ -892,7 +892,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "neo4j_dbms_bolt_connections_running{pod=~\"$pod\",namespace=~\"$namespace\"}",
@@ -945,7 +945,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "label_replace({__name__=~\"neo4j_database_${database}_check_point_(events|total_time)_total\", pod=~\"$pod\",namespace=~\"$namespace\"}, \"label\", \"$1\", \"__name__\", \".*check_point_(events|total_time)_total\")",
@@ -997,7 +997,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "neo4j_database_${database}_check_point_duration{pod=~\"$pod\",namespace=~\"$namespace\"}",
@@ -1050,7 +1050,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "neo4j_dbms_bolt_messages_received_total{pod=~\"$pod\",namespace=~\"$namespace\"} - neo4j_dbms_bolt_messages_started_total{pod=~\"$pod\",namespace=~\"$namespace\"}",
@@ -1067,7 +1067,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "label_replace({__name__=~\"neo4j_dbms_bolt_messages_(received|started)_total\", pod=~\"$pod\",namespace=~\"$namespace\"}, \"label\", \"$1\", \"__name__\", \"neo4j_dbms_bolt_messages_(.+)\")",
@@ -1084,7 +1084,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rate(neo4j_dbms_bolt_messages_received_total{pod=~\"$pod\",namespace=~\"$namespace\"}[$__interval])",
@@ -1101,7 +1101,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rate(neo4j_dbms_bolt_messages_started_total{pod=~\"$pod\",namespace=~\"$namespace\"}[$__interval])",
@@ -1153,7 +1153,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "label_replace({__name__=~\"neo4j_dbms_bolt_connections_.+\", pod=~\"$pod\"}, \"label\", \"$1\", \"__name__\", \"neo4j_dbms_bolt_connections_(.+)\")",
@@ -1206,7 +1206,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum({__name__=~\"neo4j_dbms_vm_memory_pool_g1_(eden|old|survivor).*\", pod=~\"$pod\",namespace=~\"$namespace\"})",
@@ -1258,7 +1258,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "neo4j_dbms_vm_threads{pod=~\"$pod\",namespace=~\"$namespace\"}",
@@ -1310,7 +1310,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "neo4j_dbms_vm_memory_buffer_direct_used{pod=~\"$pod\",namespace=~\"$namespace\"}",
@@ -1327,7 +1327,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "neo4j_dbms_vm_memory_buffer_mapped_used{pod=~\"$pod\",namespace=~\"$namespace\"}",
@@ -1380,7 +1380,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "{__name__=~\"neo4j_dbms_vm_gc_time_g1_.+_generation_total\", pod=~\"$pod\",namespace=~\"$namespace\"}",
@@ -1397,7 +1397,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "delta(neo4j_dbms_vm_gc_time_g1_old_generation_total{pod=~\"$pod\",namespace=~\"$namespace\"}[$__interval])",
@@ -1414,7 +1414,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "delta(neo4j_dbms_vm_gc_time_g1_young_generation_total{pod=~\"$pod\",namespace=~\"$namespace\"}[$__interval])",
@@ -1466,7 +1466,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "neo4j_database_${database}_cypher_replan_events_total{pod=~\"$pod\",namespace=~\"$namespace\"}",
@@ -1518,7 +1518,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum(container_memory_working_set_bytes{pod=~\"$pod\",namespace=~\"$namespace\"})",
@@ -1571,7 +1571,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum(rate(container_cpu_usage_seconds_total{pod=~\"$pod\",namespace=~\"$namespace\"}[5m])) / count(node_cpu_seconds_total{mode=\"system\"}) * 100",
@@ -1618,7 +1618,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "neo4j_database_${database}_transaction_last_committed_tx_id_total{pod=~\"$pod\",namespace=~\"$namespace\"}",
@@ -1665,7 +1665,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "irate(neo4j_database_${database}_transaction_committed_total{pod=~\"$pod\",namespace=~\"$namespace\"}[$__interval])",
@@ -1712,7 +1712,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "irate(neo4j_database_${database}_ids_in_use_property{pod=~\"$pod\",namespace=~\"$namespace\"}[$__interval])",
@@ -1759,7 +1759,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "irate(neo4j_database_${database}_transaction_rollbacks_total{pod=~\"$pod\",namespace=~\"$namespace\"}[$__interval])",
@@ -1812,7 +1812,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "rate(neo4j_database_${database}_transaction_committed_total{pod=~\"$pod\",namespace=~\"$namespace\"}[$__interval])",
@@ -1829,7 +1829,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "irate(neo4j_database_${database}_transaction_committed_total{pod=~\"$pod\",namespace=~\"$namespace\"}[$__interval])",

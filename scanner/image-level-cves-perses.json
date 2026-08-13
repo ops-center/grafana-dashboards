@@ -75,7 +75,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (severity) (scanner_appscode_com_image_cve_occurrence_total{image=\"$img\"})",
@@ -107,7 +107,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (severity) (scanner_appscode_com_image_cve_count_total{image=\"$img\"})",

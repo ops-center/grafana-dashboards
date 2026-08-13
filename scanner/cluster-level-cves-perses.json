@@ -53,7 +53,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (job, severity) (scanner_appscode_com_cluster_cve_occurrence_total)",
@@ -85,7 +85,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (job, severity) (scanner_appscode_com_cluster_cve_count_total)",

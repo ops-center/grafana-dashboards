@@ -113,7 +113,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kafka_kubedb_com_connectcluster_status_phase{namespace=\"$namespace\", app=\"$app\"} == 1",
@@ -160,7 +160,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "time() - process_start_time_seconds{namespace=~\"$namespace\",pod=~\"$app-.+$\"}",
@@ -556,7 +556,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum(kafka_connect_connector_status{namespace=~\"$namespace\", pod=~\"$app-.+$\"})",
@@ -600,7 +600,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum(kafka_connect_worker_connector_total_task_count{namespace=~\"$namespace\", pod=~\"$app-.+$\"})",
@@ -648,7 +648,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "label_join(jvm_info{namespace=\"$namespace\", pod=~\"$app-.+$\"}, \"jdk\", \", \", \"vendor\", \"runtime\", \"version\")",
@@ -821,7 +821,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kafka_connect_app_info{instance=~\"$instance\",start_time_ms!=\"\"}",
@@ -838,7 +838,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "kafka_connect_app_info{instance=~\"$instance\",version!=\"\"}",
@@ -855,7 +855,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (pod) (kafka_connect_worker_connector_count{namespace=~\"$namespace\",pod=~\"$app-.+$\"})",
@@ -872,7 +872,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (pod) (kafka_connect_worker_connector_startup_success_total{namespace=~\"$namespace\",pod=~\"$app-.+$\"})",
@@ -889,7 +889,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (pod) (kafka_connect_worker__connector_startup_failure_total{namespace=~\"$namespace\",pod=~\"$app-.+$\"})",
@@ -906,7 +906,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (pod) (kafka_connect_worker_task_count{namespace=~\"$namespace\",pod=~\"$app-.+$\"})",
@@ -923,7 +923,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (pod) (kafka_connect_worker_task_startup_success_total{namespace=~\"$namespace\",pod=~\"$app-.+$\"})",
@@ -940,7 +940,7 @@
                   "spec": {
                     "datasource": {
                       "kind": "PrometheusDatasource",
-                      "name": "$datasource"
+                      "name": "global-ds-proxy"
                     },
                     "minStep": "",
                     "query": "sum by (pod) (kafka_connect_worker_task_startup_failure_total{namespace=~\"$namespace\",pod=~\"$app-.+$\"})",
