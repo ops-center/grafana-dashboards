@@ -89,7 +89,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_proxy_search_vectors_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])/120) by (pod, node_id)",
@@ -185,7 +185,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_proxy_insert_vectors_count{namespace=\"$namespace\",container=\"$container\",job=\"$job\"}[2m])/120) by (pod, node_id)",
@@ -281,7 +281,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le, query_type, pod, node_id) (rate(milvus_proxy_sq_latency_bucket{instance=~\"$instance\", namespace=\"$namespace\", collection_name=~\"$collection_name\",container=\"$container\",job=\"$job\"}[2m])))",
@@ -385,7 +385,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le, query_type, pod, node_id) (rate(milvus_proxy_collection_sq_latency_bucket{instance=~\"$instance\",namespace=\"$namespace\", collection_name=~\"$collection_name\",container=\"$container\",job=\"$job\"}[2m])))",
@@ -489,7 +489,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le, msg_type, pod, node_id) (rate(milvus_proxy_mutation_latency_bucket{instance=~\"$instance\",namespace=\"$namespace\", collection_name=~\"$collection_name\",container=\"$container\",job=\"$job\"}[2m])))",
@@ -594,7 +594,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le, msg_type, pod, node_id) (rate(milvus_proxy_collection_mutation_latency_bucket{instance=~\"$instance\",namespace=\"$namespace\", collection_name=~\"$collection_name\",container=\"$container\",job=\"$job\"}[2m])))",
@@ -607,7 +607,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_proxy_collection_mutation_latency_sum{instance=~\"$instance\", namespace=\"$namespace\", collection_name=~\"$collection_name\",container=\"$container\",job=\"$job\"}[2m])) by (pod, node_id, msg_type) / sum(increase(milvus_proxy_collection_mutation_latency_count{instance=~\"$instance\", namespace=\"$namespace\", collection_name=~\"$collection_name\",container=\"$container\",job=\"$job\"}[2m])) by (pod, node_id, msg_type)",
@@ -703,7 +703,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le, query_type, pod, node_id) (rate(milvus_proxy_sq_wait_result_latency_bucket{instance=~\"$instance\", namespace=\"$namespace\",container=\"$container\",job=\"$job\"}[2m])))",
@@ -715,7 +715,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_proxy_sq_wait_result_latency_sum{instance=~\"$instance\", namespace=\"$namespace\",container=\"$container\",job=\"$job\"}[2m])) by (pod, node_id, query_type) / sum(increase(milvus_proxy_sq_wait_result_latency_count{instance=~\"$instance\", namespace=\"$namespace\",container=\"$container\",job=\"$job\"}[2m])) by (pod, node_id, query_type)",
@@ -811,7 +811,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le, query_type, pod, node_id) (rate(milvus_proxy_sq_decode_result_latency_bucket{instance=~\"$instance\",namespace=\"$namespace\",container=\"$container\",job=\"$job\"}[2m])))",
@@ -824,7 +824,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_proxy_sq_reduce_result_latency_sum{instance=~\"$instance\", namespace=\"$namespace\",container=\"$container\",job=\"$job\"}[2m])) by (pod, node_id, query_type) / sum(increase(milvus_proxy_sq_reduce_result_latency_count{instance=~\"$instance\", namespace=\"$namespace\",container=\"$container\",job=\"$job\"}[2m])) by (pod, node_id, query_type)",
@@ -920,7 +920,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_proxy_sq_decode_result_latency_sum{instance=~\"$instance\", namespace=\"$namespace\",container=\"$container\",job=\"$job\"}[2m])) by (pod, node_id, query_type) / sum(increase(milvus_proxy_sq_decode_result_latency_count{instance=~\"$instance\", namespace=\"$namespace\",container=\"$container\",job=\"$job\"}[2m])) by (pod, node_id, query_type)",
@@ -1024,7 +1024,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le, pod, node_id) (rate(milvus_proxy_cache_update_latency_bucket{instance=~\"$instance\", namespace=\"$namespace\"}[2m])))",
@@ -1037,7 +1037,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_proxy_cache_update_latency_sum{instance=~\"$instance\", namespace=\"$namespace\"}[2m])) by (pod, node_id) / sum(increase(milvus_proxy_cache_update_latency_count{instance=~\"$instance\", namespace=\"$namespace\"}[2m])) by (pod, node_id)",
@@ -1133,7 +1133,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_proxy_req_count{instance=~\"$instance\",namespace=\"$namespace\", status=\"success\"}[2m])/120) by(function_name, pod, node_id)",
@@ -1322,7 +1322,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le, pod, node_id) (rate(milvus_proxy_apply_timestamp_latency_bucket{instance=~\"$instance\",namespace=\"$namespace\"}[2m])))",
@@ -1335,7 +1335,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_proxy_apply_timestamp_latency_sum{instance=~\"$instance\", namespace=\"$namespace\"}[2m])) by (pod, node_id) / sum(increase(milvus_proxy_apply_timestamp_latency_count{instance=~\"$instance\", namespace=\"$namespace\"}[2m])) by (pod, node_id)",
@@ -1431,7 +1431,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_proxy_receive_bytes_count{namespace=\"$namespace\",job=\"$job\"}[2m])/120) by(pod, node_id)",
@@ -1528,7 +1528,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le, pod, node_id) (rate(milvus_proxy_apply_pk_latency_bucket{instance=~\"$instance\", namespace=\"$namespace\", job=\"$job\"}[2m])))",
@@ -1541,7 +1541,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_proxy_apply_pk_latency_sum{instance=~\"$instance\", namespace=\"$namespace\", job=\"$job\"}[2m])) by (pod, node_id) / sum(increase(milvus_proxy_apply_pk_latency_count{instance=~\"$instance\", namespace=\"$namespace\", job=\"$job\"}[2m])) by (pod, node_id)",
@@ -1637,7 +1637,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_proxy_req_latency_sum{instance=~\"$instance\", namespace=\"$namespace\"}[2m])) by (pod, node_id) / sum(increase(milvus_proxy_req_latency_count{instance=~\"$instance\", namespace=\"$namespace\"}[2m])) by (pod, node_id)",
@@ -1932,7 +1932,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "$datasource"
+                "uid": "${datasource}"
               },
               "exemplar": true,
               "expr": "sum(milvus_rootcoord_proxy_num{instance=~\"$instance\", namespace=\"$namespace\",container=\"$container\",job=\"$job\"}) by (instance)",
@@ -2029,7 +2029,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "$datasource"
+                "uid": "${datasource}"
               },
               "exemplar": true,
               "expr": "milvus_rootcoord_timestamp_saved{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}",
@@ -2126,7 +2126,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "$datasource"
+                "uid": "${datasource}"
               },
               "exemplar": true,
               "expr": "histogram_quantile(0.99,sum by (le, pod) (rate(milvus_rootcoord_sync_timetick_latency_bucket{job=\"$job\",namespace=\"$namespace\"}[2m])))",
@@ -2139,7 +2139,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "$datasource"
+                "uid": "${datasource}"
               },
               "exemplar": true,
               "expr": "sum(\n  increase(milvus_rootcoord_sync_timetick_latency_sum{instance=~\"$instance\", namespace=\"$namespace\", job=\"$job\", container=~\"$container\"}[2m])\n)\n/\nsum(\n  increase(milvus_rootcoord_sync_timetick_latency_count{instance=~\"$instance\", namespace=\"$namespace\", job=\"$job\", container=~\"$container\"}[2m])\n)",
@@ -2235,7 +2235,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "$datasource"
+                "uid": "${datasource}"
               },
               "exemplar": true,
               "expr": "histogram_quantile(0.99, sum by (le, function_name) (rate(milvus_rootcoord_ddl_req_latency_bucket{instance=~\"$instance\", namespace=\"$namespace\"}[2m])))",
@@ -2247,7 +2247,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "$datasource"
+                "uid": "${datasource}"
               },
               "exemplar": true,
               "expr": "sum(increase(milvus_rootcoord_ddl_req_latency_sum{instance=~\"$instance\", namespace=\"$namespace\"}[2m])) by (function_name) / sum(increase(milvus_rootcoord_ddl_req_latency_count{instance=~\"$instance\", namespace=\"$namespace\"}[2m])) by (function_name)",
@@ -2343,7 +2343,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "$datasource"
+                "uid": "${datasource}"
               },
               "exemplar": true,
               "expr": "sum(milvus_rootcoord_dml_channel_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
@@ -2440,7 +2440,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "$datasource"
+                "uid": "${datasource}"
               },
               "exemplar": true,
               "expr": "sum(increase(milvus_rootcoord_ddl_req_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])/120) by (status, function_name)",
@@ -2536,7 +2536,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "$datasource"
+                "uid": "${datasource}"
               },
               "exemplar": true,
               "expr": "milvus_rootcoord_timestamp{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}",
@@ -2633,7 +2633,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "$datasource"
+                "uid": "${datasource}"
               },
               "exemplar": true,
               "expr": "sum(milvus_rootcoord_msgstream_obj_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
@@ -2730,7 +2730,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "$datasource"
+                "uid": "${datasource}"
               },
               "exemplar": true,
               "expr": "sum(increase(milvus_rootcoord_id_alloc_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])/120)",
@@ -2826,7 +2826,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "$datasource"
+                "uid": "${datasource}"
               },
               "exemplar": true,
               "expr": "sum(milvus_rootcoord_partition_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
@@ -2923,7 +2923,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "$datasource"
+                "uid": "${datasource}"
               },
               "exemplar": true,
               "expr": "sum(milvus_rootcoord_credential_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
@@ -3020,7 +3020,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "$datasource"
+                "uid": "${datasource}"
               },
               "exemplar": true,
               "expr": "sum(milvus_rootcoord_collection_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
@@ -3135,7 +3135,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_querycoord_collection_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
@@ -3232,7 +3232,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le) (rate(milvus_querycoord_load_latency_bucket{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])))",
@@ -3245,7 +3245,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_querycoord_load_latency_sum{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) / sum(increase(milvus_querycoord_load_latency_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m]))",
@@ -3341,7 +3341,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_querycoord_load_req_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])/120) by (status)",
@@ -3437,7 +3437,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_querycoord_release_req_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])/120) by (status)",
@@ -3533,7 +3533,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_querycoord_task_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
@@ -3630,7 +3630,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le) (rate(milvus_querycoord_release_latency_bucket{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])))",
@@ -3642,7 +3642,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_querycoord_release_latency_sum{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) / sum(increase(milvus_querycoord_release_latency_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m]))",
@@ -3738,7 +3738,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_querycoord_querynode_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
@@ -3835,7 +3835,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le) (rate(milvus_querycoord_task_latency_bucket{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])))",
@@ -3847,7 +3847,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_querycoord_task_latency_sum{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) / sum(increase(milvus_querycoord_task_latency_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m]))",
@@ -3957,7 +3957,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_querynode_collection_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (pod, node_id)",
@@ -4055,7 +4055,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_querynode_dml_vchannel_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (pod, node_id)",
@@ -4152,7 +4152,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_querynode_segment_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (pod, node_id, segment_state)",
@@ -4250,7 +4250,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "avg(milvus_querynode_consume_tt_lag_ms{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\", msg_type=\"timetick\"}) by (pod, node_id)",
@@ -4264,7 +4264,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "max(milvus_querynode_consume_tt_lag_ms{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\", msg_type=\"timetick\"}) by (pod, node_id)",
@@ -4276,7 +4276,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "min(milvus_querynode_consume_tt_lag_ms{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\", msg_type=\"timetick\"}) by (pod, node_id)",
@@ -4372,7 +4372,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_querynode_sq_req_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])/120) by (query_type, status, pod, node_id)",
@@ -4468,7 +4468,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_querynode_consume_msg_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])/120) by (pod, node_id, msg_type)",
@@ -4481,7 +4481,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_querynode_consume_msg_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])/120) by (pod, node_id)",
@@ -4577,7 +4577,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_querynode_entity_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (pod, node_id)",
@@ -4675,7 +4675,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": false,
           "expr": "histogram_quantile(0.99, sum by (le, pod, node_id, query_type, segment_state) (rate(milvus_querynode_sq_segment_latency_bucket{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])))",
@@ -4687,7 +4687,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_querynode_sq_segment_latency_sum{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id, query_type, segment_state) / sum(increase(milvus_querynode_sq_segment_latency_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id, query_type, segment_state)",
@@ -4783,7 +4783,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le, pod, node_id, query_type) (rate(milvus_querynode_sq_req_latency_bucket{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])))",
@@ -4795,7 +4795,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_querynode_sq_req_latency_sum{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id, query_type) / sum(increase(milvus_querynode_sq_req_latency_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id, query_type)",
@@ -4891,7 +4891,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le, pod, node_id, query_type) (rate(milvus_querynode_sq_queue_latency_bucket{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])))",
@@ -4903,7 +4903,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_querynode_sq_queue_latency_sum{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id, query_type) / sum(increase(milvus_querynode_sq_queue_latency_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id, query_type)",
@@ -4999,7 +4999,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le, pod, node_id) (rate(milvus_querynode_load_segment_latency_bucket{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])))",
@@ -5011,7 +5011,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_querynode_load_segment_latency_sum{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id) / sum(increase(milvus_querynode_load_segment_latency_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id)",
@@ -5107,7 +5107,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le, query_type, pod, node_id) (rate(milvus_querynode_sq_core_latency_bucket{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])))",
@@ -5119,7 +5119,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_querynode_sq_core_latency_sum{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id, query_type) / sum(increase(milvus_querynode_sq_core_latency_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id, query_type)",
@@ -5215,7 +5215,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le, pod, node_id, query_type) (rate(milvus_querynode_sq_reduce_latency_bucket{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])))",
@@ -5227,7 +5227,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_querynode_sq_reduce_latency_sum{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id, query_type) / sum(increase(milvus_querynode_sq_reduce_latency_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id, query_type)",
@@ -5323,7 +5323,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_querynode_read_task_ready_len{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (pod, node_id)",
@@ -5420,7 +5420,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_querynode_flowgraph_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (pod, node_id)",
@@ -5517,7 +5517,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_querynode_read_task_unsolved_len{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (pod, node_id)",
@@ -5614,7 +5614,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le, pod, node_id) (rate(milvus_querynode_search_group_size_bucket{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])))",
@@ -5626,7 +5626,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_querynode_search_group_size_sum{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id) / sum(increase(milvus_querynode_search_group_size_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id)",
@@ -5722,7 +5722,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_querynode_read_task_concurrency{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (pod, node_id)",
@@ -5819,7 +5819,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le, pod, node_id) (rate(milvus_querynode_search_group_nq_bucket{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])))",
@@ -5831,7 +5831,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_querynode_search_group_nq_sum{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id) / sum(increase(milvus_querynode_search_group_nq_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id)",
@@ -5927,7 +5927,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le, pod, node_id) (rate(milvus_querynode_search_topk_bucket{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])))",
@@ -5939,7 +5939,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_querynode_search_topk_sum{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id) / sum(increase(milvus_querynode_search_topk_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id)",
@@ -6035,7 +6035,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le, pod, node_id) (rate(milvus_querynode_search_nq_bucket{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])))",
@@ -6047,7 +6047,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_querynode_search_nq_sum{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id) / sum(increase(milvus_querynode_search_nq_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id)",
@@ -6143,7 +6143,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le, pod, node_id) (rate(milvus_querynode_search_group_topk_bucket{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])))",
@@ -6155,7 +6155,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_querynode_search_group_topk_sum{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id) / sum(increase(milvus_querynode_search_group_topk_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id)",
@@ -6265,7 +6265,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_datacoord_datanode_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
@@ -6362,7 +6362,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_datacoord_segment_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (segment_state)",
@@ -6459,7 +6459,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_datacoord_stored_rows_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
@@ -6556,7 +6556,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_datacoord_stored_binlog_size{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
@@ -6653,7 +6653,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_datacoord_compacted_segment_size_bucket{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
@@ -6758,7 +6758,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_datacoord_store_level0_segment_size_bucket{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
@@ -6863,7 +6863,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_datacoord_task_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
@@ -6960,7 +6960,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_datacoord_index_req_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
@@ -7057,7 +7057,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_datacoord_index_node_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
@@ -7154,7 +7154,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_datacoord_collection_num{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
@@ -7251,7 +7251,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_datacoord_channel_checkpoint_unix_seconds{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
@@ -7362,7 +7362,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_datanode_flushed_data_rows{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (pod, node_id)",
@@ -7459,7 +7459,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_datanode_consume_bytes_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (pod, node_id)",
@@ -7556,7 +7556,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "avg(milvus_datanode_consume_tt_lag_ms{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\", msg_type=\"all\"}) by (pod, node_id)",
@@ -7570,7 +7570,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "max(milvus_datanode_consume_tt_lag_ms{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\", msg_type=\"all\"}) by (pod, node_id)",
@@ -7582,7 +7582,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "min(milvus_datanode_consume_tt_lag_ms{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\", msg_type=\"all\"}) by (pod, node_id)",
@@ -7678,7 +7678,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_datanode_flush_buffer_op_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])/120) by (status, pod, node_id)",
@@ -7774,7 +7774,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_datanode_consume_msg_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])/120) by (pod, node_id, msg_type)",
@@ -7870,7 +7870,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_datanode_consume_msg_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])/120) by (pod, node_id)",
@@ -7966,7 +7966,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_datanode_consume_bytes_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (index_task_status)",
@@ -8062,7 +8062,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_datanode_autoflush_buffer_op_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])/120) by (status, pod, node_id)",
@@ -8158,7 +8158,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_datanode_msg_rows_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])/120) by (msg_type, pod, node_id)",
@@ -8254,7 +8254,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(milvus_datanode_fg_buffer_size{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}) by (instance)",
@@ -8353,7 +8353,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum by (le, pod, node_id) (rate(milvus_datanode_save_latency_bucket{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])))",
@@ -8365,7 +8365,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_datanode_save_latency_sum{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id) / sum(increase(milvus_datanode_save_latency_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])) by(pod, node_id)",
@@ -8461,7 +8461,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_datanode_flushed_data_size{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])/120) by (msg_type, pod, node_id)",
@@ -8557,7 +8557,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(increase(milvus_datanode_write_data_count{instance=~\"$instance\", container=\"$container\", namespace=\"$namespace\"}[2m])/120) by (status, pod, node_id)",
@@ -8667,7 +8667,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(rate(process_cpu_seconds_total{container=\"$container\", instance=~\"$instance\", namespace=\"$namespace\"}[5m]))",
@@ -10039,7 +10039,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "rate(go_memstats_alloc_bytes_total{container=\"$container\", instance=~\"$instance\", namespace=\"$namespace\"}[5m])",
@@ -10227,7 +10227,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "go_memstats_heap_inuse_bytes{container=\"$container\", instance=~\"$instance\", namespace=\"$namespace\"}",
@@ -10322,7 +10322,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "$datasource"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "container_threads{image=\"\", namespace=\"$namespace\"}",
